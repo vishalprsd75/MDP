@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Phone, ShieldCheck, ShoppingBag } from 'lucide-react';
+import { Sparkles, Phone, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { servicesData } from '../data/businessData';
 
@@ -15,7 +15,7 @@ const Hero = ({ darkMode = true }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Copy & CTAs */}
+          {/* Left Column: Copy */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
             
             {/* Tagline & Manufacturing Badge */}
@@ -54,7 +54,7 @@ const Hero = ({ darkMode = true }) => {
                 {servicesData.map((s) => (
                   <a
                     key={s.id}
-                    href={`#services`}
+                    href={`#sales`}
                     className={`px-3.5 py-1.5 rounded-md border transition-all duration-200 ${
                       darkMode
                         ? 'bg-brand-surface/80 border-brand-gold/20 text-gray-200 hover:border-brand-gold hover:text-brand-gold'
@@ -67,31 +67,8 @@ const Hero = ({ darkMode = true }) => {
               </div>
             </div>
 
-            {/* CTA Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-              <a
-                href="#sales"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold-gradient text-brand-dark font-bold text-base shadow-xl hover:shadow-brand-gold/25 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                <span>Explore Our Fabrics</span>
-                <ArrowRight className="w-5 h-5" />
-              </a>
-
-              <a
-                href="#contact"
-                className={`w-full sm:w-auto px-8 py-4 rounded-xl border font-semibold text-base transition-all duration-300 text-center ${
-                  darkMode
-                    ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:bg-brand-gold/10'
-                    : 'bg-white border-brand-gold/40 text-gray-800 hover:bg-brand-gold/10 shadow-sm'
-                }`}
-              >
-                Get in Touch
-              </a>
-            </div>
-
             {/* Key Assurance Line */}
-            <div className={`flex items-center justify-center lg:justify-start gap-6 pt-4 text-xs ${
+            <div className={`flex items-center justify-center lg:justify-start gap-6 pt-2 text-xs ${
               darkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
               <div className="flex items-center gap-1.5">
