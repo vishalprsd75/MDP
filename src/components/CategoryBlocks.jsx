@@ -1,9 +1,17 @@
 import React from 'react';
-import { ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getDynamicCategories } from '../data/products';
 
 const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
   const dynamicCategories = getDynamicCategories();
+
+  const handleCardClick = (e, category) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onSelectCategory) {
+      onSelectCategory(category);
+    }
+  };
 
   return (
     <div className="mb-14">
@@ -24,7 +32,7 @@ const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
           return (
             <div
               key={catItem.id}
-              onClick={() => onSelectCategory && onSelectCategory(catItem.category)}
+              onClick={(e) => handleCardClick(e, catItem.category)}
               className={`group relative rounded-2xl overflow-hidden border cursor-pointer transition-all duration-500 hover:border-brand-gold hover:shadow-2xl flex flex-col justify-between ${
                 darkMode ? 'border-brand-gold/30 bg-brand-card' : 'border-brand-gold/40 bg-white shadow-md'
               }`}

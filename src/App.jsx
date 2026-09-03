@@ -36,7 +36,7 @@ function App() {
     }
   }, [darkMode]);
 
-  // Helper for instant top jump without animation
+  // Helper for instant top jump without browser hash scroll animation
   const instantScrollToTop = () => {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
@@ -73,13 +73,20 @@ function App() {
   };
 
   const handleOpenCategoryPage = (category) => {
-    window.location.hash = `#category=${encodeURIComponent(category)}`;
+    instantScrollToTop();
+    const newHash = `#category=${encodeURIComponent(category)}`;
+    if (window.location.hash !== newHash) {
+      window.history.pushState(null, '', newHash);
+    }
     setActiveCategoryPage(category);
     instantScrollToTop();
   };
 
   const handleBackToHome = () => {
-    window.location.hash = '#hero';
+    instantScrollToTop();
+    if (window.location.hash !== '' && window.location.hash !== '#hero') {
+      window.history.pushState(null, '', '#hero');
+    }
     setActiveCategoryPage(null);
     instantScrollToTop();
   };
