@@ -3,7 +3,7 @@ import { Menu, X, MessageSquare, Sun, Moon, ChevronDown, Layers, Sparkles, Packa
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
@@ -27,10 +27,16 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
   ];
 
   const categoriesSubMenu = [
-    { name: 'Dyeable Fabric Bases', href: '#sales', icon: Layers },
-    { name: 'Traditional Hand Prints', href: '#sales', icon: Sparkles },
-    { name: 'Wholesale Fabric Rolls', href: '#sales', icon: Package },
+    { name: 'Dyeable Base', label: 'Dyeable Fabric Bases', icon: Layers },
+    { name: 'Traditional Prints', label: 'Traditional Hand Prints', icon: Sparkles },
+    { name: 'Wholesale Rolls', label: 'Wholesale Fabric Rolls', icon: Package },
   ];
+
+  const handleHomeClick = (e, href) => {
+    if (href === '#hero' || href === '#sales') {
+      if (onNavigateHome) onNavigateHome();
+    }
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -42,7 +48,7 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
         <div className="flex items-center justify-between">
           
           {/* Configurable Logo Component */}
-          <a href="#hero" className="focus:outline-none">
+          <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none">
             <Logo darkMode={darkMode} size="md" />
           </a>
 
@@ -52,6 +58,7 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleHomeClick(e, link.href)}
                 className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                   darkMode ? 'text-gray-300 hover:text-brand-gold' : 'text-gray-700 hover:text-brand-gold-dark'
                 }`}
@@ -83,19 +90,21 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
                   {categoriesSubMenu.map((cat) => {
                     const IconComp = cat.icon;
                     return (
-                      <a
+                      <button
                         key={cat.name}
-                        href={cat.href}
-                        onClick={() => setCategoriesDropdownOpen(false)}
-                        className={`flex items-center gap-3 p-3 rounded-xl transition-colors text-xs font-semibold ${
+                        onClick={() => {
+                          setCategoriesDropdownOpen(false);
+                          if (onSelectCategory) onSelectCategory(cat.name);
+                        }}
+                        className={`w-full flex items-center gap-3 p-3 rounded-xl transition-colors text-xs font-semibold text-left ${
                           darkMode ? 'hover:bg-brand-surface hover:text-brand-gold' : 'hover:bg-brand-cream hover:text-brand-gold-dark'
                         }`}
                       >
                         <div className="w-7 h-7 rounded-lg bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0">
                           <IconComp className="w-4 h-4" />
                         </div>
-                        <span>{cat.name}</span>
-                      </a>
+                        <span>{cat.label}</span>
+                      </button>
                     );
                   })}
                 </div>
@@ -140,6 +149,7 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
             {/* Single Prominent Contact Button */}
             <a
               href="#contact"
+              onClick={(e) => handleHomeClick(e, '#contact')}
               className="relative group overflow-hidden px-5 py-2.5 rounded-xl font-medium text-sm text-brand-dark bg-gold-gradient shadow-md hover:shadow-brand-gold/20 hover:shadow-lg transition-all duration-300 transform active:scale-95 flex items-center justify-center"
             >
               <span className="relative z-10 font-bold tracking-wide">Contact Us</span>
@@ -166,6 +176,7 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
 
             <a
               href="#contact"
+              onClick={(e) => handleHomeClick(e, '#contact')}
               className="px-3 py-1.5 rounded-md text-xs font-bold text-brand-dark bg-gold-gradient"
             >
               Contact
@@ -196,7 +207,10 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleHomeClick(e, link.href);
+                }}
                 className={`block px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
                   darkMode
                     ? 'text-gray-200 hover:text-brand-gold hover:bg-brand-surface'
@@ -213,16 +227,18 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
                 Categories Collection
               </span>
               {categoriesSubMenu.map((cat) => (
-                <a
+                <button
                   key={cat.name}
-                  href={cat.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-6 py-2 rounded-lg text-sm transition-colors ${
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onSelectCategory) onSelectCategory(cat.name);
+                  }}
+                  className={`block w-full text-left px-6 py-2 rounded-lg text-sm transition-colors ${
                     darkMode ? 'text-gray-300 hover:text-brand-gold' : 'text-gray-700 hover:text-brand-gold-dark'
                   }`}
                 >
-                  • {cat.name}
-                </a>
+                  • {cat.label}
+                </button>
               ))}
             </div>
           </div>

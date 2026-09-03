@@ -12,6 +12,7 @@ import MapSection from './components/MapSection';
 import Footer from './components/Footer';
 import LightboxModal from './components/LightboxModal';
 import ProductDetailsModal from './components/ProductDetailsModal';
+import CategoryStorePage from './components/CategoryStorePage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -21,6 +22,9 @@ function App() {
 
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  
+  // State for Dedicated Category Page View (null = Main Single Page, string = Dedicated Category Page View)
+  const [activeCategoryPage, setActiveCategoryPage] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('mdp_theme', darkMode ? 'dark' : 'light');
@@ -37,6 +41,16 @@ function App() {
     setDarkMode(prev => !prev);
   };
 
+  const handleOpenCategoryPage = (category) => {
+    setActiveCategoryPage(category);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToHome = () => {
+    setActiveCategoryPage(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className={`min-h-screen font-body antialiased transition-colors duration-500 selection:bg-brand-gold selection:text-brand-dark ${
       darkMode ? 'bg-brand-dark text-gray-200' : 'bg-brand-cream text-gray-800'
@@ -46,26 +60,39 @@ function App() {
       <Navbar
         darkMode={darkMode}
         onToggleTheme={toggleTheme}
+        onNavigateHome={handleBackToHome}
+        onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
       />
 
-      {/* Main Single Page Sections */}
-      <main>
-        <Hero darkMode={darkMode} />
-        <About darkMode={darkMode} />
-        <Services darkMode={darkMode} />
-        <Sales
-          darkMode={darkMode}
+      {/* VIEW CONDITIONAL: Dedicated Category Store Page OR Main Single Page */}
+      {activeCategoryPage !== null ? (
+        <CategoryStorePage
+          category={activeCategoryPage}
+          onBackToHome={handleBackToHome}
           onOpenProductDetails={(product) => setSelectedProduct(product)}
-        />
-        <Gallery
+          onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
           darkMode={darkMode}
-          onOpenLightbox={(item) => setLightboxItem(item)}
         />
-        <WhyChooseUs darkMode={darkMode} />
-        <Process darkMode={darkMode} />
-        <Contact darkMode={darkMode} />
-        <MapSection darkMode={darkMode} />
-      </main>
+      ) : (
+        <main>
+          <Hero darkMode={darkMode} />
+          <About darkMode={darkMode} />
+          <Services darkMode={darkMode} />
+          <Sales
+            darkMode={darkMode}
+            onOpenProductDetails={(product) => setSelectedProduct(product)}
+            onOpenCategoryPage={(category) => handleOpenCategoryPage(category)}
+          />
+          <Gallery
+            darkMode={darkMode}
+            onOpenLightbox={(item) => setLightboxItem(item)}
+          />
+          <WhyChooseUs darkMode={darkMode} />
+          <Process darkMode={darkMode} />
+          <Contact darkMode={darkMode} />
+          <MapSection darkMode={darkMode} />
+        </main>
+      )}
 
       {/* Footer */}
       <Footer darkMode={darkMode} />

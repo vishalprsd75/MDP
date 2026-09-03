@@ -50,14 +50,13 @@ const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
           Popular Categories
         </h3>
         <p className={`text-xs sm:text-sm mt-1 max-w-xl mx-auto font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-          Select a collection below to browse available fabric yardage and wholesale rolls.
+          Select a collection below to open its dedicated store catalog.
         </p>
       </div>
 
       {/* Grid of Popular Category Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {popularCategories.map((catItem) => {
-          const IconComp = catItem.icon;
           return (
             <div
               key={catItem.id}
@@ -84,7 +83,7 @@ const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
                   </span>
                 </div>
 
-                {/* Floating "See More Products" CTA Button on Image */}
+                {/* Floating "See Products" CTA Button on Image */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
                   <h4 className="font-heading text-xl font-bold text-white mb-1 group-hover:text-brand-gold transition-colors">
                     {catItem.title}
