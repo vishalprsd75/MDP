@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Phone, ShieldCheck, ShoppingBag } from 'lucide-react';
-import { businessInfo, servicesData } from '../data/businessData';
+import { siteConfig } from '../config/siteConfig';
+import { servicesData } from '../data/businessData';
 
 const Hero = ({ darkMode = true }) => {
   return (
@@ -25,7 +26,7 @@ const Hero = ({ darkMode = true }) => {
               <span className={`text-xs sm:text-sm font-semibold tracking-wider uppercase ${
                 darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
               }`}>
-                {businessInfo.tagline}
+                {siteConfig.tagline}
               </span>
             </div>
 
@@ -41,7 +42,7 @@ const Hero = ({ darkMode = true }) => {
             <p className={`text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light ${
               darkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              Quality fabric dyeing, traditional printing & wholesale yardage sales crafted with meticulous care in Hyderabad.
+              Quality dyeing, fabric printing and traditional textile craftsmanship from Hyderabad.
             </p>
 
             {/* Services Pill Strip */}
@@ -73,7 +74,7 @@ const Hero = ({ darkMode = true }) => {
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold-gradient text-brand-dark font-bold text-base shadow-xl hover:shadow-brand-gold/25 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <ShoppingBag className="w-5 h-5" />
-                <span>Browse Fabric Store</span>
+                <span>Explore Our Fabrics</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
 
@@ -85,7 +86,7 @@ const Hero = ({ darkMode = true }) => {
                     : 'bg-white border-brand-gold/40 text-gray-800 hover:bg-brand-gold/10 shadow-sm'
                 }`}
               >
-                Contact Us
+                Get in Touch
               </a>
             </div>
 
@@ -99,7 +100,7 @@ const Hero = ({ darkMode = true }) => {
               </div>
               <div className="flex items-center gap-1.5">
                 <Phone className="w-4 h-4 text-brand-gold" />
-                <span>Nizampet, Hyderabad</span>
+                <span>{siteConfig.area}</span>
               </div>
             </div>
 
@@ -118,7 +119,7 @@ const Hero = ({ darkMode = true }) => {
               }`}>
                 <img
                   src="/images/hero_textile.jpg"
-                  alt="Munna Dyeing Printing - Handcrafted Indian Dyed Textiles"
+                  alt={`${siteConfig.businessName} - Indian Dyeing and Printing Craftsmanship`}
                   className="w-full h-[380px] sm:h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 
@@ -130,8 +131,8 @@ const Hero = ({ darkMode = true }) => {
                   darkMode ? 'glass-nav border-brand-gold/30' : 'glass-nav-light border-brand-gold/40'
                 }`}>
                   <div>
-                    <h3 className={`font-heading text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Factory Direct Wholesale</h3>
-                    <p className="text-xs text-brand-gold font-medium">All Dyeable Fabrics & Own Manufacturing</p>
+                    <h3 className={`font-heading text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Traditional Craftsmanship</h3>
+                    <p className="text-xs text-brand-gold font-medium">{siteConfig.tagline}</p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold flex items-center justify-center text-brand-gold">
                     <Sparkles className="w-5 h-5 animate-pulse" />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
-import { businessInfo } from '../data/businessData';
+import { Menu, X, MessageSquare, Sun, Moon, Phone } from 'lucide-react';
+import { siteConfig } from '../config/siteConfig';
+import Logo from './Logo';
 
 const Navbar = ({ darkMode, onToggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,26 +34,9 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo */}
-          <a href="#hero" className="flex items-center gap-3 group focus:outline-none">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold-light via-brand-gold to-brand-gold-dark p-[1px] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-              <div className={`w-full h-full rounded-[7px] flex items-center justify-center font-heading font-bold text-sm tracking-tighter ${
-                darkMode ? 'bg-brand-dark text-brand-gold' : 'bg-brand-cream text-brand-gold-dark'
-              }`}>
-                MDP
-              </div>
-            </div>
-            
-            <div className="flex flex-col">
-              <span className={`font-heading font-bold text-xl sm:text-2xl tracking-wider leading-tight group-hover:text-brand-gold transition-colors ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                MUNNA
-              </span>
-              <span className="text-[10px] sm:text-xs font-semibold text-brand-gold tracking-[0.25em] uppercase">
-                Dyeing Printing
-              </span>
-            </div>
+          {/* Configurable Logo Component */}
+          <a href="#hero" className="focus:outline-none">
+            <Logo darkMode={darkMode} size="md" />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -94,7 +78,7 @@ const Navbar = ({ darkMode, onToggleTheme }) => {
 
             {/* WhatsApp Quick Link */}
             <a
-              href={`https://wa.me/${businessInfo.whatsappPhone}`}
+              href={`https://wa.me/${siteConfig.whatsappPhone}`}
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2.5 rounded-xl transition-all ${
