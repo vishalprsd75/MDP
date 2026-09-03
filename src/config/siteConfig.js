@@ -3,6 +3,7 @@ export const siteConfig = {
   shortName: "MUNNA",
   tagline: "ALL DYEABLE FABRIC, OWN MANUFACTURING",
   owner: "MD. Mansoor",
+  logoImage: "/images/logo.png",
   phones: ["62898 35944", "82475 02473"],
   primaryPhone: "62898 35944",
   whatsappPhone: "916289835944",
