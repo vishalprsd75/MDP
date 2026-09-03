@@ -1,10 +1,13 @@
 export const products = [
   {
     id: "product-001",
-    name: "Premium 100% Cotton Dyeable Base",
     slug: "premium-100-cotton-dyeable-base",
+    name: "Premium 100% Cotton Dyeable Base",
     category: "Dyeable Base",
-    image: "/images/gallery_dyeing.jpg",
+    images: [
+      "/images/gallery_dyeing.jpg",
+      "/images/about_craft.jpg"
+    ],
     price: 150,
     priceUnit: "meter",
     showPrice: true,
@@ -13,16 +16,19 @@ export const products = [
     moq: "10 meters",
     width: "44 inches",
     gsm: "60 GSM",
+    badge: "Best Seller",
     featured: true,
-    available: true,
-    badge: "Best Seller"
+    available: true
   },
   {
     id: "product-002",
-    name: "Pure Chiffon & Mulberry Silk Dyeable",
     slug: "pure-chiffon-mulberry-silk-dyeable",
+    name: "Pure Chiffon & Mulberry Silk Dyeable",
     category: "Dyeable Base",
-    image: "/images/hero_textile.jpg",
+    images: [
+      "/images/hero_textile.jpg",
+      "/images/gallery_dyeing.jpg"
+    ],
     price: 450,
     priceUnit: "meter",
     showPrice: true,
@@ -31,16 +37,18 @@ export const products = [
     moq: "5 meters",
     width: "44 inches",
     gsm: "40 GSM",
+    badge: "Luxury Base",
     featured: true,
-    available: true,
-    badge: "Luxury Base"
+    available: true
   },
   {
     id: "product-003",
-    name: "Artisanal Indigo Shibori Patterned Fabric",
     slug: "artisanal-indigo-shibori-patterned-fabric",
+    name: "Artisanal Indigo Shibori Patterned Fabric",
     category: "Traditional Prints",
-    image: "/images/gallery_shibori.jpg",
+    images: [
+      "/images/gallery_shibori.jpg"
+    ],
     price: 280,
     priceUnit: "meter",
     showPrice: true,
@@ -49,16 +57,18 @@ export const products = [
     moq: "10 meters",
     width: "44 inches",
     gsm: "80 GSM",
+    badge: "Handcrafted",
     featured: true,
-    available: true,
-    badge: "Handcrafted"
+    available: true
   },
   {
     id: "product-004",
-    name: "Hand Carved Teak Wooden Block Printed Cotton",
     slug: "hand-carved-teak-wooden-block-printed-cotton",
+    name: "Hand Carved Teak Wooden Block Printed Cotton",
     category: "Traditional Prints",
-    image: "/images/gallery_block_print.jpg",
+    images: [
+      "/images/gallery_block_print.jpg"
+    ],
     price: 220,
     priceUnit: "meter",
     showPrice: true,
@@ -67,16 +77,18 @@ export const products = [
     moq: "10 meters",
     width: "44 inches",
     gsm: "75 GSM",
+    badge: "Heritage Print",
     featured: false,
-    available: true,
-    badge: "Heritage Print"
+    available: true
   },
   {
     id: "product-005",
-    name: "Kalamkari Hand Block Printed Yardage",
     slug: "kalamkari-hand-block-printed-yardage",
+    name: "Kalamkari Hand Block Printed Yardage",
     category: "Traditional Prints",
-    image: "/images/gallery_kalamkari.jpg",
+    images: [
+      "/images/gallery_kalamkari.jpg"
+    ],
     price: 320,
     priceUnit: "meter",
     showPrice: true,
@@ -85,27 +97,29 @@ export const products = [
     moq: "10 meters",
     width: "44 inches",
     gsm: "85 GSM",
+    badge: "Classic Indian",
     featured: false,
-    available: true,
-    badge: "Classic Indian"
+    available: true
   },
   {
     id: "product-006",
-    name: "Crackle Texture Batik Wax Resist Fabric Roll",
     slug: "crackle-texture-batik-wax-resist-fabric-roll",
+    name: "Crackle Texture Batik Wax Resist Fabric Roll",
     category: "Wholesale Rolls",
-    image: "/images/gallery_batik.jpg",
+    images: [
+      "/images/gallery_batik.jpg"
+    ],
     price: 0,
     priceUnit: "meter",
-    showPrice: false, // Demonstrates "Contact for wholesale pricing" flexibility!
+    showPrice: false,
     description: "Distinctive fine crackle wax-resist dyed fabric roll, available in factory bulk quantities.",
     fabricType: "Cotton Cambric",
     moq: "20 meters",
     width: "44 inches",
     gsm: "80 GSM",
+    badge: "Factory Bulk",
     featured: true,
-    available: true,
-    badge: "Factory Bulk"
+    available: true
   }
 ];
 

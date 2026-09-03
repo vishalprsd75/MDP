@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SectionHeading from './SectionHeading';
+import CategoryBlocks from './CategoryBlocks';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
 import { Search, ShoppingBag, MessageSquare, Tag, Eye, ArrowRight, X } from 'lucide-react';
@@ -14,7 +15,8 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
     const matchesSearch = searchQuery.trim() === '' || 
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.fabricType.toLowerCase().includes(searchQuery.toLowerCase());
+      product.fabricType.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -31,8 +33,18 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
           darkMode={darkMode}
         />
 
+        {/* Featured Collection Blocks */}
+        <CategoryBlocks
+          darkMode={darkMode}
+          onSelectCategory={(cat) => {
+            setActiveCategory(cat);
+            const storeGrid = document.getElementById('store-grid-start');
+            if (storeGrid) storeGrid.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+
         {/* Search Bar & Filter Controls Container */}
-        <div className="max-w-4xl mx-auto mb-12 space-y-6">
+        <div id="store-grid-start" className="max-w-4xl mx-auto mb-10 space-y-6 pt-4 border-t border-brand-gold/20">
           
           {/* Search Input Bar */}
           <div className="relative max-w-md mx-auto">
@@ -60,13 +72,13 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
             )}
           </div>
 
-          {/* Category Filter Navigation Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          {/* Horizontally Scrollable Category Filter Navigation Bar */}
+          <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto whitespace-nowrap pb-2 px-2 scrollbar-none">
             {productCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 shrink-0 ${
                   activeCategory === cat
                     ? 'bg-gold-gradient text-brand-dark shadow-md scale-105'
                     : darkMode
@@ -102,11 +114,12 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
           </div>
         )}
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Responsive Products Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProducts.map((product) => {
+            const productImage = (product.images && product.images[0]) || product.image || '/images/gallery_dyeing.jpg';
             const whatsappMessage = encodeURIComponent(
-              `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
+              `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
             );
 
             return (
@@ -125,7 +138,7 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
                     className="relative aspect-[4/3] overflow-hidden bg-brand-surface cursor-pointer"
                   >
                     <img
-                      src={product.image}
+                      src={productImage}
                       alt={product.name}
                       loading="lazy"
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
@@ -135,23 +148,23 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
 
                     {/* Badge Overlay */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
+                    <div className="absolute top-3 left-3 flex items-center gap-2 z-10">
                       <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
                         {product.badge || product.category}
                       </span>
                     </div>
 
                     {/* Category Pill */}
-                    <div className="absolute top-4 right-4 z-10">
+                    <div className="absolute top-3 right-3 z-10">
                       <span className="px-2.5 py-1 rounded-md bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-[10px] font-semibold tracking-wide backdrop-blur-sm">
                         {product.category}
                       </span>
                     </div>
 
                     {/* Price Tag Overlay */}
-                    <div className="absolute bottom-4 left-4 z-10">
+                    <div className="absolute bottom-3 left-3 z-10">
                       {product.showPrice ? (
-                        <div className="px-3.5 py-1.5 rounded-xl bg-gold-gradient text-brand-dark font-heading font-extrabold text-lg shadow-lg flex items-center gap-1">
+                        <div className="px-3.5 py-1.5 rounded-xl bg-gold-gradient text-brand-dark font-heading font-extrabold text-base sm:text-lg shadow-lg flex items-center gap-1">
                           <span>₹{product.price}</span>
                           <span className="text-xs font-semibold lowercase font-body">/ {product.priceUnit || 'meter'}</span>
                         </div>
@@ -164,38 +177,40 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
                   </div>
 
                   {/* Product Info Content */}
-                  <div className="p-6 sm:p-7 space-y-4">
+                  <div className="p-5 sm:p-6 space-y-3">
                     
-                    <h3
-                      onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
-                      className={`font-heading text-xl font-bold transition-colors cursor-pointer group-hover:text-brand-gold ${
-                        darkMode ? 'text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      {product.name}
-                    </h3>
+                    <div className="flex items-start justify-between gap-2">
+                      <h3
+                        onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                        className={`font-heading text-lg sm:text-xl font-bold transition-colors cursor-pointer group-hover:text-brand-gold line-clamp-1 ${
+                          darkMode ? 'text-white' : 'text-gray-900'
+                        }`}
+                      >
+                        {product.name}
+                      </h3>
+                    </div>
 
-                    <p className={`text-xs sm:text-sm leading-relaxed font-light line-clamp-2 ${
+                    <p className={`text-xs leading-relaxed font-light line-clamp-2 ${
                       darkMode ? 'text-gray-300' : 'text-gray-600'
                     }`}>
                       {product.description}
                     </p>
 
                     {/* Fabric Specs Grid */}
-                    <div className={`grid grid-cols-3 gap-2 p-3 rounded-xl border text-center text-xs ${
+                    <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-xl border text-center text-xs ${
                       darkMode ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300' : 'bg-brand-cream border-brand-gold/30 text-gray-800'
                     }`}>
                       <div>
-                        <span className="block text-[10px] uppercase font-semibold text-brand-gold">MOQ</span>
-                        <span className="font-bold">{product.moq}</span>
+                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">MOQ</span>
+                        <span className="font-bold text-[11px]">{product.moq}</span>
                       </div>
                       <div>
-                        <span className="block text-[10px] uppercase font-semibold text-brand-gold">Width</span>
-                        <span className="font-bold">{product.width}</span>
+                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">Width</span>
+                        <span className="font-bold text-[11px]">{product.width}</span>
                       </div>
                       <div>
-                        <span className="block text-[10px] uppercase font-semibold text-brand-gold">GSM</span>
-                        <span className="font-bold">{product.gsm}</span>
+                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">GSM</span>
+                        <span className="font-bold text-[11px]">{product.gsm}</span>
                       </div>
                     </div>
 
@@ -203,14 +218,14 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
                 </div>
 
                 {/* Card Order & View Details Buttons */}
-                <div className="p-6 sm:p-7 pt-0 space-y-2">
+                <div className="p-5 sm:p-6 pt-0 space-y-2">
                   <button
                     onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
-                    className={`w-full py-2.5 px-4 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
+                    className={`w-full py-2.5 px-3 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
                       darkMode ? 'bg-brand-surface/80 border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200'
                     }`}
                   >
-                    <Eye className="w-4 h-4" />
+                    <Eye className="w-3.5 h-3.5" />
                     <span>View Fabric Details</span>
                   </button>
 
@@ -218,11 +233,11 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
                     href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn"
+                    className="w-full py-3 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Order on WhatsApp</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                 </div>
 

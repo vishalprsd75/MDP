@@ -1,9 +1,15 @@
-import React from 'react';
-import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
   if (!product) return null;
+
+  const productImages = (product.images && product.images.length > 0) 
+    ? product.images 
+    : [product.image || '/images/gallery_dyeing.jpg'];
+
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
 
   const whatsappMessage = encodeURIComponent(
     `Hello ${siteConfig.businessName},\nI am interested in:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/${product.priceUnit}\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability, color options, and wholesale details.`
@@ -31,18 +37,57 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
           <X className="w-5 h-5 stroke-[2.5]" />
         </button>
 
-        {/* Left: Product Image */}
-        <div className="md:col-span-6 bg-black flex items-center justify-center relative min-h-[240px] md:min-h-full overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute top-4 left-4 z-10">
-            <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-              {product.badge || product.category}
-            </span>
+        {/* Left: Product Image & Gallery Thumbnails */}
+        <div className="md:col-span-6 bg-black flex flex-col justify-between relative min-h-[260px] md:min-h-full overflow-hidden group">
+          <div className="relative w-full h-full min-h-[240px] flex items-center justify-center overflow-hidden">
+            <img
+              src={productImages[activeImgIndex]}
+              alt={product.name}
+              className="w-full h-full object-cover object-center transition-all duration-300"
+            />
+            
+            {/* Image Navigation Controls if multi-image */}
+            {productImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : productImages.length - 1))}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-brand-dark/80 text-white border border-brand-gold/30 opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={() => setActiveImgIndex((prev) => (prev < productImages.length - 1 ? prev + 1 : 0))}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-brand-dark/80 text-white border border-brand-gold/30 opacity-80 hover:opacity-100 transition-opacity"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </>
+            )}
+
+            <div className="absolute top-4 left-4 z-10">
+              <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
+                {product.badge || product.category}
+              </span>
+            </div>
           </div>
+
+          {/* Multiple Image Thumbnails Bar */}
+          {productImages.length > 1 && (
+            <div className="p-3 bg-brand-dark/90 border-t border-brand-gold/20 flex items-center justify-center gap-2 z-10">
+              {productImages.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImgIndex(idx)}
+                  className={`w-12 h-12 rounded-lg overflow-hidden border-2 transition-all ${
+                    activeImgIndex === idx ? 'border-brand-gold scale-105 shadow-md' : 'border-gray-700 opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img src={img} alt="" className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right: Details & Order Form */}
@@ -119,7 +164,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
               className="w-full py-3.5 px-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Inquire Product on WhatsApp</span>
+              <span>ORDER ON WHATSAPP</span>
               <ArrowRight className="w-4 h-4" />
             </a>
 
