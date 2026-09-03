@@ -9,10 +9,13 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  // Synchronously scroll to top before browser paint
+  // Synchronously force viewport to top before browser paint
   useLayoutEffect(() => {
     setActiveCategory(category);
-    window.scrollTo(0, 0);
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   }, [category]);
@@ -45,7 +48,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   }
 
   const handleCategoryClick = (catName) => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     setActiveCategory(catName);
@@ -54,7 +57,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   };
 
   return (
-    <div className={`min-h-screen pt-24 pb-20 transition-colors duration-500 ${
+    <div id="category-store-root" className={`min-h-screen pt-24 pb-20 transition-colors duration-500 ${
       darkMode ? 'bg-brand-dark text-gray-200' : 'bg-brand-cream text-gray-800'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
