@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
-import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, ShoppingBag, Tag, Filter, Layers, Check } from 'lucide-react';
+import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, Filter, Check } from 'lucide-react';
 
 const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
   const [activeCategory, setActiveCategory] = useState(category);
@@ -364,36 +364,6 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                   </div>
                 );
               })}
-            </div>
-
-            {/* Wholesale Bulk Order Banner */}
-            <div className={`mt-10 p-6 sm:p-8 rounded-2xl border text-center flex flex-col sm:flex-row items-center justify-between gap-6 ${
-              darkMode
-                ? 'bg-gradient-to-r from-brand-card via-brand-surface to-brand-card border-brand-gold/40'
-                : 'bg-white border-brand-gold/40 shadow-xl'
-            }`}>
-              <div className="text-left space-y-1">
-                <div className="flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
-                  <Tag className="w-4 h-4" />
-                  <span>Wholesale & Custom Orders</span>
-                </div>
-                <h4 className={`font-heading text-xl sm:text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Need Bulk Quantities or Custom Dye Vats?
-                </h4>
-                <p className={`text-xs sm:text-sm font-light ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Contact owner MD. Mansoor directly for factory wholesale pricing and custom textile specifications.
-                </p>
-              </div>
-
-              <a
-                href={`https://wa.me/${siteConfig.whatsappPhone}?text=Hello%20${encodeURIComponent(siteConfig.businessName)},%20I%20want%20to%20inquire%20about%20bulk%20wholesale%20fabric%20rates.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 px-6 py-3.5 rounded-xl bg-gold-gradient text-brand-dark font-bold text-sm shadow-md hover:scale-105 transition-all flex items-center gap-2"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>Inquire for Bulk Orders</span>
-              </a>
             </div>
 
           </main>
