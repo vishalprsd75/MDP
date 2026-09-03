@@ -7,11 +7,9 @@ const Footer = ({ darkMode = true }) => {
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
     { name: 'Fabric Store', href: '#sales' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Why Us', href: '#why-us' },
-    { name: 'Work Process', href: '#process' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -30,13 +28,13 @@ const Footer = ({ darkMode = true }) => {
               "{siteConfig.tagline}" — Providing expert fabric dyeing, screen printing, Shibori, block print, Kalamkari, and Batik craftsmanship in Pragathi Nagar, Nizampet, Hyderabad.
             </p>
 
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href={siteConfig.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-white border-brand-gold/40 text-gray-800'
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all hover:scale-105 ${
+                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold hover:border-brand-gold' : 'bg-white border-brand-gold/40 text-gray-800 shadow-sm'
                 }`}
               >
                 <span>Instagram</span>
@@ -47,8 +45,8 @@ const Footer = ({ darkMode = true }) => {
                 href={siteConfig.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-red-400' : 'bg-white border-brand-gold/40 text-gray-800'
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all hover:scale-105 ${
+                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-red-400 hover:border-red-400/50' : 'bg-white border-brand-gold/40 text-gray-800 shadow-sm'
                 }`}
               >
                 <span>YouTube</span>
@@ -59,8 +57,8 @@ const Footer = ({ darkMode = true }) => {
                 href={siteConfig.socials.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-white border-brand-gold/40 text-gray-800'
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all hover:scale-105 ${
+                  darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold hover:border-brand-gold' : 'bg-white border-brand-gold/40 text-gray-800 shadow-sm'
                 }`}
               >
                 <span>Google Maps</span>
