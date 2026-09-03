@@ -1,23 +1,54 @@
 import React, { useState } from 'react';
 import SectionHeading from './SectionHeading';
-import CategoryBlocks from './CategoryBlocks';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
-import { Search, ShoppingBag, MessageSquare, Tag, Eye, ArrowRight, X } from 'lucide-react';
+import { Search, ShoppingBag, MessageSquare, Tag, Eye, ArrowRight, X, Layers, Sparkles, Package } from 'lucide-react';
+
+const categoryMeta = {
+  'Dyeable Base': {
+    title: 'Dyeable Fabric Bases',
+    subtitle: 'Pure Cotton, Mulberry Silk & Chiffon Base Materials for Custom Dye Vats',
+    icon: Layers,
+    description: 'High-absorbency raw fabric bases engineered for uniform color fastness, shade precision, and custom dyeing.'
+  },
+  'Traditional Prints': {
+    title: 'Traditional Hand Prints',
+    subtitle: 'Authentic Shibori, Teak Block Print, Kalamkari & Wax Batik Yardage',
+    icon: Sparkles,
+    description: 'Artisanal hand-crafted surface prints stamped and dyed using organic dyes and heritage techniques.'
+  },
+  'Wholesale Rolls': {
+    title: 'Factory Wholesale Rolls',
+    subtitle: 'Bulk Fabric Rolls & Factory Direct Yardage',
+    icon: Package,
+    description: 'Bulk fabric rolls available at direct manufacturer prices for apparel brands and boutique designers.'
+  }
+};
 
 const Sales = ({ darkMode = true, onOpenProductDetails }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Search and Category Filter Logic
+  // Group products by category for categorized layout
+  const categoriesList = ['Dyeable Base', 'Traditional Prints', 'Wholesale Rolls'];
+
+  // Global search filtering across all categories
+  const matchesSearch = (product) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      product.name.toLowerCase().includes(q) ||
+      product.category.toLowerCase().includes(q) ||
+      product.fabricType.toLowerCase().includes(q) ||
+      (product.description && product.description.toLowerCase().includes(q))
+    );
+  };
+
+  const isFiltering = activeCategory !== 'All' || searchQuery.trim() !== '';
+
   const filteredProducts = products.filter((product) => {
-    const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
-    const matchesSearch = searchQuery.trim() === '' || 
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.fabricType.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    const matchesCat = activeCategory === 'All' || product.category === activeCategory;
+    return matchesCat && matchesSearch(product);
   });
 
   return (
@@ -29,22 +60,12 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
         <SectionHeading
           badge="Direct Factory Store"
           title="Fabric Sales & Wholesale Catalog"
-          subtitle="Order premium dyeable fabric bases and traditional printed yardage directly from our Hyderabad manufacturing unit."
+          subtitle="Explore our categorized fabric collections. Order dyeable bases and traditional printed yardage directly from our Hyderabad manufacturing unit."
           darkMode={darkMode}
         />
 
-        {/* Featured Collection Blocks */}
-        <CategoryBlocks
-          darkMode={darkMode}
-          onSelectCategory={(cat) => {
-            setActiveCategory(cat);
-            const storeGrid = document.getElementById('store-grid-start');
-            if (storeGrid) storeGrid.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* Search Bar & Filter Controls Container */}
-        <div id="store-grid-start" className="max-w-4xl mx-auto mb-10 space-y-6 pt-4 border-t border-brand-gold/20">
+        {/* Search Bar & Category Navigation Bar */}
+        <div className="max-w-4xl mx-auto mb-14 space-y-6">
           
           {/* Search Input Bar */}
           <div className="relative max-w-md mx-auto">
@@ -55,7 +76,7 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search fabrics by name, type, or craft..."
+              placeholder="Search fabrics by name, craft, or category..."
               className={`w-full pl-11 pr-10 py-3 rounded-xl border text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-brand-gold ${
                 darkMode
                   ? 'bg-brand-card/90 border-brand-gold/30 text-white placeholder-gray-400'
@@ -72,28 +93,28 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
             )}
           </div>
 
-          {/* Horizontally Scrollable Category Filter Navigation Bar */}
+          {/* Horizontally Scrollable Category Switcher Tabs */}
           <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto whitespace-nowrap pb-2 px-2 scrollbar-none">
             {productCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 shrink-0 ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 shrink-0 ${
                   activeCategory === cat
-                    ? 'bg-gold-gradient text-brand-dark shadow-md scale-105'
+                    ? 'bg-gold-gradient text-brand-dark shadow-md scale-105 font-bold'
                     : darkMode
                       ? 'bg-brand-surface text-gray-300 border border-brand-gold/20 hover:border-brand-gold hover:text-brand-gold'
                       : 'bg-white text-gray-700 border border-brand-gold/30 hover:border-brand-gold-dark hover:text-brand-gold-dark shadow-sm'
                 }`}
               >
-                {cat}
+                {cat === 'All' ? 'All Collections' : cat}
               </button>
             ))}
           </div>
 
         </div>
 
-        {/* Empty State */}
+        {/* Empty Search State */}
         {filteredProducts.length === 0 && (
           <div className={`text-center py-16 px-4 rounded-2xl border max-w-md mx-auto ${
             darkMode ? 'bg-brand-card border-brand-gold/20' : 'bg-white border-brand-gold/30 shadow-sm'
@@ -109,145 +130,326 @@ const Sales = ({ darkMode = true, onOpenProductDetails }) => {
               onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
               className="mt-4 px-4 py-2 rounded-lg bg-gold-gradient text-brand-dark font-bold text-xs"
             >
-              Clear Filters
+              Reset Search & Filters
             </button>
           </div>
         )}
 
-        {/* Responsive Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProducts.map((product) => {
-            const productImage = (product.images && product.images[0]) || product.image || '/images/gallery_dyeing.jpg';
-            const whatsappMessage = encodeURIComponent(
-              `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
-            );
+        {/* ========================================================= */}
+        {/* VIEW 1: CATEGORIZED CATALOG LAYOUT (When "All Collections" is active) */}
+        {/* ========================================================= */}
+        {!isFiltering && (
+          <div className="space-y-16">
+            {categoriesList.map((catKey) => {
+              const categoryProducts = products.filter(p => p.category === catKey);
+              const meta = categoryMeta[catKey] || { title: catKey, subtitle: '', icon: Layers, description: '' };
+              const IconComp = meta.icon;
 
-            return (
-              <div
-                key={product.id}
-                className={`group relative rounded-2xl border overflow-hidden transition-all duration-500 flex flex-col justify-between hover:border-brand-gold hover:shadow-2xl ${
-                  darkMode
-                    ? 'bg-brand-card border-brand-gold/20 hover:shadow-brand-gold/10'
-                    : 'bg-white border-brand-gold/30 shadow-sm hover:shadow-brand-gold/20'
-                }`}
-              >
-                <div>
-                  {/* Product Image Frame */}
-                  <div
-                    onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
-                    className="relative aspect-[4/3] overflow-hidden bg-brand-surface cursor-pointer"
-                  >
-                    <img
-                      src={productImage}
-                      alt={product.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    />
+              if (categoryProducts.length === 0) return null;
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
-
-                    {/* Badge Overlay */}
-                    <div className="absolute top-3 left-3 flex items-center gap-2 z-10">
-                      <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
-                        {product.badge || product.category}
-                      </span>
-                    </div>
-
-                    {/* Category Pill */}
-                    <div className="absolute top-3 right-3 z-10">
-                      <span className="px-2.5 py-1 rounded-md bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-[10px] font-semibold tracking-wide backdrop-blur-sm">
-                        {product.category}
-                      </span>
-                    </div>
-
-                    {/* Price Tag Overlay */}
-                    <div className="absolute bottom-3 left-3 z-10">
-                      {product.showPrice ? (
-                        <div className="px-3.5 py-1.5 rounded-xl bg-gold-gradient text-brand-dark font-heading font-extrabold text-base sm:text-lg shadow-lg flex items-center gap-1">
-                          <span>₹{product.price}</span>
-                          <span className="text-xs font-semibold lowercase font-body">/ {product.priceUnit || 'meter'}</span>
+              return (
+                <div key={catKey} className={`rounded-3xl border p-6 sm:p-10 ${
+                  darkMode ? 'bg-brand-card/40 border-brand-gold/20' : 'bg-white/60 border-brand-gold/30 shadow-sm'
+                }`}>
+                  
+                  {/* Category Header Bar */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-brand-gold/20">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0">
+                        <IconComp className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className={`font-heading text-2xl sm:text-3xl font-bold ${
+                            darkMode ? 'text-white' : 'text-gray-900'
+                          }`}>
+                            {meta.title}
+                          </h3>
+                          <span className="px-2.5 py-0.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-[10px] font-bold">
+                            {categoryProducts.length} Products
+                          </span>
                         </div>
-                      ) : (
-                        <div className="px-3 py-1.5 rounded-xl bg-brand-dark/90 border border-brand-gold/50 text-brand-gold font-bold text-xs shadow-lg backdrop-blur-sm">
-                          Contact for Price
-                        </div>
-                      )}
+                        <p className="text-xs sm:text-sm text-brand-gold font-medium mt-0.5">
+                          {meta.subtitle}
+                        </p>
+                      </div>
                     </div>
+
+                    <button
+                      onClick={() => setActiveCategory(catKey)}
+                      className={`shrink-0 px-4 py-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                        darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-white border-brand-gold/40 text-gray-800 hover:text-brand-gold-dark shadow-sm'
+                      }`}
+                    >
+                      <span>View All {meta.title}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
 
-                  {/* Product Info Content */}
-                  <div className="p-5 sm:p-6 space-y-3">
-                    
-                    <div className="flex items-start justify-between gap-2">
-                      <h3
-                        onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
-                        className={`font-heading text-lg sm:text-xl font-bold transition-colors cursor-pointer group-hover:text-brand-gold line-clamp-1 ${
-                          darkMode ? 'text-white' : 'text-gray-900'
-                        }`}
-                      >
-                        {product.name}
-                      </h3>
-                    </div>
+                  {/* Category Product Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {categoryProducts.map((product) => {
+                      const productImage = (product.images && product.images[0]) || product.image || '/images/gallery_dyeing.jpg';
+                      const whatsappMessage = encodeURIComponent(
+                        `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
+                      );
 
-                    <p className={`text-xs leading-relaxed font-light line-clamp-2 ${
-                      darkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
-                      {product.description}
-                    </p>
+                      return (
+                        <div
+                          key={product.id}
+                          className={`group relative rounded-2xl border overflow-hidden transition-all duration-500 flex flex-col justify-between hover:border-brand-gold hover:shadow-2xl ${
+                            darkMode
+                              ? 'bg-brand-card border-brand-gold/20 hover:shadow-brand-gold/10'
+                              : 'bg-white border-brand-gold/30 shadow-sm hover:shadow-brand-gold/20'
+                          }`}
+                        >
+                          <div>
+                            {/* Product Image */}
+                            <div
+                              onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                              className="relative aspect-[4/3] overflow-hidden bg-brand-surface cursor-pointer"
+                            >
+                              <img
+                                src={productImage}
+                                alt={product.name}
+                                loading="lazy"
+                                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+                              
+                              <div className="absolute top-3 left-3 z-10">
+                                <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                  {product.badge || product.category}
+                                </span>
+                              </div>
 
-                    {/* Fabric Specs Grid */}
-                    <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-xl border text-center text-xs ${
-                      darkMode ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300' : 'bg-brand-cream border-brand-gold/30 text-gray-800'
-                    }`}>
-                      <div>
-                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">MOQ</span>
-                        <span className="font-bold text-[11px]">{product.moq}</span>
-                      </div>
-                      <div>
-                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">Width</span>
-                        <span className="font-bold text-[11px]">{product.width}</span>
-                      </div>
-                      <div>
-                        <span className="block text-[9px] uppercase font-semibold text-brand-gold">GSM</span>
-                        <span className="font-bold text-[11px]">{product.gsm}</span>
-                      </div>
-                    </div>
+                              <div className="absolute bottom-3 left-3 z-10">
+                                {product.showPrice ? (
+                                  <div className="px-3.5 py-1.5 rounded-xl bg-gold-gradient text-brand-dark font-heading font-extrabold text-base shadow-lg flex items-center gap-1">
+                                    <span>₹{product.price}</span>
+                                    <span className="text-xs font-semibold lowercase font-body">/ {product.priceUnit || 'meter'}</span>
+                                  </div>
+                                ) : (
+                                  <div className="px-3 py-1.5 rounded-xl bg-brand-dark/90 border border-brand-gold/50 text-brand-gold font-bold text-xs shadow-lg backdrop-blur-sm">
+                                    Contact for Price
+                                  </div>
+                                )}
+                              </div>
+                            </div>
 
+                            {/* Info */}
+                            <div className="p-5 space-y-3">
+                              <h4
+                                onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                                className={`font-heading text-lg font-bold transition-colors cursor-pointer group-hover:text-brand-gold line-clamp-1 ${
+                                  darkMode ? 'text-white' : 'text-gray-900'
+                                }`}
+                              >
+                                {product.name}
+                              </h4>
+
+                              <p className={`text-xs leading-relaxed font-light line-clamp-2 ${
+                                darkMode ? 'text-gray-300' : 'text-gray-600'
+                              }`}>
+                                {product.description}
+                              </p>
+
+                              {/* Specs */}
+                              <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-xl border text-center text-xs ${
+                                darkMode ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300' : 'bg-brand-cream border-brand-gold/30 text-gray-800'
+                              }`}>
+                                <div>
+                                  <span className="block text-[9px] uppercase font-semibold text-brand-gold">MOQ</span>
+                                  <span className="font-bold text-[11px]">{product.moq}</span>
+                                </div>
+                                <div>
+                                  <span className="block text-[9px] uppercase font-semibold text-brand-gold">Width</span>
+                                  <span className="font-bold text-[11px]">{product.width}</span>
+                                </div>
+                                <div>
+                                  <span className="block text-[9px] uppercase font-semibold text-brand-gold">GSM</span>
+                                  <span className="font-bold text-[11px]">{product.gsm}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* CTAs */}
+                          <div className="p-5 pt-0 space-y-2">
+                            <button
+                              onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                              className={`w-full py-2.5 px-3 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
+                                darkMode ? 'bg-brand-surface/80 border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200'
+                              }`}
+                            >
+                              <Eye className="w-3.5 h-3.5" />
+                              <span>View Fabric Details</span>
+                            </button>
+
+                            <a
+                              href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full py-3 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn"
+                            >
+                              <MessageSquare className="w-4 h-4" />
+                              <span>Order on WhatsApp</span>
+                              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                            </a>
+                          </div>
+
+                        </div>
+                      );
+                    })}
                   </div>
+
                 </div>
+              );
+            })}
+          </div>
+        )}
 
-                {/* Card Order & View Details Buttons */}
-                <div className="p-5 sm:p-6 pt-0 space-y-2">
-                  <button
-                    onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
-                    className={`w-full py-2.5 px-3 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
-                      darkMode ? 'bg-brand-surface/80 border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200'
+        {/* ========================================================= */}
+        {/* VIEW 2: FILTERED / SEARCH COLLECTION VIEW */}
+        {/* ========================================================= */}
+        {isFiltering && (
+          <div className="space-y-6">
+            
+            {/* Filter Sub-header Bar */}
+            <div className="flex items-center justify-between pb-4 border-b border-brand-gold/20">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-brand-gold font-bold">Category Collection</span>
+                <h3 className={`font-heading text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  {activeCategory === 'All' ? `Search Results for "${searchQuery}"` : `${activeCategory} Collection`}
+                </h3>
+              </div>
+              <span className="text-xs text-brand-gold font-semibold">
+                Showing {filteredProducts.length} fabrics
+              </span>
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {filteredProducts.map((product) => {
+                const productImage = (product.images && product.images[0]) || product.image || '/images/gallery_dyeing.jpg';
+                const whatsappMessage = encodeURIComponent(
+                  `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
+                );
+
+                return (
+                  <div
+                    key={product.id}
+                    className={`group relative rounded-2xl border overflow-hidden transition-all duration-500 flex flex-col justify-between hover:border-brand-gold hover:shadow-2xl ${
+                      darkMode
+                        ? 'bg-brand-card border-brand-gold/20 hover:shadow-brand-gold/10'
+                        : 'bg-white border-brand-gold/30 shadow-sm hover:shadow-brand-gold/20'
                     }`}
                   >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>View Fabric Details</span>
-                  </button>
+                    <div>
+                      {/* Product Image Frame */}
+                      <div
+                        onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                        className="relative aspect-[4/3] overflow-hidden bg-brand-surface cursor-pointer"
+                      >
+                        <img
+                          src={productImage}
+                          alt={product.name}
+                          loading="lazy"
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+                        
+                        <div className="absolute top-3 left-3 z-10">
+                          <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                            {product.badge || product.category}
+                          </span>
+                        </div>
 
-                  <a
-                    href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>Order on WhatsApp</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
-                </div>
+                        <div className="absolute bottom-3 left-3 z-10">
+                          {product.showPrice ? (
+                            <div className="px-3.5 py-1.5 rounded-xl bg-gold-gradient text-brand-dark font-heading font-extrabold text-base shadow-lg flex items-center gap-1">
+                              <span>₹{product.price}</span>
+                              <span className="text-xs font-semibold lowercase font-body">/ {product.priceUnit || 'meter'}</span>
+                            </div>
+                          ) : (
+                            <div className="px-3 py-1.5 rounded-xl bg-brand-dark/90 border border-brand-gold/50 text-brand-gold font-bold text-xs shadow-lg backdrop-blur-sm">
+                              Contact for Price
+                            </div>
+                          )}
+                        </div>
+                      </div>
 
-              </div>
-            );
-          })}
-        </div>
+                      {/* Info */}
+                      <div className="p-5 space-y-3">
+                        <h4
+                          onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                          className={`font-heading text-lg font-bold transition-colors cursor-pointer group-hover:text-brand-gold line-clamp-1 ${
+                            darkMode ? 'text-white' : 'text-gray-900'
+                          }`}
+                        >
+                          {product.name}
+                        </h4>
+
+                        <p className={`text-xs leading-relaxed font-light line-clamp-2 ${
+                          darkMode ? 'text-gray-300' : 'text-gray-600'
+                        }`}>
+                          {product.description}
+                        </p>
+
+                        {/* Specs */}
+                        <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-xl border text-center text-xs ${
+                          darkMode ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300' : 'bg-brand-cream border-brand-gold/30 text-gray-800'
+                        }`}>
+                          <div>
+                            <span className="block text-[9px] uppercase font-semibold text-brand-gold">MOQ</span>
+                            <span className="font-bold text-[11px]">{product.moq}</span>
+                          </div>
+                          <div>
+                            <span className="block text-[9px] uppercase font-semibold text-brand-gold">Width</span>
+                            <span className="font-bold text-[11px]">{product.width}</span>
+                          </div>
+                          <div>
+                            <span className="block text-[9px] uppercase font-semibold text-brand-gold">GSM</span>
+                            <span className="font-bold text-[11px]">{product.gsm}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="p-5 pt-0 space-y-2">
+                      <button
+                        onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                        className={`w-full py-2.5 px-3 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
+                          darkMode ? 'bg-brand-surface/80 border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200'
+                        }`}
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Fabric Details</span>
+                      </button>
+
+                      <a
+                        href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn"
+                      >
+                        <MessageSquare className="w-4 h-4" />
+                        <span>Order on WhatsApp</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        )}
 
         {/* Wholesale Bulk Order Highlight Banner */}
-        <div className={`mt-14 p-6 sm:p-8 rounded-2xl border text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 ${
+        <div className={`mt-16 p-6 sm:p-8 rounded-2xl border text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 ${
           darkMode
             ? 'bg-gradient-to-r from-brand-card via-brand-surface to-brand-card border-brand-gold/40'
             : 'bg-white border-brand-gold/40 shadow-xl'
