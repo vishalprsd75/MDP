@@ -23,9 +23,10 @@ function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   
-  // State for Dedicated Category Page View (null = Main Single Page, string = Dedicated Category Page View)
+  // Dynamic Category Page State (null = Home Landing Page, string = Category Page)
   const [activeCategoryPage, setActiveCategoryPage] = useState(null);
 
+  // Sync theme with document class
   useEffect(() => {
     localStorage.setItem('mdp_theme', darkMode ? 'dark' : 'light');
     if (darkMode) {
@@ -37,16 +38,43 @@ function App() {
     }
   }, [darkMode]);
 
+  // Dynamic Hash URL Routing Listener
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#category=')) {
+        const catName = decodeURIComponent(hash.replace('#category=', ''));
+        setActiveCategoryPage(catName);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#services' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
+        setActiveCategoryPage(null);
+      }
+    };
+
+    // Initial check on page load
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setDarkMode(prev => !prev);
   };
 
   const handleOpenCategoryPage = (category) => {
+    window.location.hash = `#category=${encodeURIComponent(category)}`;
     setActiveCategoryPage(category);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToHome = () => {
+    window.location.hash = '#hero';
     setActiveCategoryPage(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -64,7 +92,7 @@ function App() {
         onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
       />
 
-      {/* VIEW CONDITIONAL: Dedicated Category Store Page OR Main Single Page */}
+      {/* DYNAMIC VIEW ROUTER: Category Store Page OR Main Landing Page */}
       {activeCategoryPage !== null ? (
         <CategoryStorePage
           category={activeCategoryPage}

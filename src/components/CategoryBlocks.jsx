@@ -1,45 +1,9 @@
 import React from 'react';
-import { ArrowRight, Layers, Sparkles, Package, Feather } from 'lucide-react';
+import { ArrowRight, Layers } from 'lucide-react';
+import { getDynamicCategories } from '../data/products';
 
 const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
-  const popularCategories = [
-    {
-      id: 'dyeable-base',
-      title: 'Georgette & Silk Dyeable Bases',
-      subtitle: 'Pure Cottons, Silks & Chiffon Base Materials',
-      category: 'Dyeable Base',
-      image: '/images/gallery_dyeing.jpg',
-      icon: Layers,
-      tag: 'Custom Dyeing'
-    },
-    {
-      id: 'block-print',
-      title: 'Hand Block Printed Yardage',
-      subtitle: 'Carved Teak Wooden Stamp Floral Motifs',
-      category: 'Traditional Prints',
-      image: '/images/gallery_block_print.jpg',
-      icon: Sparkles,
-      tag: 'Heritage Stamp'
-    },
-    {
-      id: 'shibori-dye',
-      title: 'Indigo Shibori Tie-Dye',
-      subtitle: 'Authentic Spiderweb & Wave Resist Patterns',
-      category: 'Traditional Prints',
-      image: '/images/gallery_shibori.jpg',
-      icon: Feather,
-      tag: 'Resist Art'
-    },
-    {
-      id: 'wholesale-batik',
-      title: 'Kalamkari & Batik Rolls',
-      subtitle: 'Bulk Fabric Rolls & Factory Yardage',
-      category: 'Wholesale Rolls',
-      image: '/images/gallery_batik.jpg',
-      icon: Package,
-      tag: 'Wholesale Rolls'
-    }
-  ];
+  const dynamicCategories = getDynamicCategories();
 
   return (
     <div className="mb-14">
@@ -50,13 +14,13 @@ const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
           Popular Categories
         </h3>
         <p className={`text-xs sm:text-sm mt-1 max-w-xl mx-auto font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-          Select a collection below to open its dedicated store catalog.
+          Select a category below to explore its full fabric yardage and wholesale catalog.
         </p>
       </div>
 
-      {/* Grid of Popular Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {popularCategories.map((catItem) => {
+      {/* Dynamic Grid of Category Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {dynamicCategories.map((catItem) => {
           return (
             <div
               key={catItem.id}
@@ -76,17 +40,17 @@ const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
                 {/* Dark Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-85 group-hover:opacity-75 transition-opacity"></div>
                 
-                {/* Category Tag Overlay */}
+                {/* Category Count Tag Overlay */}
                 <div className="absolute top-4 left-4 z-10">
                   <span className="px-3 py-1 rounded-full bg-brand-dark/90 border border-brand-gold/40 text-brand-gold text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
-                    {catItem.tag}
+                    {catItem.count} {catItem.count === 1 ? 'Product' : 'Products'}
                   </span>
                 </div>
 
                 {/* Floating "See Products" CTA Button on Image */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
                   <h4 className="font-heading text-xl font-bold text-white mb-1 group-hover:text-brand-gold transition-colors">
-                    {catItem.title}
+                    {catItem.category}
                   </h4>
                   <p className="text-xs text-gray-300 font-light mb-3 line-clamp-1">
                     {catItem.subtitle}

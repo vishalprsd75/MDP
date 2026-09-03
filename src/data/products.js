@@ -130,4 +130,24 @@ export const productCategories = [
   "Wholesale Rolls"
 ];
 
+// Helper to dynamically extract categories and meta directly from products array
+export const getDynamicCategories = () => {
+  const categoriesSet = [...new Set(products.map((p) => p.category))];
+  
+  return categoriesSet.map((catName) => {
+    const categoryProducts = products.filter((p) => p.category === catName);
+    const firstProd = categoryProducts[0];
+    const image = (firstProd && firstProd.images && firstProd.images[0]) || (firstProd && firstProd.image) || '/images/gallery_dyeing.jpg';
+
+    return {
+      id: catName.toLowerCase().replace(/\s+/g, '-'),
+      category: catName,
+      title: `${catName} Collection`,
+      subtitle: `${categoryProducts.length} Premium Fabric ${categoryProducts.length === 1 ? 'Item' : 'Items'} Available`,
+      image: image,
+      count: categoryProducts.length
+    };
+  });
+};
+
 export default products;
