@@ -36,6 +36,13 @@ function App() {
     }
   }, [darkMode]);
 
+  // Helper for instant top jump without animation
+  const instantScrollToTop = () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   // Dynamic Hash URL Routing Listener
   useEffect(() => {
     const handleHashChange = () => {
@@ -43,7 +50,7 @@ function App() {
       if (hash.startsWith('#category=')) {
         const catName = decodeURIComponent(hash.replace('#category=', ''));
         setActiveCategoryPage(catName);
-        window.scrollTo(0, 0);
+        instantScrollToTop();
       } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
         setActiveCategoryPage(null);
       }
@@ -68,13 +75,13 @@ function App() {
   const handleOpenCategoryPage = (category) => {
     window.location.hash = `#category=${encodeURIComponent(category)}`;
     setActiveCategoryPage(category);
-    window.scrollTo(0, 0);
+    instantScrollToTop();
   };
 
   const handleBackToHome = () => {
     window.location.hash = '#hero';
     setActiveCategoryPage(null);
-    window.scrollTo(0, 0);
+    instantScrollToTop();
   };
 
   return (
