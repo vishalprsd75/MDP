@@ -1,34 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
-import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, ShoppingBag, ShieldCheck, Tag } from 'lucide-react';
-
-const categoryDetails = {
-  'Dyeable Base': {
-    title: 'Georgette & Silk Dyeable Bases',
-    subtitle: '100% Pure Cotton, Mulberry Silk & Chiffon Base Fabrics for Custom Dye Vats',
-    description: 'High-absorbency fabric bases manufactured specifically for custom shade dyeing, screen printing, and artisanal textile processing.',
-    bannerImage: '/images/gallery_dyeing.jpg'
-  },
-  'Traditional Prints': {
-    title: 'Traditional Hand Printed Yardage',
-    subtitle: 'Authentic Shibori Tie-Dye, Teak Block Print, Kalamkari & Wax Batik',
-    description: 'Artisanal surface-printed fabrics crafted using traditional Indian wood stamps, organic dyes, and wax resist processes.',
-    bannerImage: '/images/gallery_block_print.jpg'
-  },
-  'Wholesale Rolls': {
-    title: 'Factory Wholesale Fabric Rolls',
-    subtitle: 'Bulk Fabric Rolls & Factory Direct Yardage Orders',
-    description: 'Bulk fabric rolls available at direct manufacturer prices for boutique designers, garment factories, and apparel brands.',
-    bannerImage: '/images/gallery_batik.jpg'
-  },
-  'All': {
-    title: 'All Fabric Collections',
-    subtitle: 'Complete Catalog of Dyeable Bases and Traditional Printed Yardage',
-    description: 'Browse our full catalog of factory manufactured dyeable bases, hand block prints, Shibori tie-dye, and wholesale fabric rolls.',
-    bannerImage: '/images/hero_textile.jpg'
-  }
-};
+import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, ShoppingBag, Tag } from 'lucide-react';
 
 const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
   const [activeCategory, setActiveCategory] = useState(category);
@@ -39,8 +12,6 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
     setActiveCategory(category);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [category]);
-
-  const catMeta = categoryDetails[activeCategory] || categoryDetails['All'];
 
   // Filter products by active category & search query
   let filtered = products.filter((p) => {
@@ -70,7 +41,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Navigation & Breadcrumbs Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-brand-gold/20">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-brand-gold/20">
           
           <button
             onClick={onBackToHome}
@@ -97,50 +68,6 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
             <span className="text-brand-gold font-bold">{activeCategory}</span>
           </nav>
 
-        </div>
-
-        {/* Category Hero Banner */}
-        <div className={`relative rounded-3xl overflow-hidden border mb-10 p-6 sm:p-10 shadow-2xl ${
-          darkMode ? 'border-brand-gold/30 bg-brand-card' : 'border-brand-gold/40 bg-white'
-        }`}>
-          {/* Banner Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src={catMeta.bannerImage}
-              alt={catMeta.title}
-              className="w-full h-full object-cover object-center opacity-25"
-            />
-            <div className={`absolute inset-0 ${
-              darkMode ? 'bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent' : 'bg-gradient-to-r from-brand-cream via-brand-cream/95 to-transparent'
-            }`}></div>
-          </div>
-
-          <div className="relative z-10 max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-wider">
-              <span>Category Collection</span>
-            </div>
-
-            <h1 className={`font-heading text-3xl sm:text-5xl font-bold tracking-tight ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              {catMeta.title}
-            </h1>
-
-            <p className={`text-sm sm:text-base leading-relaxed font-light ${
-              darkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-              {catMeta.description}
-            </p>
-
-            <div className="pt-2 flex items-center gap-4 text-xs font-semibold text-brand-gold">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4" />
-                Direct Manufacturing
-              </span>
-              <span>•</span>
-              <span>{filtered.length} Fabrics Available</span>
-            </div>
-          </div>
         </div>
 
         {/* Search, Filter & Sort Control Bar */}
