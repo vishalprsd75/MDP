@@ -10,24 +10,25 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
   );
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-16 sm:pt-6 bg-black/85 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn overflow-y-auto">
       
       {/* Backdrop click listener */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
-      <div className={`relative z-10 w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[85vh] ${
+      {/* Centered Modal Card Box */}
+      <div className={`relative z-10 w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 my-auto max-h-[85vh] ${
         darkMode ? 'bg-brand-card border-brand-gold/40 text-gray-200' : 'bg-white border-brand-gold/40 text-gray-900'
       }`}>
         
         {/* Prominent High Z-Index Close Button */}
         <button
           onClick={onClose}
-          className={`absolute top-3 right-3 z-30 p-2.5 rounded-full shadow-lg transition-transform hover:scale-110 ${
+          className={`absolute top-4 right-4 z-30 p-2.5 rounded-full shadow-xl transition-transform hover:scale-110 ${
             darkMode ? 'bg-brand-dark/90 text-brand-gold border border-brand-gold/40 hover:bg-brand-surface' : 'bg-white text-gray-800 border border-gray-300 hover:bg-gray-100'
           }`}
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 stroke-[2.5]" />
         </button>
 
         {/* Left: Product Image */}

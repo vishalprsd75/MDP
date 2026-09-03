@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import SectionHeading from './SectionHeading';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
-import ProductDetailsModal from './ProductDetailsModal';
 import { Search, ShoppingBag, MessageSquare, Tag, Eye, ArrowRight, X } from 'lucide-react';
 
-const Sales = ({ darkMode = true }) => {
+const Sales = ({ darkMode = true, onOpenProductDetails }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // Search and Category Filter Logic
   const filteredProducts = products.filter((product) => {
@@ -122,7 +120,10 @@ const Sales = ({ darkMode = true }) => {
               >
                 <div>
                   {/* Product Image Frame */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-brand-surface">
+                  <div
+                    onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                    className="relative aspect-[4/3] overflow-hidden bg-brand-surface cursor-pointer"
+                  >
                     <img
                       src={product.image}
                       alt={product.name}
@@ -165,9 +166,12 @@ const Sales = ({ darkMode = true }) => {
                   {/* Product Info Content */}
                   <div className="p-6 sm:p-7 space-y-4">
                     
-                    <h3 className={`font-heading text-xl font-bold transition-colors group-hover:text-brand-gold ${
-                      darkMode ? 'text-white' : 'text-gray-900'
-                    }`}>
+                    <h3
+                      onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
+                      className={`font-heading text-xl font-bold transition-colors cursor-pointer group-hover:text-brand-gold ${
+                        darkMode ? 'text-white' : 'text-gray-900'
+                      }`}
+                    >
                       {product.name}
                     </h3>
 
@@ -201,7 +205,7 @@ const Sales = ({ darkMode = true }) => {
                 {/* Card Order & View Details Buttons */}
                 <div className="p-6 sm:p-7 pt-0 space-y-2">
                   <button
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => onOpenProductDetails && onOpenProductDetails(product)}
                     className={`w-full py-2.5 px-4 rounded-xl border font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 ${
                       darkMode ? 'bg-brand-surface/80 border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200'
                     }`}
@@ -256,13 +260,6 @@ const Sales = ({ darkMode = true }) => {
             <span>Inquire for Bulk Orders</span>
           </a>
         </div>
-
-        {/* Modal */}
-        <ProductDetailsModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-          darkMode={darkMode}
-        />
 
       </div>
     </section>

@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import MapSection from './components/MapSection';
 import Footer from './components/Footer';
 import LightboxModal from './components/LightboxModal';
+import ProductDetailsModal from './components/ProductDetailsModal';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -19,6 +20,7 @@ function App() {
   });
 
   const [lightboxItem, setLightboxItem] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('mdp_theme', darkMode ? 'dark' : 'light');
@@ -51,7 +53,10 @@ function App() {
         <Hero darkMode={darkMode} />
         <About darkMode={darkMode} />
         <Services darkMode={darkMode} />
-        <Sales darkMode={darkMode} />
+        <Sales
+          darkMode={darkMode}
+          onOpenProductDetails={(product) => setSelectedProduct(product)}
+        />
         <Gallery
           darkMode={darkMode}
           onOpenLightbox={(item) => setLightboxItem(item)}
@@ -65,7 +70,13 @@ function App() {
       {/* Footer */}
       <Footer darkMode={darkMode} />
 
-      {/* Photo Lightbox Modal */}
+      {/* Root-Level Modals (Always Rendered Above Navbar z-[100]) */}
+      <ProductDetailsModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        darkMode={darkMode}
+      />
+
       <LightboxModal
         item={lightboxItem}
         onClose={() => setLightboxItem(null)}
