@@ -19,11 +19,9 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) =
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
     { name: 'Store', href: '#sales' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Why Us', href: '#why-us' },
-    { name: 'Process', href: '#process' },
   ];
 
   const categoriesSubMenu = [
@@ -53,7 +51,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) =
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-5">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
