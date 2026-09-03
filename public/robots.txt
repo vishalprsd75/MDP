@@ -1,0 +1,6 @@
+# Robots.txt for Munna Dyeing Printing
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://mdp-weld.vercel.app/sitemap.xml
