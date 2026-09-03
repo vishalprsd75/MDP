@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare, Sun, Moon, ChevronDown, Layers, Sparkles, Package } from 'lucide-react';
+import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,12 +21,6 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) =
     { name: 'Store', href: '#sales' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Why Us', href: '#why-us' },
-  ];
-
-  const categoriesSubMenu = [
-    { name: 'Dyeable Base', label: 'Dyeable Fabric Bases', icon: Layers },
-    { name: 'Traditional Prints', label: 'Traditional Hand Prints', icon: Sparkles },
-    { name: 'Wholesale Rolls', label: 'Wholesale Fabric Rolls', icon: Package },
   ];
 
   const handleHomeClick = (e, href) => {
@@ -65,49 +58,6 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) =
                 <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-brand-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </a>
             ))}
-
-            {/* Categories Dropdown in Desktop Nav */}
-            <div
-              className="relative"
-              onMouseEnter={() => setCategoriesDropdownOpen(true)}
-              onMouseLeave={() => setCategoriesDropdownOpen(false)}
-            >
-              <button
-                className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 group ${
-                  darkMode ? 'text-gray-300 hover:text-brand-gold' : 'text-gray-700 hover:text-brand-gold-dark'
-                }`}
-              >
-                <span>Categories</span>
-                <ChevronDown className="w-4 h-4 text-brand-gold group-hover:rotate-180 transition-transform" />
-              </button>
-
-              {categoriesDropdownOpen && (
-                <div className={`absolute top-full left-0 w-60 rounded-2xl border shadow-2xl p-2 animate-fadeIn z-50 ${
-                  darkMode ? 'bg-brand-card border-brand-gold/30 text-white' : 'bg-white border-brand-gold/30 text-gray-900'
-                }`}>
-                  {categoriesSubMenu.map((cat) => {
-                    const IconComp = cat.icon;
-                    return (
-                      <button
-                        key={cat.name}
-                        onClick={() => {
-                          setCategoriesDropdownOpen(false);
-                          if (onSelectCategory) onSelectCategory(cat.name);
-                        }}
-                        className={`w-full flex items-center gap-3 p-3 rounded-xl transition-colors text-xs font-semibold text-left ${
-                          darkMode ? 'hover:bg-brand-surface hover:text-brand-gold' : 'hover:bg-brand-cream hover:text-brand-gold-dark'
-                        }`}
-                      >
-                        <div className="w-7 h-7 rounded-lg bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0">
-                          <IconComp className="w-4 h-4" />
-                        </div>
-                        <span>{cat.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
           </nav>
 
           {/* Action CTAs & Theme Toggle (Desktop) */}
@@ -218,27 +168,6 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, onSelectCategory }) =
                 {link.name}
               </a>
             ))}
-
-            {/* Mobile Categories Sub-Section */}
-            <div className="pt-2 border-t border-brand-gold/20">
-              <span className="block px-4 py-1 text-xs font-bold uppercase tracking-wider text-brand-gold">
-                Categories Collection
-              </span>
-              {categoriesSubMenu.map((cat) => (
-                <button
-                  key={cat.name}
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onSelectCategory) onSelectCategory(cat.name);
-                  }}
-                  className={`block w-full text-left px-6 py-2 rounded-lg text-sm transition-colors ${
-                    darkMode ? 'text-gray-300 hover:text-brand-gold' : 'text-gray-700 hover:text-brand-gold-dark'
-                  }`}
-                >
-                  • {cat.label}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       )}
