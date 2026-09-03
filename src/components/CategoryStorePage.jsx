@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { products, productCategories } from '../data/products';
 import { siteConfig } from '../config/siteConfig';
 import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, Filter, Check } from 'lucide-react';
@@ -9,9 +9,12 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  useEffect(() => {
+  // Synchronously scroll to top before browser paint
+  useLayoutEffect(() => {
     setActiveCategory(category);
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [category]);
 
   // Compute category product counts dynamically
@@ -42,6 +45,9 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   }
 
   const handleCategoryClick = (catName) => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     setActiveCategory(catName);
     if (onSelectCategory) onSelectCategory(catName);
     setMobileFilterOpen(false);

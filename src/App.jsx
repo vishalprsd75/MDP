@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -42,6 +42,11 @@ function App() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   };
+
+  // Synchronously reset scroll position whenever category page state changes
+  useLayoutEffect(() => {
+    instantScrollToTop();
+  }, [activeCategoryPage]);
 
   // Dynamic Hash URL Routing Listener
   useEffect(() => {
