@@ -11,7 +11,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
 
   useEffect(() => {
     setActiveCategory(category);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }, [category]);
 
   // Compute category product counts dynamically

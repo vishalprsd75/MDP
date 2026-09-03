@@ -43,7 +43,7 @@ function App() {
       if (hash.startsWith('#category=')) {
         const catName = decodeURIComponent(hash.replace('#category=', ''));
         setActiveCategoryPage(catName);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
       } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
         setActiveCategoryPage(null);
       }
@@ -68,13 +68,13 @@ function App() {
   const handleOpenCategoryPage = (category) => {
     window.location.hash = `#category=${encodeURIComponent(category)}`;
     setActiveCategoryPage(category);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handleBackToHome = () => {
     window.location.hash = '#hero';
     setActiveCategoryPage(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   return (
