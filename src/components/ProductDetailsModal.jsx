@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck, Layers } from 'lucide-react';
+import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
@@ -10,20 +10,20 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-16 sm:pt-6 bg-black/85 backdrop-blur-md animate-fadeIn">
       
       {/* Backdrop click listener */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
-      <div className={`relative z-10 w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[90vh] ${
+      <div className={`relative z-10 w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[85vh] ${
         darkMode ? 'bg-brand-card border-brand-gold/40 text-gray-200' : 'bg-white border-brand-gold/40 text-gray-900'
       }`}>
         
-        {/* Close Button */}
+        {/* Prominent High Z-Index Close Button */}
         <button
           onClick={onClose}
-          className={`absolute top-4 right-4 z-20 p-2.5 rounded-full transition-colors ${
-            darkMode ? 'bg-brand-dark/80 text-gray-300 hover:text-white hover:bg-brand-surface' : 'bg-gray-100 text-gray-700 hover:text-gray-900 hover:bg-gray-200'
+          className={`absolute top-3 right-3 z-30 p-2.5 rounded-full shadow-lg transition-transform hover:scale-110 ${
+            darkMode ? 'bg-brand-dark/90 text-brand-gold border border-brand-gold/40 hover:bg-brand-surface' : 'bg-white text-gray-800 border border-gray-300 hover:bg-gray-100'
           }`}
           aria-label="Close modal"
         >
@@ -31,7 +31,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
         </button>
 
         {/* Left: Product Image */}
-        <div className="md:col-span-6 bg-black flex items-center justify-center relative min-h-[260px] md:min-h-full overflow-hidden">
+        <div className="md:col-span-6 bg-black flex items-center justify-center relative min-h-[240px] md:min-h-full overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
@@ -45,7 +45,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
         </div>
 
         {/* Right: Details & Order Form */}
-        <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6 overflow-y-auto max-h-[60vh] md:max-h-[85vh]">
+        <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6 overflow-y-auto max-h-[60vh] md:max-h-[80vh]">
           <div>
             {/* Category & Status */}
             <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-gold">
