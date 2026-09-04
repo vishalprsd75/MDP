@@ -2,7 +2,7 @@ import React from 'react';
 import SectionHeading from './SectionHeading';
 import CategoryBlocks from './CategoryBlocks';
 import { siteConfig } from '../config/siteConfig';
-import { ShoppingBag, Tag, Sparkles } from 'lucide-react';
+import { ShoppingBag, Tag } from 'lucide-react';
 
 const Sales = ({ darkMode = true, onOpenCategoryPage }) => {
   return (

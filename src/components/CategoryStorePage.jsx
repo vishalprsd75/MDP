@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { products, productCategories } from '../data/products';
+import productService from '../services/productService';
 import { siteConfig } from '../config/siteConfig';
+import { generateProductWhatsAppLink } from '../utils/whatsapp';
 import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, Filter, Check } from 'lucide-react';
 
 const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
@@ -8,6 +9,9 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  const products = productService.getAllProducts();
+  const productCategories = productService.getCategoryNames();
 
   // Synchronously force viewport to top before browser paint
   useLayoutEffect(() => {
@@ -23,7 +27,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
   // Compute category product counts dynamically
   const getCategoryCount = (catName) => {
     if (catName === 'All') return products.length;
-    return products.filter((p) => p.category === catName).length;
+    return productService.getProductsByCategory(catName).length;
   };
 
   // Filter products by active category & search query
@@ -259,9 +263,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
               {filtered.map((product) => {
                 const productImage = (product.images && product.images[0]) || product.image || '/images/gallery_dyeing.jpg';
-                const whatsappMessage = encodeURIComponent(
-                  `Hello ${siteConfig.businessName},\nI am interested in ordering:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/meter\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability and wholesale details.`
-                );
+                const whatsappUrl = generateProductWhatsAppLink(siteConfig.whatsappPhone, product);
 
                 return (
                   <div
@@ -296,7 +298,10 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                         {/* Hover Quick Action Buttons */}
                         <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                           <button
-                            onClick={(e) => { e.stopPropagation(); onOpenProductDetails && onOpenProductDetails(product); }}
+                            onClick={(e) => { 
+                              e.stopPropagation(); 
+                              if (onOpenProductDetails) onOpenProductDetails(product); 
+                            }}
                             className="w-9 h-9 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"
                             title="View Fabric Details"
                           >
@@ -304,7 +309,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                           </button>
 
                           <a
-                            href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
+                            href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -360,7 +365,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                     {/* WhatsApp Order Button */}
                     <div className="p-3 sm:p-4 pt-0">
                       <a
-                        href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
+                        href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full py-2.5 px-2 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5 transition-all group/btn"

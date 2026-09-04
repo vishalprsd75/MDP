@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeading from './SectionHeading';
 import { siteConfig } from '../config/siteConfig';
-import { ShieldCheck, Award, MapPin, Layers, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, MapPin, Layers, CheckCircle2 } from 'lucide-react';
 
 const About = ({ darkMode = true }) => {
   return (

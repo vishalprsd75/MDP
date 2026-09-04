@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import SectionHeading from './SectionHeading';
-import { galleryItems } from '../data/businessData';
+import businessService from '../services/businessService';
 import { Eye } from 'lucide-react';
 
 const Gallery = ({ darkMode = true, onOpenLightbox }) => {
   const [activeFilter, setActiveFilter] = useState('All');
 
+  const galleryItems = businessService.getGalleryItems();
   const categories = ['All', 'Dyeing', 'Screen Printing', 'Shibori', 'Block Print', 'Kalamkari', 'Batik'];
 
   const filteredItems = activeFilter === 'All'

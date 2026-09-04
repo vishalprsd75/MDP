@@ -1,9 +1,15 @@
 import React from 'react';
 import SectionHeading from './SectionHeading';
 import { siteConfig } from '../config/siteConfig';
+import { generateGeneralWhatsAppLink } from '../utils/whatsapp';
 import { Phone, MapPin, MessageSquare, User, ExternalLink, Navigation, Sparkles } from 'lucide-react';
 
 const Contact = ({ darkMode = true }) => {
+  const generalWhatsAppUrl = generateGeneralWhatsAppLink(
+    siteConfig.whatsappPhone,
+    `Hello ${siteConfig.businessName}, I would like to inquire about fabric dyeing and printing.`
+  );
+
   return (
     <section id="contact" className={`py-20 relative overflow-hidden transition-colors duration-500 ${
       darkMode ? 'bg-fabric-pattern' : 'bg-fabric-pattern-light'
@@ -112,7 +118,7 @@ const Contact = ({ darkMode = true }) => {
               darkMode ? 'border-brand-surface' : 'border-gray-200'
             }`}>
               <a
-                href={`https://wa.me/${siteConfig.whatsappPhone}?text=Hello%20${encodeURIComponent(siteConfig.businessName)},%20I%20would%20like%20to%20inquire%20about%20fabric%20dyeing%20and%20printing.`}
+                href={generalWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-4 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02]"

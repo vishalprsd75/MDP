@@ -1,100 +1,27 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Sales from './components/Sales';
-import Gallery from './components/Gallery';
-import WhyChooseUs from './components/WhyChooseUs';
-import Contact from './components/Contact';
-import MapSection from './components/MapSection';
-import Footer from './components/Footer';
-import LightboxModal from './components/LightboxModal';
-import ProductDetailsModal from './components/ProductDetailsModal';
-import CategoryStorePage from './components/CategoryStorePage';
+import React, { useState } from 'react';
+import {
+  Navbar,
+  Hero,
+  About,
+  Sales,
+  Gallery,
+  WhyChooseUs,
+  Contact,
+  MapSection,
+  Footer,
+  LightboxModal,
+  ProductDetailsModal,
+  CategoryStorePage
+} from './components';
+import { useTheme } from './hooks/useTheme';
+import { useHashRoute } from './hooks/useHashRoute';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('mdp_theme');
-    return saved !== null ? saved === 'dark' : false;
-  });
+  const { darkMode, toggleTheme } = useTheme();
+  const { activeCategoryPage, handleOpenCategoryPage, handleBackToHome } = useHashRoute();
 
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  
-  // Dynamic Category Page State (null = Home Landing Page, string = Category Page)
-  const [activeCategoryPage, setActiveCategoryPage] = useState(null);
-
-  // Sync theme with document class
-  useEffect(() => {
-    localStorage.setItem('mdp_theme', darkMode ? 'dark' : 'light');
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  // Helper for instant top jump without browser hash scroll animation
-  const instantScrollToTop = () => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  };
-
-  // Synchronously reset scroll position whenever category page state changes
-  useLayoutEffect(() => {
-    instantScrollToTop();
-  }, [activeCategoryPage]);
-
-  // Dynamic Hash URL Routing Listener
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith('#category=')) {
-        const catName = decodeURIComponent(hash.replace('#category=', ''));
-        setActiveCategoryPage(catName);
-        instantScrollToTop();
-      } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
-        setActiveCategoryPage(null);
-      }
-    };
-
-    // Initial check on page load
-    handleHashChange();
-
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('popstate', handleHashChange);
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('popstate', handleHashChange);
-    };
-  }, []);
-
-  const toggleTheme = () => {
-    setDarkMode(prev => !prev);
-  };
-
-  const handleOpenCategoryPage = (category) => {
-    instantScrollToTop();
-    const newHash = `#category=${encodeURIComponent(category)}`;
-    if (window.location.hash !== newHash) {
-      window.history.pushState(null, '', newHash);
-    }
-    setActiveCategoryPage(category);
-    instantScrollToTop();
-  };
-
-  const handleBackToHome = () => {
-    instantScrollToTop();
-    if (window.location.hash !== '' && window.location.hash !== '#hero') {
-      window.history.pushState(null, '', '#hero');
-    }
-    setActiveCategoryPage(null);
-    instantScrollToTop();
-  };
 
   return (
     <div className={`min-h-screen font-body antialiased transition-colors duration-500 selection:bg-brand-gold selection:text-brand-dark ${
@@ -158,3 +85,4 @@ function App() {
 }
 
 export default App;
+

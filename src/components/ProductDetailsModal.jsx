@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { generateProductWhatsAppLink } from '../utils/whatsapp';
 
 const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -28,9 +29,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
     ? product.images 
     : [product.image || '/images/gallery_dyeing.jpg'];
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello ${siteConfig.businessName},\nI am interested in:\n📦 Product: ${product.name}\n📂 Category: ${product.category}\n${product.showPrice ? `💰 Rate: ₹${product.price}/${product.priceUnit}\n` : ''}📐 MOQ: ${product.moq}\n\nPlease share availability, color options, and wholesale details.`
-  );
+  const whatsappUrl = generateProductWhatsAppLink(siteConfig.whatsappPhone, product);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-fadeIn overflow-hidden">
@@ -175,7 +174,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
           {/* Sticky/Bottom CTA Action Buttons Container */}
           <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4 border-t border-brand-gold/20 shrink-0 pb-[max(4px,env(safe-area-inset-bottom))]">
             <a
-              href={`https://wa.me/${siteConfig.whatsappPhone}?text=${whatsappMessage}`}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all"

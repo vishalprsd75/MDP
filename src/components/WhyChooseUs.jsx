@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionHeading from './SectionHeading';
-import { whyChooseUsData } from '../data/businessData';
+import businessService from '../services/businessService';
 import { Grid, Award, Home, CheckCircle } from 'lucide-react';
 
 const iconMap = {
@@ -11,6 +11,7 @@ const iconMap = {
 };
 
 const WhyChooseUs = ({ darkMode = true }) => {
+  const whyChooseUsData = businessService.getWhyChooseUs();
   return (
     <section id="why-us" className={`py-20 relative overflow-hidden transition-colors duration-500 ${
       darkMode ? 'bg-fabric-pattern' : 'bg-fabric-pattern-light'

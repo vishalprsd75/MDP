@@ -1,9 +1,9 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { getDynamicCategories } from '../data/products';
+import productService from '../services/productService';
 
 const CategoryBlocks = ({ darkMode = true, onSelectCategory }) => {
-  const dynamicCategories = getDynamicCategories();
+  const dynamicCategories = productService.getDynamicCategoryBlocks();
 
   const handleCardClick = (e, category) => {
     e.preventDefault();
