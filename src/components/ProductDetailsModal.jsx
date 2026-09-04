@@ -111,9 +111,9 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
         <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 md:p-8 flex flex-col justify-between space-y-4 sm:space-y-6 md:col-span-6">
           <div className="space-y-3 sm:space-y-4">
             {/* Category & Status */}
-            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-gold">
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-gold pr-10 sm:pr-12">
               <span>{product.category}</span>
-              <span className="flex items-center gap-1 text-emerald-500 font-bold">
+              <span className="flex items-center gap-1 text-emerald-500 font-bold shrink-0">
                 <CheckCircle className="w-3.5 h-3.5" />
                 In Stock
               </span>
