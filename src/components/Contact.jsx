@@ -121,7 +121,7 @@ const Contact = ({ darkMode = true }) => {
                 href={generalWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-4 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02]"
+                className="py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02]"
               >
                 <MessageSquare className="w-5 h-5" />
                 <span>Chat Directly on WhatsApp</span>

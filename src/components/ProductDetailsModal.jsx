@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, MessageSquare, Phone, CheckCircle, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { generateProductWhatsAppLink } from '../utils/whatsapp';
+import SpecificationGrid from './common/SpecificationGrid';
 
 const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -112,7 +113,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
             {/* Category & Status */}
             <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-gold">
               <span>{product.category}</span>
-              <span className="flex items-center gap-1 text-green-500 font-bold">
+              <span className="flex items-center gap-1 text-emerald-500 font-bold">
                 <CheckCircle className="w-3.5 h-3.5" />
                 In Stock
               </span>
@@ -142,27 +143,8 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
               {product.description}
             </p>
 
-            {/* Specs Grid */}
-            <div className={`grid grid-cols-2 gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl border text-xs ${
-              darkMode ? 'bg-brand-surface/60 border-brand-gold/20' : 'bg-brand-cream border-brand-gold/30'
-            }`}>
-              <div>
-                <span className="block text-[9px] sm:text-[10px] uppercase font-semibold text-brand-gold">Fabric Composition</span>
-                <span className="font-bold">{product.fabricType}</span>
-              </div>
-              <div>
-                <span className="block text-[9px] sm:text-[10px] uppercase font-semibold text-brand-gold">Minimum Order</span>
-                <span className="font-bold">{product.moq}</span>
-              </div>
-              <div>
-                <span className="block text-[9px] sm:text-[10px] uppercase font-semibold text-brand-gold">Standard Width</span>
-                <span className="font-bold">{product.width}</span>
-              </div>
-              <div>
-                <span className="block text-[9px] sm:text-[10px] uppercase font-semibold text-brand-gold">Fabric Weight</span>
-                <span className="font-bold">{product.gsm}</span>
-              </div>
-            </div>
+            {/* Clean Specification Grid */}
+            <SpecificationGrid product={product} darkMode={darkMode} />
 
             {/* In-House Guarantee Line */}
             <div className="flex items-center gap-2 text-xs text-gray-400 pt-1">
@@ -177,7 +159,7 @@ const ProductDetailsModal = ({ product, onClose, darkMode = true }) => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all"
+              className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
             >
               <MessageSquare className="w-4 h-4" />
               <span>ORDER ON WHATSAPP</span>

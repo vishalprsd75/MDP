@@ -313,7 +313,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="w-9 h-9 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"
+                            className="w-9 h-9 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"
                             title="Order on WhatsApp"
                           >
                             <MessageSquare className="w-4 h-4" />
@@ -368,7 +368,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-2.5 px-2 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5 transition-all group/btn"
+                        className="w-full py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5 transition-all group/btn hover:scale-[1.02]"
                       >
                         <MessageSquare className="w-3.5 h-3.5" />
                         <span>WhatsApp Order</span>

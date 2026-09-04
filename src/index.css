@@ -10,63 +10,65 @@
 
 /* Custom Gold Text & Border Utilities */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #f5e4a3 0%, #d4af37 50%, #b58e22 100%);
+  background: linear-gradient(135deg, #e2c97c 0%, #c5a059 50%, #a37f37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #f5e4a3 0%, #d4af37 50%, #b58e22 100%);
+  background: linear-gradient(135deg, #e2c97c 0%, #c5a059 50%, #a37f37 100%);
 }
 
 .border-gold-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
 }
 
 /* Custom Subtle Fabric Background Patterns */
 .bg-fabric-pattern {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-    radial-gradient(rgba(212, 175, 55, 0.05) 1px, #0f0e0d 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  background-image: radial-gradient(rgba(197, 160, 89, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(197, 160, 89, 0.04) 1px, #0b111e 1px);
+  background-size: 48px 48px;
+  background-position: 0 0, 24px 24px;
 }
 
 .bg-fabric-pattern-light {
-  background-color: #faf7f2;
-  background-image: radial-gradient(rgba(181, 142, 34, 0.12) 1px, transparent 1px),
-    radial-gradient(rgba(181, 142, 34, 0.08) 1px, #f3eee6 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  background-color: #fbf9f5;
+  background-image: radial-gradient(rgba(163, 127, 55, 0.1) 1px, transparent 1px),
+    radial-gradient(rgba(163, 127, 55, 0.06) 1px, #f4efe6 1px);
+  background-size: 48px 48px;
+  background-position: 0 0, 24px 24px;
 }
 
 /* Custom Glassmorphism Navbar */
 .glass-nav {
-  background: rgba(15, 14, 13, 0.88);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(11, 17, 30, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.18);
 }
 
 .glass-nav-light {
-  background: rgba(250, 247, 242, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(181, 142, 34, 0.25);
+  background: rgba(251, 249, 245, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f0e0d;
+  background: #0b111e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #26231f;
+  background: #1b263b;
   border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #c5a059;
 }

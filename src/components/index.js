@@ -17,3 +17,8 @@ export { default as Logo } from './Logo';
 export { default as Process } from './Process';
 export { default as Services } from './Services';
 export { default as EnquiryForm } from './EnquiryForm';
+
+// Reusable Common Luxury Components
+export { default as SpecificationGrid } from './common/SpecificationGrid';
+export { default as TrustFeature } from './common/TrustFeature';
+export { default as PremiumButton } from './common/PremiumButton';

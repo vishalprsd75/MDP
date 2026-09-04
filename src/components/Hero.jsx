@@ -1,16 +1,18 @@
 import React from 'react';
 import { Sparkles, Phone, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
-import { servicesData } from '../data/businessData';
+import businessService from '../services/businessService';
 
 const Hero = ({ darkMode = true }) => {
+  const servicesData = businessService.getServices();
+
   return (
     <section id="hero" className={`relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden transition-colors duration-500 ${
       darkMode ? 'bg-fabric-pattern' : 'bg-fabric-pattern-light'
     }`}>
       {/* Subtle Background Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-brand-terracotta/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -19,14 +21,14 @@ const Hero = ({ darkMode = true }) => {
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
             
             {/* Tagline & Manufacturing Badge */}
-            <div className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full border shadow-inner ${
-              darkMode ? 'bg-brand-surface border-brand-gold/30' : 'bg-white border-brand-gold/40'
+            <div className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full border shadow-sm backdrop-blur-md ${
+              darkMode ? 'bg-brand-surface/60 border-brand-gold/30' : 'bg-white/80 border-brand-gold/40'
             }`}>
-              <Sparkles className="w-4 h-4 text-brand-gold animate-spin-slow" />
-              <span className={`text-xs sm:text-sm font-semibold tracking-wider uppercase ${
+              <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+              <span className={`text-[11px] sm:text-xs font-bold tracking-widest uppercase ${
                 darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
               }`}>
-                {siteConfig.tagline}
+                EST. HYDERABAD • IN-HOUSE MANUFACTURING
               </span>
             </div>
 
@@ -39,25 +41,25 @@ const Hero = ({ darkMode = true }) => {
             </h1>
 
             {/* Supporting Description */}
-            <p className={`text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light ${
+            <p className={`text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light ${
               darkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              Quality dyeing, fabric printing and traditional textile craftsmanship from Hyderabad.
+               Hyderabad’s premier textile processing unit. Specializing in precision fabric dyeing, screen printing, Shibori, block print, Kalamkari, and Batik for designers and wholesale buyers.
             </p>
 
             {/* Services Pill Strip */}
             <div className="pt-2">
-              <p className={`text-xs uppercase tracking-widest mb-3 font-semibold ${
-                darkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}>Our Specialized Crafts:</p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-xs sm:text-sm font-medium">
+              <p className={`text-[10px] uppercase tracking-widest mb-3 font-bold ${
+                darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
+              }`}>Specialized Fabric Crafts:</p>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-xs font-medium">
                 {servicesData.map((s) => (
                   <a
                     key={s.id}
                     href={`#sales`}
-                    className={`px-3.5 py-1.5 rounded-md border transition-all duration-200 ${
+                    className={`px-3.5 py-1.5 rounded-lg border transition-all duration-300 ${
                       darkMode
-                        ? 'bg-brand-surface/80 border-brand-gold/20 text-gray-200 hover:border-brand-gold hover:text-brand-gold'
+                        ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300 hover:border-brand-gold hover:text-brand-gold'
                         : 'bg-white border-brand-gold/30 text-gray-800 hover:border-brand-gold-dark hover:text-brand-gold-dark shadow-sm'
                     }`}
                   >
@@ -68,15 +70,15 @@ const Hero = ({ darkMode = true }) => {
             </div>
 
             {/* Key Assurance Line */}
-            <div className={`flex items-center justify-center lg:justify-start gap-6 pt-2 text-xs ${
+            <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-2 text-xs font-semibold ${
               darkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-brand-gold" />
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
                 <span>Own Manufacturing Facility</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Phone className="w-4 h-4 text-brand-gold" />
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-brand-gold shrink-0" />
                 <span>{siteConfig.area}</span>
               </div>
             </div>
