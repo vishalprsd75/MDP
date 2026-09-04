@@ -13,8 +13,8 @@ export const siteConfig = {
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.7573549281355!2d78.384218!3d17.519102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb921c5f8a0001%3A0x1!2sPragathi+Nagar%2C+Nizampet%2C+Hyderabad!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
   googleMapsDirectionsUrl: "https://maps.google.com/?q=Pragathi+Nagar,+Nizampet,+Hyderabad,+Telangana+500090",
   socials: {
-    instagram: "https://www.instagram.com/munna_dyeing_printing_?igsi=MTBkMmJ3dTh0enVuMw==", 
-    youtube: "https://youtube.com/@munna.dyeing.printing?si=mtwpDanmk1O9bh1f",     
+    instagram: "https://www.instagram.com/munna_dyeing_printing_?igsi=MTBkMmJ3dTh0enVuMw==",
+    youtube: "https://youtube.com/@munna.dyeing.printing?si=mtwpDanmk1O9bh1f",
     maps: "https://maps.google.com/?q=Pragathi+Nagar,+Nizampet,+Hyderabad,+Telangana+500090"
   },
   seo: {
