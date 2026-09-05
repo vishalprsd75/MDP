@@ -196,19 +196,11 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
           {/* RIGHT PRODUCT CATALOG COLUMN */}
           <main className="lg:col-span-9 space-y-6">
             
-            {/* Header & Sort Selector Bar */}
-            <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-              darkMode ? 'bg-brand-card/80 border-brand-gold/20' : 'bg-white border-brand-gold/30 shadow-sm'
-            }`}>
-              <div>
-                <span className="text-[10px] uppercase tracking-widest text-brand-gold font-bold block">Selected Collection</span>
-                <h2 className={`font-heading text-xl sm:text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  {activeCategory === 'All' ? 'All Fabric Collections' : `${activeCategory} Collection`}
-                </h2>
-                <p className="text-xs text-gray-400 font-light mt-0.5">
-                  Showing {filtered.length} fabrics matching your criteria
-                </p>
-              </div>
+            {/* Item Count & Sort Selector Bar */}
+            <div className="flex items-center justify-between gap-4 pb-1">
+              <p className={`text-xs font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Showing <span className="font-bold text-brand-gold">{filtered.length}</span> {filtered.length === 1 ? 'fabric' : 'fabrics'}
+              </p>
 
               {/* Sort Dropdown */}
               <div className="flex items-center gap-2 shrink-0">
@@ -220,16 +212,16 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className={`px-3 py-2 rounded-xl border text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand-gold ${
+                  className={`px-3 py-1.5 rounded-xl border text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand-gold ${
                     darkMode
                       ? 'bg-brand-surface border-brand-gold/30 text-white'
-                      : 'bg-white border-brand-gold/40 text-gray-900'
+                      : 'bg-white border-brand-gold/40 text-gray-900 shadow-sm'
                   }`}
                 >
-                  <option value="featured">Featured Fabrics</option>
+                  <option value="featured">Featured</option>
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
-                  <option value="name-asc">Fabric Name: A to Z</option>
+                  <option value="name-asc">Name: A to Z</option>
                 </select>
               </div>
             </div>
