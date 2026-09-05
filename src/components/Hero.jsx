@@ -114,8 +114,8 @@ const Hero = ({ darkMode = true }) => {
           }`}
         >
           
-          {/* Background Crossfade Image Container */}
-          <div className="relative w-full h-[420px] sm:h-[490px] lg:h-[550px] xl:h-[590px] overflow-hidden bg-brand-dark">
+          {/* Background Crossfade Image Container - Compact Cinematic Viewport */}
+          <div className="relative w-full h-[350px] min-[380px]:h-[360px] md:h-[420px] lg:h-[470px] xl:h-[500px] overflow-hidden bg-brand-dark">
             {heroSlides.map((slide, index) => {
               const isActive = index === currentSlide;
               const isExiting = index === prevSlide;
@@ -142,7 +142,7 @@ const Hero = ({ darkMode = true }) => {
                     alt={slide.alt}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                     loading={index === 0 ? 'eager' : 'lazy'}
-                    className={`w-full h-full object-cover object-center ${
+                    className={`w-full h-full object-cover object-[center_35%] sm:object-center ${
                       isActive ? 'animate-ken-burns' : ''
                     }`}
                   />
@@ -154,7 +154,7 @@ const Hero = ({ darkMode = true }) => {
             })}
 
             {/* Bottom Floating Bar: Slide Indicator, Minimal Separate CTA, and Chevrons */}
-            <div className="absolute inset-x-0 bottom-0 z-30 p-4 sm:p-6 lg:p-8 flex flex-wrap items-center justify-between gap-4 pointer-events-none">
+            <div className="absolute inset-x-0 bottom-0 z-30 p-3 sm:p-5 lg:p-6 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
               
               {/* Left: Slide Counter & Dynamic Progress Bar */}
               <div className="flex items-center gap-3 sm:gap-4 pointer-events-auto bg-black/40 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-3 py-1.5 sm:p-0 rounded-full sm:rounded-none border border-white/10 sm:border-none">
