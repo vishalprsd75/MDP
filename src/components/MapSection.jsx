@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { businessInfo } from '../data/businessData';
-import { MapPin, Navigation, Compass, ExternalLink } from 'lucide-react';
+import { MapPin, Compass, ExternalLink } from 'lucide-react';
 
 const MapSection = ({ darkMode = true }) => {
   const [iframeError, setIframeError] = useState(false);
@@ -11,34 +11,21 @@ const MapSection = ({ darkMode = true }) => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold uppercase tracking-widest mb-3">
-              <MapPin className="w-3.5 h-3.5" />
-              Workshop Location
-            </div>
-            <h2 className={`font-heading text-3xl sm:text-4xl font-bold ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Visit Munna Dyeing Printing
-            </h2>
-            <p className={`text-sm mt-1 max-w-xl ${
-              darkMode ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              H.No. 4-191/90/1, Shop No. 1, Opp. Shivalayam Park, NTR Nagar, Pragathi Nagar, Nizampet, Hyderabad 500090.
-            </p>
+        <div className="mb-8 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold uppercase tracking-widest mb-3">
+            <MapPin className="w-3.5 h-3.5" />
+            Workshop Location
           </div>
-
-          <a
-            href={businessInfo.googleMapsDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 px-6 py-3 rounded-xl bg-gold-gradient text-brand-dark font-bold text-sm shadow-md hover:shadow-brand-gold/20 hover:scale-105 transition-all duration-300 flex items-center gap-2"
-          >
-            <Navigation className="w-4 h-4" />
-            <span>Get Directions</span>
-            <ExternalLink className="w-4 h-4 ml-1" />
-          </a>
+          <h2 className={`font-heading text-3xl sm:text-4xl font-bold ${
+            darkMode ? 'text-white' : 'text-gray-900'
+          }`}>
+            Visit Munna Dyeing Printing
+          </h2>
+          <p className={`text-sm mt-1 max-w-xl ${
+            darkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            H.No. 4-191/90/1, Shop No. 1, Opp. Shivalayam Park, NTR Nagar, Pragathi Nagar, Nizampet, Hyderabad 500090.
+          </p>
         </div>
 
         {/* Map Frame Container */}
