@@ -6,6 +6,7 @@ export { default as Sales } from './Sales';
 export { default as Gallery } from './Gallery';
 export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as Contact } from './Contact';
+export { default as ContactBusinessCard } from './ContactBusinessCard';
 export { default as MapSection } from './MapSection';
 export { default as Footer } from './Footer';
 export { default as LightboxModal } from './LightboxModal';
