@@ -97,7 +97,7 @@ const Hero = ({ darkMode = true }) => {
     <section
       id="hero"
       aria-label="Hero Carousel Showcase"
-      className="relative pt-20 sm:pt-24 pb-8 lg:pb-12 overflow-hidden select-none"
+      className="relative pt-20 sm:pt-24 pb-6 lg:pb-8 overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -115,7 +115,7 @@ const Hero = ({ darkMode = true }) => {
         >
           
           {/* Background Crossfade Image Container */}
-          <div className="relative w-full h-[520px] sm:h-[580px] lg:h-[640px] xl:h-[680px] overflow-hidden bg-brand-dark">
+          <div className="relative w-full h-[420px] sm:h-[490px] lg:h-[550px] xl:h-[590px] overflow-hidden bg-brand-dark">
             {heroSlides.map((slide, index) => {
               const isActive = index === currentSlide;
               const isExiting = index === prevSlide;
