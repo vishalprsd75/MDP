@@ -4,6 +4,17 @@
 
 export const heroSlides = [
   {
+    id: "slide-workshop-craft",
+    image: "/images/client_kalamkari_table.jpg",
+    alt: "Munna Dyeing Printing - Authentic hand-printed lotus saree on workshop printing table",
+    eyebrow: "IN-HOUSE ARTISANAL PRODUCTION",
+    titleLine1: "Handcrafted Printing.",
+    titleLine2: "Authentic Workshop Art.",
+    supportingLine: "Lotus Floral Motif • Zari Border • Hand Stamped • Hyderabad Workshop",
+    cta: "Explore Our Fabrics",
+    ctaLink: "#sales"
+  },
+  {
     id: "slide-textiles",
     image: "/images/hero_textile.jpg",
     alt: "Munna Dyeing Printing - Hand-dyed fabrics, textile bolts, and artisan fabric rolls",

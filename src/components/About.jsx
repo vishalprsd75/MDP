@@ -37,8 +37,8 @@ const About = ({ darkMode = true }) => {
                 darkMode ? 'border-brand-gold/30 bg-brand-card' : 'border-brand-gold/40 bg-white'
               }`}>
                 <img
-                  src="/images/about_craft.jpg"
-                  alt={`Fabric dyeing and printing craft at ${siteConfig.businessName} workshop`}
+                  src="/images/client_kalamkari_table.jpg"
+                  alt={`Authentic lotus printed saree craft at ${siteConfig.businessName} workshop table`}
                   className="w-full h-[360px] sm:h-[440px] object-cover object-center"
                   loading="lazy"
                 />

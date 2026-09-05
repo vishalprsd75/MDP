@@ -78,7 +78,7 @@ export const servicesData = [
 export const salesProducts = [
   {
     id: "prod-1",
-    title: "Premium 100% Cotton Dyeable Base",
+    title: "Premium Pure Dyed Fabric Layers",
     category: "Dyeable Base",
     pricePerMeter: 150,
     unit: "meter",
@@ -86,38 +86,38 @@ export const salesProducts = [
     width: "44 inches",
     gsm: "60 GSM",
     badge: "Best Seller",
-    image: "/images/gallery_dyeing.jpg",
-    description: "Ultra-absorbent premium pure cotton fabric base ideal for custom dye vats, screen printing, and hand block craft."
+    image: "/images/client_dyed_fabrics.jpg",
+    description: "Vibrant pure dyed fabric layers across brilliant shades of crimson, turquoise, royal blue, orange, and purple."
   },
   {
     id: "prod-2",
-    title: "Pure Chiffon & Mulberry Silk Dyeable",
+    title: "Pure Georgette with Gotta Patti Work",
     category: "Dyeable Base",
     pricePerMeter: 450,
     unit: "meter",
     moq: "5 Meters",
     width: "44 inches",
     gsm: "40 GSM",
-    badge: "Luxury Base",
-    image: "/images/hero_textile.jpg",
-    description: "Lightweight, sheer silk chiffons that take vibrant natural dyes and synthetic color fastness with radiant sheen."
+    badge: "Luxury Saree",
+    image: "/images/client_georgette_saree.jpg",
+    description: "Pure georgette fabric in vivid dual tones with intricate silver and gold gotta patti border detailing."
   },
   {
     id: "prod-3",
-    title: "Artisanal Indigo Shibori Patterned Fabric",
+    title: "Ombre Dip-Dyed Embroidered Silk Saree",
     category: "Traditional Prints",
     pricePerMeter: 280,
     unit: "meter",
-    moq: "10 Meters",
+    moq: "1 Saree",
     width: "44 inches",
     gsm: "80 GSM",
     badge: "Handcrafted",
-    image: "/images/gallery_shibori.jpg",
-    description: "Authentic spiderweb & wave resist tie-dyed cotton meters suitable for designer dupattas, kurtis, and ethnic wear."
+    image: "/images/client_ombre_saree.jpg",
+    description: "Exquisite yellow-to-green ombre gradation dyed kota silk with delicate floral grid embroidery and zari edge."
   },
   {
     id: "prod-4",
-    title: "Hand Carved Teak Wooden Block Printed Cotton",
+    title: "Hand Carved Wooden Block Printed Yardage",
     category: "Traditional Prints",
     pricePerMeter: 220,
     unit: "meter",
@@ -125,21 +125,21 @@ export const salesProducts = [
     width: "44 inches",
     gsm: "75 GSM",
     badge: "Heritage Print",
-    image: "/images/gallery_block_print.jpg",
-    description: "Classic terracotta & indigo floral paisley block stamping using eco-friendly fast dyes on fine weave cotton."
+    image: "/images/client_block_prints.jpg",
+    description: "Authentic block stamped peacock, vine, and floral motifs in mustard yellow, indigo, olive green, and beige."
   },
   {
     id: "prod-5",
-    title: "Kalamkari Hand Block Printed Yardage",
+    title: "Kalamkari Hand Printed Lotus Saree",
     category: "Traditional Prints",
     pricePerMeter: 320,
     unit: "meter",
-    moq: "10 Meters",
+    moq: "1 Saree",
     width: "44 inches",
     gsm: "85 GSM",
-    badge: "Classic Indian",
-    image: "/images/gallery_kalamkari.jpg",
-    description: "Rich peacock vine and floral storytelling motifs stamped with organic vegetable dyes."
+    badge: "Workshop Craft",
+    image: "/images/client_kalamkari_table.jpg",
+    description: "Signature handcrafted lotus vine motifs on pure black base with a rich magenta and antique gold zari border."
   },
   {
     id: "prod-6",
@@ -159,14 +159,54 @@ export const salesProducts = [
 export const galleryItems = [
   {
     id: 1,
-    title: "Custom Fabric Dyeing",
-    serviceId: "dyeing",
-    category: "Dyeing",
-    image: "/images/gallery_dyeing.jpg",
-    description: "Vibrant dyed fabric rolls featuring smooth color transitions and rich indigo, crimson, and saffron silk amber shades."
+    title: "In-House Lotus Kalamkari Printing",
+    serviceId: "kalamkari",
+    category: "Kalamkari",
+    image: "/images/client_kalamkari_table.jpg",
+    description: "Live from our printing table: handcrafted lotus floral motif saree with rich zari border crafted at Munna Dyeing Printing."
   },
   {
     id: 2,
+    title: "Authentic Hand Block Print Yardages",
+    serviceId: "block-print",
+    category: "Block Print",
+    image: "/images/client_block_prints.jpg",
+    description: "Hand block printed cotton and silk yardages showcasing peacock, floral, and heritage border designs."
+  },
+  {
+    id: 3,
+    title: "Vibrant Fabric Dyeing Layers",
+    serviceId: "dyeing",
+    category: "Dyeing",
+    image: "/images/client_dyed_fabrics.jpg",
+    description: "Stacked pure dyed fabrics in brilliant colorfast shades of scarlet, royal blue, aqua, orange, and purple."
+  },
+  {
+    id: 4,
+    title: "Ombre Dip-Dyed Kota Silk Saree",
+    serviceId: "dyeing",
+    category: "Dyeing",
+    image: "/images/client_ombre_saree.jpg",
+    description: "Artisanal dual-tone ombre yellow-to-forest green dip-dyed fabric with delicate silver floral embroidery."
+  },
+  {
+    id: 5,
+    title: "Pure Georgette with Gotta Patti",
+    serviceId: "screen-printing",
+    category: "Screen Printing",
+    image: "/images/client_georgette_saree.jpg",
+    description: "Pure georgette and chinon fabric in celebratory yellow and crimson with scalloped gotta patti borders."
+  },
+  {
+    id: 6,
+    title: "Traditional Shibori Tie-Dye",
+    serviceId: "shibori",
+    category: "Shibori",
+    image: "/images/gallery_shibori.jpg",
+    description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision dyeing."
+  },
+  {
+    id: 7,
     title: "Precision Screen Printing",
     serviceId: "screen-printing",
     category: "Screen Printing",
@@ -174,31 +214,7 @@ export const galleryItems = [
     description: "Gold metallic paste screen printing process on dark charcoal cotton fabric for luxury apparel."
   },
   {
-    id: 3,
-    title: "Traditional Shibori Pattern",
-    serviceId: "shibori",
-    category: "Shibori",
-    image: "/images/gallery_shibori.jpg",
-    description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision dyeing."
-  },
-  {
-    id: 4,
-    title: "Wooden Block Printing",
-    serviceId: "block-print",
-    category: "Block Print",
-    image: "/images/gallery_block_print.jpg",
-    description: "Hand-carved wooden block stamping rich terracotta paisley motifs onto off-white cotton canvas."
-  },
-  {
-    id: 5,
-    title: "Heritage Kalamkari Artwork",
-    serviceId: "kalamkari",
-    category: "Kalamkari",
-    image: "/images/gallery_kalamkari.jpg",
-    description: "Classic Kalamkari lotus and peacock vine motifs rendered with traditional dye craftsmanship."
-  },
-  {
-    id: 6,
+    id: 8,
     title: "Batik Wax Resist Dyeing",
     serviceId: "batik",
     category: "Batik",
