@@ -4,11 +4,13 @@ import { siteConfig } from '../config/siteConfig';
 import { generateProductWhatsAppLink } from '../utils/whatsapp';
 import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, Filter, Check } from 'lucide-react';
 
-const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
+const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
   const [activeCategory, setActiveCategory] = useState(category);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  const handleBack = onGoBack || onBackToHome || (() => { if (typeof window !== 'undefined') window.history.back(); });
 
   const products = productService.getAllProducts();
   const productCategories = productService.getCategoryNames();
@@ -67,30 +69,37 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onOpenProductDetail
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Navigation & Breadcrumbs Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-brand-gold/20">
-          <button
-            onClick={onBackToHome}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-bold transition-all w-fit ${
-              darkMode
-                ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
-                : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
-            }`}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Main Website</span>
-          </button>
+        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-brand-gold/20">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleBack}
+              className={`p-2 sm:p-2.5 rounded-xl border transition-all duration-300 flex items-center justify-center hover:scale-105 active:scale-95 ${
+                darkMode
+                  ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
+                  : 'bg-white border-brand-gold/40 text-brand-dark hover:bg-brand-gold/10 shadow-sm'
+              }`}
+              aria-label="Go back to previous page"
+              title="Go Back"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+            </button>
 
-          <nav className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+            <h1 className={`font-heading text-lg sm:text-2xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              {activeCategory === 'All' ? 'All Collections' : activeCategory}
+            </h1>
+          </div>
+
+          <nav className={`flex items-center gap-1.5 sm:gap-2 text-xs font-semibold uppercase tracking-wider ${
             darkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            <button onClick={onBackToHome} className="flex items-center gap-1 hover:text-brand-gold">
+            <button onClick={handleBack} className="flex items-center gap-1 hover:text-brand-gold">
               <Home className="w-3.5 h-3.5" />
-              <span>Home</span>
+              <span className="hidden sm:inline">Home</span>
             </button>
             <ChevronRight className="w-3 h-3 text-brand-gold" />
-            <span className="text-gray-400">Collections</span>
-            <ChevronRight className="w-3 h-3 text-brand-gold" />
-            <span className="text-brand-gold font-bold">{activeCategory}</span>
+            <span className="text-gray-400 hidden sm:inline">Collections</span>
+            <ChevronRight className="w-3 h-3 text-brand-gold hidden sm:inline" />
+            <span className="text-brand-gold font-bold truncate max-w-[100px] sm:max-w-none">{activeCategory}</span>
           </nav>
         </div>
 

@@ -54,10 +54,20 @@ export const useHashRoute = () => {
     instantScrollToTop();
   };
 
+  const handleGoBack = () => {
+    instantScrollToTop();
+    if (typeof window !== 'undefined' && window.history.length > 1 && window.history.state !== null) {
+      window.history.back();
+    } else {
+      handleBackToHome();
+    }
+  };
+
   return {
     activeCategoryPage,
     handleOpenCategoryPage,
-    handleBackToHome
+    handleBackToHome,
+    handleGoBack
   };
 };
 

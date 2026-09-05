@@ -18,7 +18,7 @@ import { useHashRoute } from './hooks/useHashRoute';
 
 function App() {
   const { darkMode, toggleTheme } = useTheme();
-  const { activeCategoryPage, handleOpenCategoryPage, handleBackToHome } = useHashRoute();
+  const { activeCategoryPage, handleOpenCategoryPage, handleBackToHome, handleGoBack } = useHashRoute();
 
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -41,6 +41,7 @@ function App() {
         <CategoryStorePage
           category={activeCategoryPage}
           onBackToHome={handleBackToHome}
+          onGoBack={handleGoBack}
           onOpenProductDetails={(product) => setSelectedProduct(product)}
           onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
           darkMode={darkMode}
