@@ -122,31 +122,31 @@ const About = ({ darkMode = true }) => {
               </div>
             </div>
 
-            {/* Core Capability Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className={`p-4 rounded-xl border flex items-start gap-3 ${
+            {/* Core Capability Pillars - Thin Compact Styling */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1.5">
+              <div className={`py-2.5 px-3.5 rounded-lg border flex items-start gap-2.5 ${
                 darkMode ? 'bg-brand-surface/50 border-brand-gold/20' : 'bg-white border-brand-gold/25 shadow-sm'
               }`}>
-                <Layers className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+                <Layers className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <div>
-                  <h4 className={`font-heading font-bold text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h4 className={`font-heading font-bold text-xs sm:text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     All Dyeable Fabrics
                   </h4>
-                  <p className={`text-xs mt-0.5 font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <p className={`text-[11px] mt-0.5 font-light leading-snug ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     Cottons, pure chiffons, silks, linens & dyeable blends.
                   </p>
                 </div>
               </div>
 
-              <div className={`p-4 rounded-xl border flex items-start gap-3 ${
+              <div className={`py-2.5 px-3.5 rounded-lg border flex items-start gap-2.5 ${
                 darkMode ? 'bg-brand-surface/50 border-brand-gold/20' : 'bg-white border-brand-gold/25 shadow-sm'
               }`}>
-                <ShieldCheck className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+                <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <div>
-                  <h4 className={`font-heading font-bold text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h4 className={`font-heading font-bold text-xs sm:text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     Own Manufacturing
                   </h4>
-                  <p className={`text-xs mt-0.5 font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <p className={`text-[11px] mt-0.5 font-light leading-snug ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     Direct quality control over shade accuracy & fastness.
                   </p>
                 </div>
