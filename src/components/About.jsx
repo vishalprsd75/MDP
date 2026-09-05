@@ -4,12 +4,12 @@ import { siteConfig } from '../config/siteConfig';
 import { ShieldCheck, MapPin, Layers, ArrowUpRight } from 'lucide-react';
 
 const specializedCrafts = [
-  { name: "Dyeing", subtitle: "Custom Shade Formulation", tag: "Own Vat" },
-  { name: "Screen Printing", subtitle: "Precision Graphic Motifs", tag: "Bulk Ready" },
-  { name: "Shibori", subtitle: "Artisanal Tie-Dye Resist", tag: "Handcraft" },
-  { name: "Block Print", subtitle: "Hand Carved Wood Stamp", tag: "Heritage" },
-  { name: "Kalamkari", subtitle: "Classic Storytelling Motifs", tag: "Traditional" },
-  { name: "Batik", subtitle: "Wax-Resist Crackle Dyeing", tag: "Artisan" }
+  "Dyeing",
+  "Screen Printing",
+  "Shibori",
+  "Block Print",
+  "Kalamkari",
+  "Batik"
 ];
 
 const About = ({ darkMode = true }) => {
@@ -101,31 +101,24 @@ const About = ({ darkMode = true }) => {
                 </a>
               </div>
 
-              {/* 2x3 / 3x2 Editorial Craft Chips Grid */}
+              {/* 2x3 / 3x2 Editorial Craft Chips Grid - Name Only */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                {specializedCrafts.map((craft) => (
+                {specializedCrafts.map((craftName) => (
                   <a
-                    key={craft.name}
+                    key={craftName}
                     href="#sales"
-                    className={`group p-3 rounded-xl border transition-all duration-300 transform hover:-translate-y-0.5 ${
+                    className={`group py-3 px-3.5 rounded-xl border flex items-center justify-between transition-all duration-300 transform hover:-translate-y-0.5 ${
                       darkMode
                         ? 'bg-brand-surface/70 border-brand-gold/20 hover:border-brand-gold/60 hover:bg-brand-surface'
                         : 'bg-white border-brand-gold/25 hover:border-brand-gold shadow-sm hover:shadow-md'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className={`font-heading text-sm sm:text-base font-bold transition-colors group-hover:text-brand-gold ${
-                        darkMode ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {craft.name}
-                      </span>
-                      <ArrowUpRight className="w-3 h-3 text-brand-gold/60 group-hover:text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className={`text-[10px] mt-0.5 font-light truncate ${
-                      darkMode ? 'text-gray-400' : 'text-gray-600'
+                    <span className={`font-heading text-sm sm:text-base font-bold transition-colors group-hover:text-brand-gold ${
+                      darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {craft.subtitle}
-                    </p>
+                      {craftName}
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-brand-gold/60 group-hover:text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </a>
                 ))}
               </div>
