@@ -1,129 +1,189 @@
-import React from 'react';
-import { Sparkles, Phone, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, MapPin } from 'lucide-react';
+import { heroSlides } from '../data/heroData';
 import { siteConfig } from '../config/siteConfig';
-import businessService from '../services/businessService';
 
 const Hero = ({ darkMode = true }) => {
-  const servicesData = businessService.getServices();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(null);
+
+  const activeSlide = heroSlides[currentSlide] || heroSlides[0];
+
+  // Auto-advance slides with pause on hover / touch, respecting reduced motion
+  useEffect(() => {
+    if (isPaused) return;
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 50) handleNext();
+    else if (diff < -50) handlePrev();
+    touchStartX.current = null;
+  };
 
   return (
-    <section id="hero" className={`relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden transition-colors duration-500 ${
-      darkMode ? 'bg-fabric-pattern' : 'bg-fabric-pattern-light'
-    }`}>
-      {/* Subtle Background Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section
+      id="hero"
+      aria-label="Hero Showcase"
+      className="relative pt-20 sm:pt-24 pb-8 lg:pb-12 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Cinematic Visual Stage */}
+        <div className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-all duration-700 ${
+          darkMode
+            ? 'border-brand-gold/30 bg-brand-card shadow-black/60'
+            : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/60'
+        }`}>
           
-          {/* Left Column: Copy */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
-            
-            {/* Tagline & Manufacturing Badge */}
-            <div className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full border shadow-sm backdrop-blur-md ${
-              darkMode ? 'bg-brand-surface/60 border-brand-gold/30' : 'bg-white/80 border-brand-gold/40'
-            }`}>
-              <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
-              <span className={`text-[11px] sm:text-xs font-bold tracking-widest uppercase ${
-                darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
-              }`}>
-                EST. HYDERABAD • IN-HOUSE MANUFACTURING
-              </span>
-            </div>
+          {/* Background Image Composition */}
+          <div className="relative w-full h-[500px] sm:h-[560px] lg:h-[620px] xl:h-[660px] overflow-hidden">
+            {heroSlides.map((slide, index) => {
+              const isActive = index === currentSlide;
+              return (
+                <div
+                  key={slide.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
+                  aria-hidden={!isActive}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    className="w-full h-full object-cover object-center transform scale-100 transition-transform duration-7000 ease-out"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                  
+                  {/* Sophisticated Editorial Vignette & Legibility Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-brand-dark/20 sm:from-brand-dark/95 sm:via-brand-dark/40 sm:to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/80 via-transparent to-brand-dark/40 hidden sm:block"></div>
+                </div>
+              );
+            })}
 
-            {/* Main Headline */}
-            <h1 className={`font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Crafting Colors.{' '}
-              <span className="text-gold-gradient block mt-1">Printing Tradition.</span>
-            </h1>
+            {/* Content Overlay: Image-Led Minimal Editorial Hierarchy */}
+            <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 sm:p-10 lg:p-14 text-white">
+              <div className="max-w-2xl space-y-4 sm:space-y-5">
+                
+                {/* Category / Manufacturing Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-dark/70 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                  <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-brand-gold">
+                    {activeSlide.badge}
+                  </span>
+                </div>
 
-            {/* Supporting Description */}
-            <p className={`text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light ${
-              darkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-               Hyderabad’s premier textile processing unit. Specializing in precision fabric dyeing, screen printing, Shibori, block print, Kalamkari, and Batik for designers and wholesale buyers.
-            </p>
+                {/* Concise Headline */}
+                <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white drop-shadow-md">
+                  {activeSlide.headline}
+                </h1>
 
-            {/* Services Pill Strip */}
-            <div className="pt-2">
-              <p className={`text-[10px] uppercase tracking-widest mb-3 font-bold ${
-                darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
-              }`}>Specialized Fabric Crafts:</p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-xs font-medium">
-                {servicesData.map((s) => (
+                {/* Supporting Line of Crafts */}
+                <p className="text-xs sm:text-sm font-semibold tracking-wider text-brand-gold-light/95 uppercase">
+                  {activeSlide.supportingLine}
+                </p>
+
+                {/* Primary CTA & Assurance Badges */}
+                <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
                   <a
-                    key={s.id}
-                    href={`#sales`}
-                    className={`px-3.5 py-1.5 rounded-lg border transition-all duration-300 ${
-                      darkMode
-                        ? 'bg-brand-surface/60 border-brand-gold/20 text-gray-300 hover:border-brand-gold hover:text-brand-gold'
-                        : 'bg-white border-brand-gold/30 text-gray-800 hover:border-brand-gold-dark hover:text-brand-gold-dark shadow-sm'
-                    }`}
+                    href={activeSlide.ctaLink}
+                    className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gold-gradient text-brand-dark font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-brand-gold/20"
                   >
-                    {s.title}
+                    <span>{activeSlide.ctaText}</span>
+                    <ArrowRight className="w-4 h-4" />
                   </a>
-                ))}
-              </div>
-            </div>
 
-            {/* Key Assurance Line */}
-            <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-2 text-xs font-semibold ${
-              darkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
-                <span>Own Manufacturing Facility</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-brand-gold shrink-0" />
-                <span>{siteConfig.area}</span>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Hero Visual Frame */}
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Decorative Frame Glow */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-brand-gold via-brand-amber to-brand-terracotta opacity-30 blur-lg transition duration-500"></div>
-
-              {/* Main Image Card */}
-              <div className={`relative rounded-2xl overflow-hidden border shadow-2xl group ${
-                darkMode ? 'border-brand-gold/30 bg-brand-card' : 'border-brand-gold/40 bg-white'
-              }`}>
-                <img
-                  src="/images/hero_textile.jpg"
-                  alt={`${siteConfig.businessName} - Indian Dyeing and Printing Craftsmanship`}
-                  className="w-full h-[380px] sm:h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                />
-                
-                {/* Visual Overlay Banner */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-70"></div>
-                
-                {/* Floating Craft Badge Card */}
-                <div className={`absolute bottom-6 left-6 right-6 p-4 rounded-xl border backdrop-blur-md flex items-center justify-between ${
-                  darkMode ? 'glass-nav border-brand-gold/30' : 'glass-nav-light border-brand-gold/40'
-                }`}>
-                  <div>
-                    <h3 className={`font-heading text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Traditional Craftsmanship</h3>
-                    <p className="text-xs text-brand-gold font-medium">{siteConfig.tagline}</p>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold flex items-center justify-center text-brand-gold">
-                    <Sparkles className="w-5 h-5 animate-pulse" />
+                  <div className="hidden sm:flex items-center gap-4 text-xs font-medium text-gray-300/90 pl-2">
+                    <div className="flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-brand-gold" />
+                      <span>In-House Unit</span>
+                    </div>
+                    <span>•</span>
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="w-4 h-4 text-brand-gold" />
+                      <span>{siteConfig.area}</span>
+                    </div>
                   </div>
                 </div>
 
               </div>
 
+              {/* Slide Navigation Controls & Indicators */}
+              <div className="w-full flex items-center justify-between pt-6 mt-4 border-t border-white/15">
+                {/* Dots / Indicators */}
+                <div className="flex items-center gap-2">
+                  {heroSlides.map((slide, idx) => (
+                    <button
+                      key={slide.id}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${
+                        idx === currentSlide
+                          ? 'w-8 sm:w-10 bg-brand-gold'
+                          : 'w-2 sm:w-3 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                  <span className="text-[11px] font-mono text-gray-300 ml-2">
+                    0{currentSlide + 1} / 0{heroSlides.length}
+                  </span>
+                </div>
+
+                {/* Next / Previous Chevrons */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handlePrev}
+                    aria-label="Previous slide"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-brand-dark/60 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all backdrop-blur-md"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    aria-label="Next slide"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-brand-dark/60 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all backdrop-blur-md"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
     </section>
   );
