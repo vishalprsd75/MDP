@@ -72,3 +72,44 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #c5a059;
 }
+
+/* Hero Carousel Animations */
+@keyframes heroProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-hero-progress {
+  animation: heroProgress 5.5s linear forwards;
+}
+
+.paused-animation {
+  animation-play-state: paused !important;
+}
+
+@keyframes subtleKenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.035);
+  }
+}
+
+.animate-ken-burns {
+  animation: subtleKenBurns 6.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns {
+    animation: none !important;
+    transform: none !important;
+  }
+  .animate-hero-progress {
+    animation: none !important;
+  }
+}
