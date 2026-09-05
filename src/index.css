@@ -84,7 +84,7 @@
 }
 
 .animate-hero-progress {
-  animation: heroProgress 5.5s linear forwards;
+  animation: heroProgress 5s linear forwards;
 }
 
 .paused-animation {

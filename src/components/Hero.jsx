@@ -3,76 +3,80 @@ import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, MapPin } from 'luci
 import { heroSlides } from '../data/heroData';
 import { siteConfig } from '../config/siteConfig';
 
-const AUTOPLAY_DURATION = 5500; // 5.5 seconds per slide
+const AUTOPLAY_DURATION = 5000; // 5.0 seconds per slide
 
 const Hero = ({ darkMode = true }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [prevSlide, setPrevSlide] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDocHidden, setIsDocHidden] = useState(false);
   const [progressKey, setProgressKey] = useState(0);
 
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
-  const carouselRef = useRef(null);
+  const transitionTimeout = useRef(null);
 
   const totalSlides = heroSlides.length;
   const activeSlide = heroSlides[currentSlide] || heroSlides[0];
 
+  // Transition to a specific slide with smooth dual-layer crossfade
+  const goToSlide = useCallback((newIndex) => {
+    if (newIndex === currentSlide) return;
+    setPrevSlide(currentSlide);
+    setCurrentSlide(newIndex);
+    setProgressKey((k) => k + 1);
+
+    if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
+    transitionTimeout.current = setTimeout(() => {
+      setPrevSlide(null);
+    }, 900);
+  }, [currentSlide]);
+
   const handleNext = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    setProgressKey((prev) => prev + 1);
-  }, [totalSlides]);
+    const nextIndex = (currentSlide + 1) % totalSlides;
+    goToSlide(nextIndex);
+  }, [currentSlide, totalSlides, goToSlide]);
 
   const handlePrev = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-    setProgressKey((prev) => prev + 1);
-  }, [totalSlides]);
+    const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+    goToSlide(prevIndex);
+  }, [currentSlide, totalSlides, goToSlide]);
 
-  const goToSlide = (index) => {
-    if (index === currentSlide) return;
-    setCurrentSlide(index);
-    setProgressKey((prev) => prev + 1);
-  };
-
-  // Autoplay timer with pause on hover, visibility change, and reduced-motion check
+  // Autoplay management
   useEffect(() => {
-    if (isPaused) return;
+    // Only pause if desktop is hovering or browser tab is hidden
+    if (isHovered || isDocHidden) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       handleNext();
     }, AUTOPLAY_DURATION);
 
-    return () => clearTimeout(timer);
-  }, [currentSlide, isPaused, handleNext]);
+    return () => clearInterval(timer);
+  }, [isHovered, isDocHidden, handleNext]);
 
-  // Pause when browser tab is inactive to save performance
+  // Tab visibility listener
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        setIsPaused(true);
-      } else {
-        setIsPaused(false);
-      }
+    const handleVisibility = () => {
+      setIsDocHidden(document.hidden);
     };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
   }, []);
 
-  // Keyboard navigation when carousel is focused or hovered
-  const handleKeyDown = (e) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      handlePrev();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      handleNext();
-    }
-  };
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrev, handleNext]);
 
-  // Mobile Touch Swipe Handling
+  // Touch Swipe for Mobile
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -83,13 +87,9 @@ const Hero = ({ darkMode = true }) => {
     const diffX = touchStartX.current - e.changedTouches[0].clientX;
     const diffY = touchStartY.current - e.changedTouches[0].clientY;
 
-    // Verify gesture was predominantly horizontal with >= 45px swipe
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 45) {
-      if (diffX > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+      if (diffX > 0) handleNext();
+      else handlePrev();
     }
     touchStartX.current = null;
     touchStartY.current = null;
@@ -98,52 +98,58 @@ const Hero = ({ darkMode = true }) => {
   return (
     <section
       id="hero"
-      ref={carouselRef}
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Munna Dyeing Printing Editorial Showcase"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      className="relative pt-20 sm:pt-24 pb-8 lg:pb-12 overflow-hidden outline-none"
+      aria-label="Hero Carousel Showcase"
+      className="relative pt-20 sm:pt-24 pb-8 lg:pb-12 overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Cinematic Visual Frame */}
-        <div className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-700 ${
-          darkMode
-            ? 'border-brand-gold/30 bg-brand-card shadow-black/70'
-            : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/70'
-        }`}>
+        {/* Main Full-Width Cinematic Frame */}
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-500 ${
+            darkMode
+              ? 'border-brand-gold/30 bg-brand-card shadow-black/80'
+              : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/80'
+          }`}
+        >
           
-          {/* Full-Bleed Image Container */}
-          <div className="relative w-full h-[500px] sm:h-[560px] lg:h-[620px] xl:h-[680px] overflow-hidden select-none">
+          {/* Background Crossfade Image Container */}
+          <div className="relative w-full h-[520px] sm:h-[580px] lg:h-[640px] xl:h-[680px] overflow-hidden bg-brand-dark">
             {heroSlides.map((slide, index) => {
               const isActive = index === currentSlide;
+              const isExiting = index === prevSlide;
+
+              let zIndex = 'z-0';
+              let opacityClass = 'opacity-0 pointer-events-none';
+
+              if (isActive) {
+                zIndex = 'z-20';
+                opacityClass = 'opacity-100';
+              } else if (isExiting) {
+                zIndex = 'z-10';
+                opacityClass = 'opacity-100';
+              }
+
               return (
                 <div
                   key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-900 ease-in-out ${zIndex} ${opacityClass}`}
                   aria-hidden={!isActive}
                 >
                   <img
                     src={slide.image}
                     alt={slide.alt}
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     className={`w-full h-full object-cover object-center ${
                       isActive ? 'animate-ken-burns' : ''
                     }`}
                   />
                   
-                  {/* Editorial Vignette & Dual-Direction Contrast Gradients */}
+                  {/* Subtle Contrast Gradients for Text Legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/50 to-brand-dark/20 sm:from-brand-dark/95 sm:via-brand-dark/40 sm:to-transparent pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/85 via-brand-dark/30 to-transparent hidden sm:block pointer-events-none" />
                 </div>
@@ -151,10 +157,13 @@ const Hero = ({ darkMode = true }) => {
             })}
 
             {/* Editorial Content Overlay */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 sm:p-10 lg:p-14 text-white pointer-events-none">
-              <div className="max-w-2xl space-y-4 sm:space-y-5 pointer-events-auto">
+            <div className="absolute inset-0 z-30 flex flex-col justify-end p-6 sm:p-10 lg:p-14 text-white pointer-events-none">
+              <div
+                key={`content-${currentSlide}`}
+                className="max-w-2xl space-y-4 sm:space-y-5 pointer-events-auto transition-all duration-700 ease-out"
+              >
                 
-                {/* Eyebrow Category Tag */}
+                {/* Eyebrow / Category Tag */}
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-dark/75 backdrop-blur-md shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
                   <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-brand-gold">
@@ -173,7 +182,7 @@ const Hero = ({ darkMode = true }) => {
                   {activeSlide.supportingLine}
                 </p>
 
-                {/* CTA Button & Assurance Pill */}
+                {/* Primary CTA & Assurance Badges */}
                 <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
                   <a
                     href={activeSlide.ctaLink}
@@ -198,8 +207,8 @@ const Hero = ({ darkMode = true }) => {
 
               </div>
 
-              {/* Bottom Control Bar: Counter, Progress Bar & Navigation */}
-              <div className="w-full flex items-center justify-between pt-6 mt-4 border-t border-white/15 pointer-events-auto">
+              {/* Bottom Control Bar: Counter, Progress Bar & Chevron Buttons */}
+              <div className="w-full flex items-center justify-between pt-6 mt-6 border-t border-white/15 pointer-events-auto">
                 
                 {/* Slide Counter & Dynamic Progress Bar */}
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -211,32 +220,32 @@ const Hero = ({ darkMode = true }) => {
                         onClick={() => goToSlide(idx)}
                         className={`h-1.5 rounded-full transition-all duration-300 ${
                           idx === currentSlide
-                            ? 'w-6 sm:w-8 bg-brand-gold'
+                            ? 'w-7 sm:w-10 bg-brand-gold'
                             : 'w-2 sm:w-2.5 bg-white/30 hover:bg-white/60'
                         }`}
-                        aria-label={`Jump to slide ${idx + 1}`}
+                        aria-label={`Go to slide ${idx + 1}`}
                       />
                     ))}
                   </div>
 
-                  {/* 01 / 03 Counter & Progress Line */}
+                  {/* 01 / 03 Counter & Progress Bar */}
                   <div className="flex flex-col gap-1 pl-1">
                     <span className="text-[11px] sm:text-xs font-mono font-bold tracking-widest text-brand-gold">
                       0{currentSlide + 1} <span className="text-white/40">/</span> 0{totalSlides}
                     </span>
-                    {/* Thin animated progress indicator */}
-                    <div className="w-14 sm:w-20 h-0.5 bg-white/20 rounded-full overflow-hidden">
+                    {/* Animated Progress Bar */}
+                    <div className="w-16 sm:w-24 h-0.5 bg-white/20 rounded-full overflow-hidden">
                       <div
                         key={progressKey}
                         className={`h-full bg-brand-gold rounded-full animate-hero-progress ${
-                          isPaused ? 'paused-animation' : ''
+                          isHovered ? 'paused-animation' : ''
                         }`}
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Minimal Circular Chevron Arrows */}
+                {/* Minimal Circular Chevron Buttons */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handlePrev}
