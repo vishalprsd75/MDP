@@ -76,17 +76,26 @@ const MapSection = ({ darkMode = true }) => {
           )}
 
           {/* Floating Location Pill Overlay */}
-          <div className={`absolute bottom-4 left-4 z-10 hidden sm:flex items-center gap-3 p-3.5 rounded-xl border backdrop-blur-md shadow-lg ${
-            darkMode ? 'glass-nav border-brand-gold/30' : 'glass-nav-light border-brand-gold/40'
-          }`}>
-            <div className="w-9 h-9 rounded-lg bg-brand-gold text-brand-dark flex items-center justify-center font-bold text-xs">
+          <a
+            href={businessInfo.googleMapsDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="View in Google Maps"
+            className={`absolute bottom-4 left-4 z-10 hidden sm:flex items-center gap-3 p-3.5 rounded-xl border backdrop-blur-md shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer ${
+              darkMode ? 'glass-nav border-brand-gold/30 hover:border-brand-gold' : 'glass-nav-light border-brand-gold/40 hover:border-brand-gold'
+            }`}
+          >
+            <div className="w-9 h-9 rounded-lg bg-brand-gold text-brand-dark flex items-center justify-center font-bold text-xs group-hover:scale-110 transition-transform">
               MDP
             </div>
             <div>
-              <p className={`text-xs font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{businessInfo.name}</p>
+              <p className={`text-xs font-bold flex items-center gap-1.5 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <span>{businessInfo.name}</span>
+                <ExternalLink className="w-3 h-3 text-brand-gold opacity-70 group-hover:opacity-100" />
+              </p>
               <p className="text-[11px] text-brand-gold font-medium">Opp. Shivalayam Park, NTR Nagar, Pragathi Nagar</p>
             </div>
-          </div>
+          </a>
         </div>
 
       </div>

@@ -107,8 +107,19 @@ const Contact = ({ darkMode = true }) => {
                   <div className="w-11 h-11 rounded-xl bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0 mt-0.5">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className={`text-xs block font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Factory & Workshop Location</span>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`text-xs block font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Factory & Workshop Location</span>
+                      <a
+                        href={siteConfig.googleMapsDirectionsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-brand-gold hover:underline flex items-center gap-1 shrink-0"
+                      >
+                        <span>View in Map</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
                     <p className={`text-sm leading-relaxed mt-1 font-medium ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
                       {siteConfig.address}
                     </p>
@@ -129,11 +140,14 @@ const Contact = ({ darkMode = true }) => {
                   </a>
 
                   <a
-                    href="#map"
+                    href={siteConfig.googleMapsDirectionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="py-3.5 px-5 rounded-xl bg-gold-gradient text-brand-dark font-bold text-sm shadow-xl flex items-center justify-center gap-2.5 hover:scale-[1.02] transition-all duration-300"
                   >
                     <Navigation className="w-4 h-4" />
-                    <span>Get Google Map Directions</span>
+                    <span>Get Directions</span>
+                    <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
                   </a>
                 </div>
 
@@ -164,6 +178,19 @@ const Contact = ({ darkMode = true }) => {
                       }`}
                     >
                       <span>YouTube</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+
+                    <a
+                      href={siteConfig.socials.maps}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`px-3.5 py-1.5 rounded-xl border font-semibold flex items-center gap-1.5 transition-all hover:scale-105 ${
+                        darkMode ? 'bg-brand-surface border-brand-gold/30 text-gray-200 hover:text-brand-gold' : 'bg-gray-100 border-gray-300 text-gray-800 hover:text-brand-gold-dark shadow-sm'
+                      }`}
+                    >
+                      <MapPin className="w-3 h-3 text-brand-gold" />
+                      <span>Google Maps</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>

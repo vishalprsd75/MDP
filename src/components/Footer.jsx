@@ -1,7 +1,7 @@
 import React from 'react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
-import { Phone, MapPin, MessageSquare } from 'lucide-react';
+import { Phone, MapPin, MessageSquare, ExternalLink } from 'lucide-react';
 
 const Footer = ({ darkMode = true }) => {
   const navLinks = [
@@ -114,7 +114,20 @@ const Footer = ({ darkMode = true }) => {
             <div className="space-y-2.5 text-xs font-light">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                <span>{siteConfig.address}</span>
+                <div>
+                  <span>{siteConfig.address}</span>
+                  <div className="mt-1">
+                    <a
+                      href={siteConfig.googleMapsDirectionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-semibold text-brand-gold hover:underline"
+                    >
+                      <span>View in Google Maps</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5">
