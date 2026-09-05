@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, MapPin } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { heroSlides } from '../data/heroData';
-import { siteConfig } from '../config/siteConfig';
 
 const AUTOPLAY_DURATION = 5000; // 5.0 seconds per slide
 
@@ -17,7 +16,6 @@ const Hero = ({ darkMode = true }) => {
   const transitionTimeout = useRef(null);
 
   const totalSlides = heroSlides.length;
-  const activeSlide = heroSlides[currentSlide] || heroSlides[0];
 
   // Transition to a specific slide with smooth dual-layer crossfade
   const goToSlide = useCallback((newIndex) => {
@@ -149,120 +147,77 @@ const Hero = ({ darkMode = true }) => {
                     }`}
                   />
                   
-                  {/* Subtle Contrast Gradients for Text Legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/50 to-brand-dark/20 sm:from-brand-dark/95 sm:via-brand-dark/40 sm:to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/85 via-brand-dark/30 to-transparent hidden sm:block pointer-events-none" />
+                  {/* Subtle Bottom Vignette for Control Legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
                 </div>
               );
             })}
 
-            {/* Editorial Content Overlay */}
-            <div className="absolute inset-0 z-30 flex flex-col justify-end p-6 sm:p-10 lg:p-14 text-white pointer-events-none">
-              <div
-                key={`content-${currentSlide}`}
-                className="max-w-2xl space-y-4 sm:space-y-5 pointer-events-auto transition-all duration-700 ease-out"
-              >
-                
-                {/* Eyebrow / Category Tag */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-dark/75 backdrop-blur-md shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                  <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-brand-gold">
-                    {activeSlide.eyebrow}
-                  </span>
+            {/* Bottom Floating Bar: Slide Indicator, Minimal Separate CTA, and Chevrons */}
+            <div className="absolute inset-x-0 bottom-0 z-30 p-4 sm:p-6 lg:p-8 flex flex-wrap items-center justify-between gap-4 pointer-events-none">
+              
+              {/* Left: Slide Counter & Dynamic Progress Bar */}
+              <div className="flex items-center gap-3 sm:gap-4 pointer-events-auto bg-black/40 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-3 py-1.5 sm:p-0 rounded-full sm:rounded-none border border-white/10 sm:border-none">
+                {/* Clickable Slide Pills */}
+                <div className="flex items-center gap-1.5">
+                  {heroSlides.map((slide, idx) => (
+                    <button
+                      key={slide.id}
+                      onClick={() => goToSlide(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === currentSlide
+                          ? 'w-6 sm:w-8 bg-brand-gold'
+                          : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
                 </div>
 
-                {/* Two-Line Headline */}
-                <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white drop-shadow-lg">
-                  <span>{activeSlide.titleLine1}</span>
-                  <span className="block text-gold-gradient mt-1">{activeSlide.titleLine2}</span>
-                </h1>
-
-                {/* Supporting Line of Core Crafts */}
-                <p className="text-xs sm:text-sm font-semibold tracking-wider text-brand-gold-light/95 uppercase max-w-xl">
-                  {activeSlide.supportingLine}
-                </p>
-
-                {/* Primary CTA & Assurance Badges */}
-                <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
-                  <a
-                    href={activeSlide.ctaLink}
-                    className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gold-gradient text-brand-dark font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-brand-gold/25"
-                  >
-                    <span>{activeSlide.cta}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-
-                  <div className="hidden sm:flex items-center gap-4 text-xs font-medium text-gray-300/90 pl-1">
-                    <div className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-brand-gold" />
-                      <span>In-House Unit</span>
-                    </div>
-                    <span>•</span>
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-4 h-4 text-brand-gold" />
-                      <span>{siteConfig.area}</span>
-                    </div>
+                {/* 01 / 03 Counter & Progress Bar */}
+                <div className="flex flex-col gap-1 pl-1">
+                  <span className="text-[11px] sm:text-xs font-mono font-bold tracking-widest text-brand-gold">
+                    0{currentSlide + 1} <span className="text-white/40">/</span> 0{totalSlides}
+                  </span>
+                  {/* Animated Progress Bar */}
+                  <div className="w-14 sm:w-20 h-0.5 bg-white/25 rounded-full overflow-hidden">
+                    <div
+                      key={progressKey}
+                      className={`h-full bg-brand-gold rounded-full animate-hero-progress ${
+                        isHovered ? 'paused-animation' : ''
+                      }`}
+                    />
                   </div>
                 </div>
-
               </div>
 
-              {/* Bottom Control Bar: Counter, Progress Bar & Chevron Buttons */}
-              <div className="w-full flex items-center justify-between pt-6 mt-6 border-t border-white/15 pointer-events-auto">
-                
-                {/* Slide Counter & Dynamic Progress Bar */}
-                <div className="flex items-center gap-3 sm:gap-4">
-                  {/* Clickable Slide Pills */}
-                  <div className="flex items-center gap-1.5">
-                    {heroSlides.map((slide, idx) => (
-                      <button
-                        key={slide.id}
-                        onClick={() => goToSlide(idx)}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          idx === currentSlide
-                            ? 'w-7 sm:w-10 bg-brand-gold'
-                            : 'w-2 sm:w-2.5 bg-white/30 hover:bg-white/60'
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
+              {/* Center / Action: Minimal Standalone CTA */}
+              <div className="pointer-events-auto">
+                <a
+                  href="#sales"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gold-gradient text-brand-dark font-bold text-xs uppercase tracking-wider shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-brand-gold/25"
+                >
+                  <span>Explore Fabrics</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
 
-                  {/* 01 / 03 Counter & Progress Bar */}
-                  <div className="flex flex-col gap-1 pl-1">
-                    <span className="text-[11px] sm:text-xs font-mono font-bold tracking-widest text-brand-gold">
-                      0{currentSlide + 1} <span className="text-white/40">/</span> 0{totalSlides}
-                    </span>
-                    {/* Animated Progress Bar */}
-                    <div className="w-16 sm:w-24 h-0.5 bg-white/20 rounded-full overflow-hidden">
-                      <div
-                        key={progressKey}
-                        className={`h-full bg-brand-gold rounded-full animate-hero-progress ${
-                          isHovered ? 'paused-animation' : ''
-                        }`}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Minimal Circular Chevron Buttons */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={handlePrev}
-                    aria-label="Previous Slide"
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/25 bg-brand-dark/65 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md shadow-md focus:outline-none focus:ring-2 focus:ring-brand-gold"
-                  >
-                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                  <button
-                    onClick={handleNext}
-                    aria-label="Next Slide"
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/25 bg-brand-dark/65 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md shadow-md focus:outline-none focus:ring-2 focus:ring-brand-gold"
-                  >
-                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                </div>
-
+              {/* Right: Minimal Circular Chevron Buttons */}
+              <div className="flex items-center gap-2 pointer-events-auto">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous Slide"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/25 bg-black/50 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md shadow-md focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                >
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next Slide"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/25 bg-black/50 hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md shadow-md focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                >
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
               </div>
 
             </div>
