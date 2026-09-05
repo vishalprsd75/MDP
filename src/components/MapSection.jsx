@@ -25,7 +25,7 @@ const MapSection = ({ darkMode = true }) => {
             <p className={`text-sm mt-1 max-w-xl ${
               darkMode ? 'text-gray-300' : 'text-gray-600'
             }`}>
-              H.No. 4-191/90/1, Shop No. 1, Opp. Shivalayam Park, Pragathi Nagar, Nizampet, Hyderabad 500090.
+              H.No. 4-191/90/1, Shop No. 1, Opp. Shivalayam Park, NTR Nagar, Pragathi Nagar, Nizampet, Hyderabad 500090.
             </p>
           </div>
 
@@ -60,9 +60,9 @@ const MapSection = ({ darkMode = true }) => {
               darkMode ? 'bg-brand-surface' : 'bg-brand-cream'
             }`}>
               <Compass className="w-12 h-12 text-brand-gold mb-4 animate-bounce" />
-              <h3 className={`font-heading text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Pragathi Nagar, Nizampet</h3>
+              <h3 className={`font-heading text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>NTR Nagar, Pragathi Nagar</h3>
               <p className={`text-sm max-w-md mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Opposite Shivalayam Park, Shop No. 1, Hyderabad, Telangana 500090.
+                Opposite Shivalayam Park, Shop No. 1, Nizampet, Hyderabad, Telangana 500090.
               </p>
               <a
                 href={businessInfo.googleMapsDirectionsUrl}
@@ -84,7 +84,7 @@ const MapSection = ({ darkMode = true }) => {
             </div>
             <div>
               <p className={`text-xs font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{businessInfo.name}</p>
-              <p className="text-[11px] text-brand-gold font-medium">Opp. Shivalayam Park, Pragathi Nagar</p>
+              <p className="text-[11px] text-brand-gold font-medium">Opp. Shivalayam Park, NTR Nagar, Pragathi Nagar</p>
             </div>
           </div>
         </div>
