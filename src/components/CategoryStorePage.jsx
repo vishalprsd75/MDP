@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import productService from '../services/productService';
 import { siteConfig } from '../config/siteConfig';
 import { generateProductWhatsAppLink } from '../utils/whatsapp';
-import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, Home, ChevronRight, Filter, Check } from 'lucide-react';
+import { ArrowLeft, Search, MessageSquare, Eye, ArrowUpDown, X, ChevronRight, Filter, Check } from 'lucide-react';
 
 const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenProductDetails, onSelectCategory, darkMode = true }) => {
   const [activeCategory, setActiveCategory] = useState(category);
@@ -68,12 +68,15 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Navigation & Breadcrumbs Bar */}
+        {/* Top Navigation Bar: Mobile Back Arrow + Collection Title + Top Search Input */}
         <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-brand-gold/20">
-          <div className="flex items-center gap-3">
+          
+          {/* Title & Mobile-Only Back Arrow */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Back Arrow button: Visible on mobile/tablet (lg:hidden), hidden on desktop */}
             <button
               onClick={handleBack}
-              className={`p-2 sm:p-2.5 rounded-xl border transition-all duration-300 flex items-center justify-center hover:scale-105 active:scale-95 ${
+              className={`lg:hidden p-2 rounded-xl border transition-all duration-300 flex items-center justify-center hover:scale-105 active:scale-95 ${
                 darkMode
                   ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
                   : 'bg-white border-brand-gold/40 text-brand-dark hover:bg-brand-gold/10 shadow-sm'
@@ -81,7 +84,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
               aria-label="Go back to previous page"
               title="Go Back"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+              <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
             </button>
 
             <h1 className={`font-heading text-lg sm:text-2xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -89,18 +92,31 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
             </h1>
           </div>
 
-          <nav className={`flex items-center gap-1.5 sm:gap-2 text-xs font-semibold uppercase tracking-wider ${
-            darkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            <button onClick={handleBack} className="flex items-center gap-1 hover:text-brand-gold">
-              <Home className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Home</span>
-            </button>
-            <ChevronRight className="w-3 h-3 text-brand-gold" />
-            <span className="text-gray-400 hidden sm:inline">Collections</span>
-            <ChevronRight className="w-3 h-3 text-brand-gold hidden sm:inline" />
-            <span className="text-brand-gold font-bold truncate max-w-[100px] sm:max-w-none">{activeCategory}</span>
-          </nav>
+          {/* Top Search Input Box (Replaces breadcrumbs) */}
+          <div className="relative w-44 sm:w-64 lg:w-72 shrink-0">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-brand-gold">
+              <Search className="w-3.5 h-3.5" />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search fabric catalog..."
+              className={`w-full pl-8 pr-8 py-2 rounded-xl border text-xs font-medium focus:outline-none focus:ring-1 focus:ring-brand-gold ${
+                darkMode
+                  ? 'bg-brand-surface/90 border-brand-gold/30 text-white placeholder-gray-400'
+                  : 'bg-white border-brand-gold/40 text-gray-900 placeholder-gray-500 shadow-sm'
+              }`}
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-gray-400 hover:text-brand-gold"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Mobile Filter Toggle Button */}
@@ -122,7 +138,7 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
         {/* Main E-Commerce Catalog Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT SIDEBAR COLUMN: CATEGORIES & SEARCH */}
+          {/* LEFT SIDEBAR COLUMN: CATEGORIES */}
           <aside className={`lg:col-span-3 space-y-6 ${
             mobileFilterOpen ? 'block mb-6' : 'hidden lg:block'
           }`}>
@@ -171,35 +187,6 @@ const CategoryStorePage = ({ category = 'All', onBackToHome, onGoBack, onOpenPro
                     </button>
                   );
                 })}
-              </div>
-
-              {/* Search Box in Sidebar */}
-              <div className="mt-6 pt-5 border-t border-brand-gold/20">
-                <span className="block text-[10px] uppercase font-bold text-brand-gold mb-2 tracking-wider">Search Catalog</span>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-brand-gold">
-                    <Search className="w-3.5 h-3.5" />
-                  </div>
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search fabric name..."
-                    className={`w-full pl-8 pr-8 py-2 rounded-xl border text-xs font-medium focus:outline-none focus:ring-1 focus:ring-brand-gold ${
-                      darkMode
-                        ? 'bg-brand-surface/90 border-brand-gold/30 text-white placeholder-gray-400'
-                        : 'bg-brand-cream/60 border-brand-gold/40 text-gray-900 placeholder-gray-500'
-                    }`}
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-gray-400 hover:text-brand-gold"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
               </div>
 
             </div>
