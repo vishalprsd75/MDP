@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { heroSlides } from '../data/heroData';
 
-const AUTOPLAY_DURATION = 5000; // 5.0 seconds per slide
+const AUTOPLAY_DURATION = 3000; // 3.0 seconds per slide
 
 const Hero = ({ darkMode = true }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -100,20 +100,19 @@ const Hero = ({ darkMode = true }) => {
       className="relative pt-20 sm:pt-24 pb-6 lg:pb-8 overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Main Full-Width Cinematic Frame */}
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-500 ${
-            darkMode
-              ? 'border-brand-gold/30 bg-brand-card shadow-black/80'
-              : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/80'
-          }`}
+          className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-500 ${darkMode
+            ? 'border-brand-gold/30 bg-brand-card shadow-black/80'
+            : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/80'
+            }`}
         >
-          
+
           {/* Background Crossfade Image Container - Compact Cinematic Viewport */}
           <div className="relative w-full h-[350px] min-[380px]:h-[360px] md:h-[420px] lg:h-[470px] xl:h-[500px] overflow-hidden bg-brand-dark">
             {heroSlides.map((slide, index) => {
@@ -142,11 +141,10 @@ const Hero = ({ darkMode = true }) => {
                     alt={slide.alt}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                     loading={index === 0 ? 'eager' : 'lazy'}
-                    className={`w-full h-full object-cover object-[center_35%] sm:object-center ${
-                      isActive ? 'animate-ken-burns' : ''
-                    }`}
+                    className={`w-full h-full object-cover object-[center_35%] sm:object-center ${isActive ? 'animate-ken-burns' : ''
+                      }`}
                   />
-                  
+
                   {/* Subtle Bottom Vignette for Control Legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
                 </div>
@@ -155,7 +153,7 @@ const Hero = ({ darkMode = true }) => {
 
             {/* Bottom Floating Bar: Slide Indicator, Minimal Separate CTA, and Chevrons */}
             <div className="absolute inset-x-0 bottom-0 z-30 p-3 sm:p-5 lg:p-6 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
-              
+
               {/* Left: Slide Counter & Dynamic Progress Bar */}
               <div className="flex items-center gap-3 sm:gap-4 pointer-events-auto bg-black/40 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-3 py-1.5 sm:p-0 rounded-full sm:rounded-none border border-white/10 sm:border-none">
                 {/* Clickable Slide Pills */}
@@ -164,11 +162,10 @@ const Hero = ({ darkMode = true }) => {
                     <button
                       key={slide.id}
                       onClick={() => goToSlide(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        idx === currentSlide
-                          ? 'w-6 sm:w-8 bg-brand-gold'
-                          : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/70'
-                      }`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentSlide
+                        ? 'w-6 sm:w-8 bg-brand-gold'
+                        : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/70'
+                        }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
@@ -183,9 +180,8 @@ const Hero = ({ darkMode = true }) => {
                   <div className="w-14 sm:w-20 h-0.5 bg-white/25 rounded-full overflow-hidden">
                     <div
                       key={progressKey}
-                      className={`h-full bg-brand-gold rounded-full animate-hero-progress ${
-                        isHovered ? 'paused-animation' : ''
-                      }`}
+                      className={`h-full bg-brand-gold rounded-full animate-hero-progress ${isHovered ? 'paused-animation' : ''
+                        }`}
                     />
                   </div>
                 </div>
