@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { heroSlides } from '../data/heroData';
 
-const AUTOPLAY_DURATION = 3000; // 3.0 seconds per slide
+const AUTOPLAY_DURATION = 4000; // 4.0 seconds per slide
 
 const Hero = ({ darkMode = true }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -108,8 +108,8 @@ const Hero = ({ darkMode = true }) => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className={`relative w-full rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-500 ${darkMode
-            ? 'border-brand-gold/30 bg-brand-card shadow-black/80'
-            : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/80'
+              ? 'border-brand-gold/30 bg-brand-card shadow-black/80'
+              : 'border-brand-gold/40 bg-brand-cream shadow-gray-300/80'
             }`}
         >
 
@@ -163,8 +163,8 @@ const Hero = ({ darkMode = true }) => {
                       key={slide.id}
                       onClick={() => goToSlide(idx)}
                       className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentSlide
-                        ? 'w-6 sm:w-8 bg-brand-gold'
-                        : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/70'
+                          ? 'w-6 sm:w-8 bg-brand-gold'
+                          : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/70'
                         }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
