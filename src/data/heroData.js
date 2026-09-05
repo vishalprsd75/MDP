@@ -15,6 +15,28 @@ export const heroSlides = [
     ctaLink: "#sales"
   },
   {
+    id: "slide-dyeing-vats",
+    image: "/images/craft_dyeing_vats.jpg",
+    alt: "Traditional artisan textile dyeing in steaming indigo and saffron vats",
+    eyebrow: "HERITAGE TEXTILE PROCESSING",
+    titleLine1: "Vibrant Dyeing.",
+    titleLine2: "Deep Color Saturation.",
+    supportingLine: "Indigo Vats • Pure Cottons • Mulberry Silks • Chiffons • Colorfast Shades",
+    cta: "Explore Our Fabrics",
+    ctaLink: "#sales"
+  },
+  {
+    id: "slide-screen-artisan",
+    image: "/images/craft_screen_printing.jpg",
+    alt: "Precision gold and crimson screen printing on luxury silk fabric",
+    eyebrow: "SURFACE ARTISTRY & EMBELLISHMENT",
+    titleLine1: "Precision Printing.",
+    titleLine2: "Masterful Craftsmanship.",
+    supportingLine: "Long Table Printing • Metallic Pastes • Sharp Motifs • Wholesale Ready",
+    cta: "Explore Our Fabrics",
+    ctaLink: "#sales"
+  },
+  {
     id: "slide-textiles",
     image: "/images/hero_textile.jpg",
     alt: "Munna Dyeing Printing - Hand-dyed fabrics, textile bolts, and artisan fabric rolls",
@@ -22,28 +44,6 @@ export const heroSlides = [
     titleLine1: "Crafted Fabrics.",
     titleLine2: "Distinctive Finishes.",
     supportingLine: "Dyeing • Screen Printing • Shibori • Block Print • Kalamkari • Batik",
-    cta: "Explore Our Fabrics",
-    ctaLink: "#sales"
-  },
-  {
-    id: "slide-dyeing",
-    image: "/images/gallery_dyeing.jpg",
-    alt: "Precision fabric dyeing on cotton, chiffon, and silk bases",
-    eyebrow: "IN-HOUSE TEXTILE PROCESSING",
-    titleLine1: "Vibrant Dyeing.",
-    titleLine2: "True Color Fastness.",
-    supportingLine: "Cotton • Pure Chiffon • Mulberry Silk • Linen • Dyeable Blends",
-    cta: "Explore Our Fabrics",
-    ctaLink: "#sales"
-  },
-  {
-    id: "slide-printing",
-    image: "/images/gallery_screen_printing.jpg",
-    alt: "Traditional hand-crafted textile printing and precision screen printing",
-    eyebrow: "HERITAGE SURFACE ARTISTRY",
-    titleLine1: "Precision Printing.",
-    titleLine2: "Handcrafted Artistry.",
-    supportingLine: "Hand Block Print • Precision Screen • Shibori • Crackle Batik",
     cta: "Explore Our Fabrics",
     ctaLink: "#sales"
   }
