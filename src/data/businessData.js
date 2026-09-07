@@ -175,6 +175,14 @@ export const galleryItems = [
   },
   {
     id: 3,
+    title: "Showroom Dyeable Fabrics & Borders",
+    serviceId: "dyeing",
+    category: "Dyeing",
+    image: "/images/client_boutique_counter.jpg",
+    description: "In-stock pure dyeable whites, raw silk yardages, gotta patti laces, and boutique borders ready for custom dyeing."
+  },
+  {
+    id: 4,
     title: "Vibrant Pure Dyed Fabric Layers",
     serviceId: "dyeing",
     category: "Dyeing",
@@ -182,7 +190,7 @@ export const galleryItems = [
     description: "Stacked pure dyed fabrics in brilliant colorfast shades of scarlet, royal blue, aqua, orange, and purple."
   },
   {
-    id: 4,
+    id: 5,
     title: "Screen Printing Screens & Pattern Frames",
     serviceId: "screen-printing",
     category: "Screen Printing",
@@ -190,7 +198,7 @@ export const galleryItems = [
     description: "Precision etched screen printing stencils and workshop frames showcasing intricate floral vine and geometric border patterns."
   },
   {
-    id: 5,
+    id: 6,
     title: "Precision Screen Printing Artistry",
     serviceId: "screen-printing",
     category: "Screen Printing",
@@ -198,7 +206,7 @@ export const galleryItems = [
     description: "Gold metallic paste screen printing process on dark charcoal cotton fabric for luxury apparel."
   },
   {
-    id: 6,
+    id: 7,
     title: "Long-Table Hand Block Printing",
     serviceId: "block-print",
     category: "Block Print",
@@ -206,7 +214,7 @@ export const galleryItems = [
     description: "Artisan hand stamping repeating block print motifs along the workshop printing table with drying fabrics overhead."
   },
   {
-    id: 7,
+    id: 8,
     title: "Authentic Hand Block Print Yardages",
     serviceId: "block-print",
     category: "Block Print",
@@ -214,7 +222,7 @@ export const galleryItems = [
     description: "Hand block printed cotton and silk yardages showcasing peacock, floral, and heritage border designs."
   },
   {
-    id: 8,
+    id: 9,
     title: "In-House Lotus Kalamkari Printing",
     serviceId: "kalamkari",
     category: "Kalamkari",
@@ -222,7 +230,15 @@ export const galleryItems = [
     description: "Live from our printing table: handcrafted lotus floral motif saree with rich zari border crafted at Munna Dyeing Printing."
   },
   {
-    id: 9,
+    id: 10,
+    title: "Heritage Kalamkari Artwork Motifs",
+    serviceId: "kalamkari",
+    category: "Kalamkari",
+    image: "/images/gallery_kalamkari.jpg",
+    description: "Classic Kalamkari lotus and peacock vine motifs rendered with traditional organic dye craftsmanship."
+  },
+  {
+    id: 11,
     title: "Traditional Shibori Indigo Tie-Dye",
     serviceId: "shibori",
     category: "Shibori",
@@ -230,7 +246,7 @@ export const galleryItems = [
     description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision resist dyeing."
   },
   {
-    id: 10,
+    id: 12,
     title: "Batik Wax Resist Dyeing",
     serviceId: "batik",
     category: "Batik",
