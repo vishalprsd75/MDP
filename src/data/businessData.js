@@ -159,23 +159,23 @@ export const salesProducts = [
 export const galleryItems = [
   {
     id: 1,
-    title: "In-House Lotus Kalamkari Printing",
-    serviceId: "kalamkari",
-    category: "Kalamkari",
-    image: "/images/client_kalamkari_table.jpg",
-    description: "Live from our printing table: handcrafted lotus floral motif saree with rich zari border crafted at Munna Dyeing Printing."
+    title: "In-House Fabric Dyeing Process",
+    serviceId: "dyeing",
+    category: "Dyeing",
+    image: "/images/client_dyeing_process.jpg",
+    description: "Master artisan preparing and boiling fabric in custom dye vats with precision color formulations at our Hyderabad unit."
   },
   {
     id: 2,
-    title: "Authentic Hand Block Print Yardages",
-    serviceId: "block-print",
-    category: "Block Print",
-    image: "/images/client_block_prints.jpg",
-    description: "Hand block printed cotton and silk yardages showcasing peacock, floral, and heritage border designs."
+    title: "Workshop Dye Formulations & Pigments",
+    serviceId: "dyeing",
+    category: "Dyeing",
+    image: "/images/client_dye_pigments.jpg",
+    description: "Artisanal pigment jars, vibrant dye powders, and custom shade mixing station inside the Munna Dyeing workshop."
   },
   {
     id: 3,
-    title: "Vibrant Fabric Dyeing Layers",
+    title: "Vibrant Pure Dyed Fabric Layers",
     serviceId: "dyeing",
     category: "Dyeing",
     image: "/images/client_dyed_fabrics.jpg",
@@ -183,38 +183,54 @@ export const galleryItems = [
   },
   {
     id: 4,
-    title: "Ombre Dip-Dyed Kota Silk Saree",
-    serviceId: "dyeing",
-    category: "Dyeing",
-    image: "/images/client_ombre_saree.jpg",
-    description: "Artisanal dual-tone ombre yellow-to-forest green dip-dyed fabric with delicate silver floral embroidery."
+    title: "Screen Printing Screens & Pattern Frames",
+    serviceId: "screen-printing",
+    category: "Screen Printing",
+    image: "/images/client_screen_frames.jpg",
+    description: "Precision etched screen printing stencils and workshop frames showcasing intricate floral vine and geometric border patterns."
   },
   {
     id: 5,
-    title: "Pure Georgette with Gotta Patti",
-    serviceId: "screen-printing",
-    category: "Screen Printing",
-    image: "/images/client_georgette_saree.jpg",
-    description: "Pure georgette and chinon fabric in celebratory yellow and crimson with scalloped gotta patti borders."
-  },
-  {
-    id: 6,
-    title: "Traditional Shibori Tie-Dye",
-    serviceId: "shibori",
-    category: "Shibori",
-    image: "/images/gallery_shibori.jpg",
-    description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision dyeing."
-  },
-  {
-    id: 7,
-    title: "Precision Screen Printing",
+    title: "Precision Screen Printing Artistry",
     serviceId: "screen-printing",
     category: "Screen Printing",
     image: "/images/gallery_screen_printing.jpg",
     description: "Gold metallic paste screen printing process on dark charcoal cotton fabric for luxury apparel."
   },
   {
+    id: 6,
+    title: "Long-Table Hand Block Printing",
+    serviceId: "block-print",
+    category: "Block Print",
+    image: "/images/client_workshop_longtable.jpg",
+    description: "Artisan hand stamping repeating block print motifs along the workshop printing table with drying fabrics overhead."
+  },
+  {
+    id: 7,
+    title: "Authentic Hand Block Print Yardages",
+    serviceId: "block-print",
+    category: "Block Print",
+    image: "/images/client_block_prints.jpg",
+    description: "Hand block printed cotton and silk yardages showcasing peacock, floral, and heritage border designs."
+  },
+  {
     id: 8,
+    title: "In-House Lotus Kalamkari Printing",
+    serviceId: "kalamkari",
+    category: "Kalamkari",
+    image: "/images/client_kalamkari_table.jpg",
+    description: "Live from our printing table: handcrafted lotus floral motif saree with rich zari border crafted at Munna Dyeing Printing."
+  },
+  {
+    id: 9,
+    title: "Traditional Shibori Indigo Tie-Dye",
+    serviceId: "shibori",
+    category: "Shibori",
+    image: "/images/gallery_shibori.jpg",
+    description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision resist dyeing."
+  },
+  {
+    id: 10,
     title: "Batik Wax Resist Dyeing",
     serviceId: "batik",
     category: "Batik",

@@ -27,12 +27,12 @@ export const heroSlides = [
   },
   {
     id: "slide-screen-artisan",
-    image: "/images/craft_screen_printing.jpg",
-    alt: "Precision gold and crimson screen printing on luxury silk fabric",
-    eyebrow: "SURFACE ARTISTRY & EMBELLISHMENT",
+    image: "/images/client_printing_table.jpg",
+    alt: "Munna Dyeing Printing - Artisan hand printing at the long workshop table",
+    eyebrow: "SURFACE ARTISTRY & PRODUCTION",
     titleLine1: "Precision Printing.",
     titleLine2: "Masterful Craftsmanship.",
-    supportingLine: "Long Table Printing • Metallic Pastes • Sharp Motifs • Wholesale Ready",
+    supportingLine: "Long Table Printing • Traditional Inks • Hand Stamped Motifs • Hyderabad Unit",
     cta: "Explore Our Fabrics",
     ctaLink: "#sales"
   },
