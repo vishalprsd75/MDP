@@ -90,9 +90,9 @@ const Logo = ({
       {/* 3. Complete Business Name: MUNNA DYEING PRINTING (SAME SIZE) */}
       <div className="flex flex-col justify-center select-none">
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 whitespace-nowrap leading-none">
-          {/* MUNNA (Metallic Gold) */}
+          {/* MUNNA (Metallic Gold in Montserrat font-brand) */}
           <span
-            className={`font-heading font-black tracking-[0.06em] uppercase transition-all duration-300 leading-tight sm:leading-none ${sharedTypographySize} ${
+            className={`font-brand font-black tracking-[0.04em] uppercase transition-all duration-300 leading-tight sm:leading-none ${sharedTypographySize} ${
               darkMode
                 ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,215,0,0.4)] group-hover:brightness-110'
                 : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
@@ -101,9 +101,9 @@ const Logo = ({
             MUNNA
           </span>
 
-          {/* DYEING PRINTING (Exact Same Size, Font & Weight — Royal Sapphire Blue) */}
+          {/* DYEING PRINTING (Exact Same Size, Font & Weight — Royal Sapphire Blue in Montserrat font-brand) */}
           <span
-            className={`font-heading font-black tracking-[0.06em] uppercase transition-all duration-300 leading-tight sm:leading-none mt-0.5 sm:mt-0 ${sharedTypographySize} ${
+            className={`font-brand font-black tracking-[0.04em] uppercase transition-all duration-300 leading-tight sm:leading-none mt-0.5 sm:mt-0 ${sharedTypographySize} ${
               darkMode
                 ? 'text-[#38bdf8] group-hover:text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
                 : 'text-[#a37f37] group-hover:text-[#0b2559]'
