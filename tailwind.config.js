@@ -33,6 +33,7 @@ export default {
         modern: ['"Syne"', '"Plus Jakarta Sans"', 'sans-serif'],
         impact: ['"Oswald"', '"Plus Jakarta Sans"', 'sans-serif'],
         brand: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif'],
+        swash: ['"Berkshire Swash"', 'serif'],
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(135deg, #e2c97c 0%, #c5a059 50%, #a37f37 100%)',
