@@ -6,21 +6,29 @@ import { instantScrollToTop } from '../utils/navigation';
  */
 export const useHashRoute = () => {
   const [activeCategoryPage, setActiveCategoryPage] = useState(null);
+  const [isFontPreviewOpen, setIsFontPreviewOpen] = useState(false);
 
-  // Synchronously reset scroll position whenever category page changes
+  // Synchronously reset scroll position whenever view changes
   useLayoutEffect(() => {
     instantScrollToTop();
-  }, [activeCategoryPage]);
+  }, [activeCategoryPage, isFontPreviewOpen]);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#category=')) {
-        const catName = decodeURIComponent(hash.replace('#category=', ''));
-        setActiveCategoryPage(catName);
-        instantScrollToTop();
-      } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
+      if (hash === '#fonts' || hash === '#font-preview' || hash === '#font-studio') {
+        setIsFontPreviewOpen(true);
         setActiveCategoryPage(null);
+        instantScrollToTop();
+      } else {
+        setIsFontPreviewOpen(false);
+        if (hash.startsWith('#category=')) {
+          const catName = decodeURIComponent(hash.replace('#category=', ''));
+          setActiveCategoryPage(catName);
+          instantScrollToTop();
+        } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
+          setActiveCategoryPage(null);
+        }
       }
     };
 
@@ -35,8 +43,28 @@ export const useHashRoute = () => {
     };
   }, []);
 
+  const handleOpenFontPreview = () => {
+    instantScrollToTop();
+    if (window.location.hash !== '#fonts') {
+      window.history.pushState(null, '', '#fonts');
+    }
+    setIsFontPreviewOpen(true);
+    setActiveCategoryPage(null);
+    instantScrollToTop();
+  };
+
+  const handleCloseFontPreview = () => {
+    instantScrollToTop();
+    if (window.location.hash !== '' && window.location.hash !== '#hero') {
+      window.history.pushState(null, '', '#hero');
+    }
+    setIsFontPreviewOpen(false);
+    instantScrollToTop();
+  };
+
   const handleOpenCategoryPage = (category) => {
     instantScrollToTop();
+    setIsFontPreviewOpen(false);
     const newHash = `#category=${encodeURIComponent(category)}`;
     if (window.location.hash !== newHash) {
       window.history.pushState(null, '', newHash);
@@ -47,6 +75,7 @@ export const useHashRoute = () => {
 
   const handleBackToHome = () => {
     instantScrollToTop();
+    setIsFontPreviewOpen(false);
     if (window.location.hash !== '' && window.location.hash !== '#hero') {
       window.history.pushState(null, '', '#hero');
     }
@@ -65,7 +94,10 @@ export const useHashRoute = () => {
 
   return {
     activeCategoryPage,
+    isFontPreviewOpen,
     handleOpenCategoryPage,
+    handleOpenFontPreview,
+    handleCloseFontPreview,
     handleBackToHome,
     handleGoBack
   };

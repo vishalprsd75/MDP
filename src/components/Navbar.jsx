@@ -94,6 +94,20 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
               <MessageSquare className="w-5 h-5" />
             </a>
             
+            {/* Font Preview Studio Quick Link */}
+            <a
+              href="#fonts"
+              className={`p-2.5 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                darkMode
+                  ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
+                  : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
+              }`}
+              title="Open Font Preview Studio"
+            >
+              <span className="text-sm">🔤</span>
+              <span className="hidden lg:inline font-bold">Fonts</span>
+            </a>
+
             {/* Single Prominent Contact Button */}
             <a
               href="#contact"
@@ -168,6 +182,21 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
                 {link.name}
               </a>
             ))}
+
+            {/* Font Preview Studio in Mobile Drawer */}
+            <a
+              href="#fonts"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-bold text-brand-dark bg-gold-gradient shadow-md mt-2"
+            >
+              <div className="flex items-center gap-2">
+                <span>🔤</span>
+                <span>Test Brand Fonts</span>
+              </div>
+              <span className="text-[10px] uppercase tracking-wider bg-black/20 px-2 py-0.5 rounded text-brand-dark font-black">
+                Studio
+              </span>
+            </a>
           </div>
         </div>
       )}

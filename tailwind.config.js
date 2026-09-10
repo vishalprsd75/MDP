@@ -34,6 +34,12 @@ export default {
         impact: ['"Oswald"', '"Plus Jakarta Sans"', 'sans-serif'],
         brand: ['"Montserrat"', '"Plus Jakarta Sans"', 'sans-serif'],
         swash: ['"Berkshire Swash"', 'serif'],
+        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+        abril: ['"Abril Fatface"', 'cursive', 'serif'],
+        dmserif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        marcellus: ['"Marcellus"', 'Georgia', 'serif'],
+        prata: ['"Prata"', 'Georgia', 'serif'],
+        righteous: ['"Righteous"', 'cursive', 'sans-serif'],
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(135deg, #e2c97c 0%, #c5a059 50%, #a37f37 100%)',

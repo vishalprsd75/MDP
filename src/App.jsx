@@ -11,14 +11,23 @@ import {
   Footer,
   LightboxModal,
   ProductDetailsModal,
-  CategoryStorePage
+  CategoryStorePage,
+  FontPreviewStudio
 } from './components';
 import { useTheme } from './hooks/useTheme';
 import { useHashRoute } from './hooks/useHashRoute';
 
 function App() {
   const { darkMode, toggleTheme } = useTheme();
-  const { activeCategoryPage, handleOpenCategoryPage, handleBackToHome, handleGoBack } = useHashRoute();
+  const {
+    activeCategoryPage,
+    isFontPreviewOpen,
+    handleOpenCategoryPage,
+    handleOpenFontPreview,
+    handleCloseFontPreview,
+    handleBackToHome,
+    handleGoBack
+  } = useHashRoute();
 
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -36,8 +45,15 @@ function App() {
         onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
       />
 
-      {/* DYNAMIC VIEW ROUTER: Category Store Page OR Main Landing Page */}
-      {activeCategoryPage !== null ? (
+      {/* DYNAMIC VIEW ROUTER: Font Preview Studio OR Category Store Page OR Main Landing Page */}
+      {isFontPreviewOpen ? (
+        <FontPreviewStudio
+          darkMode={darkMode}
+          onToggleTheme={toggleTheme}
+          onClose={handleCloseFontPreview}
+          onNavigateHome={handleBackToHome}
+        />
+      ) : activeCategoryPage !== null ? (
         <CategoryStorePage
           category={activeCategoryPage}
           onBackToHome={handleBackToHome}
@@ -81,9 +97,24 @@ function App() {
         darkMode={darkMode}
       />
 
+      {/* Quick Launch Floating Pill for Font Preview Studio */}
+      {!isFontPreviewOpen && (
+        <aside aria-label="Font Preview Studio" className="fixed bottom-5 left-5 z-40">
+          <button
+            onClick={handleOpenFontPreview}
+            className="group flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-brand-gold-dark via-brand-gold to-brand-gold-light text-brand-dark font-bold text-xs shadow-2xl hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transform hover:scale-105 transition-all duration-300 border border-white/40"
+            title="Open Interactive Font Preview Studio"
+          >
+            <span className="text-sm">🔤</span>
+            <span className="tracking-wide">Choose Font</span>
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          </button>
+        </aside>
+      )}
+
     </div>
   );
-}
+};
 
 export default App;
 

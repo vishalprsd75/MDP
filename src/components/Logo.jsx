@@ -1,17 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../config/siteConfig';
 
 /**
  * Official MDP Navbar Brand Identity
  * 
- * Master Lockup:
- * [COMPACT MDP LOGO] + “MUNNA DYEING PRINTING” (Exact Same Font Size)
- * 
- * Rules:
- * 1. Both "MUNNA" and "DYEING PRINTING" are rendered in the EXACT same font size.
- * 2. The MDP logo is kept more compact/smaller than the brand name to give ample space.
- * 3. Verified responsive design for mobile phones (fits with breathing room, no overflow).
- * 4. Colors: 3D Metallic Gold for "MUNNA" + Royal Sapphire Blue for "DYEING PRINTING".
+ * Clean Wordmark:
+ * “Munna Dyeing Printing” (Strictly Single-Line on Mobile & Desktop)
  */
 const Logo = ({
   darkMode = true,
@@ -20,6 +14,36 @@ const Logo = ({
   showLogo = false, // Clean pure wordmark in navbar; emblem kept in Footer/Story
   className = ''
 }) => {
+  // Synchronize with active font selection from Font Preview Studio
+  const [activeFontFamily, setActiveFontFamily] = useState(() => {
+    return localStorage.getItem('mdp_selected_font_family') || null;
+  });
+  const [activeCasing, setActiveCasing] = useState(() => {
+    return localStorage.getItem('mdp_selected_font_casing') || 'title';
+  });
+  const [activeShowLogo, setActiveShowLogo] = useState(() => {
+    const saved = localStorage.getItem('mdp_selected_font_show_emblem');
+    return saved !== null ? saved === 'true' : showLogo;
+  });
+
+  useEffect(() => {
+    const handleFontChanged = () => {
+      setActiveFontFamily(localStorage.getItem('mdp_selected_font_family') || null);
+      setActiveCasing(localStorage.getItem('mdp_selected_font_casing') || 'title');
+      const saved = localStorage.getItem('mdp_selected_font_show_emblem');
+      if (saved !== null) {
+        setActiveShowLogo(saved === 'true');
+      }
+    };
+
+    window.addEventListener('mdp_font_changed', handleFontChanged);
+    window.addEventListener('storage', handleFontChanged);
+
+    return () => {
+      window.removeEventListener('mdp_font_changed', handleFontChanged);
+      window.removeEventListener('storage', handleFontChanged);
+    };
+  }, [showLogo]);
 
   // The 100% Fixed, Approved MDP Logo Emblem (Never modified, recolored, or cropped)
   const renderFixedLogo = (imgClass) => {
@@ -73,10 +97,13 @@ const Logo = ({
     ? 'text-2xl sm:text-3xl md:text-4xl'
     : 'text-[15px] min-[375px]:text-base sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
 
+  const munnaLabel = activeCasing === 'upper' ? 'MUNNA' : 'Munna';
+  const dyeingLabel = activeCasing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
+
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
-      {/* Optional Emblem (Only when explicitly enabled with showLogo={true}) */}
-      {showLogo && (
+      {/* Optional Emblem (Only when explicitly enabled) */}
+      {activeShowLogo && (
         <>
           {renderFixedLogo(
             isFooter
@@ -94,27 +121,32 @@ const Logo = ({
 
       {/* Complete Business Name Wordmark: Munna Dyeing Printing (ALWAYS ONE SINGLE LINE) */}
       <div className="flex items-center justify-center select-none py-0.5">
-        <div className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none">
-          {/* Munna (Berkshire Swash — 3D Metallic Gold) */}
+        <div
+          className={`flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none ${
+            !activeFontFamily ? 'font-swash' : ''
+          }`}
+          style={activeFontFamily ? { fontFamily: activeFontFamily } : undefined}
+        >
+          {/* Munna (3D Metallic Gold) */}
           <span
-            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode
                 ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
                 : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
             }`}
           >
-            Munna
+            {munnaLabel}
           </span>
 
-          {/* Dyeing Printing (Berkshire Swash — Exact Same Size & Font — Royal Sapphire Blue) */}
+          {/* Dyeing Printing (Exact Same Size & Font — Royal Sapphire Blue) */}
           <span
-            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode
                 ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
                 : 'text-[#a37f37] group-hover:text-[#0b2559]'
             }`}
           >
-            Dyeing Printing
+            {dyeingLabel}
           </span>
         </div>
       </div>
@@ -123,3 +155,4 @@ const Logo = ({
 };
 
 export default Logo;
+
