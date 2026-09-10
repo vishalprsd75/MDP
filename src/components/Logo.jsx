@@ -68,10 +68,10 @@ const Logo = ({
   const isFooter = size === 'lg';
 
   // Shared font size class for BOTH "Munna" and "Dyeing Printing"
-  // Beautifully scaled for high-impact pure wordmark presence
+  // Beautifully scaled for high-impact single-line presence across all screen sizes
   const sharedTypographySize = isFooter
     ? 'text-2xl sm:text-3xl md:text-4xl'
-    : 'text-base xs:text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
+    : 'text-[15px] min-[375px]:text-base sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
 
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
@@ -92,12 +92,12 @@ const Logo = ({
         </>
       )}
 
-      {/* Complete Business Name Wordmark: Munna Dyeing Printing */}
-      <div className="flex flex-col justify-center select-none py-0.5">
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2.5 whitespace-nowrap leading-tight sm:leading-none">
+      {/* Complete Business Name Wordmark: Munna Dyeing Printing (ALWAYS ONE SINGLE LINE) */}
+      <div className="flex items-center justify-center select-none py-0.5">
+        <div className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none">
           {/* Munna (Berkshire Swash — 3D Metallic Gold) */}
           <span
-            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-tight sm:leading-none ${sharedTypographySize} ${
+            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode
                 ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
                 : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
@@ -108,7 +108,7 @@ const Logo = ({
 
           {/* Dyeing Printing (Berkshire Swash — Exact Same Size & Font — Royal Sapphire Blue) */}
           <span
-            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-tight sm:leading-none mt-0.5 sm:mt-0 ${sharedTypographySize} ${
+            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode
                 ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
                 : 'text-[#a37f37] group-hover:text-[#0b2559]'

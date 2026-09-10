@@ -39,7 +39,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
         <div className="flex items-center justify-between">
           
           {/* Official Brand Identity */}
-          <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none">
+          <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none shrink-0">
             <Logo darkMode={darkMode} size="md" />
           </a>
 
