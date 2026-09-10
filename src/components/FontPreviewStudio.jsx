@@ -1,25 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Check, Copy, ExternalLink, Moon, Sun, Smartphone, Monitor, Sparkles, RefreshCw, Palette } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ArrowLeft, Check, Copy, Moon, Sun, Smartphone, Monitor, Sparkles, Palette, Search, Filter } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const FONT_COLLECTION = [
+  // 1. Current Live & Swashes
   {
     id: 'berkshire',
     name: 'Berkshire Swash',
     category: 'Calligraphic Swash Serif',
+    group: 'artistic',
     cssFamily: '"Berkshire Swash", serif',
     tailwindClass: 'font-swash',
     weight: 'font-normal',
     letterSpacing: 'tracking-normal sm:tracking-wide',
     recommendedCase: 'title',
-    description: 'Current live font. Semi-sweet calligraphic swash serif with graceful flourishing initial capitals (M, D, P).',
+    description: 'Current live brand font. Semi-sweet calligraphic swash serif with graceful flourishing initial capitals (M, D, P).',
     vibe: 'Artisanal • Ornate • Distinctive',
     badge: 'Current Live',
   },
+
+  // 2. Indian Textile & Heritage Artisan
+  {
+    id: 'rozha',
+    name: 'Rozha One',
+    category: 'Indian Heritage High-Contrast Serif',
+    group: 'artistic',
+    cssFamily: '"Rozha One", serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Designed specifically with Indian typographic heritage. Dramatic contrast between thick downstrokes and razor-thin serifs. Radiates artisanal Indian fabric craft.',
+    vibe: 'Textile Heritage • Indian Art • Handcrafted',
+    badge: 'Textile Heritage',
+  },
+  {
+    id: 'shrikhand',
+    name: 'Shrikhand',
+    category: 'Artisanal Hand-Painted Script',
+    group: 'artistic',
+    cssFamily: '"Shrikhand", cursive, display',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Vibrant, thick, joyful Gujarati hand-painted signage script. Radiates warmth, authenticity, and generational fabric dye-house pride.',
+    vibe: 'Authentic • Vibrant • Workshop Pride',
+    badge: 'Artisan Pride',
+  },
+  {
+    id: 'yeseva',
+    name: 'Yeseva One',
+    category: 'Sculptural Curved Display Serif',
+    group: 'luxury',
+    cssFamily: '"Yeseva One", cursive, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-normal sm:tracking-wide',
+    recommendedCase: 'title',
+    description: 'Exquisite, sculptural display serif with swooping curved serifs. Unique, highly memorable, and high-fashion.',
+    vibe: 'Graceful • Sculptural • High-Fashion',
+    badge: 'Designer Pick',
+  },
+
+  // 3. High Impact & Ultra Bold
   {
     id: 'abril',
     name: 'Abril Fatface',
     category: 'Dramatic Display Serif',
+    group: 'bold',
     cssFamily: '"Abril Fatface", cursive, serif',
     tailwindClass: 'font-abril',
     weight: 'font-normal',
@@ -30,9 +79,54 @@ export const FONT_COLLECTION = [
     badge: 'Maximum Impact',
   },
   {
+    id: 'alfaslab',
+    name: 'Alfa Slab One',
+    category: 'Heavy Industrial Slab Serif',
+    group: 'bold',
+    cssFamily: '"Alfa Slab One", cursive, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wider',
+    recommendedCase: 'upper',
+    description: 'Solid 19th-century ultra-heavy English slab serif. Heavyweight industrial presence suited for large-scale fabric manufacturing and print shop authority.',
+    vibe: 'Heavy Duty • Manufacturing • Solid Authority',
+    badge: 'Ultra Heavy',
+  },
+  {
+    id: 'bebas',
+    name: 'Bebas Neue',
+    category: 'Towering Condensed Headline Sans',
+    group: 'bold',
+    cssFamily: '"Bebas Neue", sans-serif',
+    tailwindClass: 'font-sans',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-[0.08em]',
+    recommendedCase: 'upper',
+    description: 'World-famous clean condensed display sans. Towering vertical height, maximum impact, instantly catches the eye on billboards and storefronts.',
+    vibe: 'Billboard Bold • Tall & Proud • Powerful',
+    badge: 'Tall Headline',
+  },
+  {
+    id: 'righteous',
+    name: 'Righteous',
+    category: 'Art Deco Geometric Display',
+    group: 'bold',
+    cssFamily: '"Righteous", cursive, sans-serif',
+    tailwindClass: 'font-righteous',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wider',
+    recommendedCase: 'upper',
+    description: 'Streamlined Art Deco geometric display font. Sleek rounded letters with futuristic symmetry and striking modern presence.',
+    vibe: 'Art Deco • Sleek • Eye-Catching',
+    badge: 'Distinctive',
+  },
+
+  // 4. European Haute Couture & Luxury Serifs
+  {
     id: 'playfair',
     name: 'Playfair Display',
     category: 'Haute Couture Editorial Serif',
+    group: 'luxury',
     cssFamily: '"Playfair Display", Georgia, serif',
     tailwindClass: 'font-playfair',
     weight: 'font-black',
@@ -46,12 +140,13 @@ export const FONT_COLLECTION = [
     id: 'dmserif',
     name: 'DM Serif Display',
     category: 'Contemporary Royal Serif',
+    group: 'luxury',
     cssFamily: '"DM Serif Display", Georgia, serif',
     tailwindClass: 'font-dmserif',
     weight: 'font-normal',
     letterSpacing: 'tracking-wide',
     recommendedCase: 'title',
-    description: 'Modern, high-contrast transitional serif with clean curves and robust stems. Looks imperial and executive.',
+    description: 'Modern, high-contrast transitional serif with clean curves and robust stems. Looks imperial, crisp, and executive.',
     vibe: 'Royal • Crisp • Executive',
     badge: 'Popular',
   },
@@ -59,6 +154,7 @@ export const FONT_COLLECTION = [
     id: 'marcellus',
     name: 'Marcellus',
     category: 'Flared Roman Imperial Serif',
+    group: 'luxury',
     cssFamily: '"Marcellus", Georgia, serif',
     tailwindClass: 'font-marcellus',
     weight: 'font-normal',
@@ -69,9 +165,52 @@ export const FONT_COLLECTION = [
     badge: 'Regal Heritage',
   },
   {
+    id: 'italiana',
+    name: 'Italiana',
+    category: 'Slender Italian Calligraphic Serif',
+    group: 'luxury',
+    cssFamily: '"Italiana", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-[0.08em]',
+    recommendedCase: 'upper',
+    description: 'Inspired by classical Italian calligraphy and architectural stonework. Slender, tall, and effortlessly sophisticated like a luxury perfume house.',
+    vibe: 'Slender • Runway Chic • Ultra-Refined',
+    badge: 'Runway Chic',
+  },
+  {
+    id: 'castoro',
+    name: 'Castoro Titling',
+    category: 'Renaissance Architectural Titling',
+    group: 'luxury',
+    cssFamily: '"Castoro Titling", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-[0.06em]',
+    recommendedCase: 'upper',
+    description: 'Noble Italian Renaissance titling capitals. Carved stone dignity with generous proportions and razor-sharp serifs.',
+    vibe: 'Architectural • Monumental • Noble',
+    badge: 'Renaissance',
+  },
+  {
+    id: 'bellefair',
+    name: 'Bellefair',
+    category: 'Haute Couture Silk Display Serif',
+    group: 'luxury',
+    cssFamily: '"Bellefair", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Whisper-thin, tall, delicate fashion serif. Captures the airy luxury of pure georgette, chiffon, and raw silk.',
+    vibe: 'Silk Touch • Whispering Luxury • Chic',
+    badge: 'Pure Silk',
+  },
+  {
     id: 'prata',
     name: 'Prata',
     category: 'Teardrop Didot Serif',
+    group: 'luxury',
     cssFamily: '"Prata", Georgia, serif',
     tailwindClass: 'font-prata',
     weight: 'font-normal',
@@ -82,35 +221,10 @@ export const FONT_COLLECTION = [
     badge: 'Artisan Chic',
   },
   {
-    id: 'cinzel-dec',
-    name: 'Cinzel Decorative',
-    category: 'Flourished Roman Inscription',
-    cssFamily: '"Cinzel Decorative", "Cinzel", Georgia, serif',
-    tailwindClass: 'font-heritage',
-    weight: 'font-bold',
-    letterSpacing: 'tracking-[0.08em]',
-    recommendedCase: 'upper',
-    description: 'Elaborate Roman inscriptional with dramatic artistic swashes and flourishes on classical capitals. Feels like an ancient seal.',
-    vibe: 'Ceremonial • Majestic • Regal',
-    badge: 'Majestic',
-  },
-  {
-    id: 'righteous',
-    name: 'Righteous',
-    category: 'Art Deco Geometric Display',
-    cssFamily: '"Righteous", cursive, sans-serif',
-    tailwindClass: 'font-righteous',
-    weight: 'font-normal',
-    letterSpacing: 'tracking-wider',
-    recommendedCase: 'upper',
-    description: 'Streamlined Art Deco geometric display font. Sleek rounded letters with futuristic symmetry and striking modern presence.',
-    vibe: 'Art Deco • Sleek • Eye-Catching',
-    badge: 'Distinctive',
-  },
-  {
     id: 'bodoni',
     name: 'Bodoni Moda',
     category: 'Italian High-Fashion Serif',
+    group: 'luxury',
     cssFamily: '"Bodoni Moda", Georgia, serif',
     tailwindClass: 'font-fashion',
     weight: 'font-black',
@@ -121,9 +235,98 @@ export const FONT_COLLECTION = [
     badge: 'Haute Couture',
   },
   {
+    id: 'unna',
+    name: 'Unna Bold',
+    category: 'Refined Heritage Continental Serif',
+    group: 'luxury',
+    cssFamily: '"Unna", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Warm neoclassical curves with strong roots in continental literature and artisanal books. Dignified, trusted, and timeless.',
+    vibe: 'Classic Dignity • Soft Neoclassical • Trusted',
+    badge: 'Heritage Warmth',
+  },
+  {
+    id: 'cinzel-dec',
+    name: 'Cinzel Decorative',
+    category: 'Flourished Roman Inscription',
+    group: 'luxury',
+    cssFamily: '"Cinzel Decorative", "Cinzel", Georgia, serif',
+    tailwindClass: 'font-heritage',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-[0.08em]',
+    recommendedCase: 'upper',
+    description: 'Elaborate Roman inscriptional with dramatic artistic swashes and flourishes on classical capitals. Feels like an ancient imperial seal.',
+    vibe: 'Ceremonial • Majestic • Regal',
+    badge: 'Majestic',
+  },
+  {
+    id: 'cinzel',
+    name: 'Cinzel Classical',
+    category: 'Pure Roman Capital Serif',
+    group: 'luxury',
+    cssFamily: '"Cinzel", Georgia, serif',
+    tailwindClass: 'font-roman',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-[0.1em]',
+    recommendedCase: 'upper',
+    description: 'Disciplined classical Roman inscriptional proportions. Crisp, clean, monumental gravitas.',
+    vibe: 'Monumental • Timeless • Prestige',
+    badge: 'Clean Roman',
+  },
+  {
+    id: 'cormorant',
+    name: 'Cormorant Garamond',
+    category: 'Fine Historical Heritage Serif',
+    group: 'luxury',
+    cssFamily: '"Cormorant Garamond", Georgia, serif',
+    tailwindClass: 'font-heading',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Graceful Renaissance serif with sharp diamond terminals, tall ascenders, and delicate hairline balance. Traditional literary luxury.',
+    vibe: 'Traditional Luxury • Fine Art • Heritage',
+    badge: 'Historical Heritage',
+  },
+
+  // 5. Artistic Scripts & Calligraphy
+  {
+    id: 'philosopher',
+    name: 'Philosopher Bold',
+    category: 'Artistic Flared Byzantine Serif',
+    group: 'artistic',
+    cssFamily: '"Philosopher", sans-serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Expressive flared terminal curves inspired by ancient Byzantine calligraphy. Completely distinct from conventional web fonts.',
+    vibe: 'Mystical • Artistic • Flared Dignity',
+    badge: 'Artistic Flared',
+  },
+  {
+    id: 'lobstertwo',
+    name: 'Lobster Two Bold',
+    category: 'Boutique Vintage Upright Script',
+    group: 'artistic',
+    cssFamily: '"Lobster Two", cursive, display',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Upright, friendly, premium vintage script with smooth connecting ligatures. Gives a welcoming artisanal boutique warmth.',
+    vibe: 'Vintage Boutique • Warm Craft • Friendly',
+    badge: 'Vintage Script',
+  },
+
+  // 6. Modern & Industrial Sans
+  {
     id: 'syne',
     name: 'Syne ExtraBold',
     category: 'Avant-Garde Architectural Sans',
+    group: 'modern',
     cssFamily: '"Syne", sans-serif',
     tailwindClass: 'font-modern',
     weight: 'font-extrabold',
@@ -137,6 +340,7 @@ export const FONT_COLLECTION = [
     id: 'montserrat',
     name: 'Montserrat Black',
     category: 'Industrial Commercial Sans',
+    group: 'modern',
     cssFamily: '"Montserrat", sans-serif',
     tailwindClass: 'font-brand',
     weight: 'font-black',
@@ -146,19 +350,14 @@ export const FONT_COLLECTION = [
     vibe: 'Corporate • Heavy-Duty • Commercial',
     badge: 'Business Card Style',
   },
-  {
-    id: 'cinzel',
-    name: 'Cinzel Classical',
-    category: 'Pure Roman Capital Serif',
-    cssFamily: '"Cinzel", Georgia, serif',
-    tailwindClass: 'font-roman',
-    weight: 'font-bold',
-    letterSpacing: 'tracking-[0.1em]',
-    recommendedCase: 'upper',
-    description: 'Disciplined classical Roman inscriptional proportions. Crisp, clean, monumental gravitas.',
-    vibe: 'Monumental • Timeless • Prestige',
-    badge: 'Clean Roman',
-  },
+];
+
+export const CATEGORY_TABS = [
+  { id: 'all', label: 'All Fonts', count: FONT_COLLECTION.length },
+  { id: 'luxury', label: '👑 Luxury & Royal Serifs', count: FONT_COLLECTION.filter(f => f.group === 'luxury').length },
+  { id: 'artistic', label: '🎨 Calligraphic & Heritage', count: FONT_COLLECTION.filter(f => f.group === 'artistic').length },
+  { id: 'bold', label: '⚡ High Impact & Bold', count: FONT_COLLECTION.filter(f => f.group === 'bold').length },
+  { id: 'modern', label: '📐 Modern & Industrial', count: FONT_COLLECTION.filter(f => f.group === 'modern').length },
 ];
 
 export const COLOR_SCHEMES = [
@@ -195,6 +394,8 @@ const FontPreviewStudio = ({
     return FONT_COLLECTION.find((f) => f.id === saved) || FONT_COLLECTION[0];
   });
 
+  const [activeGroup, setActiveGroup] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [casing, setCasing] = useState('title'); // 'title' | 'upper'
   const [showEmblem, setShowEmblem] = useState(false);
   const [colorScheme, setColorScheme] = useState('dual');
@@ -202,10 +403,24 @@ const FontPreviewStudio = ({
   const [copiedNotification, setCopiedNotification] = useState(false);
   const [appliedNotification, setAppliedNotification] = useState(false);
 
-  // Sync with localStorage on font selection
+  // Filtered fonts based on tab & search query
+  const filteredFonts = useMemo(() => {
+    return FONT_COLLECTION.filter((font) => {
+      const matchesGroup = activeGroup === 'all' || font.group === activeGroup;
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        q === '' ||
+        font.name.toLowerCase().includes(q) ||
+        font.category.toLowerCase().includes(q) ||
+        font.vibe.toLowerCase().includes(q) ||
+        font.badge.toLowerCase().includes(q) ||
+        font.description.toLowerCase().includes(q);
+      return matchesGroup && matchesSearch;
+    });
+  }, [activeGroup, searchQuery]);
+
   const handleSelectFont = (font) => {
     setSelectedFont(font);
-    // Optionally auto-set recommended case
     if (font.recommendedCase && font.recommendedCase !== casing) {
       setCasing(font.recommendedCase);
     }
@@ -335,7 +550,7 @@ Color Scheme: ${colorScheme}`;
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/15 text-brand-gold border border-brand-gold/30 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Interactive Brand Typography Studio</span>
+              <span>Interactive Brand Typography Studio — {FONT_COLLECTION.length} Curated Fonts</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
               Test & Choose Your Brand Font
@@ -624,7 +839,7 @@ Color Scheme: ${colorScheme}`;
               </div>
             )}
 
-            {/* MOBILE PHONE SIMULATION (Actual 375px Device Frame) */}
+            {/* MOBILE PHONE SIMULATION (Actual 360px Device Frame) */}
             {(previewDevice === 'both' || previewDevice === 'phone') && (
               <div
                 className={`rounded-2xl border p-5 shadow-xl transition-all ${
@@ -716,20 +931,61 @@ Color Scheme: ${colorScheme}`;
           </div>
         </div>
 
-        {/* FONT SELECTOR GALLERY: Choose One-by-One */}
-        <div className="space-y-4 pt-6">
-          <div className="flex items-center justify-between">
+        {/* FONT SELECTOR GALLERY: Categories + Search + Cards */}
+        <div className="space-y-5 pt-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-brand-gold">Curated Font Library</div>
               <h3 className="text-2xl font-bold mt-0.5">Click Any Font to Preview Instantly</h3>
             </div>
-            <span className="text-xs text-gray-400">
-              {FONT_COLLECTION.length} Professional Fonts Available
-            </span>
+
+            {/* Live Search Input */}
+            <div className="relative w-full md:w-72">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search font name or style..."
+                className={`w-full pl-9 pr-4 py-2 rounded-xl text-xs border focus:outline-none focus:ring-1 focus:ring-brand-gold transition-all ${
+                  darkMode
+                    ? 'bg-[#101726] border-white/10 text-gray-200 placeholder-gray-500'
+                    : 'bg-white border-gray-300 text-gray-800 placeholder-gray-400'
+                }`}
+              />
+            </div>
           </div>
 
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            {CATEGORY_TABS.map((tab) => {
+              const isActive = activeGroup === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveGroup(tab.id)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 border ${
+                    isActive
+                      ? 'bg-brand-gold text-brand-dark border-brand-gold shadow-md font-bold'
+                      : darkMode
+                      ? 'bg-[#101726] border-white/10 text-gray-400 hover:text-white hover:border-white/20'
+                      : 'bg-white border-gray-300 text-gray-600 hover:text-black hover:border-gray-400 shadow-sm'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                    isActive ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                  }`}>
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Font Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FONT_COLLECTION.map((font) => {
+            {filteredFonts.map((font) => {
               const isSelected = selectedFont.id === font.id;
               const sampleMunna = casing === 'upper' ? 'MUNNA' : 'Munna';
               const sampleDyeing = casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
@@ -806,7 +1062,7 @@ Color Scheme: ${colorScheme}`;
 
                   <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-400">
                     <span className="font-medium text-brand-gold/80">{font.vibe}</span>
-                    <span className="text-[10px] opacity-70">Case: {font.recommendedCase === 'upper' ? 'Caps' : 'Title'}</span>
+                    <span className="text-[10px] opacity-70">Rec: {font.recommendedCase === 'upper' ? 'ALL CAPS' : 'Title Case'}</span>
                   </div>
                 </div>
               );
