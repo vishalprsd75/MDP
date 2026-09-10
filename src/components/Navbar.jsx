@@ -107,7 +107,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
           </div>
 
           {/* Mobile Menu Header Buttons */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-1.5 sm:gap-2 shrink-0">
             
             {/* Mobile Theme Toggle Button */}
             <button
