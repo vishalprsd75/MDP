@@ -12,7 +12,8 @@ import {
   LightboxModal,
   ProductDetailsModal,
   CategoryStorePage,
-  FontPreviewStudio
+  FontPreviewStudio,
+  ErrorBoundary
 } from './components';
 import { useTheme } from './hooks/useTheme';
 import { useHashRoute } from './hooks/useHashRoute';
@@ -48,12 +49,14 @@ function App() {
 
       {/* DYNAMIC VIEW ROUTER: Font Preview Studio OR Category Store Page OR Main Landing Page */}
       {isFontPreviewOpen ? (
-        <FontPreviewStudio
-          darkMode={darkMode}
-          onToggleTheme={toggleTheme}
-          onClose={handleCloseFontPreview}
-          onNavigateHome={handleBackToHome}
-        />
+        <ErrorBoundary>
+          <FontPreviewStudio
+            darkMode={darkMode}
+            onToggleTheme={toggleTheme}
+            onClose={handleCloseFontPreview}
+            onNavigateHome={handleBackToHome}
+          />
+        </ErrorBoundary>
       ) : activeCategoryPage !== null ? (
         <CategoryStorePage
           category={activeCategoryPage}

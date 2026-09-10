@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, Check, Copy, Moon, Sun, Smartphone, Monitor, Sparkles, Palette, Search, Filter, Compass, Layers } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { ArrowLeft, Check, Copy, Moon, Sun, Smartphone, Monitor, Sparkles, Palette, Search, Compass } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const FONT_COLLECTION = [
@@ -967,192 +967,195 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
     setTimeout(() => setCopiedNotification(false), 2500);
   };
 
+  // Dynamic color resolvers for Munna & Dyeing Printing across all 20 single & dual themes
+  const getMunnaColor = (scheme = colorScheme) => {
+    switch (scheme) {
+      // --- 1. ONE COLOR STYLES (Single Unified Color) ---
+      case 'single-gold':
+      case 'all-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'single-white':
+      case 'crisp-white':
+        return darkMode
+          ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+      case 'single-blue':
+      case 'all-blue':
+        return darkMode
+          ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+      case 'single-emerald':
+        return darkMode
+          ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
+          : 'text-[#047857] drop-shadow-sm';
+      case 'single-crimson':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+          : 'text-[#be123c] drop-shadow-sm';
+      case 'single-copper':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
+          : 'text-[#c2410c] drop-shadow-sm';
+      case 'single-champagne':
+        return darkMode
+          ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
+          : 'text-[#78350f] drop-shadow-sm';
+      case 'single-cyan':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+          : 'text-[#0284c7] drop-shadow-sm';
+      case 'single-silver':
+        return darkMode
+          ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+          : 'text-slate-700 drop-shadow-sm';
+      case 'single-black':
+        return darkMode
+          ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
+          : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
+
+      // --- 2. DUAL-TONE THEMES ---
+      case 'emerald-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'couture-white':
+        return darkMode
+          ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
+          : 'text-[#0f172a]';
+      case 'indigo-copper':
+        return darkMode
+          ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+          : 'text-[#1e3a8a]';
+      case 'neon-cyan':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+          : 'text-[#0284c7]';
+      case 'crimson-brass':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+          : 'text-[#be123c]';
+      case 'titanium-black':
+        return darkMode
+          ? 'text-white drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+          : 'text-black';
+      case 'saffron-terracotta':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fef08a] via-[#fde047] to-[#eab308] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(234,179,8,0.4)]'
+          : 'text-[#b45309]';
+      case 'prismatic-aurora':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#38bdf8] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(168,85,247,0.4)]'
+          : 'bg-gradient-to-r from-[#0284c7] via-[#7c3aed] to-[#db2777] bg-clip-text text-transparent';
+      case 'navy-champagne':
+        return darkMode
+          ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.3)]'
+          : 'text-[#1e293b]';
+      default: // dual
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+    }
+  };
+
+  const getDyeingColor = (scheme = colorScheme) => {
+    switch (scheme) {
+      // --- 1. ONE COLOR STYLES (Identical to Munna for unified monolithic styling) ---
+      case 'single-gold':
+      case 'all-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'single-white':
+      case 'crisp-white':
+        return darkMode
+          ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+      case 'single-blue':
+      case 'all-blue':
+        return darkMode
+          ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+      case 'single-emerald':
+        return darkMode
+          ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
+          : 'text-[#047857] drop-shadow-sm';
+      case 'single-crimson':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+          : 'text-[#be123c] drop-shadow-sm';
+      case 'single-copper':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
+          : 'text-[#c2410c] drop-shadow-sm';
+      case 'single-champagne':
+        return darkMode
+          ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
+          : 'text-[#78350f] drop-shadow-sm';
+      case 'single-cyan':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+          : 'text-[#0284c7] drop-shadow-sm';
+      case 'single-silver':
+        return darkMode
+          ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+          : 'text-slate-700 drop-shadow-sm';
+      case 'single-black':
+        return darkMode
+          ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
+          : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
+
+      // --- 2. DUAL-TONE THEMES ---
+      case 'emerald-gold':
+        return darkMode
+          ? 'text-[#34d399] drop-shadow-[0_1px_8px_rgba(52,211,153,0.4)]'
+          : 'text-[#047857]';
+      case 'couture-white':
+        return darkMode
+          ? 'text-brand-gold-light drop-shadow-[0_1px_8px_rgba(226,201,124,0.3)]'
+          : 'text-[#b45309]';
+      case 'indigo-copper':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fde047] to-[#f59e0b] bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(245,158,11,0.4)]'
+          : 'text-[#c2410c]';
+      case 'neon-cyan':
+        return darkMode
+          ? 'text-slate-200 drop-shadow-[0_1px_6px_rgba(241,245,249,0.3)]'
+          : 'text-slate-700';
+      case 'crimson-brass':
+        return darkMode
+          ? 'text-[#fbbf24] drop-shadow-[0_1px_8px_rgba(251,191,36,0.4)]'
+          : 'text-[#d97706]';
+      case 'titanium-black':
+        return darkMode
+          ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.2)]'
+          : 'text-slate-600';
+      case 'saffron-terracotta':
+        return darkMode
+          ? 'text-[#fb923c] drop-shadow-[0_1px_8px_rgba(251,146,60,0.4)]'
+          : 'text-[#c2410c]';
+      case 'prismatic-aurora':
+        return darkMode
+          ? 'text-[#fde047] drop-shadow-[0_1px_8px_rgba(253,224,71,0.4)]'
+          : 'text-[#b45309]';
+      case 'navy-champagne':
+        return darkMode
+          ? 'text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(96,165,250,0.35)]'
+          : 'text-[#2563eb]';
+      default: // dual
+        return darkMode
+          ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
+          : 'text-[#a37f37]';
+    }
+  };
+
   // Helper to render text with selected font and casing
   const renderBrandText = (isPhone = false) => {
     const munnaText = casing === 'upper' ? 'MUNNA' : 'Munna';
     const dyeingText = casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
-
-    const munnaColor = () => {
-      switch (colorScheme) {
-        // --- 1. ONE COLOR STYLES (Single Unified Color) ---
-        case 'single-gold':
-        case 'all-gold':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-            : 'text-brand-gold-dark drop-shadow-sm';
-        case 'single-white':
-        case 'crisp-white':
-          return darkMode
-            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
-            : 'text-[#0b2559] drop-shadow-sm';
-        case 'single-blue':
-        case 'all-blue':
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
-            : 'text-[#0b2559] drop-shadow-sm';
-        case 'single-emerald':
-          return darkMode
-            ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
-            : 'text-[#047857] drop-shadow-sm';
-        case 'single-crimson':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
-            : 'text-[#be123c] drop-shadow-sm';
-        case 'single-copper':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
-            : 'text-[#c2410c] drop-shadow-sm';
-        case 'single-champagne':
-          return darkMode
-            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
-            : 'text-[#78350f] drop-shadow-sm';
-        case 'single-cyan':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
-            : 'text-[#0284c7] drop-shadow-sm';
-        case 'single-silver':
-          return darkMode
-            ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
-            : 'text-slate-700 drop-shadow-sm';
-        case 'single-black':
-          return darkMode
-            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
-            : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
-
-        // --- 2. DUAL-TONE THEMES ---
-        case 'emerald-gold':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-            : 'text-brand-gold-dark drop-shadow-sm';
-        case 'couture-white':
-          return darkMode
-            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
-            : 'text-[#0f172a]';
-        case 'indigo-copper':
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
-            : 'text-[#1e3a8a]';
-        case 'neon-cyan':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
-            : 'text-[#0284c7]';
-        case 'crimson-brass':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
-            : 'text-[#be123c]';
-        case 'titanium-black':
-          return darkMode
-            ? 'text-white drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
-            : 'text-black';
-        case 'saffron-terracotta':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fef08a] via-[#fde047] to-[#eab308] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(234,179,8,0.4)]'
-            : 'text-[#b45309]';
-        case 'prismatic-aurora':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#38bdf8] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(168,85,247,0.4)]'
-            : 'bg-gradient-to-r from-[#0284c7] via-[#7c3aed] to-[#db2777] bg-clip-text text-transparent';
-        case 'navy-champagne':
-          return darkMode
-            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.3)]'
-            : 'text-[#1e293b]';
-        default: // dual
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
-            : 'text-[#0b2559] drop-shadow-sm';
-      }
-    };
-
-    const dyeingColor = () => {
-      switch (colorScheme) {
-        // --- 1. ONE COLOR STYLES (Identical to Munna for unified monolithic styling) ---
-        case 'single-gold':
-        case 'all-gold':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-            : 'text-brand-gold-dark drop-shadow-sm';
-        case 'single-white':
-        case 'crisp-white':
-          return darkMode
-            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
-            : 'text-[#0b2559] drop-shadow-sm';
-        case 'single-blue':
-        case 'all-blue':
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
-            : 'text-[#0b2559] drop-shadow-sm';
-        case 'single-emerald':
-          return darkMode
-            ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
-            : 'text-[#047857] drop-shadow-sm';
-        case 'single-crimson':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
-            : 'text-[#be123c] drop-shadow-sm';
-        case 'single-copper':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
-            : 'text-[#c2410c] drop-shadow-sm';
-        case 'single-champagne':
-          return darkMode
-            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
-            : 'text-[#78350f] drop-shadow-sm';
-        case 'single-cyan':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
-            : 'text-[#0284c7] drop-shadow-sm';
-        case 'single-silver':
-          return darkMode
-            ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
-            : 'text-slate-700 drop-shadow-sm';
-        case 'single-black':
-          return darkMode
-            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
-            : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
-
-        // --- 2. DUAL-TONE THEMES ---
-        case 'emerald-gold':
-          return darkMode
-            ? 'text-[#34d399] drop-shadow-[0_1px_8px_rgba(52,211,153,0.4)]'
-            : 'text-[#047857]';
-        case 'couture-white':
-          return darkMode
-            ? 'text-brand-gold-light drop-shadow-[0_1px_8px_rgba(226,201,124,0.3)]'
-            : 'text-[#b45309]';
-        case 'indigo-copper':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#fde047] to-[#f59e0b] bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(245,158,11,0.4)]'
-            : 'text-[#c2410c]';
-        case 'neon-cyan':
-          return darkMode
-            ? 'text-slate-200 drop-shadow-[0_1px_6px_rgba(241,245,249,0.3)]'
-            : 'text-slate-700';
-        case 'crimson-brass':
-          return darkMode
-            ? 'text-[#fbbf24] drop-shadow-[0_1px_8px_rgba(251,191,36,0.4)]'
-            : 'text-[#d97706]';
-        case 'titanium-black':
-          return darkMode
-            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.2)]'
-            : 'text-slate-600';
-        case 'saffron-terracotta':
-          return darkMode
-            ? 'text-[#fb923c] drop-shadow-[0_1px_8px_rgba(251,146,60,0.4)]'
-            : 'text-[#c2410c]';
-        case 'prismatic-aurora':
-          return darkMode
-            ? 'text-[#fde047] drop-shadow-[0_1px_8px_rgba(253,224,71,0.4)]'
-            : 'text-[#b45309]';
-        case 'navy-champagne':
-          return darkMode
-            ? 'text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(96,165,250,0.35)]'
-            : 'text-[#2563eb]';
-        default: // dual
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
-            : 'text-[#a37f37]';
-      }
-    };
+    const munnaColorClass = getMunnaColor(colorScheme);
+    const dyeingColorClass = getDyeingColor(colorScheme);
 
     const fontSize = isPhone
       ? 'text-[15px] min-[380px]:text-base'
@@ -1180,15 +1183,15 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
           style={{ fontFamily: selectedFont.cssFamily }}
         >
           {isSingleColor(colorScheme) ? (
-            <span className={`${munnaColor()} ${fontSize} transition-all duration-300 leading-none`}>
+            <span className={`${munnaColorClass} ${fontSize} transition-all duration-300 leading-none`}>
               {munnaText} {dyeingText}
             </span>
           ) : (
             <>
-              <span className={`${munnaColor()} ${fontSize} transition-all duration-300 leading-none`}>
+              <span className={`${munnaColorClass} ${fontSize} transition-all duration-300 leading-none`}>
                 {munnaText}
               </span>
-              <span className={`${dyeingColor()} ${fontSize} transition-all duration-300 leading-none`}>
+              <span className={`${dyeingColorClass} ${fontSize} transition-all duration-300 leading-none`}>
                 {dyeingText}
               </span>
             </>
@@ -1230,7 +1233,7 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                       names.forEach((name) => caches.delete(name));
                     });
                   }
-                  window.location.reload(true);
+                  window.location.reload();
                 }
               }}
               className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
@@ -1669,16 +1672,16 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                     style={{ fontFamily: selectedFont.cssFamily }}
                   >
                     {isSingleColor(colorScheme) ? (
-                      <span className={munnaColor()}>
+                      <span className={getMunnaColor(colorScheme)}>
                         {casing === 'upper' ? 'MUNNA DYEING PRINTING' : 'Munna Dyeing Printing'}
                       </span>
                     ) : (
                       <>
-                        <span className={munnaColor()}>
+                        <span className={getMunnaColor(colorScheme)}>
                           {casing === 'upper' ? 'MUNNA' : 'Munna'}
                         </span>
                         <span className="mx-2"> </span>
-                        <span className={dyeingColor()}>
+                        <span className={getDyeingColor(colorScheme)}>
                           {casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing'}
                         </span>
                       </>
@@ -1899,7 +1902,7 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                       style={{ fontFamily: font.cssFamily }}
                     >
                       {isSingleColor(colorScheme) ? (
-                        <span className={munnaColor()}>
+                        <span className={getMunnaColor(colorScheme)}>
                           {sampleMunna} {sampleDyeing}
                         </span>
                       ) : (
