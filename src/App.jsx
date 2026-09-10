@@ -43,6 +43,7 @@ function App() {
         onToggleTheme={toggleTheme}
         onNavigateHome={handleBackToHome}
         onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
+        onOpenFontStudio={handleOpenFontPreview}
       />
 
       {/* DYNAMIC VIEW ROUTER: Font Preview Studio OR Category Store Page OR Main Landing Page */}
