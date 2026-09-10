@@ -2,33 +2,32 @@ import React from 'react';
 import { siteConfig } from '../config/siteConfig';
 
 /**
- * MDP Official Navbar Branding Lockup
+ * MDP Official Navbar Branding Lockup - Creative Horizontal Directions
  * 
- * Explores 6 GENUINELY DIFFERENT Brand Identity Concepts for:
+ * Explores 5 GENUINELY CREATIVE HORIZONTAL Concepts for:
  * [FIXED MDP LOGO] + “MUNNA DYEING PRINTING”
  * 
  * Rules:
  * 1. The MDP logo is 100% fixed, approved and untouched.
  * 2. “MUNNA DYEING PRINTING” is ONE complete, unified business name.
- * 3. Each concept represents a fundamentally different design philosophy.
+ * 3. All concepts are strictly HORIZONTAL to fit the navbar strip naturally.
  * 
  * Concepts:
- * - 'concept-1': LUXURY FASHION HOUSE (Didone / Bodoni Moda Haute Couture)
- * - 'concept-2': HERITAGE INDIAN TEXTILE (Cinzel Decorative Royal Nizam Karkhana)
- * - 'concept-3': MODERN TEXTILE MANUFACTURER (Syne Industrial Blueprint Architecture)
- * - 'concept-4': SIGNATURE / CUSTOM WORDMARK (Bespoke Ligature Typography & Silk Arc)
- * - 'concept-5': EMBLEM / BADGE INSPIRED (Royal Atelier Engraved Plaque Cartouche)
- * - 'concept-6': BOLD CONTEMPORARY BRAND (Oswald Condensed Vanguard Presence)
+ * - 'h-ribbon':   THE ROYAL RIBBON UNROLL (Silk scroll extends as gilded baseline)
+ * - 'h-wordmark': HAUTE COUTURE SINGLE-LINE (Bodoni Moda Didone with diamond glyph)
+ * - 'h-capsule':  GILDED ATELIER CAPSULE (Munna + framed gold pill for Dyeing Printing)
+ * - 'h-triptych': IMPERIAL TRIPTYCH (Architectural 3-zone pinstripe lockup)
+ * - 'h-vanguard': MODERN VANGUARD (High-impact horizontal sans with dot cadence)
  */
 const Logo = ({
   darkMode = true,
   size = 'md',
-  variant = 'concept-2',
+  variant = 'h-ribbon',
   className = ''
 }) => {
 
   // The 100% Fixed, Approved MDP Logo Emblem (Never modified, recolored, or cropped)
-  const renderFixedLogo = (imgClass = 'h-8 sm:h-9 md:h-10') => {
+  const renderFixedLogo = (imgClass = 'h-8 sm:h-9 md:h-10.5') => {
     if (!siteConfig.logoImage) {
       return (
         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold-light via-brand-gold to-brand-gold-dark p-[1.5px] flex items-center justify-center shadow-lg shrink-0">
@@ -57,23 +56,73 @@ const Logo = ({
   };
 
   // ==========================================================================
-  // CONCEPT 1 — LUXURY FASHION HOUSE (Didone / Bodoni Moda Haute Couture)
-  // High-contrast, razor-sharp stems, Parisian-Milanese couture textile house
+  // HORIZONTAL 1: THE ROYAL RIBBON UNROLL (Recommended)
+  // The blue/gold silk scroll from the MDP crest flows into a horizontal gilded flourish
   // ==========================================================================
-  if (variant === 'concept-1') {
+  if (variant === 'h-ribbon') {
     return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 ${className}`}>
-        {renderFixedLogo('h-8 sm:h-9 md:h-10')}
+      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
+        {renderFixedLogo('h-8 sm:h-9 md:h-10 lg:h-11')}
 
-        {/* Razor-sharp Didone vertical hairline axis */}
+        {/* Delicate gold vertical pin divider */}
         <span
-          className="w-[1px] h-8 sm:h-9 md:h-10 bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block"
+          className="w-[1.5px] h-7 sm:h-8 md:h-9 bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block"
           aria-hidden="true"
         />
 
+        {/* Complete horizontal name with flowing silk baseline */}
         <div className="flex flex-col justify-center select-none">
+          <div className="flex items-baseline gap-1.5 sm:gap-2.5 md:gap-3 whitespace-nowrap">
+            <span
+              className={`font-heritage font-bold tracking-[0.06em] uppercase text-base sm:text-xl md:text-2xl lg:text-[25px] leading-none transition-all duration-300 ${
+                darkMode
+                  ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)]'
+                  : 'text-gray-950 group-hover:text-brand-gold-dark'
+              }`}
+            >
+              MUNNA
+            </span>
+            <span
+              className={`font-heading font-extrabold tracking-[0.16em] sm:tracking-[0.22em] uppercase text-[10px] sm:text-xs md:text-sm lg:text-[15px] leading-none transition-colors duration-300 ${
+                darkMode
+                  ? 'text-brand-gold-light group-hover:text-amber-200'
+                  : 'text-brand-gold-dark group-hover:text-amber-950'
+              }`}
+            >
+              DYEING & PRINTING
+            </span>
+          </div>
+
+          {/* Flowing Gilded Silk Ribbon Underline Accent */}
+          <div className="flex items-center w-full mt-1 sm:mt-1.5">
+            <span className="h-[1.5px] w-2 sm:w-3 bg-brand-gold/70 rounded-full"></span>
+            <span className="h-[1px] flex-1 bg-gradient-to-r from-brand-gold/70 via-brand-gold/40 to-transparent"></span>
+            <span className="text-brand-gold text-[8px] sm:text-[9px] -ml-0.5 opacity-80">✦</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ==========================================================================
+  // HORIZONTAL 2: HAUTE COUTURE SINGLE-LINE WORDMARK
+  // Bodoni Moda Didone high-fashion horizontal reading line with diamond cadence
+  // ==========================================================================
+  if (variant === 'h-wordmark') {
+    return (
+      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
+        {renderFixedLogo('h-7.5 sm:h-8.5 md:h-9.5 lg:h-10')}
+
+        {/* Razor-sharp hairline axis */}
+        <span
+          className="w-[1px] h-7 sm:h-8 md:h-9 bg-gradient-to-b from-transparent via-brand-gold/70 to-transparent shrink-0 block"
+          aria-hidden="true"
+        />
+
+        {/* Continuous single horizontal baseline */}
+        <div className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 whitespace-nowrap select-none">
           <span
-            className={`font-fashion font-black tracking-[0.12em] sm:tracking-[0.14em] uppercase text-xl sm:text-2xl md:text-[27px] leading-none transition-colors duration-300 ${
+            className={`font-fashion font-black tracking-[0.12em] sm:tracking-[0.15em] uppercase text-base sm:text-xl md:text-2xl lg:text-[26px] leading-none transition-colors duration-300 ${
               darkMode
                 ? 'text-white group-hover:text-amber-200 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]'
                 : 'text-gray-950 group-hover:text-brand-gold-dark'
@@ -81,240 +130,14 @@ const Logo = ({
           >
             MUNNA
           </span>
-          <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
-            <span
-              className={`font-body font-bold tracking-[0.32em] sm:tracking-[0.38em] uppercase text-[8px] sm:text-[9.5px] md:text-[11px] leading-none transition-colors duration-300 ${
-                darkMode
-                  ? 'text-brand-gold-light group-hover:text-amber-200'
-                  : 'text-brand-gold-dark group-hover:text-amber-950'
-              }`}
-            >
-              DYEING
-            </span>
-            <span className="text-brand-gold text-[7px] sm:text-[8px] opacity-70">◆</span>
-            <span
-              className={`font-body font-bold tracking-[0.32em] sm:tracking-[0.38em] uppercase text-[8px] sm:text-[9.5px] md:text-[11px] leading-none transition-colors duration-300 ${
-                darkMode
-                  ? 'text-brand-gold-light group-hover:text-amber-200'
-                  : 'text-brand-gold-dark group-hover:text-amber-950'
-              }`}
-            >
-              PRINTING
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
-  // ==========================================================================
-  // CONCEPT 2 — HERITAGE INDIAN TEXTILE (Cinzel Decorative Royal Nizam Karkhana)
-  // Regal Indian swashed terminals, authentic cultural dignity, master kalamkari guild
-  // ==========================================================================
-  if (variant === 'concept-2') {
-    return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 ${className}`}>
-        {renderFixedLogo('h-8 sm:h-9 md:h-10.5')}
+          <span className="text-brand-gold text-[7px] sm:text-[8px] md:text-[9px] opacity-75">◆</span>
 
-        {/* Royal antique brass pillar divider */}
-        <span
-          className="w-[2px] h-8 sm:h-9 md:h-10 bg-gradient-to-b from-brand-gold-light via-brand-gold to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.4)]"
-          aria-hidden="true"
-        />
-
-        <div className="flex flex-col justify-center select-none">
           <span
-            className={`font-heritage font-bold tracking-[0.06em] uppercase text-xl sm:text-2xl md:text-[26px] lg:text-[28px] leading-tight transition-all duration-300 ${
+            className={`font-body font-bold tracking-[0.2em] sm:tracking-[0.26em] uppercase text-[9px] sm:text-xs md:text-sm lg:text-[14px] leading-none transition-colors duration-300 ${
               darkMode
-                ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_12px_rgba(212,175,55,0.45)]'
-                : 'text-gray-950 group-hover:text-brand-gold-dark drop-shadow-sm'
-            }`}
-          >
-            MUNNA
-          </span>
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="text-brand-gold text-[10px] sm:text-xs">⚜</span>
-            <span
-              className={`font-heading font-bold tracking-[0.22em] sm:tracking-[0.26em] uppercase text-[9.5px] sm:text-[11.5px] md:text-xs leading-none transition-colors duration-300 ${
-                darkMode
-                  ? 'text-brand-gold-light group-hover:text-amber-200 drop-shadow-[0_1px_6px_rgba(212,175,55,0.25)]'
-                  : 'text-brand-gold-dark group-hover:text-amber-950'
-              }`}
-            >
-              DYEING & PRINTING
-            </span>
-            <span className="text-brand-gold text-[10px] sm:text-xs">⚜</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // ==========================================================================
-  // CONCEPT 3 — MODERN TEXTILE MANUFACTURER (Syne Industrial Blueprint Architecture)
-  // Structural B2B confidence, geometric precision typography, industrial dyeing capacity
-  // ==========================================================================
-  if (variant === 'concept-3') {
-    return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-3 ${className}`}>
-        {renderFixedLogo('h-7.5 sm:h-8.5 md:h-9.5')}
-
-        {/* Blueprint technical division */}
-        <div className="flex flex-col items-center justify-center shrink-0 h-8 sm:h-9">
-          <span className="w-1.5 h-[1px] bg-brand-gold/60"></span>
-          <span className="w-[1.5px] h-full bg-brand-gold/40"></span>
-          <span className="w-1.5 h-[1px] bg-brand-gold/60"></span>
-        </div>
-
-        <div className="flex flex-col justify-center select-none">
-          <span
-            className={`font-modern font-extrabold tracking-[-0.01em] uppercase text-lg sm:text-xl md:text-2xl leading-none transition-colors duration-300 ${
-              darkMode ? 'text-white group-hover:text-brand-gold-light' : 'text-gray-950 group-hover:text-brand-gold-dark'
-            }`}
-          >
-            MUNNA
-          </span>
-          <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
-            <span className="px-1 py-0.2 rounded bg-brand-gold/20 text-brand-gold text-[7.5px] sm:text-[8.5px] font-black tracking-wider uppercase">
-              MFG
-            </span>
-            <span
-              className={`font-body font-black tracking-[0.22em] sm:tracking-[0.26em] uppercase text-[8.5px] sm:text-[10px] md:text-[11px] leading-none transition-colors duration-300 ${
-                darkMode ? 'text-gray-300 group-hover:text-white' : 'text-gray-800'
-              }`}
-            >
-              DYEING · PRINTING
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // ==========================================================================
-  // CONCEPT 4 — SIGNATURE / CUSTOM WORDMARK (Bespoke Ligature Typography & Silk Arc)
-  // Tailored interlocking ligatures with organic silk ribbon underline
-  // ==========================================================================
-  if (variant === 'concept-4') {
-    return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 ${className}`}>
-        {renderFixedLogo('h-8 sm:h-9 md:h-10')}
-
-        <span
-          className="w-[1.5px] h-8 sm:h-9 md:h-10 bg-gradient-to-b from-transparent via-brand-gold to-transparent shrink-0 block"
-          aria-hidden="true"
-        />
-
-        <div className="flex flex-col justify-center select-none">
-          {/* Custom Ligature Wordmark Styling */}
-          <div className="flex items-baseline tracking-[0.08em] leading-none font-heading font-black text-2xl sm:text-3xl md:text-[31px]">
-            <span className={darkMode ? 'text-amber-300 drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]' : 'text-brand-gold-dark'}>M</span>
-            <span className={darkMode ? 'text-white' : 'text-gray-950'}>U</span>
-            <span className="relative">
-              <span className={darkMode ? 'text-white' : 'text-gray-950'}>NN</span>
-              {/* Distinctive bridge ligature linking the double N */}
-              <span className="absolute -top-0.5 left-0 right-0 h-[2px] bg-brand-gold/80 rounded-full"></span>
-            </span>
-            <span className={darkMode ? 'text-white' : 'text-gray-950'}>A</span>
-          </div>
-
-          {/* Flowing Silk Arc & Balanced Subtitle */}
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <svg className="w-3 h-1.5 text-brand-gold shrink-0" viewBox="0 0 24 12" fill="currentColor">
-              <path d="M0 6 C6 0, 18 12, 24 6 L24 8 C18 14, 6 2, 0 8 Z" />
-            </svg>
-            <span
-              className={`font-body font-extrabold tracking-[0.24em] sm:tracking-[0.28em] uppercase text-[8.5px] sm:text-[10px] md:text-[11px] leading-none transition-colors duration-300 ${
-                darkMode ? 'text-brand-gold-light group-hover:text-amber-200' : 'text-brand-gold-dark group-hover:text-amber-900'
-              }`}
-            >
-              DYEING PRINTING
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // ==========================================================================
-  // CONCEPT 5 — EMBLEM / BADGE INSPIRED (Royal Atelier Engraved Plaque Cartouche)
-  // Certified maker's cartouche plaque with gold filigree corner mounts
-  // ==========================================================================
-  if (variant === 'concept-5') {
-    return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl border relative shadow-xl backdrop-blur-md gap-2.5 sm:gap-3.5 ${
-        darkMode
-          ? 'bg-gradient-to-r from-brand-dark/95 via-brand-surface/75 to-brand-dark/95 border-brand-gold/40 group-hover:border-brand-gold/70'
-          : 'bg-gradient-to-r from-white via-brand-cream/80 to-white border-brand-gold/50 group-hover:border-brand-gold/80 shadow-md'
-      } ${className}`}>
-        
-        {/* Subtle decorative gold corner brackets */}
-        <span className="absolute top-1 left-1 w-1.5 h-1.5 border-t border-l border-brand-gold/60 rounded-tl-sm"></span>
-        <span className="absolute top-1 right-1 w-1.5 h-1.5 border-t border-r border-brand-gold/60 rounded-tr-sm"></span>
-        <span className="absolute bottom-1 left-1 w-1.5 h-1.5 border-b border-l border-brand-gold/60 rounded-bl-sm"></span>
-        <span className="absolute bottom-1 right-1 w-1.5 h-1.5 border-b border-r border-brand-gold/60 rounded-br-sm"></span>
-
-        {renderFixedLogo('h-7.5 sm:h-8.5 md:h-9.5')}
-
-        <span
-          className="w-[1.5px] h-7 sm:h-8 md:h-9 bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block"
-          aria-hidden="true"
-        />
-
-        <div className="flex flex-col justify-center select-none">
-          <span
-            className={`font-roman font-bold tracking-[0.14em] sm:tracking-[0.16em] uppercase text-lg sm:text-xl md:text-[23px] leading-none transition-colors duration-300 ${
-              darkMode ? 'text-white group-hover:text-amber-200' : 'text-gray-950 group-hover:text-brand-gold-dark'
-            }`}
-          >
-            MUNNA
-          </span>
-          <div className="flex items-center gap-1.5 mt-0.5 sm:mt-1">
-            <span className="text-brand-gold text-[7px]">★</span>
-            <span
-              className={`font-roman font-semibold tracking-[0.24em] sm:tracking-[0.28em] uppercase text-[8px] sm:text-[9.5px] md:text-[10.5px] leading-none transition-colors duration-300 ${
-                darkMode ? 'text-brand-gold-light' : 'text-brand-gold-dark'
-              }`}
-            >
-              DYEING PRINTING
-            </span>
-            <span className="text-brand-gold text-[7px]">★</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // ==========================================================================
-  // CONCEPT 6 — BOLD CONTEMPORARY BRAND (Oswald Condensed Vanguard Presence)
-  // Towering condensed typography, massive visual impact, bold streetwear-textile crossover
-  // ==========================================================================
-  if (variant === 'concept-6') {
-    return (
-      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 ${className}`}>
-        {renderFixedLogo('h-8.5 sm:h-10 md:h-11.5')}
-
-        {/* Thick, confident gold block divider */}
-        <span
-          className="w-[3px] h-8.5 sm:h-10 md:h-11 bg-brand-gold rounded-full shrink-0 block shadow-[0_0_10px_rgba(212,175,55,0.5)]"
-          aria-hidden="true"
-        />
-
-        <div className="flex flex-col justify-center select-none">
-          <span
-            className={`font-impact font-bold tracking-[0.03em] uppercase text-2xl sm:text-3xl md:text-4xl leading-[0.85] transition-all duration-300 ${
-              darkMode
-                ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_12px_rgba(212,175,55,0.5)]'
-                : 'text-gray-950 drop-shadow-sm group-hover:text-brand-gold-dark'
-            }`}
-          >
-            MUNNA
-          </span>
-          <span
-            className={`font-body font-black tracking-[0.28em] sm:tracking-[0.34em] uppercase text-[9px] sm:text-xs md:text-[13px] leading-none transition-colors duration-300 mt-1 sm:mt-1.5 ${
-              darkMode
-                ? 'text-brand-gold drop-shadow-[0_1px_8px_rgba(212,175,55,0.35)] group-hover:text-amber-200'
-                : 'text-brand-gold-dark font-extrabold group-hover:text-amber-950'
+                ? 'text-brand-gold-light group-hover:text-amber-200'
+                : 'text-brand-gold-dark group-hover:text-amber-950'
             }`}
           >
             DYEING PRINTING
@@ -325,47 +148,166 @@ const Logo = ({
   }
 
   // ==========================================================================
-  // DEFAULT FALLBACK (Concept 2: Heritage Indian Textile)
+  // HORIZONTAL 3: GILDED ATELIER CAPSULE
+  // MUNNA in bold display + DYEING PRINTING encased in a horizontal luxury gold capsule
   // ==========================================================================
-  return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 ${className}`}>
-      {renderFixedLogo(size === 'lg' ? 'h-10 sm:h-12 md:h-14' : 'h-8 sm:h-9 md:h-10.5')}
+  if (variant === 'h-capsule') {
+    return (
+      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap ${className}`}>
+        {renderFixedLogo('h-7.5 sm:h-8.5 md:h-9.5 lg:h-10')}
 
-      <span
-        className={`w-[2px] ${size === 'lg' ? 'h-10 sm:h-12 md:h-14' : 'h-8 sm:h-9 md:h-10'} bg-gradient-to-b from-brand-gold-light via-brand-gold to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.4)]`}
-        aria-hidden="true"
-      />
+        <div className="flex items-center gap-1.5 sm:gap-2.5 select-none">
+          <span
+            className={`font-heading font-black tracking-[0.06em] uppercase text-base sm:text-xl md:text-2xl lg:text-[26px] leading-none transition-colors duration-300 ${
+              darkMode
+                ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]'
+                : 'text-gray-950 group-hover:text-brand-gold-dark'
+            }`}
+          >
+            MUNNA
+          </span>
 
-      <div className="flex flex-col justify-center select-none">
-        <span
-          className={`font-heritage font-bold tracking-[0.06em] uppercase transition-all duration-300 ${
-            size === 'lg'
-              ? 'text-3xl sm:text-4xl md:text-5xl'
-              : 'text-xl sm:text-2xl md:text-[26px] lg:text-[28px]'
-          } ${
+          {/* Distinctive Horizontal Gold Capsule */}
+          <div className={`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full border transition-all duration-300 flex items-center gap-1 sm:gap-1.5 shadow-sm ${
             darkMode
-              ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_12px_rgba(212,175,55,0.45)]'
-              : 'text-gray-950 group-hover:text-brand-gold-dark drop-shadow-sm'
+              ? 'bg-brand-gold/10 border-brand-gold/40 text-brand-gold-light group-hover:bg-brand-gold/20 group-hover:border-brand-gold'
+              : 'bg-brand-gold/10 border-brand-gold/50 text-brand-gold-dark group-hover:bg-brand-gold/20'
+          }`}>
+            <span className="w-1 h-1 rounded-full bg-brand-gold shrink-0"></span>
+            <span className="font-body font-black tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[8px] sm:text-[10px] md:text-[11.5px] leading-none">
+              DYEING PRINTING
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ==========================================================================
+  // HORIZONTAL 4: IMPERIAL TRIPTYCH
+  // Architectural three-zone horizontal lockup partitioned by twin gold pinstripes
+  // ==========================================================================
+  if (variant === 'h-triptych') {
+    return (
+      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap ${className}`}>
+        {renderFixedLogo('h-7.5 sm:h-8.5 md:h-9.5')}
+
+        <span
+          className="w-[1.5px] h-6 sm:h-7 md:h-8 bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block"
+          aria-hidden="true"
+        />
+
+        <span
+          className={`font-roman font-bold tracking-[0.1em] uppercase text-base sm:text-xl md:text-2xl leading-none transition-colors duration-300 select-none ${
+            darkMode ? 'text-white group-hover:text-amber-200' : 'text-gray-950 group-hover:text-brand-gold-dark'
           }`}
         >
           MUNNA
         </span>
-        <div className="flex items-center gap-1.5 mt-0.5">
-          <span className="text-brand-gold text-[10px] sm:text-xs">⚜</span>
+
+        <span
+          className="w-[1.5px] h-6 sm:h-7 md:h-8 bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block"
+          aria-hidden="true"
+        />
+
+        <div className="flex flex-col justify-center select-none">
           <span
-            className={`font-heading font-bold tracking-[0.22em] sm:tracking-[0.26em] uppercase leading-none transition-colors duration-300 ${
+            className={`font-roman font-semibold tracking-[0.2em] sm:tracking-[0.26em] uppercase text-[8.5px] sm:text-[10px] md:text-xs leading-none transition-colors duration-300 ${
+              darkMode ? 'text-brand-gold-light' : 'text-brand-gold-dark'
+            }`}
+          >
+            DYEING PRINTING
+          </span>
+          <span className="text-[7px] sm:text-[8px] tracking-[0.28em] text-gray-400 uppercase font-medium mt-0.5">
+            HYDERABAD
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // ==========================================================================
+  // HORIZONTAL 5: MODERN VANGUARD
+  // Clean, high-impact horizontal rhythm with geometric cadence
+  // ==========================================================================
+  if (variant === 'h-vanguard') {
+    return (
+      <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-3 md:gap-3.5 whitespace-nowrap ${className}`}>
+        {renderFixedLogo('h-8 sm:h-9 md:h-10')}
+
+        <span
+          className="w-[2.5px] h-7 sm:h-8 md:h-9 bg-brand-gold rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+          aria-hidden="true"
+        />
+
+        <div className="flex items-center gap-1.5 sm:gap-2.5 select-none">
+          <span
+            className={`font-modern font-black tracking-tight uppercase text-base sm:text-xl md:text-2xl lg:text-[26px] leading-none transition-colors duration-300 ${
+              darkMode ? 'text-white group-hover:text-brand-gold-light' : 'text-gray-950'
+            }`}
+          >
+            MUNNA
+          </span>
+          <span className="text-brand-gold font-black text-xs sm:text-sm">/</span>
+          <span
+            className={`font-body font-black tracking-[0.2em] sm:tracking-[0.26em] uppercase text-[9px] sm:text-xs md:text-sm leading-none transition-colors duration-300 ${
+              darkMode ? 'text-brand-gold' : 'text-brand-gold-dark'
+            }`}
+          >
+            DYEING · PRINTING
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // ==========================================================================
+  // DEFAULT: THE ROYAL RIBBON UNROLL
+  // ==========================================================================
+  return (
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
+      {renderFixedLogo(size === 'lg' ? 'h-10 sm:h-12 md:h-14' : 'h-8 sm:h-9 md:h-10 lg:h-11')}
+
+      <span
+        className={`w-[1.5px] ${size === 'lg' ? 'h-9 sm:h-11 md:h-12' : 'h-7 sm:h-8 md:h-9'} bg-gradient-to-b from-transparent via-brand-gold/60 to-transparent shrink-0 block`}
+        aria-hidden="true"
+      />
+
+      <div className="flex flex-col justify-center select-none">
+        <div className="flex items-baseline gap-1.5 sm:gap-2.5 md:gap-3 whitespace-nowrap">
+          <span
+            className={`font-heritage font-bold tracking-[0.06em] uppercase transition-all duration-300 ${
               size === 'lg'
-                ? 'text-sm sm:text-base md:text-lg'
-                : 'text-[9.5px] sm:text-[11.5px] md:text-xs'
+                ? 'text-2xl sm:text-3xl md:text-4xl'
+                : 'text-base sm:text-xl md:text-2xl lg:text-[25px]'
             } ${
               darkMode
-                ? 'text-brand-gold-light group-hover:text-amber-200 drop-shadow-[0_1px_6px_rgba(212,175,55,0.25)]'
+                ? 'text-white group-hover:text-amber-300 drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)]'
+                : 'text-gray-950 group-hover:text-brand-gold-dark'
+            }`}
+          >
+            MUNNA
+          </span>
+          <span
+            className={`font-heading font-extrabold tracking-[0.16em] sm:tracking-[0.22em] uppercase leading-none transition-colors duration-300 ${
+              size === 'lg'
+                ? 'text-xs sm:text-sm md:text-base'
+                : 'text-[10px] sm:text-xs md:text-sm lg:text-[15px]'
+            } ${
+              darkMode
+                ? 'text-brand-gold-light group-hover:text-amber-200'
                 : 'text-brand-gold-dark group-hover:text-amber-950'
             }`}
           >
             DYEING & PRINTING
           </span>
-          <span className="text-brand-gold text-[10px] sm:text-xs">⚜</span>
+        </div>
+
+        {/* Flowing Gilded Silk Ribbon Underline Accent */}
+        <div className="flex items-center w-full mt-1 sm:mt-1.5">
+          <span className="h-[1.5px] w-2 sm:w-3 bg-brand-gold/70 rounded-full"></span>
+          <span className="h-[1px] flex-1 bg-gradient-to-r from-brand-gold/70 via-brand-gold/40 to-transparent"></span>
+          <span className="text-brand-gold text-[8px] sm:text-[9px] -ml-0.5 opacity-80">✦</span>
         </div>
       </div>
     </div>

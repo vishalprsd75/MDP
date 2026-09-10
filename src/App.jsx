@@ -24,14 +24,14 @@ function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Navbar Brand Concept (Default: 'concept-2' - Heritage Indian Textile)
+  // Navbar Brand Concept (Default: 'h-ribbon' - The Royal Ribbon Unroll)
   const [brandingVariant, setBrandingVariant] = useState(() => {
     try {
       const saved = localStorage.getItem('mdp_branding_variant');
-      if (saved && saved.startsWith('concept-')) return saved;
-      return 'concept-2';
+      if (saved && saved.startsWith('h-')) return saved;
+      return 'h-ribbon';
     } catch {
-      return 'concept-2';
+      return 'h-ribbon';
     }
   });
 

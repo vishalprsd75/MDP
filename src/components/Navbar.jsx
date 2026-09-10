@@ -3,7 +3,7 @@ import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, brandingVariant = 'concept-2' }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, brandingVariant = 'h-ribbon' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

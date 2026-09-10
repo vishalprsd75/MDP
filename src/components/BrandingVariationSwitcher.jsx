@@ -3,51 +3,44 @@ import { Sparkles, Check, ChevronUp, ChevronDown, X, Eye } from 'lucide-react';
 
 const CONCEPTS = [
   {
-    id: 'concept-1',
-    number: 'Concept 1',
-    title: 'Luxury Fashion House',
-    tag: 'Haute Couture Didone',
-    description: 'Bodoni Moda high-contrast serif with razor-thin hairline stems and diamond rhythm. Prestigious Parisian-Milanese couture house aesthetic.',
+    id: 'h-ribbon',
+    number: 'Horizontal 1',
+    title: 'The Royal Ribbon Unroll',
+    tag: 'Recommended',
+    description: 'Bespoke Deccani royal serif. The silk scroll at the base of the MDP crest seamlessly flows into a gilded horizontal underline beneath MUNNA DYEING & PRINTING.',
   },
   {
-    id: 'concept-2',
-    number: 'Concept 2',
-    title: 'Heritage Indian Textile',
-    tag: 'Royal Nizam Karkhana',
-    description: 'Cinzel Decorative royal swashes with antique gold pillar and artisan fleur-de-lis flourishes. Speaks to Hyderabad heritage and master handloom pedigree.',
+    id: 'h-wordmark',
+    number: 'Horizontal 2',
+    title: 'Haute Couture Single-Line',
+    tag: 'Bodoni Moda',
+    description: 'High-fashion editorial Didone single-line wordmark with a centered gold diamond glyph: MUNNA ◆ DYEING PRINTING. Sleek horizontal flow across the navbar.',
   },
   {
-    id: 'concept-3',
-    number: 'Concept 3',
-    title: 'Modern Textile Manufacturer',
-    tag: 'Precision Industrial',
-    description: 'Syne architectural geometric typography with industrial blueprint markers. Communicates massive manufacturing scale, technical dyeing vats, and B2B dependability.',
+    id: 'h-capsule',
+    number: 'Horizontal 3',
+    title: 'Gilded Atelier Capsule',
+    tag: 'Designer Badge',
+    description: 'MUNNA displayed boldly in royal display serif, paired with a sleek horizontal gold hairline pill capsule framing [● DYEING PRINTING] on the same axis.',
   },
   {
-    id: 'concept-4',
-    number: 'Concept 4',
-    title: 'Signature / Custom Wordmark',
-    tag: 'Bespoke Ligatures',
-    description: 'Beyond standard fonts: Custom bridged double-N ligatures and flowing organic silk ribbon baseline echoing the MDP crest scroll.',
+    id: 'h-triptych',
+    number: 'Horizontal 4',
+    title: 'Imperial Triptych',
+    tag: 'Roman Lapidary',
+    description: 'Architectural three-zone horizontal division: [MDP Crest] │ MUNNA │ DYEING PRINTING │ HYDERABAD partitioned by twin gold pinstripes.',
   },
   {
-    id: 'concept-5',
-    number: 'Concept 5',
-    title: 'Emblem / Badge Inspired',
-    tag: 'Atelier Medallion',
-    description: 'Engraved master maker\'s cartouche plaque with gold filigree corner brackets and Roman imperial typography. Certified royal warrant hallmark feel.',
-  },
-  {
-    id: 'concept-6',
-    number: 'Concept 6',
-    title: 'Bold Contemporary Brand',
-    tag: 'Vanguard Impact',
-    description: 'Oswald towering ultra-condensed heavy typography with thick gold block accent. Maximum visual presence that commands immediate attention.',
+    id: 'h-vanguard',
+    number: 'Horizontal 5',
+    title: 'Modern Vanguard',
+    tag: 'Contemporary',
+    description: 'High-impact geometric sans with solid gold block divider and forward slash cadence: MUNNA / DYEING · PRINTING. Clean, modern, and confident.',
   },
 ];
 
 const BrandingVariationSwitcher = ({
-  activeVariant = 'concept-2',
+  activeVariant = 'h-ribbon',
   onSelectVariant,
   darkMode = true
 }) => {
@@ -59,19 +52,19 @@ const BrandingVariationSwitcher = ({
       <button
         onClick={() => setIsDismissed(false)}
         className="fixed bottom-4 right-4 z-50 px-4 py-2.5 rounded-full bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark text-brand-dark font-extrabold text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition-all border border-brand-gold"
-        title="Re-open Brand Concepts Comparison"
+        title="Re-open Horizontal Brand Concepts Comparison"
       >
         <Sparkles className="w-4 h-4 fill-current" />
-        <span>Compare 6 Brand Concepts</span>
+        <span>Compare Horizontal Styles</span>
       </button>
     );
   }
 
-  const activeObj = CONCEPTS.find((c) => c.id === activeVariant) || CONCEPTS[1];
+  const activeObj = CONCEPTS.find((c) => c.id === activeVariant) || CONCEPTS[0];
 
   return (
     <aside
-      aria-label="Brand Concepts Comparison Switcher"
+      aria-label="Horizontal Brand Concepts Comparison Switcher"
       className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 max-w-[calc(100vw-24px)] sm:max-w-md animate-fadeIn"
     >
       <div className={`rounded-2xl border shadow-2xl overflow-hidden backdrop-blur-xl transition-all duration-300 ${
@@ -86,10 +79,10 @@ const BrandingVariationSwitcher = ({
             <span className="w-2.5 h-2.5 rounded-full bg-brand-gold animate-pulse"></span>
             <div>
               <span className="font-heading font-black text-xs sm:text-sm tracking-wide text-brand-gold block leading-none">
-                Brand Identity Concepts
+                Horizontal Brand Concepts
               </span>
               <span className="text-[10px] text-gray-400 font-medium">
-                Live Navbar Comparison (Temporary)
+                Live Navbar Strip Comparison
               </span>
             </div>
           </div>
@@ -98,9 +91,9 @@ const BrandingVariationSwitcher = ({
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="px-2 py-1 rounded-lg bg-brand-gold/20 hover:bg-brand-gold/30 transition-colors text-brand-gold font-bold text-[11px] flex items-center gap-1"
-              title={isOpen ? "Collapse options" : "Expand all 6 concepts"}
+              title={isOpen ? "Collapse options" : "Expand horizontal concepts"}
             >
-              <span>{isOpen ? "Collapse" : "Switch Concept"}</span>
+              <span>{isOpen ? "Collapse" : "Switch Style"}</span>
               {isOpen ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
             </button>
             <button
@@ -128,11 +121,11 @@ const BrandingVariationSwitcher = ({
             onClick={() => setIsOpen(!isOpen)}
             className="text-[10.5px] font-bold text-brand-gold underline underline-offset-2 shrink-0 hover:text-brand-gold-light"
           >
-            {isOpen ? "Close List" : "All 6"}
+            {isOpen ? "Close" : "All Styles"}
           </button>
         </div>
 
-        {/* Expandable list of all 6 distinct concepts */}
+        {/* Expandable list of all horizontal concepts */}
         {isOpen && (
           <div className="p-3 pt-2 space-y-2 max-h-[55vh] overflow-y-auto">
             {CONCEPTS.map((c) => {
@@ -157,7 +150,11 @@ const BrandingVariationSwitcher = ({
                         {c.number} — {c.title}
                       </span>
                     </div>
-                    <span className="inline-block text-[9.5px] px-2 py-0.5 rounded font-bold bg-brand-gold/15 text-brand-gold mb-1">
+                    <span className={`inline-block text-[9.5px] px-2 py-0.5 rounded font-bold mb-1 ${
+                      c.id === 'h-ribbon'
+                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                        : 'bg-brand-gold/15 text-brand-gold'
+                    }`}>
                       {c.tag}
                     </span>
                     <p className="text-[11px] text-gray-300 leading-snug">
