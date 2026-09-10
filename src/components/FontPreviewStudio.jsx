@@ -1164,19 +1164,11 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
     return (
       <div className="flex items-center shrink-0">
         {showEmblem && (
-          <>
-            <img
-              src={siteConfig.logoImage}
-              alt="MDP Emblem"
-              className={`${isPhone ? 'h-5' : 'h-7'} w-auto object-contain shrink-0`}
-            />
-            <span
-              className={`w-[1.5px] ${
-                isPhone ? 'h-5 mx-2' : 'h-7 mx-2.5'
-              } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block`}
-              aria-hidden="true"
-            />
-          </>
+          <img
+            src={siteConfig.logoImage}
+            alt="MDP Emblem"
+            className={`${isPhone ? 'h-5 mr-2' : 'h-7 mr-2.5'} w-auto object-contain shrink-0`}
+          />
         )}
         <div
           className={`flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none ${selectedFont.weight} ${selectedFont.letterSpacing}`}

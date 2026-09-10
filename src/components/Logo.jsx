@@ -262,19 +262,13 @@ const Logo = ({
     <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
       {/* Optional Emblem (Only when explicitly enabled) */}
       {activeShowLogo && (
-        <>
+        <div className="mr-2 sm:mr-3 shrink-0">
           {renderFixedLogo(
             isFooter
               ? 'h-8 sm:h-10 md:h-11'
               : 'h-5 sm:h-6 md:h-7 lg:h-7.5'
           )}
-          <span
-            className={`w-[1.5px] mr-2.5 sm:mr-3 ${
-              isFooter ? 'h-9 sm:h-11 md:h-12' : 'h-6 sm:h-7 md:h-8 lg:h-9'
-            } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.35)]`}
-            aria-hidden="true"
-          />
-        </>
+        </div>
       )}
 
       {/* Complete Business Name Wordmark: Munna Dyeing Printing (ALWAYS ONE SINGLE LINE) */}
