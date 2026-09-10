@@ -350,6 +350,118 @@ export const FONT_COLLECTION = [
     vibe: 'Corporate • Heavy-Duty • Commercial',
     badge: 'Business Card Style',
   },
+  {
+    id: 'greatvibes',
+    name: 'Great Vibes',
+    category: 'Imperial Royal Script',
+    group: 'artistic',
+    cssFamily: '"Great Vibes", cursive',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Breathtaking, flowing imperial calligraphy script with dramatic ascending loops and clean baseline rhythm. Pure royal luxury.',
+    vibe: 'Imperial • Calligraphic Majesty • Flowing',
+    badge: 'Royal Script',
+  },
+  {
+    id: 'alexbrush',
+    name: 'Alex Brush',
+    category: 'Fluid Signature Calligraphy',
+    group: 'artistic',
+    cssFamily: '"Alex Brush", cursive',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Smooth, beautifully balanced brush script with short descenders and restrained flourishes for exceptional readability.',
+    vibe: 'Fluid Signature • Graceful • Artisan',
+    badge: 'Signature Calligraphy',
+  },
+  {
+    id: 'parisienne',
+    name: 'Parisienne',
+    category: 'French Boutique Script',
+    group: 'artistic',
+    cssFamily: '"Parisienne", cursive',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Chic, vintage Parisian brush script with free-spirited bounce. Feels like a private custom couture atelier.',
+    vibe: 'Parisian Atelier • Chic • Romantic',
+    badge: 'French Atelier',
+  },
+  {
+    id: 'kalam',
+    name: 'Kalam Bold',
+    category: 'Organic Indian Hand-Drawn Script',
+    group: 'artistic',
+    cssFamily: '"Kalam", cursive',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Organic, natural Indian handwriting script with authentic wooden-pen strokes. Deeply rooted in Indian craftsmanship and dye workshop heritage.',
+    vibe: 'Handmade Craft • Indian Soul • Organic',
+    badge: 'Indian Soul',
+  },
+  {
+    id: 'forum',
+    name: 'Forum Classical',
+    category: 'Classical Roman Antiqua',
+    group: 'luxury',
+    cssFamily: '"Forum", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-[0.08em]',
+    recommendedCase: 'upper',
+    description: 'Classical antiqua with medieval and Roman inscriptional proportions. Slender vertical stems and delicate serifs for refined luxury.',
+    vibe: 'Classical Antiqua • Sculptured • Dignified',
+    badge: 'Classical Antiqua',
+  },
+  {
+    id: 'gildadisplay',
+    name: 'Gilda Display',
+    category: 'Graceful Continental Didone',
+    group: 'luxury',
+    cssFamily: '"Gilda Display", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Continental Didone serif with delicate horizontal brackets and generous counters. Quiet, self-assured high-end luxury.',
+    vibe: 'Quiet Luxury • Continental • Balanced',
+    badge: 'Quiet Luxury',
+  },
+  {
+    id: 'outfit',
+    name: 'Outfit Black',
+    category: 'Contemporary Lifestyle Geometric Sans',
+    group: 'modern',
+    cssFamily: '"Outfit", sans-serif',
+    tailwindClass: 'font-sans',
+    weight: 'font-black',
+    letterSpacing: 'tracking-[0.04em]',
+    recommendedCase: 'upper',
+    description: 'Ultra-clean modern geometric sans. High-end lifestyle brand vibe with circular curves and contemporary authority.',
+    vibe: 'Lifestyle Brand • Crisp • State-of-the-Art',
+    badge: 'Modern Lifestyle',
+  },
+  {
+    id: 'caveat',
+    name: 'Caveat Bold',
+    category: 'Freehand Textile Artisan Script',
+    group: 'artistic',
+    cssFamily: '"Caveat", cursive',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-wide',
+    recommendedCase: 'title',
+    description: 'Playful, spontaneous freehand artisan brush script. Full of creative life, handcrafted personality, and warmth.',
+    vibe: 'Artisan Brush • Creative • Spontaneous',
+    badge: 'Artisan Brush',
+  },
 ];
 
 export const CATEGORY_TABS = [
@@ -561,6 +673,28 @@ Color Scheme: ${colorScheme}`;
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  if ('caches' in window) {
+                    caches.keys().then((names) => {
+                      names.forEach((name) => caches.delete(name));
+                    });
+                  }
+                  window.location.reload(true);
+                }
+              }}
+              className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                darkMode
+                  ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
+                  : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
+              }`}
+              title="Refresh / Reload Latest Fonts Suite"
+            >
+              <span>🔄</span>
+              <span className="font-bold">Reload Latest ({FONT_COLLECTION.length})</span>
+            </button>
+
             <button
               onClick={onToggleTheme}
               className={`p-2.5 rounded-xl border transition-all ${
