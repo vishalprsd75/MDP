@@ -27,6 +27,11 @@ export default {
       fontFamily: {
         heading: ['Cormorant Garamond', 'Georgia', 'serif'],
         body: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        fashion: ['"Bodoni Moda"', 'Georgia', 'serif'],
+        heritage: ['"Cinzel Decorative"', '"Cinzel"', 'Georgia', 'serif'],
+        roman: ['"Cinzel"', 'Georgia', 'serif'],
+        modern: ['"Syne"', '"Plus Jakarta Sans"', 'sans-serif'],
+        impact: ['"Oswald"', '"Plus Jakarta Sans"', 'sans-serif'],
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(135deg, #e2c97c 0%, #c5a059 50%, #a37f37 100%)',

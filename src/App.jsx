@@ -24,12 +24,14 @@ function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Navbar Branding Presentation Variation (Default: 'stacked' - Option 2)
+  // Navbar Brand Concept (Default: 'concept-2' - Heritage Indian Textile)
   const [brandingVariant, setBrandingVariant] = useState(() => {
     try {
-      return localStorage.getItem('mdp_branding_variant') || 'stacked';
+      const saved = localStorage.getItem('mdp_branding_variant');
+      if (saved && saved.startsWith('concept-')) return saved;
+      return 'concept-2';
     } catch {
-      return 'stacked';
+      return 'concept-2';
     }
   });
 
