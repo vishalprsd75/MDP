@@ -14,6 +14,7 @@ import { siteConfig } from '../config/siteConfig';
 const Logo = ({
   darkMode = true,
   size = 'md',
+  showText = true,
   className = ''
 }) => {
 
@@ -46,22 +47,35 @@ const Logo = ({
     );
   };
 
+  // When text is hidden (e.g. Footer), render only the MDP crest
+  if (!showText) {
+    return (
+      <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
+        {renderFixedLogo(
+          size === 'lg'
+            ? 'h-10 sm:h-12 md:h-14'
+            : 'h-6 sm:h-7 md:h-8'
+        )}
+      </div>
+    );
+  }
+
   const isFooter = size === 'lg';
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2.5 sm:gap-3.5 md:gap-4 ${className}`}>
-      {/* 1. Approved MDP Crest */}
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
+      {/* 1. Approved MDP Crest (Small, refined & visibly smaller than the brand name) */}
       {renderFixedLogo(
         isFooter
-          ? 'h-11 sm:h-13 md:h-15 lg:h-16'
-          : 'h-8 sm:h-9 md:h-11 lg:h-12'
+          ? 'h-9 sm:h-11 md:h-12'
+          : 'h-6 sm:h-7 md:h-8 lg:h-9'
       )}
 
       {/* 2. Dual-Tone Brand Divider (Gold to Royal Blue to Gold) */}
       <span
-        className={`w-[2px] ${
-          isFooter ? 'h-11 sm:h-13 md:h-15' : 'h-8 sm:h-9 md:h-11'
-        } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_10px_rgba(212,175,55,0.4)]`}
+        className={`w-[1.5px] ${
+          isFooter ? 'h-9 sm:h-11 md:h-12' : 'h-6 sm:h-7 md:h-8'
+        } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.35)]`}
         aria-hidden="true"
       />
 
