@@ -17,6 +17,7 @@ const Logo = ({
   darkMode = true,
   size = 'md',
   showText = true,
+  showLogo = false, // Clean pure wordmark in navbar; emblem kept in Footer/Story
   className = ''
 }) => {
 
@@ -64,48 +65,50 @@ const Logo = ({
 
   const isFooter = size === 'lg';
 
-  // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
-  // Scaled up significantly so the brand name looks visibly bigger than the logo
+  // Shared font size class for BOTH "Munna" and "Dyeing Printing"
+  // Beautifully scaled for high-impact pure wordmark presence
   const sharedTypographySize = isFooter
     ? 'text-2xl sm:text-3xl md:text-4xl'
-    : 'text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-[26px]';
+    : 'text-base xs:text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
-      {/* 1. Approved MDP Crest (Locked in compact size) */}
-      {renderFixedLogo(
-        isFooter
-          ? 'h-8 sm:h-10 md:h-11'
-          : 'h-5 sm:h-6 md:h-7 lg:h-7.5'
+    <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
+      {/* Optional Emblem (Only when explicitly enabled with showLogo={true}) */}
+      {showLogo && (
+        <>
+          {renderFixedLogo(
+            isFooter
+              ? 'h-8 sm:h-10 md:h-11'
+              : 'h-5 sm:h-6 md:h-7 lg:h-7.5'
+          )}
+          <span
+            className={`w-[1.5px] mr-2.5 sm:mr-3 ${
+              isFooter ? 'h-9 sm:h-11 md:h-12' : 'h-6 sm:h-7 md:h-8 lg:h-9'
+            } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.35)]`}
+            aria-hidden="true"
+          />
+        </>
       )}
 
-      {/* 2. Dual-Tone Brand Divider (Sized to match the taller brand name) */}
-      <span
-        className={`w-[1.5px] ${
-          isFooter ? 'h-9 sm:h-11 md:h-12' : 'h-6 sm:h-7 md:h-8 lg:h-9'
-        } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.35)]`}
-        aria-hidden="true"
-      />
-
-      {/* 3. Complete Business Name: MUNNA DYEING PRINTING (SAME SIZE) */}
-      <div className="flex flex-col justify-center select-none">
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 whitespace-nowrap leading-none">
-          {/* MUNNA (Berkshire Swash font) */}
+      {/* Complete Business Name Wordmark: Munna Dyeing Printing */}
+      <div className="flex flex-col justify-center select-none py-0.5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2.5 whitespace-nowrap leading-tight sm:leading-none">
+          {/* Munna (Berkshire Swash — 3D Metallic Gold) */}
           <span
-            className={`font-swash font-normal tracking-wide transition-all duration-300 leading-tight sm:leading-none ${sharedTypographySize} ${
+            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-tight sm:leading-none ${sharedTypographySize} ${
               darkMode
-                ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,215,0,0.4)] group-hover:brightness-110'
+                ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
                 : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
             }`}
           >
             Munna
           </span>
 
-          {/* DYEING PRINTING (Exact Same Size, Font & Weight in Berkshire Swash) */}
+          {/* Dyeing Printing (Berkshire Swash — Exact Same Size & Font — Royal Sapphire Blue) */}
           <span
-            className={`font-swash font-normal tracking-wide transition-all duration-300 leading-tight sm:leading-none mt-0.5 sm:mt-0 ${sharedTypographySize} ${
+            className={`font-swash font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-tight sm:leading-none mt-0.5 sm:mt-0 ${sharedTypographySize} ${
               darkMode
-                ? 'text-[#38bdf8] group-hover:text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
+                ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
                 : 'text-[#a37f37] group-hover:text-[#0b2559]'
             }`}
           >
