@@ -231,14 +231,6 @@ export const galleryItems = [
   },
   {
     id: 10,
-    title: "Heritage Kalamkari Artwork Motifs",
-    serviceId: "kalamkari",
-    category: "Kalamkari",
-    image: "/images/gallery_kalamkari.jpg",
-    description: "Classic Kalamkari lotus and peacock vine motifs rendered with traditional organic dye craftsmanship."
-  },
-  {
-    id: 11,
     title: "Traditional Shibori Indigo Tie-Dye",
     serviceId: "shibori",
     category: "Shibori",
@@ -246,7 +238,7 @@ export const galleryItems = [
     description: "Artisanal spiderweb and wave pattern Shibori indigo tie-dye unfolded after precision resist dyeing."
   },
   {
-    id: 12,
+    id: 11,
     title: "Batik Wax Resist Dyeing",
     serviceId: "batik",
     category: "Batik",

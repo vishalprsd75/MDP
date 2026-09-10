@@ -87,7 +87,7 @@ export const products = [
     name: "Kalamkari Hand Block Printed Yardage",
     category: "Traditional Prints",
     images: [
-      "/images/gallery_kalamkari.jpg"
+      "/images/client_kalamkari_table.jpg"
     ],
     price: 320,
     priceUnit: "meter",
