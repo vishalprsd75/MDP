@@ -11,8 +11,7 @@ import {
   Footer,
   LightboxModal,
   ProductDetailsModal,
-  CategoryStorePage,
-  BrandingVariationSwitcher
+  CategoryStorePage
 } from './components';
 import { useTheme } from './hooks/useTheme';
 import { useHashRoute } from './hooks/useHashRoute';
@@ -23,26 +22,6 @@ function App() {
 
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-  // Navbar Brand Concept (Default: 'h-ribbon' - The Royal Ribbon Unroll)
-  const [brandingVariant, setBrandingVariant] = useState(() => {
-    try {
-      const saved = localStorage.getItem('mdp_branding_variant');
-      if (saved && saved.startsWith('h-')) return saved;
-      return 'h-ribbon';
-    } catch {
-      return 'h-ribbon';
-    }
-  });
-
-  const handleSelectVariant = (variantId) => {
-    setBrandingVariant(variantId);
-    try {
-      localStorage.setItem('mdp_branding_variant', variantId);
-    } catch (e) {
-      console.warn('LocalStorage error:', e);
-    }
-  };
 
   return (
     <div className={`min-h-screen font-body antialiased transition-colors duration-500 selection:bg-brand-gold selection:text-brand-dark ${
@@ -55,7 +34,6 @@ function App() {
         onToggleTheme={toggleTheme}
         onNavigateHome={handleBackToHome}
         onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
-        brandingVariant={brandingVariant}
       />
 
       {/* DYNAMIC VIEW ROUTER: Category Store Page OR Main Landing Page */}
@@ -100,13 +78,6 @@ function App() {
       <LightboxModal
         item={lightboxItem}
         onClose={() => setLightboxItem(null)}
-        darkMode={darkMode}
-      />
-
-      {/* Floating Interactive Brand Variations Preview Switcher */}
-      <BrandingVariationSwitcher
-        activeVariant={brandingVariant}
-        onSelectVariant={handleSelectVariant}
         darkMode={darkMode}
       />
 

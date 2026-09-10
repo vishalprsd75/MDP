@@ -3,7 +3,7 @@ import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, brandingVariant = 'h-ribbon' }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,9 +38,9 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, brandingVariant = 'h-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Configurable Logo Component */}
+          {/* Official Brand Identity */}
           <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none">
-            <Logo darkMode={darkMode} size="md" variant={brandingVariant} />
+            <Logo darkMode={darkMode} size="md" />
           </a>
 
           {/* Desktop Navigation Links */}
