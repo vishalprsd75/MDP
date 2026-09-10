@@ -4,25 +4,25 @@ import { siteConfig } from '../config/siteConfig';
 const Logo = ({ darkMode = true, size = 'md', className = '' }) => {
   const sizeConfig = {
     sm: {
-      img: 'h-6 sm:h-7',
-      title: 'text-sm sm:text-base',
-      subtitle: 'text-[7.5px] sm:text-[8.5px]',
+      img: 'h-5 sm:h-6',
+      title: 'text-base sm:text-lg',
+      subtitle: 'text-[8px] sm:text-[9px]',
       gap: 'gap-1.5 sm:gap-2',
-      divider: 'h-5 sm:h-6',
+      divider: 'h-6 sm:h-7',
     },
     md: {
-      img: 'h-8 sm:h-9 md:h-10',
-      title: 'text-base sm:text-xl md:text-[22px]',
-      subtitle: 'text-[8px] sm:text-[9px] md:text-[10px]',
-      gap: 'gap-2 sm:gap-2.5',
-      divider: 'h-6 sm:h-7 md:h-8',
+      img: 'h-6 sm:h-7 md:h-7 lg:h-8',
+      title: 'text-xl sm:text-2xl md:text-[26px] lg:text-[28px]',
+      subtitle: 'text-[9px] sm:text-[10px] md:text-xs',
+      gap: 'gap-2 sm:gap-2.5 md:gap-3',
+      divider: 'h-7 sm:h-8 md:h-9',
     },
     lg: {
-      img: 'h-10 sm:h-12 md:h-14',
-      title: 'text-xl sm:text-2xl md:text-3xl',
-      subtitle: 'text-[10px] sm:text-xs md:text-sm',
-      gap: 'gap-2.5 sm:gap-3.5',
-      divider: 'h-8 sm:h-10 md:h-12',
+      img: 'h-8 sm:h-9 md:h-10',
+      title: 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
+      subtitle: 'text-xs sm:text-sm md:text-base',
+      gap: 'gap-3 sm:gap-4',
+      divider: 'h-10 sm:h-12 md:h-14',
     },
   };
 
