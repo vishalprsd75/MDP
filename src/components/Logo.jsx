@@ -21,6 +21,9 @@ const Logo = ({
   const [activeCasing, setActiveCasing] = useState(() => {
     return localStorage.getItem('mdp_selected_font_casing') || 'title';
   });
+  const [activeColorScheme, setActiveColorScheme] = useState(() => {
+    return localStorage.getItem('mdp_selected_font_color') || 'dual';
+  });
   const [activeShowLogo, setActiveShowLogo] = useState(() => {
     const saved = localStorage.getItem('mdp_selected_font_show_emblem');
     return saved !== null ? saved === 'true' : showLogo;
@@ -30,6 +33,7 @@ const Logo = ({
     const handleFontChanged = () => {
       setActiveFontFamily(localStorage.getItem('mdp_selected_font_family') || null);
       setActiveCasing(localStorage.getItem('mdp_selected_font_casing') || 'title');
+      setActiveColorScheme(localStorage.getItem('mdp_selected_font_color') || 'dual');
       const saved = localStorage.getItem('mdp_selected_font_show_emblem');
       if (saved !== null) {
         setActiveShowLogo(saved === 'true');
@@ -100,6 +104,86 @@ const Logo = ({
   const munnaLabel = activeCasing === 'upper' ? 'MUNNA' : 'Munna';
   const dyeingLabel = activeCasing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
 
+  const getMunnaColor = () => {
+    switch (activeColorScheme) {
+      case 'emerald-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'couture-white':
+        return darkMode ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]' : 'text-[#0f172a]';
+      case 'indigo-copper':
+        return darkMode ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]' : 'text-[#1e3a8a]';
+      case 'neon-cyan':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+          : 'text-[#0284c7]';
+      case 'crimson-brass':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+          : 'text-[#be123c]';
+      case 'titanium-black':
+        return darkMode ? 'text-white drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]' : 'text-black';
+      case 'saffron-terracotta':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fef08a] via-[#fde047] to-[#eab308] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(234,179,8,0.4)]'
+          : 'text-[#b45309]';
+      case 'prismatic-aurora':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#38bdf8] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(168,85,247,0.4)]'
+          : 'bg-gradient-to-r from-[#0284c7] via-[#7c3aed] to-[#db2777] bg-clip-text text-transparent';
+      case 'navy-champagne':
+        return darkMode ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.3)]' : 'text-[#1e293b]';
+      case 'all-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'all-blue':
+        return darkMode ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]' : 'text-[#0b2559]';
+      case 'crisp-white':
+        return darkMode ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]' : 'text-[#0b2559]';
+      default: // dual
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
+          : 'text-[#0b2559] drop-shadow-sm';
+    }
+  };
+
+  const getDyeingColor = () => {
+    switch (activeColorScheme) {
+      case 'emerald-gold':
+        return darkMode ? 'text-[#34d399] drop-shadow-[0_1px_8px_rgba(52,211,153,0.4)]' : 'text-[#047857]';
+      case 'couture-white':
+        return darkMode ? 'text-brand-gold-light drop-shadow-[0_1px_8px_rgba(226,201,124,0.3)]' : 'text-[#b45309]';
+      case 'indigo-copper':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#fde047] to-[#f59e0b] bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(245,158,11,0.4)]'
+          : 'text-[#c2410c]';
+      case 'neon-cyan':
+        return darkMode ? 'text-slate-200 drop-shadow-[0_1px_6px_rgba(241,245,249,0.3)]' : 'text-slate-700';
+      case 'crimson-brass':
+        return darkMode ? 'text-[#fbbf24] drop-shadow-[0_1px_8px_rgba(251,191,36,0.4)]' : 'text-[#d97706]';
+      case 'titanium-black':
+        return darkMode ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.2)]' : 'text-slate-600';
+      case 'saffron-terracotta':
+        return darkMode ? 'text-[#fb923c] drop-shadow-[0_1px_8px_rgba(251,146,60,0.4)]' : 'text-[#c2410c]';
+      case 'prismatic-aurora':
+        return darkMode ? 'text-[#fde047] drop-shadow-[0_1px_8px_rgba(253,224,71,0.4)]' : 'text-[#b45309]';
+      case 'navy-champagne':
+        return darkMode ? 'text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(96,165,250,0.35)]' : 'text-[#2563eb]';
+      case 'all-gold':
+        return darkMode
+          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+          : 'text-brand-gold-dark drop-shadow-sm';
+      case 'all-blue':
+        return darkMode ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]' : 'text-[#0b2559]';
+      case 'crisp-white':
+        return darkMode ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]' : 'text-[#1e3a8a]';
+      default: // dual
+        return darkMode ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]' : 'text-[#a37f37]';
+    }
+  };
+
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
       {/* Optional Emblem (Only when explicitly enabled) */}
@@ -127,24 +211,16 @@ const Logo = ({
           }`}
           style={activeFontFamily ? { fontFamily: activeFontFamily } : undefined}
         >
-          {/* Munna (3D Metallic Gold) */}
+          {/* Munna */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
-              darkMode
-                ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
-                : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
-            }`}
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${getMunnaColor()}`}
           >
             {munnaLabel}
           </span>
 
-          {/* Dyeing Printing (Exact Same Size & Font — Royal Sapphire Blue) */}
+          {/* Dyeing Printing */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
-              darkMode
-                ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
-                : 'text-[#a37f37] group-hover:text-[#0b2559]'
-            }`}
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${getDyeingColor()}`}
           >
             {dyeingLabel}
           </span>

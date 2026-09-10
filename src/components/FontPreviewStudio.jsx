@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, Check, Copy, Moon, Sun, Smartphone, Monitor, Sparkles, Palette, Search, Filter } from 'lucide-react';
+import { ArrowLeft, Check, Copy, Moon, Sun, Smartphone, Monitor, Sparkles, Palette, Search, Filter, Compass, Layers } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const FONT_COLLECTION = [
@@ -290,66 +290,36 @@ export const FONT_COLLECTION = [
     vibe: 'Traditional Luxury • Fine Art • Heritage',
     badge: 'Historical Heritage',
   },
-
-  // 5. Artistic Scripts & Calligraphy
   {
-    id: 'philosopher',
-    name: 'Philosopher Bold',
-    category: 'Artistic Flared Byzantine Serif',
-    group: 'artistic',
-    cssFamily: '"Philosopher", sans-serif',
+    id: 'forum',
+    name: 'Forum Classical',
+    category: 'Classical Roman Antiqua',
+    group: 'luxury',
+    cssFamily: '"Forum", Georgia, serif',
     tailwindClass: 'font-serif',
-    weight: 'font-bold',
+    weight: 'font-normal',
+    letterSpacing: 'tracking-[0.08em]',
+    recommendedCase: 'upper',
+    description: 'Classical antiqua with medieval and Roman inscriptional proportions. Slender vertical stems and delicate serifs for refined luxury.',
+    vibe: 'Classical Antiqua • Sculptured • Dignified',
+    badge: 'Classical Antiqua',
+  },
+  {
+    id: 'gildadisplay',
+    name: 'Gilda Display',
+    category: 'Graceful Continental Didone',
+    group: 'luxury',
+    cssFamily: '"Gilda Display", Georgia, serif',
+    tailwindClass: 'font-serif',
+    weight: 'font-normal',
     letterSpacing: 'tracking-wide',
     recommendedCase: 'title',
-    description: 'Expressive flared terminal curves inspired by ancient Byzantine calligraphy. Completely distinct from conventional web fonts.',
-    vibe: 'Mystical • Artistic • Flared Dignity',
-    badge: 'Artistic Flared',
-  },
-  {
-    id: 'lobstertwo',
-    name: 'Lobster Two Bold',
-    category: 'Boutique Vintage Upright Script',
-    group: 'artistic',
-    cssFamily: '"Lobster Two", cursive, display',
-    tailwindClass: 'font-serif',
-    weight: 'font-bold',
-    letterSpacing: 'tracking-normal',
-    recommendedCase: 'title',
-    description: 'Upright, friendly, premium vintage script with smooth connecting ligatures. Gives a welcoming artisanal boutique warmth.',
-    vibe: 'Vintage Boutique • Warm Craft • Friendly',
-    badge: 'Vintage Script',
+    description: 'Continental Didone serif with delicate horizontal brackets and generous counters. Quiet, self-assured high-end luxury.',
+    vibe: 'Quiet Luxury • Continental • Balanced',
+    badge: 'Quiet Luxury',
   },
 
-  // 6. Modern & Industrial Sans
-  {
-    id: 'syne',
-    name: 'Syne ExtraBold',
-    category: 'Avant-Garde Architectural Sans',
-    group: 'modern',
-    cssFamily: '"Syne", sans-serif',
-    tailwindClass: 'font-modern',
-    weight: 'font-extrabold',
-    letterSpacing: 'tracking-[0.05em]',
-    recommendedCase: 'upper',
-    description: 'Ultra-wide contemporary French avant-garde sans. Wide proportioned letterforms that dominate horizontal space effortlessly.',
-    vibe: 'Architectural • Contemporary • Trendsetter',
-    badge: 'Modern Avant-Garde',
-  },
-  {
-    id: 'montserrat',
-    name: 'Montserrat Black',
-    category: 'Industrial Commercial Sans',
-    group: 'modern',
-    cssFamily: '"Montserrat", sans-serif',
-    tailwindClass: 'font-brand',
-    weight: 'font-black',
-    letterSpacing: 'tracking-[0.04em]',
-    recommendedCase: 'upper',
-    description: 'Solid, heavyweight geometric sans. Matches the bold corporate typography on physical visiting cards and industrial manufacturing signage.',
-    vibe: 'Corporate • Heavy-Duty • Commercial',
-    badge: 'Business Card Style',
-  },
+  // 5. Artistic Scripts & Calligraphy
   {
     id: 'greatvibes',
     name: 'Great Vibes',
@@ -407,46 +377,32 @@ export const FONT_COLLECTION = [
     badge: 'Indian Soul',
   },
   {
-    id: 'forum',
-    name: 'Forum Classical',
-    category: 'Classical Roman Antiqua',
-    group: 'luxury',
-    cssFamily: '"Forum", Georgia, serif',
+    id: 'philosopher',
+    name: 'Philosopher Bold',
+    category: 'Artistic Flared Byzantine Serif',
+    group: 'artistic',
+    cssFamily: '"Philosopher", sans-serif',
     tailwindClass: 'font-serif',
-    weight: 'font-normal',
-    letterSpacing: 'tracking-[0.08em]',
-    recommendedCase: 'upper',
-    description: 'Classical antiqua with medieval and Roman inscriptional proportions. Slender vertical stems and delicate serifs for refined luxury.',
-    vibe: 'Classical Antiqua • Sculptured • Dignified',
-    badge: 'Classical Antiqua',
-  },
-  {
-    id: 'gildadisplay',
-    name: 'Gilda Display',
-    category: 'Graceful Continental Didone',
-    group: 'luxury',
-    cssFamily: '"Gilda Display", Georgia, serif',
-    tailwindClass: 'font-serif',
-    weight: 'font-normal',
+    weight: 'font-bold',
     letterSpacing: 'tracking-wide',
     recommendedCase: 'title',
-    description: 'Continental Didone serif with delicate horizontal brackets and generous counters. Quiet, self-assured high-end luxury.',
-    vibe: 'Quiet Luxury • Continental • Balanced',
-    badge: 'Quiet Luxury',
+    description: 'Expressive flared terminal curves inspired by ancient Byzantine calligraphy. Completely distinct from conventional web fonts.',
+    vibe: 'Mystical • Artistic • Flared Dignity',
+    badge: 'Artistic Flared',
   },
   {
-    id: 'outfit',
-    name: 'Outfit Black',
-    category: 'Contemporary Lifestyle Geometric Sans',
-    group: 'modern',
-    cssFamily: '"Outfit", sans-serif',
-    tailwindClass: 'font-sans',
-    weight: 'font-black',
-    letterSpacing: 'tracking-[0.04em]',
-    recommendedCase: 'upper',
-    description: 'Ultra-clean modern geometric sans. High-end lifestyle brand vibe with circular curves and contemporary authority.',
-    vibe: 'Lifestyle Brand • Crisp • State-of-the-Art',
-    badge: 'Modern Lifestyle',
+    id: 'lobstertwo',
+    name: 'Lobster Two Bold',
+    category: 'Boutique Vintage Upright Script',
+    group: 'artistic',
+    cssFamily: '"Lobster Two", cursive, display',
+    tailwindClass: 'font-serif',
+    weight: 'font-bold',
+    letterSpacing: 'tracking-normal',
+    recommendedCase: 'title',
+    description: 'Upright, friendly, premium vintage script with smooth connecting ligatures. Gives a welcoming artisanal boutique warmth.',
+    vibe: 'Vintage Boutique • Warm Craft • Friendly',
+    badge: 'Vintage Script',
   },
   {
     id: 'caveat',
@@ -461,6 +417,50 @@ export const FONT_COLLECTION = [
     description: 'Playful, spontaneous freehand artisan brush script. Full of creative life, handcrafted personality, and warmth.',
     vibe: 'Artisan Brush • Creative • Spontaneous',
     badge: 'Artisan Brush',
+  },
+
+  // 6. Modern & Industrial Sans
+  {
+    id: 'syne',
+    name: 'Syne ExtraBold',
+    category: 'Avant-Garde Architectural Sans',
+    group: 'modern',
+    cssFamily: '"Syne", sans-serif',
+    tailwindClass: 'font-modern',
+    weight: 'font-extrabold',
+    letterSpacing: 'tracking-[0.05em]',
+    recommendedCase: 'upper',
+    description: 'Ultra-wide contemporary French avant-garde sans. Wide proportioned letterforms that dominate horizontal space effortlessly.',
+    vibe: 'Architectural • Contemporary • Trendsetter',
+    badge: 'Modern Avant-Garde',
+  },
+  {
+    id: 'montserrat',
+    name: 'Montserrat Black',
+    category: 'Industrial Commercial Sans',
+    group: 'modern',
+    cssFamily: '"Montserrat", sans-serif',
+    tailwindClass: 'font-brand',
+    weight: 'font-black',
+    letterSpacing: 'tracking-[0.04em]',
+    recommendedCase: 'upper',
+    description: 'Solid, heavyweight geometric sans. Matches the bold corporate typography on physical visiting cards and industrial manufacturing signage.',
+    vibe: 'Corporate • Heavy-Duty • Commercial',
+    badge: 'Business Card Style',
+  },
+  {
+    id: 'outfit',
+    name: 'Outfit Black',
+    category: 'Contemporary Lifestyle Geometric Sans',
+    group: 'modern',
+    cssFamily: '"Outfit", sans-serif',
+    tailwindClass: 'font-sans',
+    weight: 'font-black',
+    letterSpacing: 'tracking-[0.04em]',
+    recommendedCase: 'upper',
+    description: 'Ultra-clean modern geometric sans. High-end lifestyle brand vibe with circular curves and contemporary authority.',
+    vibe: 'Lifestyle Brand • Crisp • State-of-the-Art',
+    badge: 'Modern Lifestyle',
   },
 ];
 
@@ -479,6 +479,51 @@ export const COLOR_SCHEMES = [
     description: 'Matches approved MDP crest colors: 3D Metallic Gold for Munna, Royal Sapphire for Dyeing Printing.',
   },
   {
+    id: 'emerald-gold',
+    name: '24K Gold Foil + Imperial Emerald',
+    description: 'Palace heritage aesthetic: Warm gold leaf shimmer paired with rich emerald green silk accent.',
+  },
+  {
+    id: 'couture-white',
+    name: 'Haute Couture (Matte Platinum & Champagne)',
+    description: 'Pure high-fashion minimalism: Crisp platinum white with soft champagne gold accent.',
+  },
+  {
+    id: 'indigo-copper',
+    name: 'Artisan Dye Vat (Organic Indigo & Burnished Copper)',
+    description: 'Authentic textile dye cauldron: Deep indigo blue paired with warm burnished copper gold.',
+  },
+  {
+    id: 'neon-cyan',
+    name: 'Avant-Garde Parisian (Electric Cyan Azure & Silver)',
+    description: 'Futuristic high-tech export house: Vibrant electric cyan with sleek metallic titanium.',
+  },
+  {
+    id: 'crimson-brass',
+    name: 'Sovereign Imperial (Ruby Crimson & Antique Brass)',
+    description: 'Regal bridal silk: Rich jewel-toned crimson ruby with warm antique brass gold.',
+  },
+  {
+    id: 'titanium-black',
+    name: 'Monochromatic Industrial (Stark Titanium & Steel)',
+    description: 'No-nonsense manufacturing authority: Stark white with clean metallic steel gray.',
+  },
+  {
+    id: 'saffron-terracotta',
+    name: 'Earth Pigment (Sun Saffron & Warm Terracotta)',
+    description: 'Organic Kalamkari & block print: Warm turmeric saffron gold with earthy terracotta spice.',
+  },
+  {
+    id: 'prismatic-aurora',
+    name: 'Prismatic Aurora (Rainbow Dye Spectrum)',
+    description: 'Color-dye spectrum: Vibrant rainbow gradient celebrating the full textile dyeing spectrum.',
+  },
+  {
+    id: 'navy-champagne',
+    name: 'Velvet Midnight (Deep Navy & Champagne Pearl)',
+    description: 'Five-star quiet luxury: Deepest midnight navy blue with luminous champagne pearl.',
+  },
+  {
     id: 'all-gold',
     name: 'All 3D Metallic Gold',
     description: 'Complete name bathed in warm metallic gold leaf shimmer.',
@@ -492,6 +537,130 @@ export const COLOR_SCHEMES = [
     id: 'crisp-white',
     name: 'Crisp Regal White',
     description: 'Pure high-contrast white with soft golden ambient shadow.',
+  },
+];
+
+// 10 COMPLETE READY-MADE BRAND DESIGN CONCEPTS
+export const BRAND_DESIGN_CONCEPTS = [
+  {
+    id: 'concept-1',
+    title: 'Concept 1: Royal Heritage (Gold Foil & Imperial Emerald)',
+    tagline: 'Palace Heritage Brocade Aesthetic',
+    fontId: 'cinzel-dec',
+    casing: 'upper',
+    colorScheme: 'emerald-gold',
+    showEmblem: false,
+    description: 'Ceremonial Roman swashes with 24K gold foil and imperial emerald green. Inspired by royal Indian Zari & brocade finishing.',
+    vibe: 'Imperial • Palace Heritage • Brocade Luxury',
+    icon: '👑',
+  },
+  {
+    id: 'concept-2',
+    title: 'Concept 2: Haute Couture (Matte Platinum & Champagne)',
+    tagline: 'European Luxury Fashion House',
+    fontId: 'playfair',
+    casing: 'title',
+    colorScheme: 'couture-white',
+    showEmblem: false,
+    description: 'Classic Vogue editorial high-contrast serif in pure matte platinum with champagne gold. Understated elite fashion house look.',
+    vibe: 'Editorial • Milan Runway • Pure Sophistication',
+    icon: '✨',
+  },
+  {
+    id: 'concept-3',
+    title: 'Concept 3: Artisan Dye Vat (Organic Indigo & Burnished Copper)',
+    tagline: 'Handcrafted Dye Cauldron Heritage',
+    fontId: 'rozha',
+    casing: 'title',
+    colorScheme: 'indigo-copper',
+    showEmblem: false,
+    description: 'Authentic Indian high-contrast serif bathed in natural indigo blue and boiling copper cauldron bronze. Celebrates fabric dyeing roots.',
+    vibe: 'Authentic Craft • Indigo Dye Vat • Generational',
+    icon: '🏺',
+  },
+  {
+    id: 'concept-4',
+    title: 'Concept 4: Avant-Garde Parisian (Electric Cyan Azure & Silver)',
+    tagline: 'Contemporary Global Export House',
+    fontId: 'syne',
+    casing: 'upper',
+    colorScheme: 'neon-cyan',
+    showEmblem: false,
+    description: 'Ultra-wide Parisian modernism with luminous cyan glow. Projects an international, high-tech textile finishing corporation.',
+    vibe: 'Architectural • Global Export • Trendsetter',
+    icon: '🌐',
+  },
+  {
+    id: 'concept-5',
+    title: 'Concept 5: Sovereign Imperial (Ruby Crimson & Antique Brass)',
+    tagline: 'Royal Bridal Silk & Wedding Brocade',
+    fontId: 'yeseva',
+    casing: 'title',
+    colorScheme: 'crimson-brass',
+    showEmblem: false,
+    description: 'Sculptural curved display serif with rich bridal jewel-toned ruby crimson and antique brass. Perfect for wedding silk and festive fabrics.',
+    vibe: 'Bridal Silk • Jewel Tones • Celebratory',
+    icon: '💎',
+  },
+  {
+    id: 'concept-6',
+    title: 'Concept 6: Monochromatic Industrial (Stark Titanium & Steel)',
+    tagline: 'B2B Wholesale Manufacturing Authority',
+    fontId: 'montserrat',
+    casing: 'upper',
+    colorScheme: 'titanium-black',
+    showEmblem: false,
+    description: 'Crisp, heavyweight geometric sans with stark monochromatic authority. Clean, direct, and unshakeable B2B manufacturing trust.',
+    vibe: 'Heavy Duty • B2B Authority • Corporate Direct',
+    icon: '🏭',
+  },
+  {
+    id: 'concept-7',
+    title: 'Concept 7: Earth Pigment (Sun Saffron & Warm Terracotta)',
+    tagline: 'Traditional Block Print & Kalamkari',
+    fontId: 'shrikhand',
+    casing: 'title',
+    colorScheme: 'saffron-terracotta',
+    showEmblem: false,
+    description: 'Joyful artisanal script paired with warm turmeric saffron and terracotta earth pigments. Full of hand-block print charm.',
+    vibe: 'Hand Block Print • Earth Pigments • Artisanal Warmth',
+    icon: '🎨',
+  },
+  {
+    id: 'concept-8',
+    title: 'Concept 8: Prismatic Aurora (Rainbow Dye Spectrum)',
+    tagline: 'Creative Textile Dye Spectrum',
+    fontId: 'righteous',
+    casing: 'upper',
+    colorScheme: 'prismatic-aurora',
+    showEmblem: false,
+    description: 'Art Deco rounded geometry bathed in an aurora rainbow gradient. Represents the endless spectrum of custom fabric dye shades.',
+    vibe: 'Color Spectrum • Creative Flair • Art Deco',
+    icon: '🌈',
+  },
+  {
+    id: 'concept-9',
+    title: 'Concept 9: Velvet Midnight (Deep Navy & Champagne Pearl)',
+    tagline: 'Five-Star Hospitality Supplier',
+    fontId: 'dmserif',
+    casing: 'title',
+    colorScheme: 'navy-champagne',
+    showEmblem: false,
+    description: 'Robust, clean contemporary royal serif with luminous champagne pearl and midnight navy. Pure quiet corporate prestige.',
+    vibe: 'Quiet Prestige • Five-Star Poise • Executive',
+    icon: '🏛️',
+  },
+  {
+    id: 'concept-10',
+    title: 'Concept 10: Calligraphic Signature Seal (Antique Gold Swash)',
+    tagline: 'Master Craftsman Signature Hallmark',
+    fontId: 'greatvibes',
+    casing: 'title',
+    colorScheme: 'all-gold',
+    showEmblem: false,
+    description: 'Flowing, royal imperial calligraphy script bathed in 24K gold leaf. Feels like the personal signature of a master fabric artisan.',
+    vibe: 'Master Artisan • Handcrafted Signature • Bespoke',
+    icon: '🖋️',
   },
 ];
 
@@ -512,6 +681,7 @@ const FontPreviewStudio = ({
   const [showEmblem, setShowEmblem] = useState(false);
   const [colorScheme, setColorScheme] = useState('dual');
   const [previewDevice, setPreviewDevice] = useState('both'); // 'both' | 'phone' | 'desktop'
+  const [activeConceptId, setActiveConceptId] = useState(null);
   const [copiedNotification, setCopiedNotification] = useState(false);
   const [appliedNotification, setAppliedNotification] = useState(false);
 
@@ -533,9 +703,19 @@ const FontPreviewStudio = ({
 
   const handleSelectFont = (font) => {
     setSelectedFont(font);
+    setActiveConceptId(null);
     if (font.recommendedCase && font.recommendedCase !== casing) {
       setCasing(font.recommendedCase);
     }
+  };
+
+  const handleApplyConcept = (concept) => {
+    const matchedFont = FONT_COLLECTION.find((f) => f.id === concept.fontId) || FONT_COLLECTION[0];
+    setSelectedFont(matchedFont);
+    setCasing(concept.casing);
+    setColorScheme(concept.colorScheme);
+    setShowEmblem(concept.showEmblem);
+    setActiveConceptId(concept.id);
   };
 
   const handleApplyToSite = () => {
@@ -554,7 +734,7 @@ const FontPreviewStudio = ({
   };
 
   const handleCopyFontDetails = () => {
-    const text = `Chosen Brand Font: ${selectedFont.name} (${selectedFont.category})
+    const text = `Chosen Brand Design: ${selectedFont.name} (${selectedFont.category})
 CSS font-family: ${selectedFont.cssFamily}
 Casing: ${casing === 'upper' ? 'ALL CAPS (MUNNA DYEING PRINTING)' : 'Title Case (Munna Dyeing Printing)'}
 Logo in Navbar: ${showEmblem ? 'With MDP Emblem' : 'Pure Wordmark Only'}
@@ -570,47 +750,117 @@ Color Scheme: ${colorScheme}`;
     const dyeingText = casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
 
     const munnaColor = () => {
-      if (colorScheme === 'all-gold') {
-        return darkMode
-          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-          : 'text-brand-gold-dark drop-shadow-sm';
+      switch (colorScheme) {
+        case 'emerald-gold':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+            : 'text-brand-gold-dark drop-shadow-sm';
+        case 'couture-white':
+          return darkMode
+            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
+            : 'text-[#0f172a]';
+        case 'indigo-copper':
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+            : 'text-[#1e3a8a]';
+        case 'neon-cyan':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+            : 'text-[#0284c7]';
+        case 'crimson-brass':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+            : 'text-[#be123c]';
+        case 'titanium-black':
+          return darkMode
+            ? 'text-white drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+            : 'text-black';
+        case 'saffron-terracotta':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fef08a] via-[#fde047] to-[#eab308] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(234,179,8,0.4)]'
+            : 'text-[#b45309]';
+        case 'prismatic-aurora':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#38bdf8] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(168,85,247,0.4)]'
+            : 'bg-gradient-to-r from-[#0284c7] via-[#7c3aed] to-[#db2777] bg-clip-text text-transparent';
+        case 'navy-champagne':
+          return darkMode
+            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.3)]'
+            : 'text-[#1e293b]';
+        case 'all-gold':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+            : 'text-brand-gold-dark drop-shadow-sm';
+        case 'all-blue':
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
+            : 'text-[#0b2559]';
+        case 'crisp-white':
+          return darkMode
+            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
+            : 'text-[#0b2559]';
+        default: // dual
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
+            : 'text-[#0b2559] drop-shadow-sm';
       }
-      if (colorScheme === 'all-blue') {
-        return darkMode
-          ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
-          : 'text-[#0b2559]';
-      }
-      if (colorScheme === 'crisp-white') {
-        return darkMode
-          ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
-          : 'text-[#0b2559]';
-      }
-      // Dual tone (default)
-      return darkMode
-        ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
-        : 'text-[#0b2559] drop-shadow-sm';
     };
 
     const dyeingColor = () => {
-      if (colorScheme === 'all-gold') {
-        return darkMode
-          ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-          : 'text-brand-gold-dark drop-shadow-sm';
+      switch (colorScheme) {
+        case 'emerald-gold':
+          return darkMode
+            ? 'text-[#34d399] drop-shadow-[0_1px_8px_rgba(52,211,153,0.4)]'
+            : 'text-[#047857]';
+        case 'couture-white':
+          return darkMode
+            ? 'text-brand-gold-light drop-shadow-[0_1px_8px_rgba(226,201,124,0.3)]'
+            : 'text-[#b45309]';
+        case 'indigo-copper':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fde047] to-[#f59e0b] bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(245,158,11,0.4)]'
+            : 'text-[#c2410c]';
+        case 'neon-cyan':
+          return darkMode
+            ? 'text-slate-200 drop-shadow-[0_1px_6px_rgba(241,245,249,0.3)]'
+            : 'text-slate-700';
+        case 'crimson-brass':
+          return darkMode
+            ? 'text-[#fbbf24] drop-shadow-[0_1px_8px_rgba(251,191,36,0.4)]'
+            : 'text-[#d97706]';
+        case 'titanium-black':
+          return darkMode
+            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.2)]'
+            : 'text-slate-600';
+        case 'saffron-terracotta':
+          return darkMode
+            ? 'text-[#fb923c] drop-shadow-[0_1px_8px_rgba(251,146,60,0.4)]'
+            : 'text-[#c2410c]';
+        case 'prismatic-aurora':
+          return darkMode
+            ? 'text-[#fde047] drop-shadow-[0_1px_8px_rgba(253,224,71,0.4)]'
+            : 'text-[#b45309]';
+        case 'navy-champagne':
+          return darkMode
+            ? 'text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(96,165,250,0.35)]'
+            : 'text-[#2563eb]';
+        case 'all-gold':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+            : 'text-brand-gold-dark drop-shadow-sm';
+        case 'all-blue':
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
+            : 'text-[#0b2559]';
+        case 'crisp-white':
+          return darkMode
+            ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]'
+            : 'text-[#1e3a8a]';
+        default: // dual
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
+            : 'text-[#a37f37]';
       }
-      if (colorScheme === 'all-blue') {
-        return darkMode
-          ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
-          : 'text-[#0b2559]';
-      }
-      if (colorScheme === 'crisp-white') {
-        return darkMode
-          ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]'
-          : 'text-[#1e3a8a]';
-      }
-      // Dual tone (default)
-      return darkMode
-        ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
-        : 'text-[#a37f37]';
     };
 
     const fontSize = isPhone
@@ -662,17 +912,17 @@ Color Scheme: ${colorScheme}`;
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/15 text-brand-gold border border-brand-gold/30 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Interactive Brand Typography Studio — {FONT_COLLECTION.length} Curated Fonts</span>
+              <span>Interactive Brand Typography Studio — {FONT_COLLECTION.length} Fonts & 10 Design Concepts</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
               Test & Choose Your Brand Font
             </h1>
             <p className="text-sm sm:text-base text-gray-400 mt-1 max-w-2xl">
-              Preview real commercial production typography for <strong>“Munna Dyeing Printing”</strong> side-by-side in full desktop and mobile navbar layouts.
+              Preview real commercial production typography for <strong>“Munna Dyeing Printing”</strong> across 10 complete design themes and 32 individual fonts in full desktop and mobile navbar layouts.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
             <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
@@ -684,7 +934,7 @@ Color Scheme: ${colorScheme}`;
                   window.location.reload(true);
                 }
               }}
-              className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 darkMode
                   ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
                   : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
@@ -721,7 +971,98 @@ Color Scheme: ${colorScheme}`;
           </div>
         </div>
 
-        {/* CONTROLS BAR: Case Toggle, Emblem Toggle, Color Scheme, Device Preview */}
+        {/* SECTION 1: 10 COMPLETE READY-MADE BRAND DESIGN CONCEPTS */}
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-gold">
+                <Compass className="w-4 h-4" />
+                <span>Alternative Themes & Color Stylings</span>
+              </div>
+              <h2 className="text-2xl font-bold mt-0.5">10 Complete Brand Identity Concepts</h2>
+              <p className="text-xs sm:text-sm text-gray-400 mt-0.5">
+                Click any concept below to test a completely unique artistic aesthetic (different font, color palette, and styling) in real time:
+              </p>
+            </div>
+            <span className="text-xs font-medium text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/20 self-start sm:self-auto">
+              1-Click Theme Switcher
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            {BRAND_DESIGN_CONCEPTS.map((concept) => {
+              const isActive = activeConceptId === concept.id;
+              const matchedFont = FONT_COLLECTION.find((f) => f.id === concept.fontId) || FONT_COLLECTION[0];
+              const sampleName = concept.casing === 'upper' ? 'MUNNA' : 'Munna';
+              const sampleSub = concept.casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
+
+              return (
+                <div
+                  key={concept.id}
+                  onClick={() => handleApplyConcept(concept)}
+                  className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 relative group flex flex-col justify-between ${
+                    isActive
+                      ? darkMode
+                        ? 'bg-gradient-to-b from-[#1c2c48] to-[#121c2e] border-brand-gold shadow-[0_0_20px_rgba(212,175,55,0.3)] ring-2 ring-brand-gold'
+                        : 'bg-white border-brand-gold shadow-xl ring-2 ring-brand-gold/50'
+                      : darkMode
+                      ? 'bg-[#101726] border-white/10 hover:border-brand-gold/40 hover:bg-[#141e30]'
+                      : 'bg-white border-gray-200 hover:border-brand-gold/50 shadow-sm hover:shadow-md'
+                  }`}
+                >
+                  <div>
+                    {/* Top Row: Icon & Status */}
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xl">{concept.icon}</span>
+                      {isActive ? (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-gold text-brand-dark flex items-center gap-1">
+                          <Check className="w-3 h-3" /> Active
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-gray-400 group-hover:text-brand-gold transition-colors">
+                          Preview →
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="text-xs font-bold text-gray-200 dark:text-gray-200 light:text-gray-900 group-hover:text-brand-gold transition-colors leading-snug">
+                      {concept.title}
+                    </h3>
+                    <div className="text-[11px] text-brand-gold/80 font-medium mb-2.5">
+                      {concept.tagline}
+                    </div>
+
+                    {/* Mini Visual Preview Pill */}
+                    <div
+                      className={`p-2.5 rounded-xl border mb-2.5 text-center overflow-hidden ${
+                        darkMode ? 'bg-[#080d18] border-white/5' : 'bg-gray-50 border-gray-200'
+                      }`}
+                    >
+                      <div
+                        className={`text-sm truncate font-semibold`}
+                        style={{ fontFamily: matchedFont.cssFamily }}
+                      >
+                        <span className="text-brand-gold">{sampleName}</span>{' '}
+                        <span className="text-[#38bdf8]">{sampleSub}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-[11px] text-gray-400 leading-relaxed line-clamp-2">
+                      {concept.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between text-[10px] text-gray-400">
+                    <span className="font-semibold text-gray-300">{matchedFont.name}</span>
+                    <span className="opacity-70">{concept.casing === 'upper' ? 'ALL CAPS' : 'Title'}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SECTION 2: CONTROLS BAR: Case Toggle, Emblem Toggle, Color Scheme, Device Preview */}
         <div
           className={`p-5 rounded-2xl border shadow-lg space-y-4 ${
             darkMode
@@ -791,7 +1132,7 @@ Color Scheme: ${colorScheme}`;
 
             {/* 3. Color Palette */}
             <div>
-              <label className="block text-xs text-gray-400 font-medium mb-1.5">Color Styling</label>
+              <label className="block text-xs text-gray-400 font-medium mb-1.5">Color Styling Theme</label>
               <select
                 value={colorScheme}
                 onChange={(e) => setColorScheme(e.target.value)}
@@ -850,7 +1191,7 @@ Color Scheme: ${colorScheme}`;
           </div>
         </div>
 
-        {/* LIVE SIMULATED PREVIEWS (Desktop & Mobile) */}
+        {/* SECTION 3: LIVE SIMULATED PREVIEWS (Desktop & Mobile) */}
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -1065,12 +1406,12 @@ Color Scheme: ${colorScheme}`;
           </div>
         </div>
 
-        {/* FONT SELECTOR GALLERY: Categories + Search + Cards */}
+        {/* SECTION 4: INDIVIDUAL FONT SELECTOR GALLERY: Categories + Search + Cards */}
         <div className="space-y-5 pt-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-gold">Curated Font Library</div>
-              <h3 className="text-2xl font-bold mt-0.5">Click Any Font to Preview Instantly</h3>
+              <div className="text-xs font-bold uppercase tracking-wider text-brand-gold">Individual Font Library</div>
+              <h3 className="text-2xl font-bold mt-0.5">Explore All {FONT_COLLECTION.length} Fonts One-by-One</h3>
             </div>
 
             {/* Live Search Input */}
@@ -1211,9 +1552,9 @@ Color Scheme: ${colorScheme}`;
           }`}
         >
           <div>
-            <h4 className="text-base font-bold">Have you found the font you love?</h4>
+            <h4 className="text-base font-bold">Have you found the font or theme you love?</h4>
             <p className="text-xs text-gray-400 mt-0.5">
-              Click <strong>"Select & Apply to Site"</strong> above or simply tell me the font name (e.g. <em>"{selectedFont.name}"</em>) and I will permanently lock it as the default!
+              Click <strong>"Select & Apply to Site"</strong> above or simply tell me the concept or font name (e.g. <em>"{selectedFont.name}"</em>) and I will permanently lock it as the default!
             </p>
           </div>
 
