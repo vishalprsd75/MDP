@@ -50,14 +50,16 @@ const Logo = ({
     );
   };
 
-  // When text is hidden (e.g. Footer), render only the MDP crest
+  // When text is hidden (e.g. Footer), render only the MDP crest in compact size
   if (!showText) {
     return (
       <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
         {renderFixedLogo(
           size === 'lg'
-            ? 'h-10 sm:h-12 md:h-14'
-            : 'h-6 sm:h-7 md:h-8'
+            ? 'h-7 sm:h-8'
+            : size === 'sm'
+            ? 'h-5 sm:h-6'
+            : 'h-6 sm:h-7'
         )}
       </div>
     );

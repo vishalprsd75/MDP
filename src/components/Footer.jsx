@@ -22,7 +22,7 @@ const Footer = ({ darkMode = true }) => {
           
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-5 space-y-4">
-            <Logo darkMode={darkMode} size="lg" showText={false} />
+            <Logo darkMode={darkMode} size="sm" showText={false} />
             
             <p className="text-xs sm:text-sm leading-relaxed max-w-md font-light">
               "{siteConfig.tagline}" — Providing expert fabric dyeing, screen printing, Shibori, block print, Kalamkari, and Batik craftsmanship in Pragathi Nagar, Nizampet, Hyderabad.
