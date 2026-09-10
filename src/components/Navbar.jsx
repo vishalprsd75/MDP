@@ -3,7 +3,7 @@ import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, brandingVariant = 'stacked' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
           
           {/* Configurable Logo Component */}
           <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none">
-            <Logo darkMode={darkMode} size="md" />
+            <Logo darkMode={darkMode} size="md" variant={brandingVariant} />
           </a>
 
           {/* Desktop Navigation Links */}
