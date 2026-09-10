@@ -473,75 +473,295 @@ export const CATEGORY_TABS = [
 ];
 
 export const COLOR_SCHEMES = [
+  // --- 1. ONE COLOR STYLES (Single Unified Color Across Entire Brand Name) ---
+  {
+    id: 'single-gold',
+    name: '👑 Solid 24K Royal Gold Leaf (One Color)',
+    type: 'single',
+    description: 'Complete business name bathed in monolithic 24K metallic gold leaf shimmer.',
+  },
+  {
+    id: 'single-white',
+    name: '⚪ Solid Stark Platinum White (One Color)',
+    type: 'single',
+    description: 'Clean, high-contrast pure platinum white across all words with ambient soft glow.',
+  },
+  {
+    id: 'single-blue',
+    name: '🔷 Solid Royal Sapphire Indigo (One Color)',
+    type: 'single',
+    description: 'Deep, dignified royal sapphire blue across the entire business name.',
+  },
+  {
+    id: 'single-emerald',
+    name: '💎 Solid Imperial Jewel Emerald (One Color)',
+    type: 'single',
+    description: 'Rich royal jewel emerald green, echoing luxury Banarasi and festive silk sarees.',
+  },
+  {
+    id: 'single-crimson',
+    name: '🌹 Solid Sovereign Ruby Crimson (One Color)',
+    type: 'single',
+    description: 'Royal bridal ruby crimson across all words, evoking wedding silk celebrations.',
+  },
+  {
+    id: 'single-copper',
+    name: '🏺 Solid Burnished Artisan Copper (One Color)',
+    type: 'single',
+    description: 'Warm metallic artisan copper bronze, celebrating handcrafted dye-house cauldrons.',
+  },
+  {
+    id: 'single-champagne',
+    name: '🥂 Solid Champagne Pearl Ivory (One Color)',
+    type: 'single',
+    description: 'Soft, five-star quiet luxury champagne pearl ivory with understated opulence.',
+  },
+  {
+    id: 'single-cyan',
+    name: '⚡ Solid Electric Cyan Azure (One Color)',
+    type: 'single',
+    description: 'Glowing futuristic electric cyan azure neon, projecting global high-tech textile authority.',
+  },
+  {
+    id: 'single-silver',
+    name: '🛡️ Solid Polished Titanium Silver (One Color)',
+    type: 'single',
+    description: 'Sleek, executive polished steel silver with clean industrial precision.',
+  },
+  {
+    id: 'single-black',
+    name: '🖤 Solid Deep Obsidian Jet Black (One Color)',
+    type: 'single',
+    description: 'Authoritative deep obsidian jet black / slate for bold, unshakeable presence.',
+  },
+
+  // --- 2. DUAL-TONE & CONTRAST THEMES (Contrasting Accent Colors) ---
   {
     id: 'dual',
-    name: '3D Gold + Sapphire Blue (Signature)',
+    name: '✨ 3D Gold + Sapphire Blue (Signature)',
+    type: 'dual',
     description: 'Matches approved MDP crest colors: 3D Metallic Gold for Munna, Royal Sapphire for Dyeing Printing.',
   },
   {
     id: 'emerald-gold',
-    name: '24K Gold Foil + Imperial Emerald',
+    name: '👑 24K Gold Foil + Imperial Emerald',
+    type: 'dual',
     description: 'Palace heritage aesthetic: Warm gold leaf shimmer paired with rich emerald green silk accent.',
   },
   {
     id: 'couture-white',
-    name: 'Haute Couture (Matte Platinum & Champagne)',
+    name: '🕊️ Haute Couture (Matte Platinum & Champagne)',
+    type: 'dual',
     description: 'Pure high-fashion minimalism: Crisp platinum white with soft champagne gold accent.',
   },
   {
     id: 'indigo-copper',
-    name: 'Artisan Dye Vat (Organic Indigo & Burnished Copper)',
+    name: '🏺 Artisan Dye Vat (Indigo & Burnished Copper)',
+    type: 'dual',
     description: 'Authentic textile dye cauldron: Deep indigo blue paired with warm burnished copper gold.',
   },
   {
     id: 'neon-cyan',
-    name: 'Avant-Garde Parisian (Electric Cyan Azure & Silver)',
+    name: '🌐 Avant-Garde Parisian (Electric Cyan Azure & Silver)',
+    type: 'dual',
     description: 'Futuristic high-tech export house: Vibrant electric cyan with sleek metallic titanium.',
   },
   {
     id: 'crimson-brass',
-    name: 'Sovereign Imperial (Ruby Crimson & Antique Brass)',
+    name: '💎 Sovereign Imperial (Ruby Crimson & Antique Brass)',
+    type: 'dual',
     description: 'Regal bridal silk: Rich jewel-toned crimson ruby with warm antique brass gold.',
   },
   {
     id: 'titanium-black',
-    name: 'Monochromatic Industrial (Stark Titanium & Steel)',
+    name: '🏭 Monochromatic Industrial (Stark Titanium & Steel)',
+    type: 'dual',
     description: 'No-nonsense manufacturing authority: Stark white with clean metallic steel gray.',
   },
   {
     id: 'saffron-terracotta',
-    name: 'Earth Pigment (Sun Saffron & Warm Terracotta)',
+    name: '🎨 Earth Pigment (Sun Saffron & Warm Terracotta)',
+    type: 'dual',
     description: 'Organic Kalamkari & block print: Warm turmeric saffron gold with earthy terracotta spice.',
   },
   {
     id: 'prismatic-aurora',
-    name: 'Prismatic Aurora (Rainbow Dye Spectrum)',
+    name: '🌈 Prismatic Aurora (Rainbow Dye Spectrum)',
+    type: 'dual',
     description: 'Color-dye spectrum: Vibrant rainbow gradient celebrating the full textile dyeing spectrum.',
   },
   {
     id: 'navy-champagne',
-    name: 'Velvet Midnight (Deep Navy & Champagne Pearl)',
+    name: '🏛️ Velvet Midnight (Deep Navy & Champagne Pearl)',
+    type: 'dual',
     description: 'Five-star quiet luxury: Deepest midnight navy blue with luminous champagne pearl.',
   },
+
+  // Backward compatibility aliases
   {
     id: 'all-gold',
-    name: 'All 3D Metallic Gold',
+    name: '👑 All 3D Metallic Gold (Single Color)',
+    type: 'single',
     description: 'Complete name bathed in warm metallic gold leaf shimmer.',
   },
   {
     id: 'all-blue',
-    name: 'All Royal Sapphire Blue',
+    name: '🔷 All Royal Sapphire Blue (Single Color)',
+    type: 'single',
     description: 'Dignified royal sapphire blue gradient across both words.',
   },
   {
     id: 'crisp-white',
-    name: 'Crisp Regal White',
+    name: '⚪ Crisp Regal White (Single Color)',
+    type: 'single',
     description: 'Pure high-contrast white with soft golden ambient shadow.',
   },
 ];
 
-// 10 COMPLETE READY-MADE BRAND DESIGN CONCEPTS
-export const BRAND_DESIGN_CONCEPTS = [
+export const isSingleColor = (schemeId) => {
+  return [
+    'single-gold',
+    'single-white',
+    'single-blue',
+    'single-emerald',
+    'single-crimson',
+    'single-copper',
+    'single-champagne',
+    'single-cyan',
+    'single-silver',
+    'single-black',
+    'all-gold',
+    'all-blue',
+    'crisp-white',
+  ].includes(schemeId);
+};
+
+// 10 READY-MADE BRAND DESIGN CONCEPTS IN ONE COLOR STYLE (Monolithic Unified Color)
+export const SINGLE_COLOR_CONCEPTS = [
+  {
+    id: 'sc-1',
+    title: 'Sample 1: Palace Sovereign (Solid 24K Gold Foil)',
+    tagline: 'All Words in Monolithic 24K Gold Foil',
+    fontId: 'cinzel-dec',
+    casing: 'upper',
+    colorScheme: 'single-gold',
+    showEmblem: false,
+    description: 'Ceremonial Roman swashes rendered 100% in monolithic 24K gold leaf shimmer. Utterly majestic, royal, and unified.',
+    vibe: 'Imperial • 24K Gold Leaf • Regal Zari',
+    icon: '👑',
+  },
+  {
+    id: 'sc-2',
+    title: 'Sample 2: Haute Editorial (Solid Platinum White)',
+    tagline: 'All Words in Matte Pure Platinum',
+    fontId: 'playfair',
+    casing: 'title',
+    colorScheme: 'single-white',
+    showEmblem: false,
+    description: 'Classic Vogue editorial high-contrast serif in uniform stark platinum white. Razor-sharp elegance and clean runway authority.',
+    vibe: 'Editorial • Pure White • Runway Luxury',
+    icon: '⚪',
+  },
+  {
+    id: 'sc-3',
+    title: 'Sample 3: Heritage Master (Solid Royal Sapphire)',
+    tagline: 'All Words in Deep Dye-House Sapphire',
+    fontId: 'rozha',
+    casing: 'title',
+    colorScheme: 'single-blue',
+    showEmblem: false,
+    description: 'Authentic Indian high-contrast serif bathed completely in luminous royal sapphire indigo blue. Deep dye-craft pride.',
+    vibe: 'Indian Heritage • Sapphire Indigo • Dye Pride',
+    icon: '🔷',
+  },
+  {
+    id: 'sc-4',
+    title: 'Sample 4: Royal Silk Saree (Solid Imperial Emerald)',
+    tagline: 'All Words in Jewel-Toned Emerald',
+    fontId: 'dmserif',
+    casing: 'title',
+    colorScheme: 'single-emerald',
+    showEmblem: false,
+    description: 'Contemporary royal serif in 100% rich imperial jewel emerald green. Captures the opulent look of ceremonial Banarasi emerald sarees.',
+    vibe: 'Banarasi Emerald • Jewel-Toned • Royal Silk',
+    icon: '💎',
+  },
+  {
+    id: 'sc-5',
+    title: 'Sample 5: Bridal Zari (Solid Sovereign Ruby Crimson)',
+    tagline: 'All Words in Rich Bridal Ruby Crimson',
+    fontId: 'yeseva',
+    casing: 'title',
+    colorScheme: 'single-crimson',
+    showEmblem: false,
+    description: 'Sculptural curved display serif in uniform rich bridal ruby crimson. Perfect for wedding fabrics, red silks, and festive glory.',
+    vibe: 'Bridal Crimson • Jewel Ruby • Festive Glory',
+    icon: '🌹',
+  },
+  {
+    id: 'sc-6',
+    title: 'Sample 6: Artisan Cauldron (Solid Burnished Copper)',
+    tagline: 'All Words in Warm Metallic Bronze Copper',
+    fontId: 'marcellus',
+    casing: 'upper',
+    colorScheme: 'single-copper',
+    showEmblem: false,
+    description: 'Roman flared inscriptions bathed in warm metallic copper bronze. Reminiscent of heavy copper dye kettles and woodblocks.',
+    vibe: 'Artisan Bronze • Copper Kettle • Classical Stone',
+    icon: '🏺',
+  },
+  {
+    id: 'sc-7',
+    title: 'Sample 7: Slender Runway (Solid Champagne Pearl)',
+    tagline: 'All Words in Refined Champagne Ivory',
+    fontId: 'italiana',
+    casing: 'upper',
+    colorScheme: 'single-champagne',
+    showEmblem: false,
+    description: 'Tall, slender Italian calligraphic serif in soft champagne pearl ivory. Whispers quiet luxury, haute couture, and pure silk touch.',
+    vibe: 'Slender • Champagne Pearl • Quiet Luxury',
+    icon: '🥂',
+  },
+  {
+    id: 'sc-8',
+    title: 'Sample 8: Global Export (Solid Electric Cyan Azure)',
+    tagline: 'All Words in Glowing Electric Cyan',
+    fontId: 'syne',
+    casing: 'upper',
+    colorScheme: 'single-cyan',
+    showEmblem: false,
+    description: 'Ultra-wide contemporary French avant-garde sans in glowing electric cyan. Projects international high-tech finishing capability.',
+    vibe: 'Futuristic • Electric Azure • Global Export',
+    icon: '⚡',
+  },
+  {
+    id: 'sc-9',
+    title: 'Sample 9: Industrial Precision (Solid Titanium Silver)',
+    tagline: 'All Words in Sleek Polished Steel',
+    fontId: 'montserrat',
+    casing: 'upper',
+    colorScheme: 'single-silver',
+    showEmblem: false,
+    description: 'Solid, heavyweight geometric commercial sans in polished steel silver. Built for heavy-duty B2B manufacturing trust.',
+    vibe: 'Heavy Duty • Polished Steel • Commercial Authority',
+    icon: '🛡️',
+  },
+  {
+    id: 'sc-10',
+    title: 'Sample 10: Master Calligraphy (Solid 24K Gold Signature)',
+    tagline: 'All Words in Master Flowing Gold Script',
+    fontId: 'greatvibes',
+    casing: 'title',
+    colorScheme: 'single-gold',
+    showEmblem: false,
+    description: 'Handcrafted cursive signature script in pure 24K gold leaf. Feels like the personal seal of a master artisan fabric dyer.',
+    vibe: 'Artisan Hallmark • Flowing Gold • Bespoke Seal',
+    icon: '🖋️',
+  },
+];
+
+// 10 READY-MADE BRAND DESIGN CONCEPTS IN DUAL-TONE CONTRAST THEMES
+export const DUAL_TONE_CONCEPTS = [
   {
     id: 'concept-1',
     title: 'Concept 1: Royal Heritage (Gold Foil & Imperial Emerald)',
@@ -664,6 +884,8 @@ export const BRAND_DESIGN_CONCEPTS = [
   },
 ];
 
+export const BRAND_DESIGN_CONCEPTS = DUAL_TONE_CONCEPTS;
+
 const FontPreviewStudio = ({
   darkMode = true,
   onToggleTheme,
@@ -675,13 +897,14 @@ const FontPreviewStudio = ({
     return FONT_COLLECTION.find((f) => f.id === saved) || FONT_COLLECTION[0];
   });
 
+  const [conceptTab, setConceptTab] = useState('single'); // 'single' (One Color Style) | 'dual' (Dual-Tone Themes)
   const [activeGroup, setActiveGroup] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [casing, setCasing] = useState('title'); // 'title' | 'upper'
   const [showEmblem, setShowEmblem] = useState(false);
-  const [colorScheme, setColorScheme] = useState('dual');
+  const [colorScheme, setColorScheme] = useState('single-gold');
   const [previewDevice, setPreviewDevice] = useState('both'); // 'both' | 'phone' | 'desktop'
-  const [activeConceptId, setActiveConceptId] = useState(null);
+  const [activeConceptId, setActiveConceptId] = useState('sc-1');
   const [copiedNotification, setCopiedNotification] = useState(false);
   const [appliedNotification, setAppliedNotification] = useState(false);
 
@@ -738,7 +961,7 @@ const FontPreviewStudio = ({
 CSS font-family: ${selectedFont.cssFamily}
 Casing: ${casing === 'upper' ? 'ALL CAPS (MUNNA DYEING PRINTING)' : 'Title Case (Munna Dyeing Printing)'}
 Logo in Navbar: ${showEmblem ? 'With MDP Emblem' : 'Pure Wordmark Only'}
-Color Scheme: ${colorScheme}`;
+Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' : 'Dual-Tone Style'})`;
     navigator.clipboard?.writeText(text);
     setCopiedNotification(true);
     setTimeout(() => setCopiedNotification(false), 2500);
@@ -751,6 +974,52 @@ Color Scheme: ${colorScheme}`;
 
     const munnaColor = () => {
       switch (colorScheme) {
+        // --- 1. ONE COLOR STYLES (Single Unified Color) ---
+        case 'single-gold':
+        case 'all-gold':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+            : 'text-brand-gold-dark drop-shadow-sm';
+        case 'single-white':
+        case 'crisp-white':
+          return darkMode
+            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
+            : 'text-[#0b2559] drop-shadow-sm';
+        case 'single-blue':
+        case 'all-blue':
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+            : 'text-[#0b2559] drop-shadow-sm';
+        case 'single-emerald':
+          return darkMode
+            ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
+            : 'text-[#047857] drop-shadow-sm';
+        case 'single-crimson':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+            : 'text-[#be123c] drop-shadow-sm';
+        case 'single-copper':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
+            : 'text-[#c2410c] drop-shadow-sm';
+        case 'single-champagne':
+          return darkMode
+            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
+            : 'text-[#78350f] drop-shadow-sm';
+        case 'single-cyan':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+            : 'text-[#0284c7] drop-shadow-sm';
+        case 'single-silver':
+          return darkMode
+            ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+            : 'text-slate-700 drop-shadow-sm';
+        case 'single-black':
+          return darkMode
+            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
+            : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
+
+        // --- 2. DUAL-TONE THEMES ---
         case 'emerald-gold':
           return darkMode
             ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
@@ -787,18 +1056,6 @@ Color Scheme: ${colorScheme}`;
           return darkMode
             ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.3)]'
             : 'text-[#1e293b]';
-        case 'all-gold':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-            : 'text-brand-gold-dark drop-shadow-sm';
-        case 'all-blue':
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
-            : 'text-[#0b2559]';
-        case 'crisp-white':
-          return darkMode
-            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]'
-            : 'text-[#0b2559]';
         default: // dual
           return darkMode
             ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
@@ -808,6 +1065,52 @@ Color Scheme: ${colorScheme}`;
 
     const dyeingColor = () => {
       switch (colorScheme) {
+        // --- 1. ONE COLOR STYLES (Identical to Munna for unified monolithic styling) ---
+        case 'single-gold':
+        case 'all-gold':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
+            : 'text-brand-gold-dark drop-shadow-sm';
+        case 'single-white':
+        case 'crisp-white':
+          return darkMode
+            ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]'
+            : 'text-[#0b2559] drop-shadow-sm';
+        case 'single-blue':
+        case 'all-blue':
+          return darkMode
+            ? 'text-[#38bdf8] drop-shadow-[0_2px_10px_rgba(56,189,248,0.4)]'
+            : 'text-[#0b2559] drop-shadow-sm';
+        case 'single-emerald':
+          return darkMode
+            ? 'text-[#34d399] drop-shadow-[0_2px_10px_rgba(52,211,153,0.4)]'
+            : 'text-[#047857] drop-shadow-sm';
+        case 'single-crimson':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fb7185] to-[#f43f5e] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(244,63,94,0.4)]'
+            : 'text-[#be123c] drop-shadow-sm';
+        case 'single-copper':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#fcd34d] via-[#f59e0b] to-[#d97706] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]'
+            : 'text-[#c2410c] drop-shadow-sm';
+        case 'single-champagne':
+          return darkMode
+            ? 'text-[#fef3c7] drop-shadow-[0_2px_10px_rgba(254,243,199,0.35)]'
+            : 'text-[#78350f] drop-shadow-sm';
+        case 'single-cyan':
+          return darkMode
+            ? 'bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.5)]'
+            : 'text-[#0284c7] drop-shadow-sm';
+        case 'single-silver':
+          return darkMode
+            ? 'bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_1px_8px_rgba(255,255,255,0.25)]'
+            : 'text-slate-700 drop-shadow-sm';
+        case 'single-black':
+          return darkMode
+            ? 'text-slate-300 drop-shadow-[0_1px_6px_rgba(203,213,225,0.25)]'
+            : 'text-[#0a0a0a] font-extrabold drop-shadow-sm';
+
+        // --- 2. DUAL-TONE THEMES ---
         case 'emerald-gold':
           return darkMode
             ? 'text-[#34d399] drop-shadow-[0_1px_8px_rgba(52,211,153,0.4)]'
@@ -844,18 +1147,6 @@ Color Scheme: ${colorScheme}`;
           return darkMode
             ? 'text-[#60a5fa] drop-shadow-[0_1px_8px_rgba(96,165,250,0.35)]'
             : 'text-[#2563eb]';
-        case 'all-gold':
-          return darkMode
-            ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.4)]'
-            : 'text-brand-gold-dark drop-shadow-sm';
-        case 'all-blue':
-          return darkMode
-            ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.4)]'
-            : 'text-[#0b2559]';
-        case 'crisp-white':
-          return darkMode
-            ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]'
-            : 'text-[#1e3a8a]';
         default: // dual
           return darkMode
             ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
@@ -888,12 +1179,20 @@ Color Scheme: ${colorScheme}`;
           className={`flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none ${selectedFont.weight} ${selectedFont.letterSpacing}`}
           style={{ fontFamily: selectedFont.cssFamily }}
         >
-          <span className={`${munnaColor()} ${fontSize} transition-all duration-300 leading-none`}>
-            {munnaText}
-          </span>
-          <span className={`${dyeingColor()} ${fontSize} transition-all duration-300 leading-none`}>
-            {dyeingText}
-          </span>
+          {isSingleColor(colorScheme) ? (
+            <span className={`${munnaColor()} ${fontSize} transition-all duration-300 leading-none`}>
+              {munnaText} {dyeingText}
+            </span>
+          ) : (
+            <>
+              <span className={`${munnaColor()} ${fontSize} transition-all duration-300 leading-none`}>
+                {munnaText}
+              </span>
+              <span className={`${dyeingColor()} ${fontSize} transition-all duration-300 leading-none`}>
+                {dyeingText}
+              </span>
+            </>
+          )}
         </div>
       </div>
     );
@@ -971,30 +1270,72 @@ Color Scheme: ${colorScheme}`;
           </div>
         </div>
 
-        {/* SECTION 1: 10 COMPLETE READY-MADE BRAND DESIGN CONCEPTS */}
+        {/* SECTION 1: READY-MADE BRAND DESIGN CONCEPTS */}
         <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-gold">
                 <Compass className="w-4 h-4" />
-                <span>Alternative Themes & Color Stylings</span>
+                <span>Brand Identity Concepts & Themes</span>
               </div>
-              <h2 className="text-2xl font-bold mt-0.5">10 Complete Brand Identity Concepts</h2>
+              <h2 className="text-2xl font-bold mt-0.5">
+                {conceptTab === 'single' ? '10 Unified One-Color Style Samples' : '10 Dual-Tone Contrast Themes'}
+              </h2>
               <p className="text-xs sm:text-sm text-gray-400 mt-0.5">
-                Click any concept below to test a completely unique artistic aesthetic (different font, color palette, and styling) in real time:
+                {conceptTab === 'single'
+                  ? 'All words (Munna Dyeing Printing) unified in one solid, cohesive luxury finish (100% monolithic gold, white, sapphire, emerald, copper, etc.):'
+                  : 'Two-tone artistic pairings with contrasting accent colors for Munna and Dyeing Printing:'}
               </p>
             </div>
-            <span className="text-xs font-medium text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/20 self-start sm:self-auto">
-              1-Click Theme Switcher
-            </span>
+
+            {/* Concept Mode Selector Pills: One Color vs Dual Tone */}
+            <div className="flex items-center p-1 rounded-xl bg-black/25 border border-white/10 shrink-0 self-start sm:self-auto shadow-sm">
+              <button
+                onClick={() => {
+                  setConceptTab('single');
+                  handleApplyConcept(SINGLE_COLOR_CONCEPTS[0]);
+                }}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  conceptTab === 'single'
+                    ? 'bg-brand-gold text-brand-dark shadow-md'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span>👑 One Color Style</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  conceptTab === 'single' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                }`}>
+                  10
+                </span>
+              </button>
+              <button
+                onClick={() => {
+                  setConceptTab('dual');
+                  handleApplyConcept(DUAL_TONE_CONCEPTS[0]);
+                }}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  conceptTab === 'dual'
+                    ? 'bg-brand-gold text-brand-dark shadow-md'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span>🎨 Dual-Tone Themes</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  conceptTab === 'dual' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                }`}>
+                  10
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
-            {BRAND_DESIGN_CONCEPTS.map((concept) => {
+            {(conceptTab === 'single' ? SINGLE_COLOR_CONCEPTS : DUAL_TONE_CONCEPTS).map((concept) => {
               const isActive = activeConceptId === concept.id;
               const matchedFont = FONT_COLLECTION.find((f) => f.id === concept.fontId) || FONT_COLLECTION[0];
               const sampleName = concept.casing === 'upper' ? 'MUNNA' : 'Munna';
               const sampleSub = concept.casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing';
+              const isOneColor = isSingleColor(concept.colorScheme);
 
               return (
                 <div
@@ -1042,8 +1383,27 @@ Color Scheme: ${colorScheme}`;
                         className={`text-sm truncate font-semibold`}
                         style={{ fontFamily: matchedFont.cssFamily }}
                       >
-                        <span className="text-brand-gold">{sampleName}</span>{' '}
-                        <span className="text-[#38bdf8]">{sampleSub}</span>
+                        {isOneColor ? (
+                          <span className={
+                            concept.colorScheme.includes('gold') ? (darkMode ? 'text-[#ffd043]' : 'text-brand-gold-dark')
+                            : concept.colorScheme.includes('white') ? (darkMode ? 'text-white' : 'text-[#0b2559]')
+                            : concept.colorScheme.includes('blue') ? (darkMode ? 'text-[#38bdf8]' : 'text-[#0b2559]')
+                            : concept.colorScheme.includes('emerald') ? (darkMode ? 'text-[#34d399]' : 'text-[#047857]')
+                            : concept.colorScheme.includes('crimson') ? (darkMode ? 'text-[#fb7185]' : 'text-[#be123c]')
+                            : concept.colorScheme.includes('copper') ? (darkMode ? 'text-[#f59e0b]' : 'text-[#c2410c]')
+                            : concept.colorScheme.includes('champagne') ? (darkMode ? 'text-[#fef3c7]' : 'text-[#78350f]')
+                            : concept.colorScheme.includes('cyan') ? (darkMode ? 'text-[#00f0ff]' : 'text-[#0284c7]')
+                            : concept.colorScheme.includes('silver') ? (darkMode ? 'text-slate-200' : 'text-slate-700')
+                            : (darkMode ? 'text-slate-300' : 'text-[#0a0a0a]')
+                          }>
+                            {sampleName} {sampleSub}
+                          </span>
+                        ) : (
+                          <>
+                            <span className="text-brand-gold">{sampleName}</span>{' '}
+                            <span className="text-[#38bdf8]">{sampleSub}</span>
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -1142,11 +1502,20 @@ Color Scheme: ${colorScheme}`;
                     : 'bg-gray-50 border-brand-gold/40 text-gray-800'
                 }`}
               >
-                {COLOR_SCHEMES.map((scheme) => (
-                  <option key={scheme.id} value={scheme.id}>
-                    {scheme.name}
-                  </option>
-                ))}
+                <optgroup label="👑 ONE COLOR STYLES (Single Unified Color)">
+                  {COLOR_SCHEMES.filter((s) => s.type === 'single').map((scheme) => (
+                    <option key={scheme.id} value={scheme.id}>
+                      {scheme.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="🎨 DUAL-TONE THEMES (Split Accent Colors)">
+                  {COLOR_SCHEMES.filter((s) => s.type === 'dual').map((scheme) => (
+                    <option key={scheme.id} value={scheme.id}>
+                      {scheme.name}
+                    </option>
+                  ))}
+                </optgroup>
               </select>
             </div>
 
@@ -1299,13 +1668,21 @@ Color Scheme: ${colorScheme}`;
                     className={`text-2xl sm:text-4xl md:text-5xl transition-all leading-tight ${selectedFont.weight} ${selectedFont.letterSpacing}`}
                     style={{ fontFamily: selectedFont.cssFamily }}
                   >
-                    <span className={colorScheme === 'all-blue' ? (darkMode ? 'text-[#38bdf8]' : 'text-[#0b2559]') : (darkMode ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent' : 'text-[#0b2559]')}>
-                      {casing === 'upper' ? 'MUNNA' : 'Munna'}
-                    </span>
-                    <span className="mx-2"> </span>
-                    <span className={colorScheme === 'all-gold' ? (darkMode ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent' : 'text-brand-gold-dark') : (darkMode ? 'text-[#38bdf8]' : 'text-[#a37f37]')}>
-                      {casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing'}
-                    </span>
+                    {isSingleColor(colorScheme) ? (
+                      <span className={munnaColor()}>
+                        {casing === 'upper' ? 'MUNNA DYEING PRINTING' : 'Munna Dyeing Printing'}
+                      </span>
+                    ) : (
+                      <>
+                        <span className={munnaColor()}>
+                          {casing === 'upper' ? 'MUNNA' : 'Munna'}
+                        </span>
+                        <span className="mx-2"> </span>
+                        <span className={dyeingColor()}>
+                          {casing === 'upper' ? 'DYEING PRINTING' : 'Dyeing Printing'}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <p className="text-xs text-gray-400 mt-2 font-light max-w-md mx-auto">
                     "{siteConfig.tagline}" — Wholesale Fabric Dyeing & Hand Printing Unit Hyderabad
@@ -1521,12 +1898,20 @@ Color Scheme: ${colorScheme}`;
                       className={`text-lg sm:text-xl truncate leading-tight ${font.weight} ${font.letterSpacing}`}
                       style={{ fontFamily: font.cssFamily }}
                     >
-                      <span className={darkMode ? 'text-brand-gold-light' : 'text-[#0b2559]'}>
-                        {sampleMunna}
-                      </span>{' '}
-                      <span className={darkMode ? 'text-[#38bdf8]' : 'text-[#a37f37]'}>
-                        {sampleDyeing}
-                      </span>
+                      {isSingleColor(colorScheme) ? (
+                        <span className={munnaColor()}>
+                          {sampleMunna} {sampleDyeing}
+                        </span>
+                      ) : (
+                        <>
+                          <span className={darkMode ? 'text-brand-gold-light' : 'text-[#0b2559]'}>
+                            {sampleMunna}
+                          </span>{' '}
+                          <span className={darkMode ? 'text-[#38bdf8]' : 'text-[#a37f37]'}>
+                            {sampleDyeing}
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
 
