@@ -65,6 +65,25 @@ function App() {
         />
       ) : (
         <main>
+          {/* Top Announcement Banner to Directly Launch Font Studio */}
+          <div className="pt-24 pb-2.5 px-4 bg-gradient-to-r from-brand-gold-dark/20 via-brand-gold/15 to-brand-gold-dark/20 border-b border-brand-gold/30">
+            <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-base">🔤</span>
+                <span className="font-bold text-brand-gold">Brand Design & Font Studio:</span>
+                <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>
+                  Preview 10 One-Color styles & 32 fonts for Munna Dyeing Printing
+                </span>
+              </div>
+              <button
+                onClick={handleOpenFontPreview}
+                className="px-4 py-1.5 rounded-full bg-gold-gradient text-brand-dark font-extrabold text-xs shadow-md hover:shadow-brand-gold/30 hover:scale-105 transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Open Font Studio Now →</span>
+              </button>
+            </div>
+          </div>
+
           <Hero darkMode={darkMode} />
           <About darkMode={darkMode} />
           <Sales
