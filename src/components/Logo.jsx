@@ -65,23 +65,24 @@ const Logo = ({
   const isFooter = size === 'lg';
 
   // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
+  // Scaled up significantly so the brand name looks visibly bigger than the logo
   const sharedTypographySize = isFooter
-    ? 'text-xl sm:text-2xl md:text-3xl'
-    : 'text-xs sm:text-base md:text-lg lg:text-[21px]';
+    ? 'text-2xl sm:text-3xl md:text-4xl'
+    : 'text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-[26px]';
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 sm:gap-2.5 md:gap-3 ${className}`}>
-      {/* 1. Approved MDP Crest (More compact / smaller than the brand name) */}
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
+      {/* 1. Approved MDP Crest (Locked in compact size) */}
       {renderFixedLogo(
         isFooter
           ? 'h-8 sm:h-10 md:h-11'
           : 'h-5 sm:h-6 md:h-7 lg:h-7.5'
       )}
 
-      {/* 2. Dual-Tone Brand Divider */}
+      {/* 2. Dual-Tone Brand Divider (Sized to match the taller brand name) */}
       <span
         className={`w-[1.5px] ${
-          isFooter ? 'h-8 sm:h-10 md:h-11' : 'h-5 sm:h-6 md:h-7'
+          isFooter ? 'h-9 sm:h-11 md:h-12' : 'h-6 sm:h-7 md:h-8 lg:h-9'
         } bg-gradient-to-b from-brand-gold-light via-[#38bdf8] to-brand-gold-dark rounded-full shrink-0 block shadow-[0_0_8px_rgba(212,175,55,0.35)]`}
         aria-hidden="true"
       />
