@@ -24,64 +24,6 @@
 }
 
 /* ============================================================
-   MDP OFFICIAL WORDMARK TREATMENTS (MATCHING MDP LOGO CREST)
-   ============================================================ */
-
-/* VERSION 1: Elegant Metallic Gold Wordmark */
-.wordmark-v1-gold-dark {
-  background: linear-gradient(180deg, #fff2be 0%, #ffd15c 22%, #d69e26 50%, #9e6d0a 78%, #724c04 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1.5px 3px rgba(8, 22, 54, 0.75))
-          drop-shadow(0 0 1px rgba(255, 240, 180, 0.35));
-}
-.wordmark-v1-gold-light {
-  background: linear-gradient(180deg, #b8861e 0%, #875e07 50%, #5e3f00 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
-}
-.wordmark-v1-navy-dark {
-  background: linear-gradient(180deg, #99c6ff 0%, #569bf5 30%, #2b70cf 65%, #13458c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.75));
-}
-.wordmark-v1-navy-light {
-  background: linear-gradient(180deg, #194685 0%, #0d2a54 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* VERSION 2: Deep Navy + Gold Edge */
-.wordmark-v2-navy-gold-dark {
-  background: linear-gradient(180deg, #244e91 0%, #12346c 45%, #091c3d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 0.75px #ffd363)
-          drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.8));
-}
-.wordmark-v2-navy-gold-light {
-  background: linear-gradient(180deg, #14356a 0%, #0a2044 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 0.75px #caa137)
-          drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
-}
-.wordmark-v2-accent-dark {
-  background: linear-gradient(180deg, #fff3c4 0%, #ffd466 30%, #d89f2a 65%, #8f6008 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.4))
-          drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.7));
-}
-.wordmark-v2-accent-light {
-  background: linear-gradient(180deg, #a37515 0%, #735004 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ============================================================
    OFFICIAL MDP APPROVED MASTER BRAND WORDMARK
    Directly Sampled from the Fixed MDP Logo Crest
    ============================================================ */
@@ -98,21 +40,27 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0.5px 0.5px rgba(255, 248, 219, 0.4))
-          drop-shadow(0 1.5px 2.5px rgba(0, 0, 0, 0.8))
-          drop-shadow(0 3px 6px rgba(10, 20, 48, 0.5));
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.35))
+          drop-shadow(0 0.5px 0.5px rgba(255, 248, 219, 0.45))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 3px 5px rgba(10, 20, 48, 0.5));
 }
 
+/* Light Mode: Polished 24K Gold with Warm Metallic Halo & Soft Depth */
 .wordmark-mdp-gold-light {
   background: linear-gradient(
-    180deg,
-    #b88418 0%,
-    #916408 55%,
-    #694400 100%
+    178deg,
+    #c99528 0%,
+    #a6730f 32%,
+    #845704 68%,
+    #5c3a00 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.38))
+          drop-shadow(0 0.5px 1px rgba(255, 240, 180, 0.6))
+          drop-shadow(0 1px 2px rgba(160, 110, 10, 0.32))
+          drop-shadow(0 2px 4px rgba(45, 30, 0, 0.22));
 }
 
 /* Deep Royal Sapphire Navy (Matching Letter D & Silk Fabric Roll of Logo Crest) */
@@ -127,21 +75,27 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0.5px 0.5px rgba(148, 196, 255, 0.35))
-          drop-shadow(0 1.5px 2.5px rgba(0, 0, 0, 0.8))
-          drop-shadow(0 3px 6px rgba(4, 12, 32, 0.5));
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.32))
+          drop-shadow(0 0.5px 0.5px rgba(148, 196, 255, 0.4))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 3px 5px rgba(4, 12, 32, 0.5));
 }
 
+/* Light Mode: Deep Royal Navy with Subtle Sapphire Halo & Deep Edge */
 .wordmark-mdp-navy-light {
   background: linear-gradient(
-    180deg,
-    #1c4a8f 0%,
-    #0f326b 55%,
-    #071d44 100%
+    178deg,
+    #2159aa 0%,
+    #133f80 35%,
+    #0c2b5e 70%,
+    #05183d 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.28))
+          drop-shadow(0 0.5px 1px rgba(210, 230, 255, 0.5))
+          drop-shadow(0 1px 2px rgba(12, 45, 95, 0.30))
+          drop-shadow(0 2px 4px rgba(5, 18, 45, 0.24));
 }
 
 
