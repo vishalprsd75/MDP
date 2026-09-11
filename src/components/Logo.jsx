@@ -73,8 +73,7 @@ const Logo = ({
     ? 'text-xl sm:text-2xl md:text-3xl'
     : 'text-[12px] min-[350px]:text-[13px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
 
-  // Classes matching the client's uploaded reference
-  const munnaClass = darkMode ? 'wordmark-ref-munna-dark' : 'wordmark-ref-munna-light';
+  // Classes for unified royal sapphire navy with thin light gold hairline border
   const strokeClass = darkMode ? 'wordmark-gold-stroke-dark' : 'wordmark-gold-stroke-light';
   const navyFillClass = darkMode ? 'wordmark-navy-fill-dark' : 'wordmark-navy-fill-light';
 
@@ -91,29 +90,21 @@ const Logo = ({
         </div>
       )}
 
-      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING */}
+      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING (Unified Royal Navy + Thin Light Gold Border) */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline gap-2 sm:gap-2.5 whitespace-nowrap leading-none tracking-[0.06em] min-[360px]:tracking-[0.07em] sm:tracking-[0.08em] md:tracking-[0.09em] font-semibold ${sharedTypographySize}`}
+          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.06em] min-[360px]:tracking-[0.07em] sm:tracking-[0.08em] md:tracking-[0.09em] font-semibold ${sharedTypographySize}`}
           style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
-          {/* MUNNA (Rich 24K Metallic Gold with Accentuated 'M') */}
-          <span
-            className={`transition-all duration-300 leading-none select-none inline-block ${munnaClass}`}
-            style={{ fontFamily: "'Cinzel', Georgia, serif" }}
-          >
-            <span className="text-[1.14em]">M</span>UNNA
-          </span>
-
-          {/* DYEING PRINTING (Dual-Layer: Deep Royal Sapphire Navy Fill + Fine 24K Gold Border) */}
+          {/* Dual-Layer: Deep Royal Sapphire Navy Fill + Delicate Light Gold Hairline Border */}
           <span className="wordmark-bordered-navy-container leading-none select-none">
-            {/* Layer 1: Fine Gold Border / Stroke (Behind) */}
+            {/* Layer 1: Fine Light Gold Hairline Border (Behind) */}
             <span
               aria-hidden="true"
               className={strokeClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+              <span className="text-[1.14em]">M</span>UNNA <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
             </span>
 
             {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
@@ -121,7 +112,7 @@ const Logo = ({
               className={navyFillClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+              <span className="text-[1.14em]">M</span>UNNA <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
             </span>
           </span>
         </div>

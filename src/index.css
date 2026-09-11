@@ -24,52 +24,20 @@
 }
 
 /* ============================================================
-   RECREATED MASTER BRAND WORDMARK (REFERENCE-MATCHED LUXURY)
-   Matching Client Reference:
-   - MUNNA: Polished 24K Sculpted Metallic Gold
-   - DYEING PRINTING: Deep Royal Sapphire Navy + THIN Hairline Gold Border/Edge
+   RECREATED MASTER BRAND WORDMARK (UNIFIED ROYAL NAVY + THIN LIGHT GOLD BORDER)
+   Matching Client Request:
+   - MUNNA DYEING PRINTING: Deep Royal Sapphire Navy Fill
+   - Fine, ultra-thin, light gold hairline border across complete brand name
    ============================================================ */
 
-/* MUNNA: Polished 24K Metallic Gold (Dark Mode) */
-.wordmark-ref-munna-dark {
-  background: linear-gradient(
-    180deg,
-    #fff9d8 0%,
-    #ffd866 18%,
-    #e8aa25 45%,
-    #b8790b 72%,
-    #734702 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.75));
-}
-
-/* MUNNA: Polished 24K Metallic Gold (Light Mode) */
-.wordmark-ref-munna-light {
-  background: linear-gradient(
-    180deg,
-    #fff0b0 0%,
-    #ebb33e 22%,
-    #c98d1a 50%,
-    #9e6607 76%,
-    #694000 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(90, 55, 5, 0.35));
-}
-
-/* DYEING PRINTING: Dual-Layer Container */
+/* Wordmark Dual-Layer Container */
 .wordmark-bordered-navy-container {
   position: relative;
   display: inline-flex;
   align-items: baseline;
 }
 
-/* Background Layer: Thin Hairline 24K Gold Border (Dark Mode) */
+/* Background Layer: Thin Light Gold Hairline Border (Dark Mode) */
 .wordmark-gold-stroke-dark {
   position: absolute;
   top: 0;
@@ -79,13 +47,13 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  -webkit-text-stroke: clamp(0.75px, 0.045em, 1.05px) #e5b242;
+  -webkit-text-stroke: clamp(0.65px, 0.038em, 0.85px) #f3cf6e;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.75));
 }
 
-/* Background Layer: Thin Hairline 24K Gold Border (Light Mode) */
+/* Background Layer: Thin Light Gold Hairline Border (Light Mode) */
 .wordmark-gold-stroke-light {
   position: absolute;
   top: 0;
@@ -95,10 +63,10 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  -webkit-text-stroke: clamp(0.7px, 0.042em, 0.98px) #c68e1a;
+  -webkit-text-stroke: clamp(0.6px, 0.035em, 0.8px) #dfb250;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(90, 55, 5, 0.35));
+  filter: drop-shadow(0 1px 1px rgba(80, 50, 10, 0.22));
 }
 
 /* Foreground Layer: Deep Royal Sapphire Navy Fill (Dark Mode) */
@@ -107,15 +75,15 @@
   z-index: 1;
   background: linear-gradient(
     180deg,
-    #1b5bb0 0%,
-    #0c3e85 35%,
-    #042963 70%,
-    #01153a 100%
+    #1f64bd 0%,
+    #0e4590 35%,
+    #052c6c 70%,
+    #011844 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #042963;
+  color: #052c6c;
 }
 
 /* Foreground Layer: Deep Royal Sapphire Navy Fill (Light Mode) */
@@ -124,15 +92,15 @@
   z-index: 1;
   background: linear-gradient(
     180deg,
-    #10498f 0%,
-    #073270 40%,
-    #022153 75%,
-    #011233 100%
+    #124d94 0%,
+    #083472 40%,
+    #032154 75%,
+    #011336 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #022153;
+  color: #032154;
 }
 
 
