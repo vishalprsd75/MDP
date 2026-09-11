@@ -67,10 +67,10 @@ const Logo = ({
 
   const isFooter = size === 'lg';
 
-  // Shared font size class for "Munna Dyeing Printing" in Playfair Display (calibrated for editorial x-height)
+  // Shared font size class for "MUNNA DYEING PRINTING" in Cinzel Roman Luxury Serif
   const sharedTypographySize = isFooter
-    ? 'text-2xl sm:text-3xl md:text-4xl'
-    : 'text-[13px] min-[350px]:text-[14.5px] min-[380px]:text-[15.5px] min-[410px]:text-[16.5px] sm:text-lg md:text-xl lg:text-[23px] xl:text-[25px]';
+    ? 'text-xl sm:text-2xl md:text-3xl'
+    : 'text-[12px] min-[350px]:text-[13.5px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
 
   // Classes for unified royal sapphire navy with thin light gold hairline border
   const strokeClass = darkMode ? 'wordmark-gold-stroke-dark' : 'wordmark-gold-stroke-light';
@@ -89,11 +89,11 @@ const Logo = ({
         </div>
       )}
 
-      {/* 2. Complete Business Name Wordmark: Munna Dyeing Printing (True Lowercase Luxury Editorial Serif) */}
+      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING (All Uppercase Classical Roman Luxury) */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.015em] sm:tracking-[0.02em] font-bold ${sharedTypographySize}`}
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.06em] font-semibold ${sharedTypographySize}`}
+          style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
           {/* Dual-Layer: Deep Royal Sapphire Navy Fill + Delicate Light Gold Hairline Border */}
           <span className="wordmark-bordered-navy-container leading-none select-none">
@@ -101,17 +101,17 @@ const Logo = ({
             <span
               aria-hidden="true"
               className={strokeClass}
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              Munna Dyeing Printing
+              MUNNA DYEING PRINTING
             </span>
 
             {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
             <span
               className={navyFillClass}
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              Munna Dyeing Printing
+              MUNNA DYEING PRINTING
             </span>
           </span>
         </div>
