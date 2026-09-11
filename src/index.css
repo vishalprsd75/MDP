@@ -28,7 +28,7 @@
    Directly Sampled from the Fixed MDP Logo Crest
    ============================================================ */
 
-/* Polished 24K Metallic Gold (Matching Letters M & P of Logo Crest) */
+/* DARK MODE: Polished 24K Metallic Gold with Subtle Luminous Depth */
 .wordmark-mdp-gold-dark {
   background: linear-gradient(
     178deg,
@@ -40,30 +40,30 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.35))
-          drop-shadow(0 0.5px 0.5px rgba(255, 248, 219, 0.45))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
-          drop-shadow(0 3px 5px rgba(10, 20, 48, 0.5));
+  filter: drop-shadow(0 0 8px rgba(255, 215, 65, 0.40))
+          drop-shadow(0 0.5px 0.5px rgba(255, 248, 225, 0.55))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.90))
+          drop-shadow(0 3px 6px rgba(8, 18, 45, 0.55));
 }
 
-/* Light Mode: Polished 24K Gold with Warm Metallic Halo & Soft Depth */
+/* LIGHT MODE: Polished 24K Gold with Subtle Metallic Depth & Sculpted Rim */
 .wordmark-mdp-gold-light {
   background: linear-gradient(
     178deg,
-    #c99528 0%,
-    #a6730f 32%,
-    #845704 68%,
-    #5c3a00 100%
+    #d49b22 0%,
+    #b88014 30%,
+    #8c5b05 65%,
+    #633e00 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.38))
-          drop-shadow(0 0.5px 1px rgba(255, 240, 180, 0.6))
-          drop-shadow(0 1px 2px rgba(160, 110, 10, 0.32))
-          drop-shadow(0 2px 4px rgba(45, 30, 0, 0.22));
+  filter: drop-shadow(0 -0.5px 0.5px rgba(255, 245, 205, 0.75))
+          drop-shadow(0 0 4px rgba(218, 165, 32, 0.28))
+          drop-shadow(0 1px 1.5px rgba(165, 115, 12, 0.35))
+          drop-shadow(0 2px 3.5px rgba(45, 25, 0, 0.22));
 }
 
-/* Deep Royal Sapphire Navy (Matching Letter D & Silk Fabric Roll of Logo Crest) */
+/* DARK MODE: Deep Royal Sapphire Navy with Subtle Luminous Depth */
 .wordmark-mdp-navy-dark {
   background: linear-gradient(
     178deg,
@@ -75,27 +75,27 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.32))
-          drop-shadow(0 0.5px 0.5px rgba(148, 196, 255, 0.4))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
-          drop-shadow(0 3px 5px rgba(4, 12, 32, 0.5));
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.35))
+          drop-shadow(0 0.5px 0.5px rgba(160, 205, 255, 0.45))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.90))
+          drop-shadow(0 3px 6px rgba(4, 12, 32, 0.55));
 }
 
-/* Light Mode: Deep Royal Navy with Subtle Sapphire Halo & Deep Edge */
+/* LIGHT MODE: Deep Royal Sapphire Navy with Subtle Metallic Depth & Sculpted Rim */
 .wordmark-mdp-navy-light {
   background: linear-gradient(
     178deg,
-    #2159aa 0%,
-    #133f80 35%,
-    #0c2b5e 70%,
-    #05183d 100%
+    #1f54a3 0%,
+    #123976 35%,
+    #0b2756 70%,
+    #051738 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.28))
-          drop-shadow(0 0.5px 1px rgba(210, 230, 255, 0.5))
-          drop-shadow(0 1px 2px rgba(12, 45, 95, 0.30))
-          drop-shadow(0 2px 4px rgba(5, 18, 45, 0.24));
+  filter: drop-shadow(0 -0.5px 0.5px rgba(210, 235, 255, 0.65))
+          drop-shadow(0 0 4px rgba(37, 99, 235, 0.22))
+          drop-shadow(0 1px 1.5px rgba(12, 40, 90, 0.35))
+          drop-shadow(0 2px 3.5px rgba(5, 15, 40, 0.24));
 }
 
 
