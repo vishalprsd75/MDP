@@ -72,9 +72,10 @@ const Logo = ({
     ? 'text-xl sm:text-2xl md:text-3xl'
     : 'text-[12px] min-[350px]:text-[13.5px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
 
-  // Classes for unified royal sapphire navy with thin light gold hairline border
-  const strokeClass = darkMode ? 'wordmark-gold-stroke-dark' : 'wordmark-gold-stroke-light';
-  const navyFillClass = darkMode ? 'wordmark-navy-fill-dark' : 'wordmark-navy-fill-light';
+  // In Dark Mode: Golden color fill with thin and light blue border (as requested)
+  // In Light Mode: Deep royal sapphire navy fill with thin light gold hairline border
+  const strokeClass = darkMode ? 'wordmark-blue-stroke-dark' : 'wordmark-gold-stroke-light';
+  const fillClass = darkMode ? 'wordmark-gold-fill-dark' : 'wordmark-navy-fill-light';
 
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
@@ -95,9 +96,9 @@ const Logo = ({
           className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.06em] font-semibold ${sharedTypographySize}`}
           style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
-          {/* Dual-Layer: Deep Royal Sapphire Navy Fill + Delicate Light Gold Hairline Border */}
+          {/* Dual-Layer: Metallic Fill + Delicate Thin Hairline Border */}
           <span className="wordmark-bordered-navy-container leading-none select-none">
-            {/* Layer 1: Fine Light Gold Hairline Border (Behind) */}
+            {/* Layer 1: Fine Hairline Border (Behind) */}
             <span
               aria-hidden="true"
               className={strokeClass}
@@ -106,9 +107,9 @@ const Logo = ({
               MUNNA DYEING PRINTING
             </span>
 
-            {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
+            {/* Layer 2: Rich Color Fill (In Front) */}
             <span
-              className={navyFillClass}
+              className={fillClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
               MUNNA DYEING PRINTING
