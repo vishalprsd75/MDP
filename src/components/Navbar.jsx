@@ -3,7 +3,7 @@ import { Menu, X, MessageSquare, Sun, Moon } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import Logo from './Logo';
 
-const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
+const Navbar = ({ darkMode, onToggleTheme, onNavigateHome, wordmarkOptionId = 'classic-serif' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,9 +38,9 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Official Brand Identity */}
+          {/* Official Brand Identity: Locked MDP Emblem + Redesigned Wordmark */}
           <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none shrink-0">
-            <Logo darkMode={darkMode} size="md" />
+            <Logo darkMode={darkMode} size="md" showLogo={true} optionId={wordmarkOptionId} />
           </a>
 
           {/* Desktop Navigation Links */}

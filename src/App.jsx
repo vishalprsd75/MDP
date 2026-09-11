@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Navbar,
   Hero,
@@ -12,6 +12,7 @@ import {
   LightboxModal,
   ProductDetailsModal,
   CategoryStorePage,
+  WordmarkComparisonDock,
 } from './components';
 import { useTheme } from './hooks/useTheme';
 import { useHashRoute } from './hooks/useHashRoute';
@@ -28,17 +29,33 @@ function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // Active Typography Wordmark Option (Default: 1. Classic Luxury Serif)
+  const [wordmarkOptionId, setWordmarkOptionId] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('mdp_active_wordmark') || 'classic-serif';
+    }
+    return 'classic-serif';
+  });
+
+  const handleSelectWordmark = (id) => {
+    setWordmarkOptionId(id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('mdp_active_wordmark', id);
+    }
+  };
+
   return (
     <div className={`min-h-screen font-body antialiased transition-colors duration-500 selection:bg-brand-gold selection:text-brand-dark ${
       darkMode ? 'bg-brand-dark text-gray-200' : 'bg-brand-cream text-gray-800'
     }`}>
       
-      {/* Navigation Bar */}
+      {/* Navigation Bar with Locked MDP Emblem + Active Wordmark Direction */}
       <Navbar
         darkMode={darkMode}
         onToggleTheme={toggleTheme}
         onNavigateHome={handleBackToHome}
         onSelectCategory={(cat) => handleOpenCategoryPage(cat)}
+        wordmarkOptionId={wordmarkOptionId}
       />
 
       {/* DYNAMIC VIEW ROUTER: Category Store Page OR Main Landing Page */}
@@ -72,6 +89,13 @@ function App() {
 
       {/* Footer */}
       <Footer darkMode={darkMode} />
+
+      {/* Interactive Wordmark Comparison Dock (Floating 1-click live switcher + comparison modal) */}
+      <WordmarkComparisonDock
+        activeOptionId={wordmarkOptionId}
+        onSelectOption={handleSelectWordmark}
+        darkMode={darkMode}
+      />
 
       {/* Root-Level Modals */}
       <ProductDetailsModal

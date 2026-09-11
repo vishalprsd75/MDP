@@ -1,20 +1,30 @@
 import React from 'react';
 import { siteConfig } from '../config/siteConfig';
+import { getWordmarkOption } from '../config/wordmarkOptions';
 
 /**
  * Official MDP Navbar Brand Identity
  * 
- * Clean Wordmark:
- * "Munna Dyeing Printing" — Berkshire Swash Signature Font Style
- * Strictly Single Horizontal Line on Mobile & Desktop
+ * Composition:
+ * [100% FIXED MDP LOGO EMBLEM] + [PREMIUM "MUNNA DYEING PRINTING" WORDMARK]
+ * 
+ * Supports the 5 Curated Typography Directions:
+ * 1. Classic Luxury Serif (Cinzel)
+ * 2. Modern Editorial Serif (Bodoni Moda)
+ * 3. Refined Textile Wordmark (Marcellus)
+ * 4. Premium Gold/Navy Wordmark (Outfit/Montserrat)
+ * 5. Signature Minimal Luxury (Cormorant Garamond)
  */
 const Logo = ({
   darkMode = true,
   size = 'md',
   showText = true,
-  showLogo = false,
+  showLogo = true,
+  optionId = 'classic-serif',
   className = ''
 }) => {
+  const option = getWordmarkOption(optionId);
+
   // The 100% Fixed, Approved MDP Logo Emblem (Never modified, recolored, or cropped)
   const renderFixedLogo = (imgClass) => {
     if (!siteConfig.logoImage) {
@@ -44,16 +54,16 @@ const Logo = ({
     );
   };
 
-  // When text is hidden (e.g. Footer), render only the MDP crest in compact size
+  // When text is hidden (e.g. Footer subtle brand mark), render only the MDP crest
   if (!showText) {
     return (
       <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
         {renderFixedLogo(
           size === 'lg'
-            ? 'h-7 sm:h-8'
+            ? 'h-8 sm:h-9'
             : size === 'sm'
-            ? 'h-5 sm:h-6'
-            : 'h-6 sm:h-7'
+            ? 'h-6 sm:h-7'
+            : 'h-7 sm:h-8'
         )}
       </div>
     );
@@ -61,52 +71,53 @@ const Logo = ({
 
   const isFooter = size === 'lg';
 
-  // Shared font size class for BOTH "Munna" and "Dyeing Printing"
+  // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
+  // Ensuring ONE COMPLETE BUSINESS NAME with equal presence on a single line
   const sharedTypographySize = isFooter
-    ? 'text-2xl sm:text-3xl md:text-4xl'
-    : 'text-[15px] min-[375px]:text-base sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
+    ? 'text-xl sm:text-2xl md:text-3xl'
+    : 'text-[13px] min-[360px]:text-[14px] min-[390px]:text-[15px] sm:text-lg md:text-xl lg:text-[22px]';
+
+  // Flat & elegant luxury colors matching the visual language of the MDP Logo
+  const munnaColorClass = darkMode ? option.munnaDarkColor : option.munnaLightColor;
+  const dyeingColorClass = darkMode ? option.dyeingDarkColor : option.dyeingLightColor;
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
-      {/* Optional Emblem */}
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
+      {/* 1. 100% Fixed MDP Logo Emblem */}
       {showLogo && (
-        <div className="mr-2 sm:mr-3 shrink-0">
+        <div className="shrink-0 flex items-center">
           {renderFixedLogo(
             isFooter
-              ? 'h-8 sm:h-10 md:h-11'
-              : 'h-5 sm:h-6 md:h-7 lg:h-7.5'
+              ? 'h-8 sm:h-9 md:h-10'
+              : 'h-6 sm:h-7 md:h-8'
           )}
         </div>
       )}
 
-      {/* Brand Name: Munna Dyeing Printing (Strictly Single Horizontal Line in Signature Berkshire Swash) */}
+      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none font-swash"
-          style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
+          className={`flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none ${option.tracking} ${option.weight}`}
+          style={{ fontFamily: option.fontFamily }}
         >
-          {/* Munna — Gold */}
+          {/* MUNNA */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
-              darkMode
-                ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
-                : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
+            className={`transition-colors duration-300 leading-none ${sharedTypographySize} ${munnaColorClass} ${
+              darkMode ? 'drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]'
             }`}
-            style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
+            style={{ fontFamily: option.fontFamily }}
           >
-            Munna
+            {option.munnaLabel}
           </span>
 
-          {/* Dyeing Printing — Royal Blue */}
+          {/* DYEING PRINTING (Equal size, connected, substantive) */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
-              darkMode
-                ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
-                : 'text-[#a37f37] group-hover:text-[#0b2559]'
+            className={`transition-colors duration-300 leading-none ${sharedTypographySize} ${dyeingColorClass} ${
+              darkMode ? 'drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]'
             }`}
-            style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
+            style={{ fontFamily: option.fontFamily }}
           >
-            Dyeing Printing
+            {option.dyeingLabel}
           </span>
         </div>
       </div>
