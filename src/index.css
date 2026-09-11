@@ -23,6 +23,74 @@
   box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
 }
 
+/* Metallic Gold Text — matches the M & P letters in the MDP logo crest */
+.text-metallic-gold {
+  background: linear-gradient(
+    135deg,
+    #bf953f 0%,
+    #fcf6ba 25%,
+    #d4af37 40%,
+    #b38728 55%,
+    #fbf5b7 70%,
+    #aa771c 85%,
+    #d4af37 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.45)) drop-shadow(0 0 18px rgba(255, 215, 0, 0.2));
+}
+
+/* Metallic Royal Blue Text — matches the D letter in the MDP logo crest */
+.text-metallic-blue {
+  background: linear-gradient(
+    135deg,
+    #1a3a6c 0%,
+    #3b6cb5 25%,
+    #1e3f7a 40%,
+    #5b8fd4 55%,
+    #264a8a 70%,
+    #1a3a6c 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 6px rgba(30, 63, 122, 0.4)) drop-shadow(0 0 12px rgba(59, 108, 181, 0.15));
+}
+
+/* Light mode metallic gold — richer contrast on cream backgrounds */
+.text-metallic-gold-light {
+  background: linear-gradient(
+    135deg,
+    #a37f37 0%,
+    #c5a059 25%,
+    #8b6914 40%,
+    #c5a059 55%,
+    #a37f37 70%,
+    #8b6914 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 3px rgba(139, 105, 20, 0.3));
+}
+
+/* Light mode metallic blue — richer on cream backgrounds */
+.text-metallic-blue-light {
+  background: linear-gradient(
+    135deg,
+    #0b2559 0%,
+    #1e3f7a 30%,
+    #0b2559 50%,
+    #2a5298 70%,
+    #0b2559 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 3px rgba(11, 37, 89, 0.3));
+}
+
 /* Custom Subtle Fabric Background Patterns */
 .bg-fabric-pattern {
   background-image: radial-gradient(rgba(197, 160, 89, 0.07) 1px, transparent 1px),
