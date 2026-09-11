@@ -104,7 +104,7 @@ const Logo = ({
               className={strokeClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              <span className="text-[1.14em]">M</span>UNNA <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+              Munna Dyeing Printing
             </span>
 
             {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
@@ -112,7 +112,7 @@ const Logo = ({
               className={navyFillClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              <span className="text-[1.14em]">M</span>UNNA <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+              Munna Dyeing Printing
             </span>
           </span>
         </div>
