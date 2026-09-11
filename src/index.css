@@ -69,22 +69,23 @@
   filter: drop-shadow(0 1px 1px rgba(80, 50, 10, 0.22));
 }
 
-/* Foreground Layer: 24K Polished Gold Fill (Dark Mode) */
+/* Foreground Layer: Exact MDP Crest Logo 24K Polished Gold Fill (Dark Mode) */
 .wordmark-gold-fill-dark {
   position: relative;
   z-index: 1;
   background: linear-gradient(
     180deg,
-    #fffbeb 0%,
-    #fde68a 22%,
-    #f59e0b 55%,
-    #d97706 80%,
-    #b45309 100%
+    #ffeb99 0%,
+    #fdcd63 20%,
+    #fbc155 45%,
+    #ecab40 65%,
+    #d69230 85%,
+    #b87622 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #f59e0b;
+  color: #fbc155;
 }
 
 /* Foreground Layer: Deep Royal Sapphire Navy Fill (Dark Mode - legacy fallback) */
