@@ -106,26 +106,12 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
 
           </div>
 
-          {/* Mobile Menu Header Buttons */}
-          <div className="flex md:hidden items-center gap-1.5 sm:gap-2 shrink-0">
-            
-            {/* Mobile Theme Toggle Button */}
-            <button
-              onClick={onToggleTheme}
-              className={`p-2 rounded-lg border transition-colors ${
-                darkMode
-                  ? 'bg-brand-surface border-brand-gold/30 text-brand-gold'
-                  : 'bg-white border-brand-gold/40 text-brand-gold-dark shadow-sm'
-              }`}
-              aria-label="Toggle Theme"
-            >
-              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
+          {/* Mobile Menu Header Buttons: Clean, Un-congested */}
+          <div className="flex md:hidden items-center gap-2 shrink-0">
             <a
               href="#contact"
               onClick={(e) => handleHomeClick(e, '#contact')}
-              className="px-3 py-1.5 rounded-md text-xs font-bold text-brand-dark bg-gold-gradient"
+              className="px-3 py-1.5 rounded-lg text-xs font-bold text-brand-dark bg-gold-gradient shadow-sm"
             >
               Contact
             </a>
@@ -145,7 +131,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
         </div>
       </div>
 
-      {/* Clean Mobile Drawer Menu */}
+      {/* Clean Mobile Drawer Menu with Embedded Theme Switcher */}
       {mobileMenuOpen && (
         <div className={`md:hidden animate-fadeIn border-t ${
           darkMode ? 'glass-nav border-brand-gold/20' : 'glass-nav-light border-brand-gold/30'
@@ -168,6 +154,33 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
                 {link.name}
               </a>
             ))}
+
+            {/* Mobile Theme Switcher inside Hamburger Drawer */}
+            <div className={`pt-3 mt-2 border-t flex items-center justify-between px-4 py-2 ${
+              darkMode ? 'border-white/10' : 'border-brand-gold/20'
+            }`}>
+              <div className="flex items-center gap-2 text-sm font-medium">
+                {darkMode ? (
+                  <Moon className="w-4 h-4 text-brand-gold" />
+                ) : (
+                  <Sun className="w-4 h-4 text-amber-500" />
+                )}
+                <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>
+                  {darkMode ? 'Dark Mode' : 'Light Mode'}
+                </span>
+              </div>
+
+              <button
+                onClick={onToggleTheme}
+                className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  darkMode
+                    ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
+                    : 'bg-white border-brand-gold/40 text-brand-gold-dark shadow-sm hover:bg-brand-gold/10'
+                }`}
+              >
+                <span>Switch to {darkMode ? 'Light' : 'Dark'}</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
