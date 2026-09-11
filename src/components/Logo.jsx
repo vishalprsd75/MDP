@@ -67,11 +67,10 @@ const Logo = ({
 
   const isFooter = size === 'lg';
 
-  // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
-  // Beautifully prominent and larger than logo, while perfectly calibrated for mobile screens (340px - 414px+)
+  // Shared font size class for "Munna Dyeing Printing" in Cormorant Garamond (calibrated for lowercase x-height)
   const sharedTypographySize = isFooter
-    ? 'text-xl sm:text-2xl md:text-3xl'
-    : 'text-[12px] min-[350px]:text-[13px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
+    ? 'text-2xl sm:text-3xl md:text-4xl'
+    : 'text-[14px] min-[350px]:text-[15.5px] min-[380px]:text-[17px] min-[410px]:text-[18px] sm:text-xl md:text-2xl lg:text-[27px] xl:text-[29px]';
 
   // Classes for unified royal sapphire navy with thin light gold hairline border
   const strokeClass = darkMode ? 'wordmark-gold-stroke-dark' : 'wordmark-gold-stroke-light';
@@ -90,11 +89,11 @@ const Logo = ({
         </div>
       )}
 
-      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING (Unified Royal Navy + Thin Light Gold Border) */}
+      {/* 2. Complete Business Name Wordmark: Munna Dyeing Printing (True Lowercase Classical Serif) */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.06em] min-[360px]:tracking-[0.07em] sm:tracking-[0.08em] md:tracking-[0.09em] font-semibold ${sharedTypographySize}`}
-          style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.03em] sm:tracking-[0.04em] font-semibold ${sharedTypographySize}`}
+          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
         >
           {/* Dual-Layer: Deep Royal Sapphire Navy Fill + Delicate Light Gold Hairline Border */}
           <span className="wordmark-bordered-navy-container leading-none select-none">
@@ -102,7 +101,7 @@ const Logo = ({
             <span
               aria-hidden="true"
               className={strokeClass}
-              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
               Munna Dyeing Printing
             </span>
@@ -110,7 +109,7 @@ const Logo = ({
             {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
             <span
               className={navyFillClass}
-              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
               Munna Dyeing Printing
             </span>
