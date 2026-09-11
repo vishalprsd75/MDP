@@ -24,102 +24,116 @@
 }
 
 /* ============================================================
-   RECREATED MASTER BRAND WORDMARK (UNIFIED ROYAL NAVY + THIN LIGHT GOLD BORDER)
-   Matching Client Request:
-   - MUNNA DYEING PRINTING: Deep Royal Sapphire Navy Fill
-   - Fine, ultra-thin, light gold hairline border across complete brand name
+   EXACT RECREATION OF CLIENT REFERENCE LOCKUP:
+   [MDP CREST]  MUNNA (24K Gold)  DYEING PRINTING (Navy with Gold Border)
    ============================================================ */
 
-/* Wordmark Dual-Layer Container */
+/* Container for Dual-Layer Bordered Text */
 .wordmark-bordered-navy-container {
   position: relative;
   display: inline-flex;
   align-items: baseline;
 }
 
-/* Background Layer: Thin Light Blue Hairline Border (Dark Mode) */
-.wordmark-blue-stroke-dark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  -webkit-text-stroke: clamp(0.65px, 0.038em, 0.85px) #3b82f6;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
-}
-
-/* Background Layer: Thin Light Gold Hairline Border (Light Mode) */
-.wordmark-gold-stroke-light {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  -webkit-text-stroke: clamp(0.6px, 0.035em, 0.8px) #dfb250;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(80, 50, 10, 0.22));
-}
-
-/* Foreground Layer: Exact MDP Crest Logo 24K Polished Gold Fill (Dark Mode) */
-.wordmark-gold-fill-dark {
-  position: relative;
-  z-index: 1;
+/* 1. MUNNA (Rich 3D Beveled 24K Gold) */
+.wordmark-ref-munna-light {
+  display: inline-block;
   background: linear-gradient(
     180deg,
-    #ffeb99 0%,
-    #fdcd63 20%,
-    #fbc155 45%,
-    #ecab40 65%,
-    #d69230 85%,
-    #b87622 100%
+    #fff2a8 0%,
+    #f4c053 25%,
+    #e3a837 55%,
+    #c07e17 80%,
+    #8c5d18 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #fbc155;
+  color: #f4c053;
+  filter: drop-shadow(0 1px 1px rgba(60, 35, 5, 0.4));
 }
 
-/* Foreground Layer: Deep Royal Sapphire Navy Fill (Dark Mode - legacy fallback) */
-.wordmark-navy-fill-dark {
+.wordmark-ref-munna-dark {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    #fff2a8 0%,
+    #f4c053 25%,
+    #e3a837 55%,
+    #c07e17 80%,
+    #8c5d18 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f4c053;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(244, 192, 83, 0.3));
+}
+
+/* 2. DYEING PRINTING: Gold Border Layer (Dark Mode - Crisp, Luminous & Clearly Visible) */
+.wordmark-ref-dp-stroke-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-text-stroke: 1.1px #f5cc60;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 8px rgba(245, 204, 96, 0.35));
+}
+
+/* DYEING PRINTING: Royal Sapphire Navy Fill (Dark Mode - Vibrant & Rich) */
+.wordmark-ref-dp-fill-dark {
   position: relative;
   z-index: 1;
   background: linear-gradient(
     180deg,
-    #1f64bd 0%,
+    #1e5ebd 0%,
     #0e4590 35%,
-    #052c6c 70%,
-    #011844 100%
+    #073170 70%,
+    #032050 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #052c6c;
+  color: #0e4590;
 }
 
-/* Foreground Layer: Deep Royal Sapphire Navy Fill (Light Mode) */
-.wordmark-navy-fill-light {
+/* DYEING PRINTING: Gold Border Layer (Light Mode) */
+.wordmark-ref-dp-stroke-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-text-stroke: 1px #dfb250;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 1px 1.5px rgba(80, 50, 10, 0.3));
+}
+
+/* DYEING PRINTING: Royal Sapphire Navy Fill (Light Mode) */
+.wordmark-ref-dp-fill-light {
   position: relative;
   z-index: 1;
   background: linear-gradient(
     180deg,
-    #124d94 0%,
-    #083472 40%,
-    #032154 75%,
-    #011336 100%
+    #0a478f 0%,
+    #063675 40%,
+    #022353 75%,
+    #011536 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #032154;
+  color: #063675;
 }
 
 

@@ -72,10 +72,12 @@ const Logo = ({
     ? 'text-xl sm:text-2xl md:text-3xl'
     : 'text-[12px] min-[350px]:text-[13.5px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
 
-  // In Dark Mode: Golden color fill with thin and light blue border (as requested)
-  // In Light Mode: Deep royal sapphire navy fill with thin light gold hairline border
-  const strokeClass = darkMode ? 'wordmark-blue-stroke-dark' : 'wordmark-gold-stroke-light';
-  const fillClass = darkMode ? 'wordmark-gold-fill-dark' : 'wordmark-navy-fill-light';
+  // Client Reference Lockup:
+  // MUNNA: Rich 24K Gold (Matching "M" & "P" of MDP Logo)
+  // DYEING PRINTING: Deep Royal Sapphire Navy with Crisp Luminous Gold Border (Clearly visible in Dark & Light)
+  const munnaClass = darkMode ? 'wordmark-ref-munna-dark' : 'wordmark-ref-munna-light';
+  const dpStrokeClass = darkMode ? 'wordmark-ref-dp-stroke-dark' : 'wordmark-ref-dp-stroke-light';
+  const dpFillClass = darkMode ? 'wordmark-ref-dp-fill-dark' : 'wordmark-ref-dp-fill-light';
 
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
@@ -90,29 +92,37 @@ const Logo = ({
         </div>
       )}
 
-      {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING (All Uppercase Classical Roman Luxury) */}
+      {/* 2. Complete Business Name Wordmark: MUNNA (Gold) + DYEING PRINTING (Navy with Gold Border) */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.06em] font-semibold ${sharedTypographySize}`}
+          className={`flex flex-row items-baseline whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.06em] font-semibold gap-[0.28em] ${sharedTypographySize}`}
           style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
-          {/* Dual-Layer: Metallic Fill + Delicate Thin Hairline Border */}
+          {/* MUNNA (Rich 24K Gold) */}
+          <span
+            className={munnaClass}
+            style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+          >
+            MUNNA
+          </span>
+
+          {/* DYEING PRINTING (Deep Royal Sapphire Navy with Crisp Luminous Gold Border) */}
           <span className="wordmark-bordered-navy-container leading-none select-none">
-            {/* Layer 1: Fine Hairline Border (Behind) */}
+            {/* Layer 1: Crisp Luminous Gold Border (Behind) */}
             <span
               aria-hidden="true"
-              className={strokeClass}
+              className={dpStrokeClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              MUNNA DYEING PRINTING
+              DYEING PRINTING
             </span>
 
-            {/* Layer 2: Rich Color Fill (In Front) */}
+            {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
             <span
-              className={fillClass}
+              className={dpFillClass}
               style={{ fontFamily: "'Cinzel', Georgia, serif" }}
             >
-              MUNNA DYEING PRINTING
+              DYEING PRINTING
             </span>
           </span>
         </div>
