@@ -4,94 +4,47 @@ import { instantScrollToTop } from '../utils/navigation';
 /**
  * Custom hook to handle URL Hash state routing (#category=..., #hero, etc.)
  */
-const checkIsFontRoute = () => {
-  if (typeof window === 'undefined') return false;
-  const hash = (window.location.hash || '').toLowerCase();
-  const path = (window.location.pathname || '').toLowerCase();
-  const search = (window.location.search || '').toLowerCase();
-  return (
-    hash === '#fonts' ||
-    hash === '#font' ||
-    hash === '#font-preview' ||
-    hash === '#font-studio' ||
-    hash.includes('font') ||
-    path === '/fonts' ||
-    path === '/font' ||
-    path.startsWith('/font') ||
-    search.includes('font')
-  );
-};
-
 export const useHashRoute = () => {
   const [activeCategoryPage, setActiveCategoryPage] = useState(null);
-  const [isFontPreviewOpen, setIsFontPreviewOpen] = useState(() => checkIsFontRoute());
 
   // Synchronously reset scroll position whenever view changes
   useLayoutEffect(() => {
     instantScrollToTop();
-  }, [activeCategoryPage, isFontPreviewOpen]);
+  }, [activeCategoryPage]);
 
   useEffect(() => {
     const handleRouteChange = () => {
-      if (checkIsFontRoute()) {
-        setIsFontPreviewOpen(true);
-        setActiveCategoryPage(null);
+      const hash = window.location.hash || '';
+      if (hash.startsWith('#category=')) {
+        const catName = decodeURIComponent(hash.replace('#category=', ''));
+        setActiveCategoryPage(catName);
         instantScrollToTop();
-      } else {
-        setIsFontPreviewOpen(false);
-        const hash = window.location.hash || '';
-        if (hash.startsWith('#category=')) {
-          const catName = decodeURIComponent(hash.replace('#category=', ''));
-          setActiveCategoryPage(catName);
-          instantScrollToTop();
-        } else if (hash === '' || hash === '#hero' || hash === '#about' || hash === '#sales' || hash === '#gallery' || hash === '#contact') {
-          setActiveCategoryPage(null);
-        }
+      } else if (
+        hash === '' ||
+        hash === '#hero' ||
+        hash === '#about' ||
+        hash === '#sales' ||
+        hash === '#gallery' ||
+        hash === '#contact' ||
+        hash === '#why-us'
+      ) {
+        setActiveCategoryPage(null);
       }
     };
 
     handleRouteChange();
 
-    const handleCustomOpen = () => {
-      setIsFontPreviewOpen(true);
-      setActiveCategoryPage(null);
-      instantScrollToTop();
-    };
-
     window.addEventListener('hashchange', handleRouteChange);
     window.addEventListener('popstate', handleRouteChange);
-    window.addEventListener('mdp_open_fonts', handleCustomOpen);
 
     return () => {
       window.removeEventListener('hashchange', handleRouteChange);
       window.removeEventListener('popstate', handleRouteChange);
-      window.removeEventListener('mdp_open_fonts', handleCustomOpen);
     };
   }, []);
 
-  const handleOpenFontPreview = () => {
-    instantScrollToTop();
-    if (window.location.hash !== '#fonts') {
-      window.history.pushState(null, '', '#fonts');
-    }
-    setIsFontPreviewOpen(true);
-    setActiveCategoryPage(null);
-    instantScrollToTop();
-    window.dispatchEvent(new Event('mdp_open_fonts'));
-  };
-
-  const handleCloseFontPreview = () => {
-    instantScrollToTop();
-    if (window.location.hash !== '' && window.location.hash !== '#hero') {
-      window.history.pushState(null, '', '#hero');
-    }
-    setIsFontPreviewOpen(false);
-    instantScrollToTop();
-  };
-
   const handleOpenCategoryPage = (category) => {
     instantScrollToTop();
-    setIsFontPreviewOpen(false);
     const newHash = `#category=${encodeURIComponent(category)}`;
     if (window.location.hash !== newHash) {
       window.history.pushState(null, '', newHash);
@@ -102,7 +55,6 @@ export const useHashRoute = () => {
 
   const handleBackToHome = () => {
     instantScrollToTop();
-    setIsFontPreviewOpen(false);
     if (window.location.hash !== '' && window.location.hash !== '#hero') {
       window.history.pushState(null, '', '#hero');
     }
@@ -121,12 +73,9 @@ export const useHashRoute = () => {
 
   return {
     activeCategoryPage,
-    isFontPreviewOpen,
     handleOpenCategoryPage,
-    handleOpenFontPreview,
-    handleCloseFontPreview,
     handleBackToHome,
-    handleGoBack
+    handleGoBack,
   };
 };
 

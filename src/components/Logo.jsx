@@ -5,8 +5,8 @@ import { siteConfig } from '../config/siteConfig';
  * Official MDP Navbar Brand Identity
  * 
  * Clean Wordmark:
- * "Munna Dyeing Printing" — Gold + Royal Blue (Fixed, no switching)
- * Strictly Single-Line on Mobile & Desktop
+ * "Munna Dyeing Printing" — Berkshire Swash Signature Font Style
+ * Strictly Single Horizontal Line on Mobile & Desktop
  */
 const Logo = ({
   darkMode = true,
@@ -66,15 +66,6 @@ const Logo = ({
     ? 'text-2xl sm:text-3xl md:text-4xl'
     : 'text-[15px] min-[375px]:text-base sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px]';
 
-  // Fixed color classes
-  const munnaColor = darkMode
-    ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)]'
-    : 'text-[#0b2559] drop-shadow-sm';
-
-  const dyeingColor = darkMode
-    ? 'text-[#38bdf8] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
-    : 'text-[#a37f37]';
-
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
       {/* Optional Emblem */}
@@ -88,16 +79,28 @@ const Logo = ({
         </div>
       )}
 
-      {/* Brand Name: Munna Dyeing Printing */}
+      {/* Brand Name: Munna Dyeing Printing (Strictly Single Horizontal Line in Signature Berkshire Swash) */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none font-swash">
           {/* Munna — Gold */}
-          <span className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${munnaColor}`}>
+          <span
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+              darkMode
+                ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
+                : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
+            }`}
+          >
             Munna
           </span>
 
-          {/* Dyeing Printing — Blue */}
-          <span className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${dyeingColor}`}>
+          {/* Dyeing Printing — Royal Blue */}
+          <span
+            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+              darkMode
+                ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
+                : 'text-[#a37f37] group-hover:text-[#0b2559]'
+            }`}
+          >
             Dyeing Printing
           </span>
         </div>
