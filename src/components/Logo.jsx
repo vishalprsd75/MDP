@@ -68,10 +68,10 @@ const Logo = ({
   const isFooter = size === 'lg';
 
   // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
-  // Scaled up so the complete business name is clearly BIGGER and MORE PROMINENT than the logo emblem
+  // Beautifully prominent and larger than logo, while perfectly calibrated for mobile screens (340px - 414px+)
   const sharedTypographySize = isFooter
     ? 'text-xl sm:text-2xl md:text-3xl'
-    : 'text-[13.5px] min-[360px]:text-[15px] min-[390px]:text-[16px] sm:text-lg md:text-xl lg:text-[23px] xl:text-[25px]';
+    : 'text-[12px] min-[350px]:text-[13px] min-[380px]:text-[14.5px] min-[410px]:text-[15.5px] sm:text-base md:text-xl lg:text-[23px] xl:text-[25px]';
 
   // Classes matching the client's uploaded reference
   const munnaClass = darkMode ? 'wordmark-ref-munna-dark' : 'wordmark-ref-munna-light';
@@ -79,14 +79,14 @@ const Logo = ({
   const navyFillClass = darkMode ? 'wordmark-navy-fill-dark' : 'wordmark-navy-fill-light';
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 min-[360px]:gap-2.5 sm:gap-3 md:gap-3.5 ${className}`}>
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-3 md:gap-3.5 ${className}`}>
       {/* 1. 100% Fixed, Untouched MDP Logo Emblem (Supporting Hallmark Scale) */}
       {showLogo && (
         <div className="shrink-0 flex items-center">
           {renderFixedLogo(
             isFooter
               ? 'h-8 sm:h-9 md:h-10'
-              : 'h-5 min-[360px]:h-5.5 sm:h-6 md:h-6.5 lg:h-7'
+              : 'h-4.5 min-[360px]:h-5 min-[390px]:h-5.5 sm:h-6 md:h-6.5 lg:h-7'
           )}
         </div>
       )}

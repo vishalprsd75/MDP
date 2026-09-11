@@ -35,11 +35,11 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
         ? (isScrolled ? 'glass-nav py-3 shadow-2xl' : 'bg-brand-dark/80 backdrop-blur-sm py-4 border-b border-brand-gold/10')
         : (isScrolled ? 'glass-nav-light py-3 shadow-md' : 'bg-brand-cream/90 backdrop-blur-sm py-4 border-b border-brand-gold/20')
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 min-[380px]:px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2">
           
           {/* Official Brand Identity: Locked MDP Emblem + Master Approved Wordmark */}
-          <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none shrink-0">
+          <a href="#hero" onClick={(e) => handleHomeClick(e, '#hero')} className="focus:outline-none shrink min-w-0">
             <Logo darkMode={darkMode} size="md" showLogo={true} />
           </a>
 
@@ -106,37 +106,29 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
 
           </div>
 
-          {/* Mobile Menu Header Buttons: Clean, Un-congested */}
-          <div className="flex md:hidden items-center gap-2 shrink-0">
-            <a
-              href="#contact"
-              onClick={(e) => handleHomeClick(e, '#contact')}
-              className="px-3 py-1.5 rounded-lg text-xs font-bold text-brand-dark bg-gold-gradient shadow-sm"
-            >
-              Contact
-            </a>
-
+          {/* Mobile Menu Header: Clean, Uncongested (Hamburger Only) */}
+          <div className="flex md:hidden items-center shrink-0">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg focus:outline-none transition-colors ${
+              className={`p-2 rounded-xl border focus:outline-none transition-all flex items-center justify-center ${
                 darkMode
-                  ? 'text-gray-300 hover:text-brand-gold hover:bg-brand-surface'
-                  : 'text-gray-800 hover:text-brand-gold-dark hover:bg-gray-200'
+                  ? 'bg-brand-surface/80 border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20 active:scale-95'
+                  : 'bg-white/90 border-brand-gold/40 text-brand-gold-dark shadow-sm hover:bg-brand-gold/10 active:scale-95'
               }`}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Clean Mobile Drawer Menu with Embedded Theme Switcher */}
+      {/* Clean Mobile Drawer Menu with Contact CTA & Theme Switcher */}
       {mobileMenuOpen && (
         <div className={`md:hidden animate-fadeIn border-t ${
-          darkMode ? 'glass-nav border-brand-gold/20' : 'glass-nav-light border-brand-gold/30'
+          darkMode ? 'glass-nav border-brand-gold/20 shadow-2xl' : 'glass-nav-light border-brand-gold/30 shadow-xl'
         }`}>
-          <div className="px-4 py-3 space-y-1">
+          <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -145,7 +137,7 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
                   setMobileMenuOpen(false);
                   handleHomeClick(e, link.href);
                 }}
-                className={`block px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                className={`block px-4 py-2.5 rounded-xl text-base font-medium transition-colors ${
                   darkMode
                     ? 'text-gray-200 hover:text-brand-gold hover:bg-brand-surface'
                     : 'text-gray-800 hover:text-brand-gold-dark hover:bg-white/80'
@@ -155,8 +147,36 @@ const Navbar = ({ darkMode, onToggleTheme, onNavigateHome }) => {
               </a>
             ))}
 
+            {/* Mobile Contact & WhatsApp CTAs */}
+            <div className="pt-2 space-y-2">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleHomeClick(e, '#contact');
+                }}
+                className="block w-full py-2.5 text-center rounded-xl font-bold text-sm text-brand-dark bg-gold-gradient shadow-md active:scale-95 transition-transform"
+              >
+                Contact Us
+              </a>
+
+              <a
+                href={`https://wa.me/${siteConfig.whatsappPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center justify-center gap-2 w-full py-2.5 text-center rounded-xl font-medium text-sm border transition-colors ${
+                  darkMode
+                    ? 'border-green-500/40 text-green-400 bg-green-500/10 hover:bg-green-500/20'
+                    : 'border-green-600/40 text-green-700 bg-green-50 hover:bg-green-100'
+                }`}
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+
             {/* Mobile Theme Switcher inside Hamburger Drawer */}
-            <div className={`pt-3 mt-2 border-t flex items-center justify-between px-4 py-2 ${
+            <div className={`pt-3 mt-2 border-t flex items-center justify-between px-2 py-2 ${
               darkMode ? 'border-white/10' : 'border-brand-gold/20'
             }`}>
               <div className="flex items-center gap-2 text-sm font-medium">
