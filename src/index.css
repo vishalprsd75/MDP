@@ -23,6 +23,136 @@
   box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
 }
 
+/* ============================================================
+   MDP OFFICIAL WORDMARK TREATMENTS (MATCHING MDP LOGO CREST)
+   ============================================================ */
+
+/* VERSION 1: Elegant Metallic Gold Wordmark */
+.wordmark-v1-gold-dark {
+  background: linear-gradient(180deg, #fff2be 0%, #ffd15c 22%, #d69e26 50%, #9e6d0a 78%, #724c04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1.5px 3px rgba(8, 22, 54, 0.75))
+          drop-shadow(0 0 1px rgba(255, 240, 180, 0.35));
+}
+.wordmark-v1-gold-light {
+  background: linear-gradient(180deg, #b8861e 0%, #875e07 50%, #5e3f00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+.wordmark-v1-navy-dark {
+  background: linear-gradient(180deg, #99c6ff 0%, #569bf5 30%, #2b70cf 65%, #13458c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.75));
+}
+.wordmark-v1-navy-light {
+  background: linear-gradient(180deg, #194685 0%, #0d2a54 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* VERSION 2: Deep Navy + Gold Edge */
+.wordmark-v2-navy-gold-dark {
+  background: linear-gradient(180deg, #244e91 0%, #12346c 45%, #091c3d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 0.75px #ffd363)
+          drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.8));
+}
+.wordmark-v2-navy-gold-light {
+  background: linear-gradient(180deg, #14356a 0%, #0a2044 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 0.75px #caa137)
+          drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+.wordmark-v2-accent-dark {
+  background: linear-gradient(180deg, #fff3c4 0%, #ffd466 30%, #d89f2a 65%, #8f6008 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.4))
+          drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.7));
+}
+.wordmark-v2-accent-light {
+  background: linear-gradient(180deg, #a37515 0%, #735004 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* VERSION 3: Dual-Tone Luxury (Balanced Gold & Navy Harmony) */
+.wordmark-v3-gold-dark {
+  background: linear-gradient(180deg, #fff7d1 0%, #ffd86e 26%, #dba32e 54%, #9e6a0a 82%, #704702 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 2px 4px rgba(10, 25, 60, 0.5));
+}
+.wordmark-v3-navy-dark {
+  background: linear-gradient(180deg, #8dc0ff 0%, #3e88ee 35%, #1852a8 70%, #0c2f66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 2px 4px rgba(6, 18, 45, 0.6));
+}
+.wordmark-v3-gold-light {
+  background: linear-gradient(180deg, #ad7c15 0%, #7d5705 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.wordmark-v3-navy-light {
+  background: linear-gradient(180deg, #1b4787 0%, #0d2854 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* VERSION 4: Subtle 3D Crafted Wordmark (Beveled / Relief Metal) */
+.wordmark-v4-crafted-gold-dark {
+  background: linear-gradient(175deg, #ffffff 0%, #ffeaa8 18%, #f2be3e 42%, #b57b0d 75%, #6a4402 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 -0.5px 0.5px rgba(255, 255, 255, 0.75))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 3px 5px rgba(6, 17, 43, 0.65));
+}
+.wordmark-v4-crafted-navy-dark {
+  background: linear-gradient(175deg, #b0d3ff 0%, #4a91f5 25%, #1b62c7 55%, #092e6e 85%, #051a3d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 -0.5px 0.5px rgba(200, 225, 255, 0.65))
+          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 3px 5px rgba(4, 12, 30, 0.65));
+}
+.wordmark-v4-crafted-gold-light {
+  background: linear-gradient(175deg, #c79220 0%, #855b05 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+.wordmark-v4-crafted-navy-light {
+  background: linear-gradient(175deg, #1b498a 0%, #0d2854 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+/* VERSION 5: Luxury Flat-Plus Wordmark (Restrained Pure Elegance) */
+.wordmark-v5-gold-dark {
+  color: #eed78a;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.wordmark-v5-navy-dark {
+  color: #60a5fa;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.wordmark-v5-gold-light {
+  color: #9e7115;
+}
+.wordmark-v5-navy-light {
+  color: #0f2d5c;
+}
+
 
 /* Custom Subtle Fabric Background Patterns */
 .bg-fabric-pattern {

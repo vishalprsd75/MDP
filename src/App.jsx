@@ -29,12 +29,15 @@ function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Active Typography Wordmark Option (Default: 1. Classic Luxury Serif)
+  // Active Typography Wordmark Option (Default: Version 3 Dual-Tone Luxury)
   const [wordmarkOptionId, setWordmarkOptionId] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('mdp_active_wordmark') || 'classic-serif';
+      const saved = localStorage.getItem('mdp_active_wordmark');
+      if (saved && saved.startsWith('version-')) {
+        return saved;
+      }
     }
-    return 'classic-serif';
+    return 'version-3';
   });
 
   const handleSelectWordmark = (id) => {

@@ -16,9 +16,9 @@ const WordmarkComparisonDock = ({
   return (
     <>
       {/* Floating Bottom Comparison Dock */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 max-w-[95vw] w-auto">
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 max-w-[96vw] w-auto">
         <div
-          className={`backdrop-blur-xl border rounded-2xl shadow-2xl transition-all duration-300 p-2.5 sm:p-3 ${
+          className={`backdrop-blur-xl border rounded-2xl shadow-2xl transition-all duration-300 p-2 sm:p-3 ${
             darkMode
               ? 'bg-[#0b111e]/90 border-brand-gold/40 text-gray-200 shadow-black/80'
               : 'bg-white/95 border-brand-gold/50 text-gray-900 shadow-xl'
@@ -26,15 +26,15 @@ const WordmarkComparisonDock = ({
         >
           {isMinimized ? (
             /* Minimized Pill */
-            <div className="flex items-center gap-3 px-2 py-1">
+            <div className="flex items-center gap-2.5 px-2 py-1">
               <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-gold">
                 <Sparkles className="w-3.5 h-3.5 text-brand-gold animate-pulse" />
-                <span>Wordmark:</span>
-                <span className="underline decoration-brand-gold font-bold">{activeOption.name}</span>
+                <span className="hidden sm:inline">Active Wordmark:</span>
+                <span className="font-bold underline decoration-brand-gold">{activeOption.shortName}</span>
               </span>
               <button
                 onClick={() => setIsMinimized(false)}
-                className="p-1 rounded-lg bg-brand-gold/20 hover:bg-brand-gold/30 text-brand-gold transition-colors text-xs flex items-center gap-1 font-medium"
+                className="p-1 px-2 rounded-lg bg-brand-gold/20 hover:bg-brand-gold/30 text-brand-gold transition-colors text-xs flex items-center gap-1 font-bold"
                 title="Expand Options"
               >
                 <span>Switch (5)</span>
@@ -43,20 +43,20 @@ const WordmarkComparisonDock = ({
             </div>
           ) : (
             /* Full Dock */
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-2">
               {/* Header Bar */}
-              <div className="flex items-center justify-between gap-4 px-1 text-xs border-b border-white/10 pb-2">
+              <div className="flex items-center justify-between gap-3 px-1 text-xs border-b border-white/10 pb-1.5">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-brand-gold animate-ping" />
                   <span className="font-bold tracking-wider uppercase text-[11px] text-brand-gold">
-                    Wordmark Redesign • 5 Directions
+                    MDP Brand Wordmark • 5 Directions
                   </span>
                   <span className="hidden md:inline-block text-[11px] opacity-70">
-                    (Click to preview live in Navbar)
+                    (Click to test live in Navbar)
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => setShowModal(true)}
                     className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-gold/20 hover:bg-brand-gold/30 text-brand-gold font-bold text-[11px] transition-all border border-brand-gold/30"
@@ -83,7 +83,7 @@ const WordmarkComparisonDock = ({
                     <button
                       key={opt.id}
                       onClick={() => onSelectOption(opt.id)}
-                      className={`group relative flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 shrink-0 border ${
+                      className={`group relative flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-medium transition-all duration-200 shrink-0 border ${
                         isActive
                           ? 'bg-brand-gold text-brand-dark font-bold shadow-md shadow-brand-gold/30 border-brand-gold scale-[1.03]'
                           : darkMode
@@ -92,7 +92,7 @@ const WordmarkComparisonDock = ({
                       }`}
                     >
                       <span
-                        className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-extrabold ${
+                        className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[10px] font-extrabold ${
                           isActive
                             ? 'bg-brand-dark text-brand-gold'
                             : 'bg-brand-gold/20 text-brand-gold'
@@ -100,8 +100,8 @@ const WordmarkComparisonDock = ({
                       >
                         {opt.number}
                       </span>
-                      <span className="whitespace-nowrap">{opt.name}</span>
-                      {opt.id === 'classic-serif' && (
+                      <span className="whitespace-nowrap">{opt.shortName}</span>
+                      {opt.id === 'version-3' && (
                         <span className={`text-[9px] px-1 rounded uppercase tracking-wider font-extrabold ${
                           isActive ? 'bg-black/20 text-black' : 'bg-brand-gold/20 text-brand-gold'
                         }`}>
@@ -119,9 +119,9 @@ const WordmarkComparisonDock = ({
 
       {/* Side-by-Side Comparison Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn">
           <div
-            className={`relative max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl border shadow-2xl p-5 sm:p-8 ${
+            className={`relative max-w-4xl w-full max-h-[92vh] overflow-y-auto rounded-3xl border shadow-2xl p-4 sm:p-8 ${
               darkMode ? 'bg-brand-dark border-brand-gold/30 text-gray-200' : 'bg-white border-brand-gold/40 text-gray-900'
             }`}
           >
@@ -130,17 +130,17 @@ const WordmarkComparisonDock = ({
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">
-                    Wordmark Redesign Evaluation
+                    Official MDP Wordmark Redesign
                   </span>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/30">
                     MDP Logo Locked & Untouched
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-heading font-bold mt-1">
-                  Compare the 5 Typography Directions
+                <h3 className="text-lg sm:text-2xl font-heading font-bold mt-1">
+                  5 MDP Logo-Matched Typography Treatments
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-400 mt-1">
-                  Fixed MDP Logo Emblem + Premium "MUNNA DYEING PRINTING" Wordmark. Evaluated across 8 criteria.
+                  Translating the metallic gold, deep royal navy, and crafted dimensional character of the MDP crest into typography.
                 </p>
               </div>
 
@@ -161,15 +161,15 @@ const WordmarkComparisonDock = ({
               </div>
               <div className="text-xs sm:text-sm">
                 <h4 className="font-bold text-brand-gold text-sm sm:text-base">
-                  Recommendation: Option 1 — Classic Luxury Serif (Cinzel)
+                  Recommendation: VERSION 3 — Dual-Tone Luxury (Cinzel / Marcellus)
                 </h4>
                 <p className="mt-1 leading-relaxed opacity-90">
-                  Matches the royal heritage, golden symmetry, and navy elegance of the official MDP logo crest with perfection. It communicates <strong>"MUNNA DYEING PRINTING"</strong> as one complete, prestigious, 50-year established manufacturing brand rather than a generic tech or casual label.
+                  Matches the exact color logic of the MDP crest: <strong>MUNNA</strong> is bathed in rich 24K metallic gold (mirroring letters M & P), while <strong>DYEING PRINTING</strong> shines in deep royal sapphire navy (mirroring letter D & the luxury silk roll). It communicates the full business name on one line with perfect optical balance.
                 </p>
               </div>
             </div>
 
-            {/* Grid of All 5 Directions */}
+            {/* List of All 5 Directions */}
             <div className="space-y-5">
               {WORDMARK_OPTIONS.map((opt) => {
                 const isActive = opt.id === activeOptionId;
@@ -187,7 +187,7 @@ const WordmarkComparisonDock = ({
                         : 'border-gray-200 bg-gray-50 hover:border-brand-gold/40 hover:bg-white'
                     }`}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold font-bold text-xs flex items-center justify-center">
@@ -197,9 +197,9 @@ const WordmarkComparisonDock = ({
                           <span className="text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-brand-gold">
                             {opt.fontName}
                           </span>
-                          {opt.id === 'classic-serif' && (
+                          {opt.id === 'version-3' && (
                             <span className="text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase bg-brand-gold text-brand-dark">
-                              Top Recommendation
+                              Recommended
                             </span>
                           )}
                         </div>
@@ -234,7 +234,7 @@ const WordmarkComparisonDock = ({
 
                     {/* Live Preview Strip */}
                     <div className={`p-4 rounded-xl border flex items-center justify-center overflow-x-auto my-3 ${
-                      darkMode ? 'bg-[#080d17] border-white/10' : 'bg-white border-gray-200'
+                      darkMode ? 'bg-[#060a12] border-white/10' : 'bg-white border-gray-200'
                     }`}>
                       <Logo
                         darkMode={darkMode}
@@ -244,10 +244,17 @@ const WordmarkComparisonDock = ({
                       />
                     </div>
 
-                    {/* Description & Criteria */}
-                    <p className="text-xs leading-relaxed opacity-80 mt-2">
+                    {/* Description & Key Points */}
+                    <p className="text-xs leading-relaxed opacity-85 mt-2">
                       {opt.description}
                     </p>
+
+                    {/* Key Attributes */}
+                    <ul className="mt-2.5 space-y-1 text-[11px] opacity-80 list-disc list-inside">
+                      {opt.keyPoints.map((kp, idx) => (
+                        <li key={idx}>{kp}</li>
+                      ))}
+                    </ul>
 
                     {/* Scores Quick-Badge Bar */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-white/10 text-[11px]">

@@ -8,19 +8,19 @@ import { getWordmarkOption } from '../config/wordmarkOptions';
  * Composition:
  * [100% FIXED MDP LOGO EMBLEM] + [PREMIUM "MUNNA DYEING PRINTING" WORDMARK]
  * 
- * Supports the 5 Curated Typography Directions:
- * 1. Classic Luxury Serif (Cinzel)
- * 2. Modern Editorial Serif (Bodoni Moda)
- * 3. Refined Textile Wordmark (Marcellus)
- * 4. Premium Gold/Navy Wordmark (Outfit/Montserrat)
- * 5. Signature Minimal Luxury (Cormorant Garamond)
+ * 5 New Typography Treatments matching the exact luxury tone of the MDP Logo:
+ * - VERSION 1: Elegant Metallic Gold Wordmark (Cinzel)
+ * - VERSION 2: Deep Navy + Gold Edge (Bodoni Moda / Cormorant)
+ * - VERSION 3: Dual-Tone Luxury (Cinzel / Marcellus)
+ * - VERSION 4: Subtle 3D Crafted Wordmark (Marcellus Beveled)
+ * - VERSION 5: Luxury Flat-Plus Wordmark (Outfit / Montserrat)
  */
 const Logo = ({
   darkMode = true,
   size = 'md',
   showText = true,
   showLogo = true,
-  optionId = 'classic-serif',
+  optionId = 'version-1',
   className = ''
 }) => {
   const option = getWordmarkOption(optionId);
@@ -46,8 +46,8 @@ const Logo = ({
           alt="MDP Official Crest"
           className={`${imgClass} w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter ${
             darkMode
-              ? 'drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)] drop-shadow-[0_0_16px_rgba(212,175,55,0.2)]'
-              : 'drop-shadow-[0_2px_6px_rgba(180,130,20,0.3)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.1)]'
+              ? 'drop-shadow-[0_2px_10px_rgba(212,175,55,0.35)] drop-shadow-[0_0_14px_rgba(212,175,55,0.15)]'
+              : 'drop-shadow-[0_2px_6px_rgba(180,130,20,0.25)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.08)]'
           }`}
         />
       </div>
@@ -75,15 +75,15 @@ const Logo = ({
   // Ensuring ONE COMPLETE BUSINESS NAME with equal presence on a single line
   const sharedTypographySize = isFooter
     ? 'text-xl sm:text-2xl md:text-3xl'
-    : 'text-[13px] min-[360px]:text-[14px] min-[390px]:text-[15px] sm:text-lg md:text-xl lg:text-[22px]';
+    : 'text-[12.5px] min-[360px]:text-[13.5px] min-[390px]:text-[14.5px] sm:text-base md:text-lg lg:text-[21px] xl:text-[22px]';
 
-  // Flat & elegant luxury colors matching the visual language of the MDP Logo
-  const munnaColorClass = darkMode ? option.munnaDarkColor : option.munnaLightColor;
-  const dyeingColorClass = darkMode ? option.dyeingDarkColor : option.dyeingLightColor;
+  // Classes matching the MDP logo's gold and navy tone
+  const munnaClass = darkMode ? option.munnaDarkClass : option.munnaLightClass;
+  const dyeingClass = darkMode ? option.dyeingDarkClass : option.dyeingLightClass;
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
-      {/* 1. 100% Fixed MDP Logo Emblem */}
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
+      {/* 1. 100% Fixed, Untouched MDP Logo Emblem */}
       {showLogo && (
         <div className="shrink-0 flex items-center">
           {renderFixedLogo(
@@ -102,19 +102,15 @@ const Logo = ({
         >
           {/* MUNNA */}
           <span
-            className={`transition-colors duration-300 leading-none ${sharedTypographySize} ${munnaColorClass} ${
-              darkMode ? 'drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]'
-            }`}
+            className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${munnaClass}`}
             style={{ fontFamily: option.fontFamily }}
           >
             {option.munnaLabel}
           </span>
 
-          {/* DYEING PRINTING (Equal size, connected, substantive) */}
+          {/* DYEING PRINTING (Substantive, equal stature, unified) */}
           <span
-            className={`transition-colors duration-300 leading-none ${sharedTypographySize} ${dyeingColorClass} ${
-              darkMode ? 'drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]'
-            }`}
+            className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${dyeingClass}`}
             style={{ fontFamily: option.fontFamily }}
           >
             {option.dyeingLabel}
