@@ -40,27 +40,26 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 65, 0.40))
-          drop-shadow(0 0.5px 0.5px rgba(255, 248, 225, 0.55))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.90))
-          drop-shadow(0 3px 6px rgba(8, 18, 45, 0.55));
+  filter: drop-shadow(0 0 5px rgba(255, 215, 65, 0.30))
+          drop-shadow(0 0.5px 0.5px rgba(255, 250, 230, 0.55))
+          drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 2px 4px rgba(8, 18, 45, 0.45));
 }
 
-/* LIGHT MODE: Polished 24K Gold with Subtle Metallic Depth & Sculpted Rim */
+/* LIGHT MODE: Polished 24K Gold with Subtle Metallic Bevel & Soft Luxury Highlight */
 .wordmark-mdp-gold-light {
   background: linear-gradient(
     178deg,
-    #d49b22 0%,
-    #b88014 30%,
-    #8c5b05 65%,
-    #633e00 100%
+    #d89f26 0%,
+    #b88216 35%,
+    #8a5804 70%,
+    #5e3b00 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 -0.5px 0.5px rgba(255, 245, 205, 0.75))
-          drop-shadow(0 0 4px rgba(218, 165, 32, 0.28))
-          drop-shadow(0 1px 1.5px rgba(165, 115, 12, 0.35))
-          drop-shadow(0 2px 3.5px rgba(45, 25, 0, 0.22));
+  filter: drop-shadow(0 -0.5px 0.25px rgba(255, 248, 220, 0.85))
+          drop-shadow(0 0.5px 0.5px rgba(255, 225, 140, 0.45))
+          drop-shadow(0 1px 1px rgba(75, 48, 0, 0.18));
 }
 
 /* DARK MODE: Deep Royal Sapphire Navy with Subtle Luminous Depth */
@@ -75,27 +74,26 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.35))
-          drop-shadow(0 0.5px 0.5px rgba(160, 205, 255, 0.45))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.90))
-          drop-shadow(0 3px 6px rgba(4, 12, 32, 0.55));
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.26))
+          drop-shadow(0 0.5px 0.5px rgba(175, 215, 255, 0.45))
+          drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85))
+          drop-shadow(0 2px 4px rgba(4, 12, 32, 0.45));
 }
 
-/* LIGHT MODE: Deep Royal Sapphire Navy with Subtle Metallic Depth & Sculpted Rim */
+/* LIGHT MODE: Deep Royal Sapphire Navy with Subtle Metallic Bevel & Dimensional Separation */
 .wordmark-mdp-navy-light {
   background: linear-gradient(
     178deg,
-    #1f54a3 0%,
-    #123976 35%,
-    #0b2756 70%,
-    #051738 100%
+    #1d539e 0%,
+    #113873 35%,
+    #0a2654 70%,
+    #051636 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 -0.5px 0.5px rgba(210, 235, 255, 0.65))
-          drop-shadow(0 0 4px rgba(37, 99, 235, 0.22))
-          drop-shadow(0 1px 1.5px rgba(12, 40, 90, 0.35))
-          drop-shadow(0 2px 3.5px rgba(5, 15, 40, 0.24));
+  filter: drop-shadow(0 -0.5px 0.25px rgba(215, 238, 255, 0.75))
+          drop-shadow(0 0.5px 0.5px rgba(140, 190, 255, 0.40))
+          drop-shadow(0 1px 1px rgba(6, 20, 48, 0.20));
 }
 
 
