@@ -79,7 +79,7 @@ const Logo = ({
   const navyFillClass = darkMode ? 'wordmark-navy-fill-dark' : 'wordmark-navy-fill-light';
 
   return (
-    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
+    <div className={`flex items-center shrink-0 group transition-all duration-300 gap-2 min-[360px]:gap-2.5 sm:gap-3 md:gap-3.5 ${className}`}>
       {/* 1. 100% Fixed, Untouched MDP Logo Emblem (Supporting Hallmark Scale) */}
       {showLogo && (
         <div className="shrink-0 flex items-center">
@@ -94,7 +94,7 @@ const Logo = ({
       {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.08em] font-semibold ${sharedTypographySize}`}
+          className={`flex flex-row items-baseline gap-2 sm:gap-2.5 whitespace-nowrap leading-none tracking-[0.06em] min-[360px]:tracking-[0.07em] sm:tracking-[0.08em] md:tracking-[0.09em] font-semibold ${sharedTypographySize}`}
           style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
           {/* MUNNA (Rich 24K Metallic Gold with Accentuated 'M') */}
