@@ -81,7 +81,10 @@ const Logo = ({
 
       {/* Brand Name: Munna Dyeing Printing (Strictly Single Horizontal Line in Signature Berkshire Swash) */}
       <div className="flex items-center justify-center select-none py-0.5">
-        <div className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none font-swash">
+        <div
+          className="flex flex-row items-baseline gap-1.5 sm:gap-2.5 whitespace-nowrap leading-none font-swash"
+          style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
+        >
           {/* Munna — Gold */}
           <span
             className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
@@ -89,6 +92,7 @@ const Logo = ({
                 ? 'bg-gradient-to-r from-[#ffe58f] via-[#ffd043] to-[#d4af37] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,215,0,0.35)] group-hover:brightness-110'
                 : 'text-[#0b2559] group-hover:text-brand-gold-dark drop-shadow-sm'
             }`}
+            style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
           >
             Munna
           </span>
@@ -100,6 +104,7 @@ const Logo = ({
                 ? 'text-[#38bdf8] group-hover:text-[#7dd3fc] drop-shadow-[0_1px_8px_rgba(56,189,248,0.35)]'
                 : 'text-[#a37f37] group-hover:text-[#0b2559]'
             }`}
+            style={{ fontFamily: "'Berkshire Swash', cursive, serif" }}
           >
             Dyeing Printing
           </span>
