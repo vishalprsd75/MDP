@@ -71,11 +71,12 @@ const Logo = ({
   // Scaled up so the complete business name is clearly BIGGER and MORE PROMINENT than the logo emblem
   const sharedTypographySize = isFooter
     ? 'text-xl sm:text-2xl md:text-3xl'
-    : 'text-[13px] min-[360px]:text-[14.5px] min-[390px]:text-[15.5px] sm:text-lg md:text-xl lg:text-[23px] xl:text-[25px]';
+    : 'text-[13.5px] min-[360px]:text-[15px] min-[390px]:text-[16px] sm:text-lg md:text-xl lg:text-[23px] xl:text-[25px]';
 
-  // Master color classes directly sampled from the MDP logo crest
-  const munnaClass = darkMode ? 'wordmark-mdp-gold-dark' : 'wordmark-mdp-gold-light';
-  const dyeingClass = darkMode ? 'wordmark-mdp-navy-dark' : 'wordmark-mdp-navy-light';
+  // Classes matching the client's uploaded reference
+  const munnaClass = darkMode ? 'wordmark-ref-munna-dark' : 'wordmark-ref-munna-light';
+  const strokeClass = darkMode ? 'wordmark-gold-stroke-dark' : 'wordmark-gold-stroke-light';
+  const navyFillClass = darkMode ? 'wordmark-navy-fill-dark' : 'wordmark-navy-fill-light';
 
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
@@ -93,23 +94,35 @@ const Logo = ({
       {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className="flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.08em] font-semibold"
+          className={`flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.08em] font-semibold ${sharedTypographySize}`}
           style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
-          {/* MUNNA (Rich 24K Metallic Gold) */}
+          {/* MUNNA (Rich 24K Metallic Gold with Accentuated 'M') */}
           <span
-            className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${munnaClass}`}
+            className={`transition-all duration-300 leading-none select-none inline-block ${munnaClass}`}
             style={{ fontFamily: "'Cinzel', Georgia, serif" }}
           >
-            MUNNA
+            <span className="text-[1.14em]">M</span>UNNA
           </span>
 
-          {/* DYEING PRINTING (Deep Royal Sapphire Navy) */}
-          <span
-            className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${dyeingClass}`}
-            style={{ fontFamily: "'Cinzel', Georgia, serif" }}
-          >
-            DYEING PRINTING
+          {/* DYEING PRINTING (Dual-Layer: Deep Royal Sapphire Navy Fill + Fine 24K Gold Border) */}
+          <span className="wordmark-bordered-navy-container leading-none select-none">
+            {/* Layer 1: Fine Gold Border / Stroke (Behind) */}
+            <span
+              aria-hidden="true"
+              className={strokeClass}
+              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+            >
+              <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+            </span>
+
+            {/* Layer 2: Deep Royal Sapphire Navy Fill (In Front) */}
+            <span
+              className={navyFillClass}
+              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+            >
+              <span className="text-[1.14em]">D</span>YEING <span className="text-[1.14em]">P</span>RINTING
+            </span>
           </span>
         </div>
       </div>
