@@ -1,30 +1,26 @@
 import React from 'react';
 import { siteConfig } from '../config/siteConfig';
-import { getWordmarkOption } from '../config/wordmarkOptions';
 
 /**
- * Official MDP Navbar Brand Identity
+ * Official MDP Approved Brand Identity Lockup
  * 
  * Composition:
- * [100% FIXED MDP LOGO EMBLEM] + [PREMIUM "MUNNA DYEING PRINTING" WORDMARK]
+ * [100% FIXED MDP LOGO CREST] + [MASTER "MUNNA DYEING PRINTING" WORDMARK]
  * 
- * 5 New Typography Treatments matching the exact luxury tone of the MDP Logo:
- * - VERSION 1: Elegant Metallic Gold Wordmark (Cinzel)
- * - VERSION 2: Deep Navy + Gold Edge (Bodoni Moda / Cormorant)
- * - VERSION 3: Dual-Tone Luxury (Cinzel / Marcellus)
- * - VERSION 4: Subtle 3D Crafted Wordmark (Marcellus Beveled)
- * - VERSION 5: Luxury Flat-Plus Wordmark (Outfit / Montserrat)
+ * Design Features:
+ * - Direct sampling of the 24K polished gold from crest letters "M" and "P"
+ * - Direct sampling of the deep royal sapphire navy from crest letter "D" & silk roll
+ * - Classical Roman chisel serif typography (Cinzel) with refined optical kerning
+ * - Substantive, unified single horizontal line for "MUNNA DYEING PRINTING" (one business name)
+ * - Beautifully balanced in both Dark Mode and Light Mode
  */
 const Logo = ({
   darkMode = true,
   size = 'md',
   showText = true,
   showLogo = true,
-  optionId = 'version-1',
   className = ''
 }) => {
-  const option = getWordmarkOption(optionId);
-
   // The 100% Fixed, Approved MDP Logo Emblem (Never modified, recolored, or cropped)
   const renderFixedLogo = (imgClass) => {
     if (!siteConfig.logoImage) {
@@ -54,7 +50,7 @@ const Logo = ({
     );
   };
 
-  // When text is hidden (e.g. Footer subtle brand mark), render only the MDP crest
+  // When text is hidden (e.g. subtle footer crest), render only the MDP emblem
   if (!showText) {
     return (
       <div className={`flex items-center shrink-0 group transition-all duration-300 ${className}`}>
@@ -72,14 +68,14 @@ const Logo = ({
   const isFooter = size === 'lg';
 
   // Shared font size class for BOTH "MUNNA" and "DYEING PRINTING"
-  // Ensuring ONE COMPLETE BUSINESS NAME with equal presence on a single line
+  // Ensuring ONE COMPLETE BUSINESS NAME with equal stature on a single line
   const sharedTypographySize = isFooter
     ? 'text-xl sm:text-2xl md:text-3xl'
     : 'text-[12.5px] min-[360px]:text-[13.5px] min-[390px]:text-[14.5px] sm:text-base md:text-lg lg:text-[21px] xl:text-[22px]';
 
-  // Classes matching the MDP logo's gold and navy tone
-  const munnaClass = darkMode ? option.munnaDarkClass : option.munnaLightClass;
-  const dyeingClass = darkMode ? option.dyeingDarkClass : option.dyeingLightClass;
+  // Master color classes directly sampled from the MDP logo crest
+  const munnaClass = darkMode ? 'wordmark-mdp-gold-dark' : 'wordmark-mdp-gold-light';
+  const dyeingClass = darkMode ? 'wordmark-mdp-navy-dark' : 'wordmark-mdp-navy-light';
 
   return (
     <div className={`flex items-center shrink-0 group transition-all duration-300 gap-1.5 min-[360px]:gap-2 sm:gap-2.5 md:gap-3 ${className}`}>
@@ -89,7 +85,7 @@ const Logo = ({
           {renderFixedLogo(
             isFooter
               ? 'h-8 sm:h-9 md:h-10'
-              : 'h-6 sm:h-7 md:h-8'
+              : 'h-6 sm:h-7 md:h-8 lg:h-8.5'
           )}
         </div>
       )}
@@ -97,23 +93,23 @@ const Logo = ({
       {/* 2. Complete Business Name Wordmark: MUNNA DYEING PRINTING */}
       <div className="flex items-center justify-center select-none py-0.5">
         <div
-          className={`flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none ${option.tracking} ${option.weight}`}
-          style={{ fontFamily: option.fontFamily }}
+          className="flex flex-row items-baseline gap-1.5 sm:gap-2 whitespace-nowrap leading-none tracking-[0.05em] sm:tracking-[0.08em] font-semibold"
+          style={{ fontFamily: "'Cinzel', Georgia, serif" }}
         >
-          {/* MUNNA */}
+          {/* MUNNA (Rich 24K Metallic Gold) */}
           <span
             className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${munnaClass}`}
-            style={{ fontFamily: option.fontFamily }}
+            style={{ fontFamily: "'Cinzel', Georgia, serif" }}
           >
-            {option.munnaLabel}
+            MUNNA
           </span>
 
-          {/* DYEING PRINTING (Substantive, equal stature, unified) */}
+          {/* DYEING PRINTING (Deep Royal Sapphire Navy) */}
           <span
             className={`transition-all duration-300 leading-none select-none inline-block ${sharedTypographySize} ${dyeingClass}`}
-            style={{ fontFamily: option.fontFamily }}
+            style={{ fontFamily: "'Cinzel', Georgia, serif" }}
           >
-            {option.dyeingLabel}
+            DYEING PRINTING
           </span>
         </div>
       </div>

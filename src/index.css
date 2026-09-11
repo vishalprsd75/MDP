@@ -81,76 +81,67 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* VERSION 3: Dual-Tone Luxury (Balanced Gold & Navy Harmony) */
-.wordmark-v3-gold-dark {
-  background: linear-gradient(180deg, #fff7d1 0%, #ffd86e 26%, #dba32e 54%, #9e6a0a 82%, #704702 100%);
+/* ============================================================
+   OFFICIAL MDP APPROVED MASTER BRAND WORDMARK
+   Directly Sampled from the Fixed MDP Logo Crest
+   ============================================================ */
+
+/* Polished 24K Metallic Gold (Matching Letters M & P of Logo Crest) */
+.wordmark-mdp-gold-dark {
+  background: linear-gradient(
+    178deg,
+    #fff8db 0%,
+    #ffd766 18%,
+    #e8aa24 45%,
+    #b8790b 72%,
+    #784a03 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
-          drop-shadow(0 2px 4px rgba(10, 25, 60, 0.5));
-}
-.wordmark-v3-navy-dark {
-  background: linear-gradient(180deg, #8dc0ff 0%, #3e88ee 35%, #1852a8 70%, #0c2f66 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
-          drop-shadow(0 2px 4px rgba(6, 18, 45, 0.6));
-}
-.wordmark-v3-gold-light {
-  background: linear-gradient(180deg, #ad7c15 0%, #7d5705 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.wordmark-v3-navy-light {
-  background: linear-gradient(180deg, #1b4787 0%, #0d2854 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0.5px 0.5px rgba(255, 248, 219, 0.4))
+          drop-shadow(0 1.5px 2.5px rgba(0, 0, 0, 0.8))
+          drop-shadow(0 3px 6px rgba(10, 20, 48, 0.5));
 }
 
-/* VERSION 4: Subtle 3D Crafted Wordmark (Beveled / Relief Metal) */
-.wordmark-v4-crafted-gold-dark {
-  background: linear-gradient(175deg, #ffffff 0%, #ffeaa8 18%, #f2be3e 42%, #b57b0d 75%, #6a4402 100%);
+.wordmark-mdp-gold-light {
+  background: linear-gradient(
+    180deg,
+    #b88418 0%,
+    #916408 55%,
+    #694400 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 -0.5px 0.5px rgba(255, 255, 255, 0.75))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
-          drop-shadow(0 3px 5px rgba(6, 17, 43, 0.65));
-}
-.wordmark-v4-crafted-navy-dark {
-  background: linear-gradient(175deg, #b0d3ff 0%, #4a91f5 25%, #1b62c7 55%, #092e6e 85%, #051a3d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 -0.5px 0.5px rgba(200, 225, 255, 0.65))
-          drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.85))
-          drop-shadow(0 3px 5px rgba(4, 12, 30, 0.65));
-}
-.wordmark-v4-crafted-gold-light {
-  background: linear-gradient(175deg, #c79220 0%, #855b05 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
-}
-.wordmark-v4-crafted-navy-light {
-  background: linear-gradient(175deg, #1b498a 0%, #0d2854 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
 }
 
-/* VERSION 5: Luxury Flat-Plus Wordmark (Restrained Pure Elegance) */
-.wordmark-v5-gold-dark {
-  color: #eed78a;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+/* Deep Royal Sapphire Navy (Matching Letter D & Silk Fabric Roll of Logo Crest) */
+.wordmark-mdp-navy-dark {
+  background: linear-gradient(
+    178deg,
+    #94c4ff 0%,
+    #4a92f7 22%,
+    #1e5ec2 50%,
+    #0e377a 80%,
+    #051a3d 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0.5px 0.5px rgba(148, 196, 255, 0.35))
+          drop-shadow(0 1.5px 2.5px rgba(0, 0, 0, 0.8))
+          drop-shadow(0 3px 6px rgba(4, 12, 32, 0.5));
 }
-.wordmark-v5-navy-dark {
-  color: #60a5fa;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-}
-.wordmark-v5-gold-light {
-  color: #9e7115;
-}
-.wordmark-v5-navy-light {
-  color: #0f2d5c;
+
+.wordmark-mdp-navy-light {
+  background: linear-gradient(
+    180deg,
+    #1c4a8f 0%,
+    #0f326b 55%,
+    #071d44 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
 }
 
 
