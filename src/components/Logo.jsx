@@ -120,7 +120,7 @@ const Logo = ({
         >
           {/* "Munna" — Metallic Gold (matches M & P in logo) */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+            className={`font-semibold tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode ? 'text-metallic-gold' : 'text-metallic-gold-light'
             }`}
           >
@@ -129,7 +129,7 @@ const Logo = ({
 
           {/* "Dyeing Printing" — Metallic Royal Blue (matches D in logo) */}
           <span
-            className={`font-normal tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
+            className={`font-semibold tracking-normal sm:tracking-wide transition-all duration-300 leading-none ${sharedTypographySize} ${
               darkMode ? 'text-metallic-blue' : 'text-metallic-blue-light'
             }`}
           >

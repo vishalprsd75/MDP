@@ -1195,12 +1195,11 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
   return (
     <div
-      className={`min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
-        darkMode ? 'bg-[#0b111e] text-gray-200' : 'bg-[#faf8f5] text-gray-800'
-      }`}
+      className={`min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${darkMode ? 'bg-[#0b111e] text-gray-200' : 'bg-[#faf8f5] text-gray-800'
+        }`}
     >
       <div className="max-w-7xl mx-auto space-y-10">
-        
+
         {/* Top Header Banner */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-6 border-b border-brand-gold/20">
           <div>
@@ -1228,11 +1227,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                   window.location.reload();
                 }
               }}
-              className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                darkMode
+              className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${darkMode
                   ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
                   : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
-              }`}
+                }`}
               title="Refresh / Reload Latest Fonts Suite"
             >
               <span>🔄</span>
@@ -1241,11 +1239,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
             <button
               onClick={onToggleTheme}
-              className={`p-2.5 rounded-xl border transition-all ${
-                darkMode
+              className={`p-2.5 rounded-xl border transition-all ${darkMode
                   ? 'bg-brand-surface border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20'
                   : 'bg-white border-brand-gold/40 text-brand-gold-dark hover:bg-brand-gold/10 shadow-sm'
-              }`}
+                }`}
               title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -1253,11 +1250,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
             <button
               onClick={onClose || onNavigateHome}
-              className={`px-4 py-2.5 rounded-xl border font-semibold text-sm transition-all flex items-center gap-2 ${
-                darkMode
+              className={`px-4 py-2.5 rounded-xl border font-semibold text-sm transition-all flex items-center gap-2 ${darkMode
                   ? 'border-gray-700 bg-brand-surface text-gray-300 hover:text-white hover:border-gray-500'
                   : 'border-gray-300 bg-white text-gray-700 hover:text-black hover:border-gray-400 shadow-sm'
-              }`}
+                }`}
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Website</span>
@@ -1290,16 +1286,14 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                   setConceptTab('single');
                   handleApplyConcept(SINGLE_COLOR_CONCEPTS[0]);
                 }}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  conceptTab === 'single'
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${conceptTab === 'single'
                     ? 'bg-brand-gold text-brand-dark shadow-md'
                     : 'text-gray-400 hover:text-white'
-                }`}
+                  }`}
               >
                 <span>👑 One Color Style</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  conceptTab === 'single' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
-                }`}>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${conceptTab === 'single' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                  }`}>
                   10
                 </span>
               </button>
@@ -1308,16 +1302,14 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                   setConceptTab('dual');
                   handleApplyConcept(DUAL_TONE_CONCEPTS[0]);
                 }}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  conceptTab === 'dual'
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${conceptTab === 'dual'
                     ? 'bg-brand-gold text-brand-dark shadow-md'
                     : 'text-gray-400 hover:text-white'
-                }`}
+                  }`}
               >
                 <span>🎨 Dual-Tone Themes</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  conceptTab === 'dual' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
-                }`}>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${conceptTab === 'dual' ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                  }`}>
                   10
                 </span>
               </button>
@@ -1336,15 +1328,14 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                 <div
                   key={concept.id}
                   onClick={() => handleApplyConcept(concept)}
-                  className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 relative group flex flex-col justify-between ${
-                    isActive
+                  className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 relative group flex flex-col justify-between ${isActive
                       ? darkMode
                         ? 'bg-gradient-to-b from-[#1c2c48] to-[#121c2e] border-brand-gold shadow-[0_0_20px_rgba(212,175,55,0.3)] ring-2 ring-brand-gold'
                         : 'bg-white border-brand-gold shadow-xl ring-2 ring-brand-gold/50'
                       : darkMode
-                      ? 'bg-[#101726] border-white/10 hover:border-brand-gold/40 hover:bg-[#141e30]'
-                      : 'bg-white border-gray-200 hover:border-brand-gold/50 shadow-sm hover:shadow-md'
-                  }`}
+                        ? 'bg-[#101726] border-white/10 hover:border-brand-gold/40 hover:bg-[#141e30]'
+                        : 'bg-white border-gray-200 hover:border-brand-gold/50 shadow-sm hover:shadow-md'
+                    }`}
                 >
                   <div>
                     {/* Top Row: Icon & Status */}
@@ -1370,9 +1361,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                     {/* Mini Visual Preview Pill */}
                     <div
-                      className={`p-2.5 rounded-xl border mb-2.5 text-center overflow-hidden ${
-                        darkMode ? 'bg-[#080d18] border-white/5' : 'bg-gray-50 border-gray-200'
-                      }`}
+                      className={`p-2.5 rounded-xl border mb-2.5 text-center overflow-hidden ${darkMode ? 'bg-[#080d18] border-white/5' : 'bg-gray-50 border-gray-200'
+                        }`}
                     >
                       <div
                         className={`text-sm truncate font-semibold`}
@@ -1381,15 +1371,15 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                         {isOneColor ? (
                           <span className={
                             concept.colorScheme.includes('gold') ? (darkMode ? 'text-[#ffd043]' : 'text-brand-gold-dark')
-                            : concept.colorScheme.includes('white') ? (darkMode ? 'text-white' : 'text-[#0b2559]')
-                            : concept.colorScheme.includes('blue') ? (darkMode ? 'text-[#38bdf8]' : 'text-[#0b2559]')
-                            : concept.colorScheme.includes('emerald') ? (darkMode ? 'text-[#34d399]' : 'text-[#047857]')
-                            : concept.colorScheme.includes('crimson') ? (darkMode ? 'text-[#fb7185]' : 'text-[#be123c]')
-                            : concept.colorScheme.includes('copper') ? (darkMode ? 'text-[#f59e0b]' : 'text-[#c2410c]')
-                            : concept.colorScheme.includes('champagne') ? (darkMode ? 'text-[#fef3c7]' : 'text-[#78350f]')
-                            : concept.colorScheme.includes('cyan') ? (darkMode ? 'text-[#00f0ff]' : 'text-[#0284c7]')
-                            : concept.colorScheme.includes('silver') ? (darkMode ? 'text-slate-200' : 'text-slate-700')
-                            : (darkMode ? 'text-slate-300' : 'text-[#0a0a0a]')
+                              : concept.colorScheme.includes('white') ? (darkMode ? 'text-white' : 'text-[#0b2559]')
+                                : concept.colorScheme.includes('blue') ? (darkMode ? 'text-[#38bdf8]' : 'text-[#0b2559]')
+                                  : concept.colorScheme.includes('emerald') ? (darkMode ? 'text-[#34d399]' : 'text-[#047857]')
+                                    : concept.colorScheme.includes('crimson') ? (darkMode ? 'text-[#fb7185]' : 'text-[#be123c]')
+                                      : concept.colorScheme.includes('copper') ? (darkMode ? 'text-[#f59e0b]' : 'text-[#c2410c]')
+                                        : concept.colorScheme.includes('champagne') ? (darkMode ? 'text-[#fef3c7]' : 'text-[#78350f]')
+                                          : concept.colorScheme.includes('cyan') ? (darkMode ? 'text-[#00f0ff]' : 'text-[#0284c7]')
+                                            : concept.colorScheme.includes('silver') ? (darkMode ? 'text-slate-200' : 'text-slate-700')
+                                              : (darkMode ? 'text-slate-300' : 'text-[#0a0a0a]')
                           }>
                             {sampleName} {sampleSub}
                           </span>
@@ -1419,11 +1409,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
         {/* SECTION 2: CONTROLS BAR: Case Toggle, Emblem Toggle, Color Scheme, Device Preview */}
         <div
-          className={`p-5 rounded-2xl border shadow-lg space-y-4 ${
-            darkMode
+          className={`p-5 rounded-2xl border shadow-lg space-y-4 ${darkMode
               ? 'bg-[#131d2e] border-brand-gold/20'
               : 'bg-white border-brand-gold/30 shadow-brand-gold/5'
-          }`}
+            }`}
         >
           <div className="text-xs font-bold uppercase tracking-wider text-brand-gold flex items-center gap-2">
             <Palette className="w-4 h-4" />
@@ -1437,21 +1426,19 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
               <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-black/20 border border-white/5">
                 <button
                   onClick={() => setCasing('title')}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                    casing === 'title'
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${casing === 'title'
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   Title Case (Munna)
                 </button>
                 <button
                   onClick={() => setCasing('upper')}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                    casing === 'upper'
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${casing === 'upper'
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   ALL CAPS (MUNNA)
                 </button>
@@ -1464,21 +1451,19 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
               <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-black/20 border border-white/5">
                 <button
                   onClick={() => setShowEmblem(false)}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                    !showEmblem
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${!showEmblem
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   Wordmark Only (Clean)
                 </button>
                 <button
                   onClick={() => setShowEmblem(true)}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                    showEmblem
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${showEmblem
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   + MDP Crest Logo
                 </button>
@@ -1491,11 +1476,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
               <select
                 value={colorScheme}
                 onChange={(e) => setColorScheme(e.target.value)}
-                className={`w-full py-2 px-3 rounded-xl text-xs font-medium border focus:outline-none transition-all ${
-                  darkMode
+                className={`w-full py-2 px-3 rounded-xl text-xs font-medium border focus:outline-none transition-all ${darkMode
                     ? 'bg-[#0b111e] border-brand-gold/30 text-gray-200'
                     : 'bg-gray-50 border-brand-gold/40 text-gray-800'
-                }`}
+                  }`}
               >
                 <optgroup label="👑 ONE COLOR STYLES (Single Unified Color)">
                   {COLOR_SCHEMES.filter((s) => s.type === 'single').map((scheme) => (
@@ -1520,32 +1504,29 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
               <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-black/20 border border-white/5">
                 <button
                   onClick={() => setPreviewDevice('both')}
-                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${
-                    previewDevice === 'both'
+                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${previewDevice === 'both'
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   Both
                 </button>
                 <button
                   onClick={() => setPreviewDevice('phone')}
-                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${
-                    previewDevice === 'phone'
+                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${previewDevice === 'phone'
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   <Smartphone className="w-3.5 h-3.5" />
                   <span>Phone</span>
                 </button>
                 <button
                   onClick={() => setPreviewDevice('desktop')}
-                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${
-                    previewDevice === 'desktop'
+                  className={`py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1 ${previewDevice === 'desktop'
                       ? 'bg-brand-gold text-brand-dark shadow-md'
                       : 'text-gray-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   <Monitor className="w-3.5 h-3.5" />
                   <span>Desktop</span>
@@ -1573,11 +1554,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
             <div className="flex items-center gap-2">
               <button
                 onClick={handleCopyFontDetails}
-                className={`px-3.5 py-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all ${
-                  darkMode
+                className={`px-3.5 py-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all ${darkMode
                     ? 'border-gray-700 bg-brand-surface text-gray-300 hover:text-white hover:border-brand-gold'
                     : 'border-gray-300 bg-white text-gray-700 hover:text-black hover:border-brand-gold shadow-sm'
-                }`}
+                  }`}
               >
                 {copiedNotification ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
                 <span>{copiedNotification ? 'Details Copied!' : 'Copy Font Info'}</span>
@@ -1594,17 +1574,15 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            
+
             {/* DESKTOP NAVBAR SIMULATION */}
             {(previewDevice === 'both' || previewDevice === 'desktop') && (
               <div
-                className={`rounded-2xl border p-5 shadow-xl transition-all ${
-                  previewDevice === 'desktop' ? 'lg:col-span-12' : 'lg:col-span-8'
-                } ${
-                  darkMode
+                className={`rounded-2xl border p-5 shadow-xl transition-all ${previewDevice === 'desktop' ? 'lg:col-span-12' : 'lg:col-span-8'
+                  } ${darkMode
                     ? 'bg-[#101726] border-brand-gold/20'
                     : 'bg-white border-brand-gold/30 shadow-brand-gold/5'
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs text-gray-400">
                   <div className="flex items-center gap-2">
@@ -1618,11 +1596,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                 {/* Simulated Real Desktop Navbar Bar */}
                 <div
-                  className={`px-4 sm:px-6 py-3.5 rounded-xl border flex items-center justify-between transition-all ${
-                    darkMode
+                  className={`px-4 sm:px-6 py-3.5 rounded-xl border flex items-center justify-between transition-all ${darkMode
                       ? 'bg-[#0b111e] border-brand-gold/20 shadow-inner'
                       : 'bg-[#fbf9f5] border-brand-gold/30 shadow-inner'
-                  }`}
+                    }`}
                 >
                   {/* Brand Wordmark with selected font */}
                   {renderBrandText(false)}
@@ -1638,9 +1615,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                   {/* Simulated Buttons */}
                   <div className="flex items-center gap-2">
                     <div
-                      className={`p-2 rounded-lg border text-xs ${
-                        darkMode ? 'bg-brand-surface border-brand-gold/30 text-brand-gold' : 'bg-white border-brand-gold/30 text-brand-gold-dark'
-                      }`}
+                      className={`p-2 rounded-lg border text-xs ${darkMode ? 'bg-brand-surface border-brand-gold/30 text-brand-gold' : 'bg-white border-brand-gold/30 text-brand-gold-dark'
+                        }`}
                     >
                       {darkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
                     </div>
@@ -1652,9 +1628,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                 {/* Big Hero Display Card */}
                 <div
-                  className={`mt-4 p-6 rounded-xl border text-center relative overflow-hidden ${
-                    darkMode ? 'bg-[#080d18] border-brand-gold/15' : 'bg-[#f4efe6] border-brand-gold/20'
-                  }`}
+                  className={`mt-4 p-6 rounded-xl border text-center relative overflow-hidden ${darkMode ? 'bg-[#080d18] border-brand-gold/15' : 'bg-[#f4efe6] border-brand-gold/20'
+                    }`}
                 >
                   <div className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mb-2">
                     Hero Section Headline Preview
@@ -1689,13 +1664,11 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
             {/* MOBILE PHONE SIMULATION (Actual 360px Device Frame) */}
             {(previewDevice === 'both' || previewDevice === 'phone') && (
               <div
-                className={`rounded-2xl border p-5 shadow-xl transition-all ${
-                  previewDevice === 'phone' ? 'lg:col-span-12 flex justify-center' : 'lg:col-span-4'
-                } ${
-                  darkMode
+                className={`rounded-2xl border p-5 shadow-xl transition-all ${previewDevice === 'phone' ? 'lg:col-span-12 flex justify-center' : 'lg:col-span-4'
+                  } ${darkMode
                     ? 'bg-[#101726] border-brand-gold/20'
                     : 'bg-white border-brand-gold/30 shadow-brand-gold/5'
-                }`}
+                  }`}
               >
                 <div className="w-full max-w-[360px] mx-auto">
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs text-gray-400">
@@ -1710,9 +1683,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                   {/* Simulated iPhone Frame */}
                   <div
-                    className={`rounded-[28px] border-4 p-3 shadow-2xl overflow-hidden ${
-                      darkMode ? 'bg-[#080d18] border-gray-800' : 'bg-white border-gray-300'
-                    }`}
+                    className={`rounded-[28px] border-4 p-3 shadow-2xl overflow-hidden ${darkMode ? 'bg-[#080d18] border-gray-800' : 'bg-white border-gray-300'
+                      }`}
                   >
                     {/* Phone Status Bar */}
                     <div className="flex justify-between items-center text-[10px] text-gray-400 px-2 pb-2">
@@ -1723,11 +1695,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                     {/* Simulated Mobile Header Bar */}
                     <div
-                      className={`px-3 py-3 rounded-xl border flex items-center justify-between transition-all ${
-                        darkMode
+                      className={`px-3 py-3 rounded-xl border flex items-center justify-between transition-all ${darkMode
                           ? 'bg-[#0b111e] border-brand-gold/20'
                           : 'bg-[#faf8f5] border-brand-gold/30'
-                      }`}
+                        }`}
                     >
                       {/* Mobile Wordmark (Strict single line) */}
                       <div className="shrink-0 overflow-hidden pr-1">
@@ -1737,9 +1708,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                       {/* Mobile Header Buttons (Right side) */}
                       <div className="flex items-center gap-1.5 shrink-0">
                         <div
-                          className={`p-1.5 rounded-md border text-[11px] ${
-                            darkMode ? 'bg-brand-surface border-brand-gold/30 text-brand-gold' : 'bg-white border-brand-gold/30 text-brand-gold-dark'
-                          }`}
+                          className={`p-1.5 rounded-md border text-[11px] ${darkMode ? 'bg-brand-surface border-brand-gold/30 text-brand-gold' : 'bg-white border-brand-gold/30 text-brand-gold-dark'
+                            }`}
                         >
                           {darkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
                         </div>
@@ -1747,9 +1717,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                           Contact
                         </div>
                         <div
-                          className={`p-1.5 rounded-md ${
-                            darkMode ? 'text-gray-300' : 'text-gray-700'
-                          }`}
+                          className={`p-1.5 rounded-md ${darkMode ? 'text-gray-300' : 'text-gray-700'
+                            }`}
                         >
                           <div className="w-4 h-0.5 bg-current mb-1" />
                           <div className="w-4 h-0.5 bg-current mb-1" />
@@ -1760,9 +1729,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                     {/* Simulated Body */}
                     <div
-                      className={`mt-3 p-3 rounded-lg border text-center text-xs text-gray-400 ${
-                        darkMode ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'
-                      }`}
+                      className={`mt-3 p-3 rounded-lg border text-center text-xs text-gray-400 ${darkMode ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'
+                        }`}
                     >
                       <div className="w-full h-24 bg-gradient-to-br from-brand-gold/20 to-blue-500/10 rounded-md flex items-center justify-center text-[11px] text-brand-gold font-medium">
                         Hero Banner Preview
@@ -1794,11 +1762,10 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search font name or style..."
-                className={`w-full pl-9 pr-4 py-2 rounded-xl text-xs border focus:outline-none focus:ring-1 focus:ring-brand-gold transition-all ${
-                  darkMode
+                className={`w-full pl-9 pr-4 py-2 rounded-xl text-xs border focus:outline-none focus:ring-1 focus:ring-brand-gold transition-all ${darkMode
                     ? 'bg-[#101726] border-white/10 text-gray-200 placeholder-gray-500'
                     : 'bg-white border-gray-300 text-gray-800 placeholder-gray-400'
-                }`}
+                  }`}
               />
             </div>
           </div>
@@ -1811,18 +1778,16 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                 <button
                   key={tab.id}
                   onClick={() => setActiveGroup(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 border ${
-                    isActive
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 border ${isActive
                       ? 'bg-brand-gold text-brand-dark border-brand-gold shadow-md font-bold'
                       : darkMode
-                      ? 'bg-[#101726] border-white/10 text-gray-400 hover:text-white hover:border-white/20'
-                      : 'bg-white border-gray-300 text-gray-600 hover:text-black hover:border-gray-400 shadow-sm'
-                  }`}
+                        ? 'bg-[#101726] border-white/10 text-gray-400 hover:text-white hover:border-white/20'
+                        : 'bg-white border-gray-300 text-gray-600 hover:text-black hover:border-gray-400 shadow-sm'
+                    }`}
                 >
                   <span>{tab.label}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
-                  }`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/20 text-brand-dark' : 'bg-white/10 text-gray-400'
+                    }`}>
                     {tab.count}
                   </span>
                 </button>
@@ -1841,24 +1806,22 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
                 <div
                   key={font.id}
                   onClick={() => handleSelectFont(font)}
-                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 relative group transform hover:-translate-y-1 ${
-                    isSelected
+                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 relative group transform hover:-translate-y-1 ${isSelected
                       ? darkMode
                         ? 'bg-gradient-to-b from-[#172338] to-[#101928] border-brand-gold shadow-[0_0_25px_rgba(212,175,55,0.25)] ring-1 ring-brand-gold'
                         : 'bg-white border-brand-gold shadow-xl ring-2 ring-brand-gold/40'
                       : darkMode
-                      ? 'bg-[#101726] border-white/10 hover:border-brand-gold/40 hover:bg-[#141d2e]'
-                      : 'bg-white border-gray-200 hover:border-brand-gold/50 shadow-sm hover:shadow-md'
-                  }`}
+                        ? 'bg-[#101726] border-white/10 hover:border-brand-gold/40 hover:bg-[#141d2e]'
+                        : 'bg-white border-gray-200 hover:border-brand-gold/50 shadow-sm hover:shadow-md'
+                    }`}
                 >
                   {/* Top Bar: Badge & Selection Indicator */}
                   <div className="flex items-center justify-between mb-3">
                     <span
-                      className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${
-                        isSelected
+                      className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${isSelected
                           ? 'bg-brand-gold text-brand-dark border-brand-gold font-bold'
                           : 'bg-brand-gold/10 text-brand-gold border-brand-gold/20'
-                      }`}
+                        }`}
                     >
                       {font.badge}
                     </span>
@@ -1885,9 +1848,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
                   {/* Live Font Sample rendering */}
                   <div
-                    className={`py-3 px-3 rounded-xl border mb-3 overflow-hidden ${
-                      darkMode ? 'bg-[#080d18] border-white/5' : 'bg-gray-50 border-gray-200'
-                    }`}
+                    className={`py-3 px-3 rounded-xl border mb-3 overflow-hidden ${darkMode ? 'bg-[#080d18] border-white/5' : 'bg-gray-50 border-gray-200'
+                      }`}
                   >
                     <div
                       className={`text-lg sm:text-xl truncate leading-tight ${font.weight} ${font.letterSpacing}`}
@@ -1927,9 +1889,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
         {/* Bottom Helper Bar */}
         <div
-          className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 ${
-            darkMode ? 'bg-[#131d2e] border-brand-gold/20' : 'bg-white border-brand-gold/30 shadow-md'
-          }`}
+          className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 ${darkMode ? 'bg-[#131d2e] border-brand-gold/20' : 'bg-white border-brand-gold/30 shadow-md'
+            }`}
         >
           <div>
             <h4 className="text-base font-bold">Have you found the font or theme you love?</h4>
@@ -1949,9 +1910,8 @@ Color Scheme: ${colorScheme} (${isSingleColor(colorScheme) ? 'One Color Style' :
 
             <button
               onClick={onClose || onNavigateHome}
-              className={`px-4 py-2.5 rounded-xl border text-xs font-semibold ${
-                darkMode ? 'border-gray-700 hover:border-gray-500' : 'border-gray-300 hover:border-gray-400'
-              }`}
+              className={`px-4 py-2.5 rounded-xl border text-xs font-semibold ${darkMode ? 'border-gray-700 hover:border-gray-500' : 'border-gray-300 hover:border-gray-400'
+                }`}
             >
               Done / Return
             </button>
