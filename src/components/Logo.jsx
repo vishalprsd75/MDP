@@ -84,7 +84,7 @@ const Logo = ({
           {renderFixedLogo(
             isFooter
               ? 'h-8 sm:h-9 md:h-10'
-              : 'h-4.5 min-[360px]:h-5 min-[390px]:h-5.5 sm:h-6 md:h-6.5 lg:h-7'
+              : 'h-[20px] min-[360px]:h-[22px] min-[390px]:h-[24px] sm:h-6 md:h-7 lg:h-7.5'
           )}
         </div>
       )}
